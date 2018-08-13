@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   
   
-  <meta name="description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制
-账户管理的相关概念    账户实质就是一个用户在系统上的标识        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及" />
+  <meta name="description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制" />
   
 
   
@@ -16,17 +15,17 @@
   
   <title>系统笔记3 | Welcome my friend！</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制 账户管理的相关概念    账户实质就是一个用户在系统上的标识        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及x-windows环境的配置等）是每个用户的工作都能独立不受干扰地进行    linux中的账户包括">
+  <meta name="description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="系统笔记3">
 <meta property="og:url" content="http://yoursite.com/2018/08/13/系统笔记3/index.html">
 <meta property="og:site_name" content="Welcome my friend！">
-<meta property="og:description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制 账户管理的相关概念    账户实质就是一个用户在系统上的标识        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及x-windows环境的配置等）是每个用户的工作都能独立不受干扰地进行    linux中的账户包括">
+<meta property="og:description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-13T09:01:23.574Z">
+<meta property="og:updated_time" content="2018-08-13T09:15:57.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="系统笔记3">
-<meta name="twitter:description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制 账户管理的相关概念    账户实质就是一个用户在系统上的标识        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及x-windows环境的配置等）是每个用户的工作都能独立不受干扰地进行    linux中的账户包括">
+<meta name="twitter:description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -81,13 +80,13 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记3/" data-id="cjks27b13000708v6bgbx9y4k" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记3/" data-id="cjks2c2k50009twv6u6yng4t3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>1.账户实质<br>2.账户文件<br>3.账户设置<br>4.口令管理<br>5.权限表示<br>6.权限设置<br>7.进程描述<br>8.进程管理<br>9.作业控制</p>
+        <p>1.账户实质<br>2.账户文件<br>3.账户设置<br>4.口令管理<br>5.权限表示<br>6.权限设置<br>7.进程描述<br>8.进程管理<br>9.作业控制<br><a id="more"></a></p>
 <p>账户管理的相关概念<br>    账户实质就是一个用户在系统上的标识<br>        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及x-windows环境的配置等）是每个用户的工作都能独立不受干扰地进行<br>    linux中的账户包括<br>        用户账户<br>        组账户</p>
 <p>用户<br>linux系统下有两个种用户<br>    普通用户账户，在系统上的是普通任务<br>    超级用户账户，在系统上的任务是对普通用户和整个系统进行管理<br>每个用户都被分配了一个唯一的用户id号（UID）<br>    超级用户：uid=0，GID=0<br>    普通用户：UID&gt;=1000<br>    系统用户（伪用户不可登陆） ：0&lt;UID&lt;1000<br>用户名和UID被保存在/etc/passwd这个文件中<br>当用户登陆时，他们被分配了一个主目录和一个运行的文件通常是shell<br>若无适当权限，用户无法读取、写入或执行彼此的文件</p>
 <p>组<br>    组时用户的集合<br>    每个组都被分配了一个唯一的组id号（gid）<br>    组和gid被保存在/etc/group文件中<br>    每个用户都有他们自己的私有组<br>    每个用户都可以被添加到其他组中来获得额外的存储权限<br>    组中的所有用户都可以共享属于改组的文件</p>

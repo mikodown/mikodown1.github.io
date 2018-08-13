@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   
   
-  <meta name="description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额
-硬盘及相关概念    硬盘的技术指标        主轴转速：指硬盘盘片一分钟内能完成的最大转速        平均" />
+  <meta name="description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额" />
   
 
   
@@ -16,17 +15,17 @@
   
   <title>系统笔记4 | Welcome my friend！</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额 硬盘及相关概念    硬盘的技术指标        主轴转速：指硬盘盘片一分钟内能完成的最大转速        平均寻道时间：指磁头从得到指令到寻找到数据所在磁道的时间，他描述硬盘读取数据的能力        数据传">
+  <meta name="description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额">
 <meta property="og:type" content="article">
 <meta property="og:title" content="系统笔记4">
 <meta property="og:url" content="http://yoursite.com/2018/08/13/系统笔记4/index.html">
 <meta property="og:site_name" content="Welcome my friend！">
-<meta property="og:description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额 硬盘及相关概念    硬盘的技术指标        主轴转速：指硬盘盘片一分钟内能完成的最大转速        平均寻道时间：指磁头从得到指令到寻找到数据所在磁道的时间，他描述硬盘读取数据的能力        数据传">
+<meta property="og:description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-13T09:01:45.258Z">
+<meta property="og:updated_time" content="2018-08-13T09:15:57.561Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="系统笔记4">
-<meta name="twitter:description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额 硬盘及相关概念    硬盘的技术指标        主轴转速：指硬盘盘片一分钟内能完成的最大转速        平均寻道时间：指磁头从得到指令到寻找到数据所在磁道的时间，他描述硬盘读取数据的能力        数据传">
+<meta name="twitter:description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -81,13 +80,14 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记4/" data-id="cjks27b16000808v6yviwg2il" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记4/" data-id="cjks2c2k40008twv6fuixypdl" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
         <p>概要<br>    磁盘相关概念<br>    磁盘分区工具<br>    创建和维护lvm系统<br>    linux文件系统的挂载和卸载<br>    ext2/ext3/ext4、xfs文件系统管理<br>    磁盘限额</p>
+<a id="more"></a>    
 <p>硬盘及相关概念<br>    硬盘的技术指标<br>        主轴转速：指硬盘盘片一分钟内能完成的最大转速<br>        平均寻道时间：指磁头从得到指令到寻找到数据所在磁道的时间，他描述硬盘读取数据的能力<br>        数据传输率：指的是从硬盘缓存向外输出数据的速度，单位MB/s<br>        高速缓存：缓存数数据的临时寄存器，主要用来缓解速度差和实现数据与存取等<br>        单碟容量：指每张碟片的最大容量。这是反应硬盘综合性能指标的一个重要因素<br>硬盘接口方式<br>    FC-Al接口主要应用于任务级的关键数据的大容量实时存储。可以满足高性能、高可靠和高扩展的存储需要。<br>    scsi接口主要应用于商业级的关键数据的大容量存储<br>    Sas 接口是个全才，可以支持sas和sata硬盘，很可靠地，满足不同性价比地存储需要，被商业公认为取代并行的scsi<br>    sata接口主要应用于非关键数据的大容量存储，近线存储和关键性应用<br>    Pata 基本淘汰<br>主引导记录<br>    • MBR位于硬盘的0磁道0柱面1扇区【512字节】<br>        • 装载操作系统的硬盘引导程序【446字节】<br>        • 硬盘分区表 (Disk Partition Table, DPT) 【64字节】<br>            ○ 分区ID或者类型<br>            ○ 分区起始磁道<br>            ○ 分区磁道数<br>        • 最后两个字节“55，AA”是分区的结束标志<br>    • MBR是由分区程序（如fdisk）所产生的<br>        • 不依赖任何操作系统<br>    硬盘引导程序是可以改变的，从而实现多系统共存<br>    （现在多为gpt分区）</p>
 <p>磁盘分区<br>    指向附加分区描述符的扩展分区<br>    内核最多支持分区数<br>        ide驱动器为63<br>        scsi驱动器为15<br>两种硬盘存储方式<br>    基本硬盘存储方式<br>        在基本硬盘上存储数据需要在磁盘上创建主分区，扩展分区，和逻辑分区然后对这些分区进行管理<br>    动态硬盘存储<br>        在动态磁盘上存储数据需要在磁盘上创建动态分区，然后对这些卷进行管理</p>
 <p>磁盘分区工具<br>    分区管理工具<br>        Fdisk<br>        Sfdisk<br>        Gun parted 高级分区操作<br>    Partprobe 重新设置内存中的内核分区表版本</p>
