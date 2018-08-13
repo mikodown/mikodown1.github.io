@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   
   
-  <meta name="description" content="http://eagleslab.com:9000/blog/post/aaron/20180719   哲哥笔记IP路由选择原理  1.IP路由选择原理  2.有类及无类路由协议  3.静态路由的配置
-一.   路由信息来源直连路由  接口配置ip， 该接口的物理层和数据链路层up  通过接口感知" />
+  <meta name="description" content="http://eagleslab.com:9000/blog/post/aaron/20180719   哲哥笔记IP路由选择原理  1.IP路由选择原理  2.有类及无类路由协议  3.静态路由的配置" />
   
 
   
@@ -16,17 +15,17 @@
   
   <title>网络笔记Day1 | Welcome my friend！</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="http://eagleslab.com:9000/blog/post/aaron/20180719   哲哥笔记IP路由选择原理  1.IP路由选择原理  2.有类及无类路由协议  3.静态路由的配置 一.   路由信息来源直连路由  接口配置ip， 该接口的物理层和数据链路层up  通过接口感知到的直连网络静态路由  使用静态路由命令手工配置的路由动态路由 通过动态路由 当路由器收到一个数据包">
+  <meta name="description" content="http://eagleslab.com:9000/blog/post/aaron/20180719   哲哥笔记IP路由选择原理  1.IP路由选择原理  2.有类及无类路由协议  3.静态路由的配置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络笔记Day1">
 <meta property="og:url" content="http://yoursite.com/2018/08/13/网络笔记/index.html">
 <meta property="og:site_name" content="Welcome my friend！">
-<meta property="og:description" content="http://eagleslab.com:9000/blog/post/aaron/20180719   哲哥笔记IP路由选择原理  1.IP路由选择原理  2.有类及无类路由协议  3.静态路由的配置 一.   路由信息来源直连路由  接口配置ip， 该接口的物理层和数据链路层up  通过接口感知到的直连网络静态路由  使用静态路由命令手工配置的路由动态路由 通过动态路由 当路由器收到一个数据包">
+<meta property="og:description" content="http://eagleslab.com:9000/blog/post/aaron/20180719   哲哥笔记IP路由选择原理  1.IP路由选择原理  2.有类及无类路由协议  3.静态路由的配置">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-13T04:01:43.757Z">
+<meta property="og:updated_time" content="2018-08-13T04:10:39.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络笔记Day1">
-<meta name="twitter:description" content="http://eagleslab.com:9000/blog/post/aaron/20180719   哲哥笔记IP路由选择原理  1.IP路由选择原理  2.有类及无类路由协议  3.静态路由的配置 一.   路由信息来源直连路由  接口配置ip， 该接口的物理层和数据链路层up  通过接口感知到的直连网络静态路由  使用静态路由命令手工配置的路由动态路由 通过动态路由 当路由器收到一个数据包">
+<meta name="twitter:description" content="http://eagleslab.com:9000/blog/post/aaron/20180719   哲哥笔记IP路由选择原理  1.IP路由选择原理  2.有类及无类路由协议  3.静态路由的配置">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -81,14 +80,13 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记/" data-id="cjkrr6ubc00044kv6n1v3psa9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记/" data-id="cjkrrgfh90005vov6ysfqqjrn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p><a href="http://eagleslab.com:9000/blog/post/aaron/20180719" target="_blank" rel="noopener">http://eagleslab.com:9000/blog/post/aaron/20180719</a>   哲哥笔记<br>IP路由选择原理<br>  1.IP路由选择原理<br>  2.有类及无类路由协议<br>  3.静态路由的配置</p>
-<p>一.<br>   路由信息来源<br>直连路由<br>  接口配置ip， 该接口的物理层和数据链路层up<br>  通过接口感知到的直连网络<br>静态路由<br>  使用静态路由命令手工配置的路由<br>动态路由<br> 通过动态路由</p>
+        <p><a href="http://eagleslab.com:9000/blog/post/aaron/20180719" target="_blank" rel="noopener">http://eagleslab.com:9000/blog/post/aaron/20180719</a>   哲哥笔记<br>IP路由选择原理<br>  1.IP路由选择原理<br>  2.有类及无类路由协议<br>  3.静态路由的配置<br><a id="more"></a><br>一.<br>   路由信息来源<br>直连路由<br>  接口配置ip， 该接口的物理层和数据链路层up<br>  通过接口感知到的直连网络<br>静态路由<br>  使用静态路由命令手工配置的路由<br>动态路由<br> 通过动态路由</p>
 <p>当路由器收到一个数据包<br>    成帧<br>    校验fcs（帧尾校验序列）查看数据帧是否完整<br>        完整进入下一步<br>        不完整丢弃<br>    查看目的MAC地址是否为当前NIC（网卡）的mac地址<br>        是 拆开数据帧的头部 进入下一步<br>        不是丢弃<br>    查看IP头部的目的ip地址 查询路由表<br>        有匹配项 转发<br>        无匹配项 丢弃<br>        广播地址 进入更高层<br>路由信息的来源<br>    直连接口<br>        接口必须是有效的ip地址<br>        接口不能是down<br>    静态路由<br>        静态路由的下一条或者出接口必须有效<br>            添加permanent 命令后 接口down不影响<br>            但是对下一条无效<br>            静态路由可以设置管理距离 默认为1<br>            如果是同一的目的地有多条静态路由，管理距离一样的情况下会负载均衡<br>        动态路由选择协议<br>            常见协议<br>             rip1 rip2 ripng<br>            Eigrp<br>            is-is<br>            Bgp<br>            ospf<br>        如果</p>
 <p>有类与无类</p>
 <p>Codes ：表示的路由来源的参照表<br>Gateway ：是表示缺省路由<br>路由表项中 192.168.12.0/24 不是表示一个IP地址 而是表示匹配条件<br>192.168.12.0/24的意思是，目的ip地址的前24位必须与192.168.12.0前24位一致才算匹配成功</p>
