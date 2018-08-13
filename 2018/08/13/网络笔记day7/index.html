@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Route-map
+你懂的policy-listip policy-list AS100 permit match ip address 1 match community 1 exact-match match policy-list R3!route-map R1 permit 10 match policy-list R3advertise-map条件通告，当advertise-map后面的route-map中路由消失的时候，none-exist-map后面的路由也会跟着消失ip prefix-list 10 seq 5 permit 172.16.1.0/24ip prefix-list 20 seq 5 permit 172.16.2.0/24!route-map 1 permit 10 match ip address prefix-list 10route-map 2 permit 10 match ip address prefix-list 20!router bgp 200 neighbor 192.168.23.3 advertise-map 2 non-exist-map 1
+#当1不存在的时候，就向192.168.23.3通告2的路由
+ORFBGP优化命令，在BGP建立邻居的时候会更新完整的路由表，如果接收方在in方向上有策略，那可能有些更新就是不必要的，会造成资源的浪费配置了ORF功能的路由器，可以事先将in接口的策略告诉对方，这样在更新的时候就可以避免带宽资源的浪费必须要两边都配置了ORF才可以路由拆分" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>网络笔记day7 | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Route-map 你懂的policy-listip policy-list AS100 permit match ip address 1 match community 1 exact-match match policy-list R3!route-map R1 permit 10 match policy-list R3advertise-map条件通告，当advertise-map后面的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络笔记day7">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/网络笔记day7/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="Route-map 你懂的policy-listip policy-list AS100 permit match ip address 1 match community 1 exact-match match policy-list R3!route-map R1 permit 10 match policy-list R3advertise-map条件通告，当advertise-map后面的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T04:32:25.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络笔记day7">
+<meta name="twitter:description" content="Route-map 你懂的policy-listip policy-list AS100 permit match ip address 1 match community 1 exact-match match policy-list R3!route-map R1 permit 10 match policy-list R3advertise-map条件通告，当advertise-map后面的">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-网络笔记day7" class="post-网络笔记day7 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      网络笔记day7
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day7/" data-id="cjkrs832w000bhsv6pmipanht" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Route-map</p>
+<p>你懂的<br>policy-list<br>ip policy-list AS100 permit<br> match ip address 1<br> match community 1 exact-match<br> match policy-list R3<br>!<br>route-map R1 permit 10<br> match policy-list R3<br>advertise-map<br>条件通告，当advertise-map后面的route-map中路由消失的时候，none-exist-map后面的路由也会跟着消失<br>ip prefix-list 10 seq 5 permit 172.16.1.0/24<br>ip prefix-list 20 seq 5 permit 172.16.2.0/24<br>!<br>route-map 1 permit 10<br> match ip address prefix-list 10<br>route-map 2 permit 10<br> match ip address prefix-list 20<br>!<br>router bgp 200<br> neighbor 192.168.23.3 advertise-map 2 non-exist-map 1</p>
+<pre><code>#当1不存在的时候，就向192.168.23.3通告2的路由
+</code></pre><p>ORF<br>BGP优化命令，在BGP建立邻居的时候会更新完整的路由表，如果接收方在in方向上有策略，那可能有些更新就是不必要的，会造成资源的浪费<br>配置了ORF功能的路由器，可以事先将in接口的策略告诉对方，这样在更新的时候就可以避免带宽资源的浪费<br>必须要两边都配置了ORF才可以<br>路由拆分<br><a id="more"></a><br>拓扑<br>需求</p>
+<pre><code>1. 要求全网使用Loopback0建立BGP邻居，Loopback0全网互通，在AS100中，R1为路由反射器。
+2. R6和R7分别创建loopback接口地址为172.16.1.0/24、172.16.2.0/24。全网可达。
+3. 在AS200中对R6和R7的路由汇总，最终通告给AS100的路由为172.16.0.0/16
+4. 在R2和R3上对路由进行拆分，最终要求R1可以看到172.16.1.0/24和172.16.2.0/24的明细路由
+5. 当汇总路由消失的时候，明细路由也要跟着消失
+</code></pre><p>参考答案</p>
+<pre><code>1. R1
+2. interface Loopback0
+3. ip address 1.1.1.1 255.255.255.0
+4. ip ospf 1 area 0
+5. !         
+6. interface Ethernet0/0
+7. ip address 192.168.12.1 255.255.255.0
+8. ip ospf 1 area 0
+9. !
+10. interface Ethernet0/1
+11. ip address 192.168.13.1 255.255.255.0
+12. ip ospf 1 area 0
+13. !
+14. router bgp 100
+15. bgp router-id 1.1.1.1
+16. bgp log-neighbor-changes
+17. network 1.1.1.0 mask 255.255.255.0
+18. neighbor 2.2.2.2 remote-as 100
+19. neighbor 2.2.2.2 update-source Loopback0
+20. neighbor 2.2.2.2 route-reflector-client
+21. neighbor 3.3.3.3 remote-as 100
+22. neighbor 3.3.3.3 update-source Loopback0
+23. neighbor 3.3.3.3 route-reflector-client
+24. ==============分割线======================
+25. R2
+26. interface Loopback0
+27. ip address 2.2.2.2 255.255.255.0
+28. ip ospf 1 area 0
+29. !         
+30. interface Ethernet0/0
+31. ip address 192.168.24.2 255.255.255.0
+32. !
+33. interface Ethernet0/1
+34. ip address 192.168.23.2 255.255.255.0
+35. ip ospf 1 area 0
+36. !
+37. interface Ethernet0/2
+38. ip address 192.168.12.2 255.255.255.0
+39. ip ospf 1 area 0
+40. !
+41. router bgp 100
+42. bgp router-id 2.2.2.2
+43. bgp log-neighbor-changes
+44. bgp inject-map mingxi exist-map huizong copy-attributes
+45. network 2.2.2.0 mask 255.255.255.0
+46. neighbor 1.1.1.1 remote-as 100
+47. neighbor 1.1.1.1 update-source Loopback0
+48. neighbor 1.1.1.1 next-hop-self
+49. neighbor 1.1.1.1 route-map lp out
+50. neighbor 4.4.4.4 remote-as 200
+51. neighbor 4.4.4.4 ebgp-multihop 255
+52. neighbor 4.4.4.4 update-source Loopback0
+53. !
+54. ip route 4.4.4.4 255.255.255.255 192.168.24.4
+55. !
+56. ip prefix-list huizong seq 5 permit 172.16.0.0/16
+57. ip prefix-list mingxi seq 5 permit 172.16.1.0/24
+58. ip prefix-list mingxi seq 10 permit 172.16.2.0/24
+59. ip prefix-list xiayitiao seq 5 permit 4.4.4.4/32
+60. !
+61. route-map mingxi permit 10
+62. set ip address prefix-list mingxi
+63. set community no-export
+64. !
+65. route-map lp permit 10
+66. match ip address 1
+67. set local-preference 110
+68. route-map lp permit 20
+69. !
+70. route-map huizong permit 10
+71. match ip address prefix-list huizong
+72. match ip route-source xiayitiao
+73. !
+74. access-list 1 permit 172.16.1.0
+75. ==============分割线======================
+76. R3
+77. interface Loopback0
+78. ip address 3.3.3.3 255.255.255.0
+79. ip ospf 1 area 0
+80. !         
+81. interface Ethernet0/0
+82. ip address 192.168.35.3 255.255.255.0
+83. !
+84. interface Ethernet0/1
+85. ip address 192.168.23.3 255.255.255.0
+86. ip ospf 1 area 0
+87. !
+88. interface Ethernet0/2
+89. ip address 192.168.13.3 255.255.255.0
+90. ip ospf 1 area 0
+91. !
+92. router bgp 100
+93. bgp router-id 3.3.3.3
+94. bgp log-neighbor-changes
+95. bgp inject-map mingxi exist-map huizong copy-attributes
+96. network 3.3.3.0 mask 255.255.255.0
+97. neighbor 1.1.1.1 remote-as 100
+98. neighbor 1.1.1.1 update-source Loopback0
+99. neighbor 1.1.1.1 next-hop-self
+100. neighbor 1.1.1.1 route-map lp out
+101. neighbor 5.5.5.5 remote-as 200
+102. neighbor 5.5.5.5 ebgp-multihop 255
+103. neighbor 5.5.5.5 update-source Loopback0
+104. !
+105. ip route 5.5.5.5 255.255.255.255 192.168.35.5
+106. !
+107. ip prefix-list huizong seq 5 permit 172.16.0.0/16
+108. ip prefix-list mingxi seq 5 permit 172.16.1.0/24
+109. ip prefix-list mingxi seq 10 permit 172.16.2.0/24
+110. ip prefix-list xiayitiao seq 5 permit 5.5.5.5/32
+111. !
+112. route-map mingxi permit 10
+113. set ip address prefix-list mingxi
+114. set community no-export
+115. !
+116. route-map lp permit 10
+117. match ip address 1
+118. set local-preference 110
+119. route-map lp permit 20
+120. !
+121. route-map huizong permit 10
+122. match ip address prefix-list huizong
+123. match ip route-source xiayitiao
+124. !
+125. access-list 1 permit 172.16.2.0
+126. ==============分割线======================
+127. R4
+128. interface Loopback0
+129. ip address 4.4.4.4 255.255.255.0
+130. ip router isis 
+131. !         
+132. interface Ethernet0/0
+133. ip address 192.168.46.4 255.255.255.0
+134. !
+135. interface Ethernet0/1
+136. ip address 192.168.45.4 255.255.255.0
+137. ip router isis 
+138. !
+139. interface Ethernet0/2
+140. ip address 192.168.24.4 255.255.255.0
+141. !
+142. router isis
+143. net 49.0001.0000.0000.0004.00
+144. is-type level-2-only
+145. !
+146. router bgp 200
+147. bgp router-id 4.4.4.4
+148. bgp log-neighbor-changes
+149. network 4.4.4.0 mask 255.255.255.0
+150. aggregate-address 172.16.0.0 255.255.0.0 as-set summary-only
+151. neighbor 2.2.2.2 remote-as 100
+152. neighbor 2.2.2.2 ebgp-multihop 255
+153. neighbor 2.2.2.2 update-source Loopback0
+154. neighbor 5.5.5.5 remote-as 200
+155. neighbor 5.5.5.5 update-source Loopback0
+156. neighbor 5.5.5.5 next-hop-self
+157. neighbor 5.5.5.5 unsuppress-map 1
+158. neighbor 6.6.6.6 remote-as 300
+159. neighbor 6.6.6.6 ebgp-multihop 255
+160. neighbor 6.6.6.6 update-source Loopback0
+161. neighbor 6.6.6.6 unsuppress-map 2
+162. !
+163. ip route 2.2.2.2 255.255.255.255 192.168.24.2
+164. ip route 6.6.6.6 255.255.255.255 192.168.46.6
+165. !
+166. ip prefix-list 1 seq 5 permit 172.16.1.0/24         
+167. ip prefix-list 2 seq 5 permit 172.16.2.0/24
+168. !
+169. route-map 1 permit 10
+170. match ip address 1
+171. !
+172. route-map 2 permit 10
+173. match ip address 2
+174. ==============分割线======================
+175. R5
+176. interface Loopback0
+177. ip address 5.5.5.5 255.255.255.0
+178. ip router isis 
+179. !         
+180. interface Ethernet0/0
+181. ip address 192.168.57.5 255.255.255.0
+182. !
+183. interface Ethernet0/1
+184. ip address 192.168.45.5 255.255.255.0
+185. ip router isis 
+186. !
+187. interface Ethernet0/2
+188. ip address 192.168.35.5 255.255.255.0
+189. !
+190. router isis
+191. net 49.0001.0000.0000.0005.00
+192. is-type level-2-only
+193. !
+194. router bgp 200
+195. bgp router-id 5.5.5.5
+196. bgp log-neighbor-changes
+197. network 5.5.5.0 mask 255.255.255.0
+198. aggregate-address 172.16.0.0 255.255.0.0 as-set summary-only
+199. neighbor 3.3.3.3 remote-as 100
+200. neighbor 3.3.3.3 ebgp-multihop 255
+201. neighbor 3.3.3.3 update-source Loopback0
+202. neighbor 4.4.4.4 remote-as 200
+203. neighbor 4.4.4.4 update-source Loopback0
+204. neighbor 4.4.4.4 next-hop-self
+205. neighbor 4.4.4.4 unsuppress-map 2
+206. neighbor 7.7.7.7 remote-as 400
+207. neighbor 7.7.7.7 ebgp-multihop 255
+208. neighbor 7.7.7.7 update-source Loopback0
+209. neighbor 7.7.7.7 unsuppress-map 1
+210. !
+211. ip route 3.3.3.3 255.255.255.255 192.168.35.3
+212. ip route 7.7.7.7 255.255.255.255 192.168.57.7
+213. !
+214. ip prefix-list 1 seq 5 permit 172.16.1.0/24      
+215. ip prefix-list 2 seq 5 permit 172.16.2.0/24
+216. !
+217. route-map 1 permit 10
+218. match ip address 1
+219. !
+220. route-map 2 permit 10
+221. match ip address 2
+222. ==============分割线======================
+223. R6
+224. interface Loopback0
+225. ip address 6.6.6.6 255.255.255.0
+226. !
+227. interface Loopback10
+228. ip address 172.16.1.1 255.255.255.0
+229. !
+230. interface Ethernet0/0
+231. ip address 192.168.46.6 255.255.255.0
+232. !
+233. router bgp 300
+234. bgp router-id 6.6.6.6
+235. bgp log-neighbor-changes
+236. network 6.6.6.0 mask 255.255.255.0
+237. network 172.16.1.0 mask 255.255.255.0
+238. neighbor 4.4.4.4 remote-as 200
+239. neighbor 4.4.4.4 ebgp-multihop 255
+240. neighbor 4.4.4.4 update-source Loopback0
+241. !
+242. ip route 4.4.4.4 255.255.255.255 192.168.46.4
+243. ==============分割线======================
+244. R7
+245. interface Loopback0
+246. ip address 7.7.7.7 255.255.255.0
+247. !
+248. interface Loopback10
+249. ip address 172.16.2.1 255.255.255.0
+250. !
+251. interface Ethernet0/0
+252. ip address 192.168.57.7 255.255.255.0
+253. !
+254. router bgp 400
+255. bgp router-id 7.7.7.7
+256. bgp log-neighbor-changes
+257. network 7.7.7.0 mask 255.255.255.0
+258. network 172.16.2.0 mask 255.255.255.0
+259. neighbor 5.5.5.5 remote-as 200
+260. neighbor 5.5.5.5 ebgp-multihop 255
+261. neighbor 5.5.5.5 update-source Loopback0
+262. !
+263. ip route 5.5.5.5 255.255.255.255 192.168.57.5
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day7/">
+    <time datetime="2018-08-13T04:28:00.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/08/13/网络笔记day8/" rel="prev"><span class="meta-nav">←</span> 网络笔记day8</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/网络笔记day6/" rel="next">网络笔记day6 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

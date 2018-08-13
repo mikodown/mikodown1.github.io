@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="链路状态协议路由器会将自己接口所在的链路的信息署名，然后发给自己的邻居邻居收到链路状态信息后，存储在链路状态数据库中当收敛完成后路由器几乎收到网络中所由路有器的链路状态后，会计算全网拓扑使用spf算法得到去没一个网段的最短路线，然后去往每个网段的下一条写进路由表
+典型代表Ospf is-is" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>网络笔记day3 | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="链路状态协议路由器会将自己接口所在的链路的信息署名，然后发给自己的邻居邻居收到链路状态信息后，存储在链路状态数据库中当收敛完成后路由器几乎收到网络中所由路有器的链路状态后，会计算全网拓扑使用spf算法得到去没一个网段的最短路线，然后去往每个网段的下一条写进路由表 典型代表Ospf is-is">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络笔记day3">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/网络笔记day3/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="链路状态协议路由器会将自己接口所在的链路的信息署名，然后发给自己的邻居邻居收到链路状态信息后，存储在链路状态数据库中当收敛完成后路由器几乎收到网络中所由路有器的链路状态后，会计算全网拓扑使用spf算法得到去没一个网段的最短路线，然后去往每个网段的下一条写进路由表 典型代表Ospf is-is">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T04:26:46.394Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络笔记day3">
+<meta name="twitter:description" content="链路状态协议路由器会将自己接口所在的链路的信息署名，然后发给自己的邻居邻居收到链路状态信息后，存储在链路状态数据库中当收敛完成后路由器几乎收到网络中所由路有器的链路状态后，会计算全网拓扑使用spf算法得到去没一个网段的最短路线，然后去往每个网段的下一条写进路由表 典型代表Ospf is-is">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-网络笔记day3" class="post-网络笔记day3 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      网络笔记day3
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day3/" data-id="cjkrs832u000ahsv64sojqqbm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>链路状态协议<br>路由器会将自己接口所在的链路的信息署名，然后发给自己的邻居<br>邻居收到链路状态信息后，存储在链路状态数据库中<br>当收敛完成后路由器几乎收到网络中所由路有器的链路状态后，会计算全网拓扑<br>使用spf算法得到去没一个网段的最短路线，然后去往每个网段的下一条写进路由表</p>
+<p>典型代表<br>Ospf is-is<br><a id="more"></a><br>Ospf<br>    ospf（open shortest path first，开放最短路径优先）是一中链路状态协议，无路由循环（全局拓扑），属于IGP。Rfc2328<br>    Ospf 的报文封装<br>        Ospf 协议包直接封装ip，协议号89.<br>    Ospf 协议使用的组播地址<br>        所有ospf路由器–224.0.0.5 ； DR BDR–224.0.0.6<br>        Ospf 路由管理距离：110<br>Ospf 名词<br>    router-id<br>    • 在一个OSPF域中，唯一地标识一台OSPF路由器 32bits，<br>    • 表现为IPv4地址形式。在未有手工指定的情况下，如果本地有激活的Loopback接口，则取Loopback接口IP最大值；如果没有LP接口，则取激活的物理接口IP中的最大值<br>    • 为了提高路由器的RID的稳定性和网络的稳定性建议手动的设置路由器的Router-ID：在OSPF的进程下修改:router-id<br>    • 项目实施中，一般是建立loopback口，并且手工指定loopback口地址为router-id </p>
+<pre><code>Sh IP protocols
+要注意修改router-id 在不重启路由的情况下，唯有手动配置
+查看Router-iD
+
+                            R1#sh ip protocols 
+                            Routing Protocol is &quot;ospf 1&quot;
+                            Outgoing update filter list for all interfaces is not set
+                            Incoming update filter list for all interfaces is not set
+                            Router ID 1.1.1.1
+                            Number of areas in this router is 1. 1 normal 0 stub 0 nssa
+                            Maximum path: 4
+                            Routing for Networks:
+                            Routing on Interfaces Configured Explicitly (Area 0):
+                            Loopback0
+                            Ethernet0/0
+                            Routing Information Sources:
+                            Gateway         Distance      Last Update
+                            2.2.2.2              110      00:00:02
+                            Distance: (default is 110)
+要注意，修改router-id，在不重启路由器的情况下，只能手工修改。
+
+                            R1(config)#router ospf 1
+                            R1(config-router)#router-id 10.10.10.10 
+                            % OSPF: Reload or use &quot;clear ip ospf process&quot; command, for this to take effect
+                            R1(config-router)#end
+                            R1#clear ip ospf process 
+                            Reset ALL OSPF processes? [no]: yes
+                            R1#sh ip protocols 
+                            Routing Protocol is &quot;ospf 1&quot;
+                            Outgoing update filter list for all interfaces is not set
+                            Incoming update filter list for all interfaces is not set
+                            Router ID 10.10.10.10
+                            Number of areas in this router is 1. 1 normal 0 stub 0 nssa
+                            Maximum path: 4
+                            Routing for Networks:
+                            Routing on Interfaces Configured Explicitly (Area 0):
+                            Loopback0
+                            Ethernet0/0
+                            Routing Information Sources:
+                            Gateway         Distance      Last Update
+                            2.2.2.2              110      00:01:03
+                            Distance: (default is 110)
+                            R1#
+Router-id如果冲突，是无法建立邻居的，并且控制台会跳错误
+注意！如果不是邻居的Router-id冲突，是可以建立邻居的，但是拓扑会出现问题
+
+                            R1(config)#router ospf 1
+                            R1(config-router)#router-id 2.2.2.2
+                            % OSPF: Reload or use &quot;clear ip ospf process&quot; command, for this to take effect
+                            R1(config-router)#do clear ip ospf proc
+                            Reset ALL OSPF processes? [no]: yes
+                            R1(config-router)#
+                            *Jul 22 01:26:49.596: %OSPF-5-ADJCHG: Process 1, Nbr 2.2.2.2 on Ethernet0/0 from FULL to DOWN, Neighbor Down: Interface down or detached
+                            R1(config-router)#
+                            *Jul 22 01:26:50.587: %OSPF-4-DUP_RTRID_NBR: OSPF detected duplicate router-id 2.2.2.2 from 192.168.12.2 on interface Ethernet0/0
+                            R1(config-router
+
+
+DR、BDR
+• DR、BDR 
+    w DR的作用：多路访问中为了减少邻接关系（N平方的问题）和LSA的洪泛，采用DR机制,BDR提供了备份 
+    w MA网络上的所有路由器均与DR、BDR建立邻居关系 
+• DR选举比较顺序： 
+    w 接口优先级数字越大越优先（优先级为0不能参与DR的选举，默认优先级为1） 
+    w Router ID越大越好 
+    w 稳定压倒一切（非抢占） 
+    w 通过控制接口优先级是控制DR选举的好办法 DR的选举是基于接口的
+    w 如果说某个路由器是DR，这种说法是错误的 
+</code></pre><p>查看接口当前的角色，要注意，如果某个接口开启了OSPF哪怕没有路由器与之连接，都会选举DR和BDR</p>
+<pre><code>R1#sh ip ospf int e0/0
+Ethernet0/0 is up, line protocol is up 
+Internet Address 192.168.123.1/24, Area 0, Attached via Interface Enable
+Process ID 1, Router ID 1.1.1.1, Network Type BROADCAST, Cost: 10
+Topology-MTID    Cost    Disabled    Shutdown      Topology Name
+0           10        no          no            Base
+Enabled by interface config, including secondary ip addresses
+Transmit Delay is 1 sec, State DROTHER, Priority 1
+Designated Router (ID) 3.3.3.3, Interface address 192.168.123.3
+Backup Designated router (ID) 2.2.2.2, Interface address 192.168.123.2
+Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5
+oob-resync timeout 40
+Hello due in 00:00:05
+Supports Link-local Signaling (LLS)
+Cisco NSF helper support enabled
+IETF NSF helper support enabled
+Index 2/2, flood queue length 0
+Next 0x0(0)/0x0(0)
+Last flood scan length is 1, maximum is 1
+Last flood scan time is 0 msec, maximum is 0 msec
+Neighbor Count is 2, Adjacent neighbor count is 2 
+Adjacent with neighbor 2.2.2.2  (Backup Designated Router)
+Adjacent with neighbor 3.3.3.3  (Designated Router)
+Suppress hello for 0 neighbor(s)
+R1#
+</code></pre><p>修改端口优先级，可以在下一次OSPF的DRBDR选举中占有优势，优先级为0，则不参与<br>interface Ethernet0/0<br> ip ospf priority 10<br>Clear IP ospf process<br>有时候我们希望ospf快速建立邻居以提高网络的恢复速度 我们会将网络中点对点的网络改为不用选举dr、bdr的类型<br>接口下<br>IP ospf network point to point</p>
+<p>OSPF COST<br>    w OSPF接口COST＝参考带宽（10的8次方）/ 接口带宽<br>        w 接口带宽为接口逻辑带宽，可以使用bandwith命令调整，主要用于路由计算，而不是接口物理带宽，但一般情况：接口逻辑带宽＝接口物理带宽。<br>    w 手工修改接口Cost的方法</p>
+<pre><code>                        Router(config)# int serial 1 
+                        Router(config-if)# ip ospf cost 100 !! 该命令在接收路由的入口上配置﻿​
+w 可修改“参考带宽”,来保障OSPF在现如今的网络中正常运转
+
+                        auto-cost reference-bandwidth &lt;参考带宽以Mbits为单位&gt;
+
+                        R1(config)#int lo0
+                        R1(config-if)#bandwidth 1000
+                        R1(config-if)#end
+                        R1#sh ip ospf int lo0
+                        Loopback0 is up, line protocol is up 
+                        Internet Address 1.1.1.1/24, Area 0, Attached via Interface Enable
+                        Process ID 1, Router ID 1.1.1.1, Network Type LOOPBACK, Cost: 1
+                        Topology-MTID    Cost    Disabled    Shutdown      Topology Name
+                        0           1         no          no            Base
+                        Enabled by interface config, including secondary ip addresses
+                        Loopback interface is treated as a stub Host
+</code></pre><p>可以看出来，Loopback接口的cost值是不受接口带宽影响，我们可以直接修改接口的cost</p>
+<pre><code>interface Loopback0
+ip ospf cost 10
+</code></pre><p> OSPF三张表<br>邻居表</p>
+<pre><code>R2#sh ip ospf neighbor 
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+4.4.4.4           0   FULL/  -        00:00:37    192.168.24.4    Ethernet0/1
+1.1.1.1          10   FULL/DR         00:00:36    192.168.123.1   Ethernet0/0
+3.3.3.3           1   FULL/BDR        00:00:39    192.168.123.3   Ethernet0/0
+R2#
+</code></pre><p>链路状态数据库</p>
+<pre><code>R2#show ip ospf database 
+
+OSPF Router with ID (2.2.2.2) (Process ID 1)
+
+Router Link States (Area 0)
+
+Link ID         ADV Router      Age         Seq#       Checksum Link count
+1.1.1.1         1.1.1.1         240         0x80000006 0x00E74B 2
+2.2.2.2         2.2.2.2         1285        0x80000019 0x008351 4
+3.3.3.3         3.3.3.3         1727        0x80000006 0x0025FC 2
+4.4.4.4         4.4.4.4         1409        0x8000000A 0x009274 4
+
+Net Link States (Area 0)
+
+Link ID         ADV Router      Age         Seq#       Checksum
+192.168.123.1   1.1.1.1         1291        0x80000008 0x00BE6E
+R2#
+</code></pre><p>OSPF路由表</p>
+<pre><code>R2#show ip route ospf
+1.0.0.0/32 is subnetted, 1 subnets
+O        1.1.1.1 [110/20] via 192.168.123.1, 00:04:18, Ethernet0/0
+3.0.0.0/32 is subnetted, 1 subnets
+O        3.3.3.3 [110/11] via 192.168.123.3, 00:21:42, Ethernet0/0
+4.0.0.0/32 is subnetted, 1 subnets
+O        4.4.4.4 [110/11] via 192.168.24.4, 00:23:45, Ethernet0/1
+O     192.168.45.0/24 [110/20] via 192.168.24.4, 00:23:45, Ethernet0/1
+R2#
+</code></pre><p>ospf建立邻居条件<br>    相邻两台路由器运行ospf协议<br>    两台路由器直接连接<br>    在同一个自治系统<br>    Hello/Dead时间一致<br>    区域id一致<br>    认证密码一致<br>    mtp值一致<br>        网络状态</p>
+<p>ospf进程号不一样能建立邻居 但是不同进程号之间不会共享lsa （链路状态信息）</p>
+<p>Ospf 报文类型<br>    Hello 建立和维护ospf邻居关系<br>    dbd链路状态数据库描述信息（描述lsdb中lsa头部列表）<br>    lsr链路状态请求 向ospf 邻居请求链路状态信息<br>    lsu链路状态更新（包含一条或多条lsa）<br>        lsack确认报文<br>ospf邻居建立<br>    Down<br>        路由器未运行<br>    Init<br>        路由器收到对放发来的hello中每日有自己的router-id<br>    2-way<br>        路由器收到对方的hello中有自己的router-id<br>        表示已经双向通信<br>        如果是广播网络类型，在这个阶段会等待40s 等所有的路由器的hello都充分交换，然后选择router-id最大作为Dr，过时不候<br>    ex-start<br>        路由器发送的空的dbd（链路状态描述信息）由于选举谁来主导整个过程，比较router-id大小<br>        L（置位表示选举完成）m（滞位表示这不是最后一条信息）、MS（置位表示自己的Master）<br>    Ex-Change<br>        路由器互相交换DBD，（slave先把自己的DBD发给Master）<br>        对比那些LSA是自己没有的<br>    Loading<br>        向对方发送lsr请求那些自己需要的lsa<br>        接受对方的lsu，并回复lsack确认<br>    Full<br>        完成建立过程<br>        链路状态数据库序列号</p>
+<pre><code>                            1. R2#sh ip ospf database 
+                            2.  
+                            3.             OSPF Router with ID (192.168.123.2) (Process ID 2)
+                            4.  
+                            5.             OSPF Router with ID (2.2.2.2) (Process ID 1)
+                            6.  
+                            7. Router Link States (Area 0)
+                            8.  
+                            9. Link ID         ADV Router      Age         Seq#       Checksum Link count
+                            10. 1.1.1.1         1.1.1.1         1586        0x80000006 0x00E74B 2
+                            11. 2.2.2.2         2.2.2.2         12          0x80000002 0x00B13A 4
+                            12. 3.3.3.3         3.3.3.3         1120        0x80000007 0x0023FD 2
+                            13. 4.4.4.4         4.4.4.4         13          0x8000000D 0x008C77 4
+                            14. 192.168.123.2   192.168.123.2   1107        0x80000001 0x00131B 2
+                            15.  
+                            16. Net Link States (Area 0)
+                            17.  
+                            18. Link ID         ADV Router      Age         Seq#       Checksum
+                            19. 192.168.123.1   1.1.1.1         639         0x80000009 0x00BC6F
+                            20. R2# 
+    w 最大寿命定时器（3600s）、刷新定时器（1800s）和链路状态序列号确保数据库中只包含最新的链路状态记录
+    w 序列号大的为新的LSA（线性空间），第一个序列号为0x80000001，最后一个序列号为0x7FFFFFFF
+    w OSPF每隔30分钟对每条LSA记录扩散一次，此间隔称为LSA刷新时间，每当记录被扩散一次，序列号都加1
+OSPF多区域
+    w 收到的LSA通告太多了，OSPF路由器的负担很大
+    w 内部动荡会引起全网路由器的完全SPF计算
+    w 资源消耗过多，LSDB庞大，设备性能下降，影响数据转发
+    w 每台路由器都需要维护的路由表越来越大，单区域内路由无法汇总
+OSPF路由器角色
+
+    w ABR
+        w 区域边界路由器，负责各个区域的路由条目传递
+        w 至少一个接口属于area 0，至少一个接口属于非骨干
+    w ASBR
+        w AS边界路由器，负责将OSPF外部的路由条目引入
+拓扑
+
+配置命令
+
+                            1. R1
+                            2. interface Loopback0
+                            3.  ip address 1.1.1.1 255.255.255.0
+                            4.  ip ospf 1 area 1
+                            5. !
+                            6. interface Ethernet0/0
+                            7.  ip address 192.168.12.1 255.255.255.0
+                            8.  ip ospf 1 area 1
+
+                            1. R2
+                            2. interface Loopback0
+                            3.  ip address 2.2.2.2 255.255.255.0
+                            4.  ip ospf 1 area 0
+                            5. !
+                            6. interface Ethernet0/0
+                            7.  ip address 192.168.12.2 255.255.255.0
+                            8.  ip ospf 1 area 1
+                            9. !
+                            10. interface Ethernet0/1
+                            11.  ip address 192.168.23.2 255.255.255.0
+                            12.  ip ospf 1 area 0
+
+                            1. R3
+                            2. interface Loopback0
+                            3.  ip address 3.3.3.3 255.255.255.0
+                            4.  ip ospf 1 area 0
+                            5. !
+                            6. interface Ethernet0/0
+                            7.  ip address 192.168.23.3 255.255.255.0
+                            8.  ip ospf 1 area 0
+                            9. !
+                            10. interface Ethernet0/1
+                            11.  ip address 192.168.34.3 255.255.255.0
+                            12.  ip ospf 1 area 0
+
+                            1. R4
+                            2. interface Loopback0
+                            3.  ip address 4.4.4.4 255.255.255.0
+                            4.  ip ospf 1 area 0
+                            5. !
+                            6. interface Ethernet0/0
+                            7.  ip address 192.168.34.4 255.255.255.0
+                            8.  ip ospf 1 area 0
+                            9. !
+                            10. interface Ethernet0/1
+                            11.  ip address 192.168.45.4 255.255.255.0
+                            12.  ip ospf 1 area 2
+
+                            1. R5
+                            2. interface Loopback0
+                            3.  ip address 5.5.5.5 255.255.255.0
+                            4.  ip ospf 1 area 2
+                            5. !
+                            6. interface Ethernet0/0
+                            7.  ip address 192.168.45.5 255.255.255.0
+                            8.  ip ospf 1 area 2
+ 验证是否配置无误
+
+                            1. R2
+                            2. R2#sh ip ospf nei
+                            3.  
+                            4. Neighbor ID     Pri   State           Dead Time   Address         Interface
+                            5. 3.3.3.3           1   FULL/DR         00:00:31    192.168.23.3    Ethernet0/1
+                            6. 1.1.1.1           1   FULL/BDR        00:00:31    192.168.12.1    Ethernet0/0
+                            7. R2#
+
+                            1. R4
+                            2. R4#sh ip ospf nei
+                            3.  
+                            4. Neighbor ID     Pri   State           Dead Time   Address         Interface
+                            5. 3.3.3.3           1   FULL/BDR        00:00:35    192.168.34.3    Ethernet0/0
+                            6. 5.5.5.5           1   FULL/DR         00:00:36    192.168.45.5    Ethernet0/1
+                            7. R4#
+ 检查路由表，这边的O IA的意思是来自于OSPF的其他区域
+
+                            1. R5
+                            2. R5#sh ip route ospf
+                            3.       1.0.0.0/32 is subnetted, 1 subnets
+                            4. O IA     1.1.1.1 [110/41] via 192.168.45.4, 00:02:45, Ethernet0/0
+                            5.       2.0.0.0/32 is subnetted, 1 subnets
+                            6. O IA     2.2.2.2 [110/31] via 192.168.45.4, 00:02:45, Ethernet0/0
+                            7.       3.0.0.0/32 is subnetted, 1 subnets
+                            8. O IA     3.3.3.3 [110/21] via 192.168.45.4, 00:02:45, Ethernet0/0
+                            9.       4.0.0.0/32 is subnetted, 1 subnets
+                            10. O IA     4.4.4.4 [110/11] via 192.168.45.4, 00:02:45, Ethernet0/0
+                            11. O IA  192.168.12.0/24 [110/40] via 192.168.45.4, 00:02:45, Ethernet0/0
+                            12. O IA  192.168.23.0/24 [110/30] via 192.168.45.4, 00:02:45, Ethernet0/0
+                            13. O IA  192.168.34.0/24 [110/20] via 192.168.45.4, 00:02:45, Ethernet0/0
+                            14. R5#
+ 前面说多区域是为了减少路由器的运算量，那么其他区域的路由条目，本区域是无法获知具体的拓扑的。我们可以尝试将Area 2改成Area 1，也就是如果区域ID一样，会导致什么后果
+
+                            1. R4
+                            2. R4(config)#int e0/1
+                            3. R4(config-if)#ip ospf 1 area 1
+
+                            1. R5
+                            2. R5(config)#int range e0/0 , lo0
+                            3. R5(config-if-range)#ip ospf 1 area 1
+ 查看R5的路由表，会不会将原本的Area 1区域的条目变为O而不是O IA
+
+                            1. R5
+                            2. R5#sh ip route ospf
+                            3.       1.0.0.0/32 is subnetted, 1 subnets
+                            4. O IA     1.1.1.1 [110/41] via 192.168.45.4, 00:00:19, Ethernet0/0
+                            5.       2.0.0.0/32 is subnetted, 1 subnets
+                            6. O IA     2.2.2.2 [110/31] via 192.168.45.4, 00:00:19, Ethernet0/0
+                            7.       3.0.0.0/32 is subnetted, 1 subnets
+                            8. O IA     3.3.3.3 [110/21] via 192.168.45.4, 00:00:19, Ethernet0/0
+                            9.       4.0.0.0/32 is subnetted, 1 subnets
+                            10. O IA     4.4.4.4 [110/11] via 192.168.45.4, 00:00:19, Ethernet0/0
+                            11. O IA  192.168.12.0/24 [110/40] via 192.168.45.4, 00:00:19, Ethernet0/0
+                            12. O IA  192.168.23.0/24 [110/30] via 192.168.45.4, 00:00:19, Ethernet0/0
+                            13. O IA  192.168.34.0/24 [110/20] via 192.168.45.4, 00:00:19, Ethernet0/0
+                            14. R5#
+ 可以发现如果Area ID出现了冲突，并没有产生任何影响，只是不建议这么做。可以这么理解，更新的链路信息中并不包含区域ID的信息。
+
+&gt; 
+</code></pre><p>lsa类型<br>    类型    名称    描述    传递范围<br>    1    Router    用于描述自己接口的链路信息    本区域内<br>    2     Network    DR产生用于描述自己所在的这个网段的信息    本区域内<br>    3    Summary    ABR产生，用于搬运区域之间的路由    在ospf全境<br>    4    Summary ASB    ABR产生，用于告知区域内部的路由器如何离开本AS    在ospf全境<br>    5    Type-5 AS External    ASBR产生，用于描述AS外部路由信息    在ospf全境<br>    7    Type-7 AS External    NSSA内部的ASBR产生，用于描述As外部路由信息    只在NSSA中</p>
+<pre><code>路由指示符    路由类型
+O    ospf区域内路由
+O  IA    ospf区域内路由
+O E1    1 类外部路由
+O E2    2类外部路由
+O &gt; O IA &gt; O E1 &gt; O E2
+
+
+
+Ospf 特殊区域
+    为了进步减少路由器的负担，我们设立特殊区域，可以让路由器只掌握最少的路由条目
+    注意：特特殊区域一旦设置，该区域的每台路由器都必须配置特殊区域命令
+    名称    描述    默认路由    命令
+    Stub    该区域不会学习到ospf境外的路由        √    Router ospf 1
+                Area 1 stub
+    Totally stub    该区域不会学到本区域以外的路由         √    在abr上敲
+                Router ospf 1 
+                Area 1 stub no summary
+    NSSA    该区域不会学习到ospf境外的路由，允许存在ASBR    X    Router ospf 1
+                Area 1 nssa default-information-originate 
+                并下发默认路由，只配ABR
+    Totally NSSA    该区域不会学到本区域以外的路由，允许存在ASBR    √    Router ospf 1
+                Area 1 nssa no-summary-
+
+    默认路由的意思是会产生一条默认路由指向ABR，因为特殊区域路由条目可能会学习不全，为了保障网络连通性，会自动产生默认路由
+
+    Stub
+
+                                R2(config)#router ospf 1
+                                R2(config-router)#area 1 stub 
+
+                                 R1#sh ip route
+                                O*IA  0.0.0.0/0 [110/11] via 192.168.12.2, 00:05:55, Ethernet0/0
+                                1.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+                                C        1.1.1.0/24 is directly connected, Loopback0
+                                L        1.1.1.1/32 is directly connected, Loopback0
+                                2.0.0.0/32 is subnetted, 1 subnets
+                                O IA     2.2.2.2 [110/11] via 192.168.12.2, 00:05:55, Ethernet0/0
+                                3.0.0.0/32 is subnetted, 1 subnets
+                                O IA     3.3.3.3 [110/21] via 192.168.12.2, 00:05:55, Ethernet0/0
+                                4.0.0.0/32 is subnetted, 1 subnets
+                                O IA     4.4.4.4 [110/31] via 192.168.12.2, 00:05:55, Ethernet0/0
+                                5.0.0.0/32 is subnetted, 1 subnets
+                                O IA     5.5.5.5 [110/41] via 192.168.12.2, 00:05:55, Ethernet0/0
+                                192.168.12.0/24 is variably subnetted, 2 subnets, 2 masks
+                                C        192.168.12.0/24 is directly connected, Ethernet0/0
+                                L        192.168.12.1/32 is directly connected, Ethernet0/0
+                                O IA  192.168.23.0/24 [110/20] via 192.168.12.2, 00:05:55, Ethernet0/0
+                                O IA  192.168.34.0/24 [110/30] via 192.168.12.2, 00:05:55, Ethernet0/0
+                                O IA  192.168.45.0/24 [110/40] via 192.168.12.2, 00:05:55, Ethernet0/0
+     totally stub
+
+                                R2(config)#router ospf 1
+                                R2(config-router)#area 1 stub no-summary
+
+                                R1#sh ip route
+                                O*IA  0.0.0.0/0 [110/11] via 192.168.12.2, 00:00:06, Ethernet0/0
+                                1.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+                                C        1.1.1.0/24 is directly connected, Loopback0
+                                L        1.1.1.1/32 is directly connected, Loopback0
+                                192.168.12.0/24 is variably subnetted, 2 subnets, 2 masks
+                                C        192.168.12.0/24 is directly connected, Ethernet0/0
+                                L        192.168.12.1/32 is directly connected, Ethernet0/0
+                                R1#
+     NSSA
+
+                                R2(config)#router ospf 1
+                                R2(config-router)#area 1 nssa default-information-originate
+                                #这条命令是将区域1设置为nssa，并且下发默认路由，一般下发默认路由只配ABR即可
+
+                                R1(config)#router ospf 1
+                                R1(config-router)#area 1 nssa
+     NSSA区域中不能存在5类LSA，但是可以将5类变为7类的方式进入。以及如果NSSA区域内部的ASBR想传递路由，产生的也是7类LSA。
+
+                                R1#sh ip ospf database nssa-external 
+
+                                OSPF Router with ID (1.1.1.1) (Process ID 1)
+
+                                Type-7 AS External Link States (Area 1)
+
+                                Routing Bit Set on this LSA in topology Base with MTID 0
+                                LS age: 309
+                                Options: (No TOS-capability, No Type 7/5 translation, DC, Upward)
+                                LS Type: AS External Link
+                                Link State ID: 0.0.0.0 (External Network Number )
+                                Advertising Router: 2.2.2.2
+                                LS Seq Number: 80000001
+                                Checksum: 0xD0D8
+                                Length: 36
+                                Network Mask: /0
+                                Metric Type: 2 (Larger than any link state path)
+                                MTID: 0 
+                                Metric: 1 
+                                Forward Address: 0.0.0.0
+                                External Route Tag: 0
+
+                                LS age: 347
+                                Options: (No TOS-capability, Type 7/5 translation, DC, Upward)
+                                LS Type: AS External Link
+                                Link State ID: 100.100.100.0 (External Network Number )
+                                Advertising Router: 1.1.1.1
+                                LS Seq Number: 80000001
+                                Checksum: 0x4918
+                                Length: 36
+                                Network Mask: /24
+                                Metric Type: 2 (Larger than any link state path)
+                                MTID: 0 
+                                Metric: 20 
+                                Forward Address: 1.1.1.1
+                                External Route Tag: 0
+                                R1#
+    NSSA内部的7类LSA如果离开了NSSA区域，会由NSSA与骨干区域相接的ABR转换为5类LSA离开。
+    Totally NSSA
+
+                                R2(config)#router ospf 1
+                                R2(config-router)#area 1 nssa no-summary
+
+
+    ABR在转换7类LSA到5类LSA的时候，是可以将Forword地址该为本路由
+
+    R2(config)#router ospf 1
+    R2(config-router)#area 1 nssa translate type7 suppress-fa
+</code></pre><p>OSPF默认路由注入<br>        ip route 0.0.0.0 0.0.0.0 Null0<br>        router ospf 1<br>         default-information originate使用此命令，本地必须要有一条默认路由才能生效<br>        或者<br>        default-information originate always 允许本地没有默认路由，一样能下发默认路由</p>
+<p>路由汇总<br>    由于ospf不是传递路由条目，而是通过链路状态计算拓扑，每台可路由器都拥有本区域的拓扑。所以无法在区域内实现路由汇总。<br>    ABR和ASBR负责收集路由信息，并且打包成3类和5类的LSA。我们可以在ABR和ASBR上进行路由汇总<br>    ABR上路由汇总命令</p>
+<pre><code>R4(config)#router ospf 1
+R4(config-router)#area 1 range 172.16.0.0 255.255.0.0
+    #汇总区域1中的条目
+不管是ABR还是ASBR的汇总命令，都可以在后面加上一个not-advertise参数，变为路由条目过滤
+
+
+虚链路
+如果一个网络在设计规划时就出现了虚链路的需求，那是不合理的，虚链路只能是一个临时的打补丁方案，虚链路不稳定，也不推荐。
+拓扑
+
+检查R1，发现R1并不认为自己是ABR
+
+                            1. R1
+                            2. R1#sh ip protocols 
+                            3. Routing Protocol is &quot;ospf 1&quot;
+                            4. Outgoing update filter list for all interfaces is not set
+                            5. Incoming update filter list for all interfaces is not set
+                            6. Router ID 1.1.1.1
+                            7. Number of areas in this router is 2. 2 normal 0 stub 0 nssa
+                            8. Maximum path: 4
+                            9. Routing for Networks:
+                            10. Routing on Interfaces Configured Explicitly (Area 1):
+                            11. Loopback0
+                            12. Ethernet0/0
+                            13. Routing on Interfaces Configured Explicitly (Area 3):
+                            14. Ethernet0/1
+                            15. Routing Information Sources:
+                            16. Gateway         Distance      Last Update
+                            17. 6.6.6.6              110      00:06:41
+                            18. 2.2.2.2              110      00:06:33
+                            19. Distance: (default is 110)
+                            20. R1#
+ 由于没有ABR，所以没有路由器为Area 3传递其他区域的路由
+解决思路：
+        我们让R1和R2建立area 0的邻居关系，就可以让R1变成ABR。
+解决方案1：
+        子接口
+
+                            1. R1
+                            2. interface Ethernet0/0.1
+                            3. encapsulation dot1Q 10
+                            4. ip address 192.168.12.1 255.255.255.0
+                            5. ip ospf 1 area 1
+                            6. !
+                            7. interface Ethernet0/0.2
+                            8. encapsulation dot1Q 20
+                            9. ip address 192.168.21.1 255.255.255.0
+                            10. ip ospf 1 area 0
+
+                            1. R2
+                            2. interface Ethernet0/0.1
+                            3. encapsulation dot1Q 10
+                            4. ip address 192.168.12.2 255.255.255.0
+                            5. ip ospf 1 area 1
+                            6. !
+                            7. interface Ethernet0/0.2
+                            8. encapsulation dot1Q 20
+                            9. ip address 192.168.21.2 255.255.255.0
+                            10. ip ospf 1 area 0
+
+GRE通用路由封装
+    Int tunnel 0
+    Tu mod gre IP 
+    Tu so 
+    Tu de 
+
+    R4
+    interface Tunnel0
+     ip address 192.168.54.4 255.255.255.0
+     ip ospf 1 area 0
+     tunnel source Ethernet0/1
+     tunnel destination 192.168.45.5
+     tunnel mode gre ip
+    R5
+    interface Tunnel0
+     ip address 192.168.54.5 255.255.255.0
+     ip ospf 1 area 0
+     tunnel source Ethernet0/0
+     tunnel destination 192.168.45.4
+     tunnel mode gre ip
+Virtual-link
+
+
+
+R5
+R5(config)#router ospf 1
+R5(config-router)#area 2 virtual-link 4.4.4.4
+    #注意这个4.4.4.4必须是对端的Router-id
+R4
+R4(config)#router ospf 1
+R4(config-router)#area 2 virtual-link 5.5.5.5
+
+
+                            1. R4
+                            2. R4#sh ip ospf neighbor 
+                            3.  
+                            4. Neighbor ID     Pri   State           Dead Time   Address         Interface
+                            5. 5.5.5.5           0   FULL/  -           -        192.168.45.5    OSPF_VL0
+                            6. 3.3.3.3           1   FULL/BDR        00:00:37    192.168.34.3    Ethernet0/0
+                            7. 5.5.5.5           1   FULL/DR         00:00:33    192.168.45.5    Ethernet0/1
+                            8. R4#show ip ospf virtual-links 
+                            9. Virtual Link OSPF_VL0 to router 5.5.5.5 is up
+                            10. Run as demand circuit
+                            11. DoNotAge LSA allowed.
+                            12. Transit area 2, via interface Ethernet0/1
+                            13. Topology-MTID    Cost    Disabled     Shutdown      Topology Name
+                            14. 0           10        no          no            Base
+                            15. Transmit Delay is 1 sec, State POINT_TO_POINT,
+                            16. Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5
+                            17. Hello due in 00:00:07
+                            18. Adjacency State FULL (Hello suppressed)
+                            19. Index 2/3, retransmission queue length 0, number of retransmission 0
+                            20. First 0x0(0)/0x0(0) Next 0x0(0)/0x0(0)
+                            21. Last retransmission scan length is 0, maximum is 0
+                            22. Last retransmission scan time is 0 msec, maximum is 0 msec
+                            23. R4#
+
+虚链路建立的邻居是不会老化的
+
+Ospf认证
+略
+综合实验
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day3/">
+    <time datetime="2018-08-13T04:25:46.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/08/13/网络笔记day4/" rel="prev"><span class="meta-nav">←</span> 网络笔记day4</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/网络笔记day2/" rel="next">网络笔记day2 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

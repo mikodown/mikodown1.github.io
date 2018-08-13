@@ -61,6 +61,472 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-网络笔记day11" class="post-网络笔记day11 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day11/" data-id="cjkrs832p0006hsv6hp8ijrlm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Mpls 多协议标签交换<br>    支持三层协议</p>
+<pre><code>fib表
+    就是cef表
+lib表
+    路由器为每一个igp前缀在本地生成一个标签并发给ldp邻居，同时也冲其他ldp邻居收到为特定千醉分发的标签，路由器将本地标签和远程标签储存在lib表中。
+lfib表（标签转发信息库）
+    i. LSR路由可能收到某个特定前缀的多个标签（多个LDP邻居分发的），但他只需要使用其中一个，IP路由表用来确定这个IPv4前缀的下一跳。(LFIB表的构造需要依赖IGP的路由表，因为LFIB的下一跳就是IGP表算的)。LSR用这样的信息来创建它的LFIB。在LFIB中本地捆绑的标签最为入站标签，LDP邻居通告的标签作为出站标签
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day11/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day11/">
+    <time datetime="2018-08-13T04:28:13.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day10" class="post-网络笔记day10 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day10/" data-id="cjkrs832q0007hsv6oxmsace9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>二层网络冗余<br>    交换网络由于需要提供快速稳定的内网环境，所以冗余成为了必须要考虑的因素<br>    二层线路冗余带来的问题</p>
+<pre><code>    • 广播风暴
+    • 抖动的MAC地址表
+    • 重复收到同一个广播帧
+怎样的网络存在不会环路的情况
+
+但是这样的网络又不具备冗余性
+
+但是这样的网络又会出现环路，我们从中心根节点发出桥协议数据单元（BPDU），规定其他节点收到BPDU就传递下去
+
+这样除了根节点，
+其他节点都发现自己会从不同的接口都收到根节点发送的BPDU，如果一台交换机从多个口都收到BPDU，那么证明环路了，交换机就会保留收到最佳BPDU的那个端口，其他端口都阻塞，直到最佳BPDU的端口不再收到，那么就会释放其他端口
+
+最终网络的逻辑拓扑又变成了没环路的样子，但是物理是有冗余的，如果出现线路故障，可以自己发现和恢复。
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day10/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day10/">
+    <time datetime="2018-08-13T04:28:10.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day9" class="post-网络笔记day9 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day9/" data-id="cjkrs832y000dhsv6gtbwof2q" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>• 当一条链路，需要承载多VLAN信息的时候，需使用trunk来实现。<br>• Trunk两端的交换机需采用相同的干道协议。<br>• 一般见于交换机之间或交换机与路由器、服务器之间。<br>802.1Q</p>
+<p>• IEEE公有协议<br>• 插入Tag字段，同时重新计算FCS<br>Native VLAN<br>• Native VLAN所属的帧在经过trunk时不打标签<br>• Native VLAN在Trunk两端必须匹配，否则会出现VLAN流量互串<br>• 默认的native vlan是vlan 1<br>• 建议将一个生僻的VLAN配置为Native vlan<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day9/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day9/">
+    <time datetime="2018-08-13T04:28:06.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day8" class="post-网络笔记day8 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day8/" data-id="cjkrs8331000fhsv6ln1p50eq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>bgp选路原则<br>BGP属性众多，每个属性都可以影响到最终路线的选择，如果BGP从不同的Peer收到了同一个路由，BGP会按照一定的选路原则去按照顺序比对属性。一旦某个属性比对出结果，就不会继续比对。<br>BGP默认不支持负载均衡，必须要选出唯一的路线。<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day8/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day8/">
+    <time datetime="2018-08-13T04:28:03.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day7" class="post-网络笔记day7 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day7/" data-id="cjkrs832w000bhsv6pmipanht" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Route-map</p>
+<p>你懂的<br>policy-list<br>ip policy-list AS100 permit<br> match ip address 1<br> match community 1 exact-match<br> match policy-list R3<br>!<br>route-map R1 permit 10<br> match policy-list R3<br>advertise-map<br>条件通告，当advertise-map后面的route-map中路由消失的时候，none-exist-map后面的路由也会跟着消失<br>ip prefix-list 10 seq 5 permit 172.16.1.0/24<br>ip prefix-list 20 seq 5 permit 172.16.2.0/24<br>!<br>route-map 1 permit 10<br> match ip address prefix-list 10<br>route-map 2 permit 10<br> match ip address prefix-list 20<br>!<br>router bgp 200<br> neighbor 192.168.23.3 advertise-map 2 non-exist-map 1</p>
+<pre><code>#当1不存在的时候，就向192.168.23.3通告2的路由
+</code></pre><p>ORF<br>BGP优化命令，在BGP建立邻居的时候会更新完整的路由表，如果接收方在in方向上有策略，那可能有些更新就是不必要的，会造成资源的浪费<br>配置了ORF功能的路由器，可以事先将in接口的策略告诉对方，这样在更新的时候就可以避免带宽资源的浪费<br>必须要两边都配置了ORF才可以<br>路由拆分<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day7/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day7/">
+    <time datetime="2018-08-13T04:28:00.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day6" class="post-网络笔记day6 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day6/">网络笔记day6</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day6/" data-id="cjkrs832x000chsv65968b5c1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Bgp 概述<br>    路由协议分类</p>
+<pre><code>Igp
+    内部网关协议
+    执行拓扑发现
+    尽力完成快速收敛
+    需要周期性的更新来确保路由选择信息的精确性
+    受同一个管理机构的控制
+    提供了优先的策略控制能力
+BGP
+    AS：autonomous system 自治系统，指的是在同一个组织管理下使用相同策略的设备的集合。 
+    不同AS通过AS号区分，AS号取值范围1－65535，其中64512－65535是私有AS号。
+    IANA负责AS号的分发。(https://www.iana.org/)
+    中国电信163 AS号：4134 中国电信CN2 AS号：4809 中国网通AS 号：9929
+    使用BGP的理由
+    大量路由需要承载，IGP只能容纳千条，而BGP可以容纳上万 
+    支撑MPLS/VPN的应用，传递客户VPN路由。 
+    策略能力强，可以很好的实现路由决策与数据控制
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day6/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day6/">
+    <time datetime="2018-08-13T04:27:56.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day5" class="post-网络笔记day5 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day5/">网络笔记day</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day5/" data-id="cjkrs8330000ehsv68z1xcatp" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>路由重发布<br>    将A协议的路由条目重新整合，发布到B协议中，这种行为是路由重发布<br>    为了保证双向通信，我们往往需要进行双向重发布<br>        路由重发布需要注意事项<br>            度量值的计算规则不一样<br>                Rip 跳数<br>                Eigrp sk值<br>                Ospf cost<br>                Isis 默认度量值<br>        重发布的路由失去了原路由的放环信息，可能出现环路<br>        收敛时间不一致<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day5/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day5/">
+    <time datetime="2018-08-13T04:27:27.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day4" class="post-网络笔记day4 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day4/">网络笔记day4</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day4/" data-id="cjkrs832t0009hsv6mo8m23eb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>IS-IS协议简介<br>    • IS-IS是一个链路状态的、内部网关协议。它被设计成适用在OSI无连接网络服务（CLNS：Connctionless Network Service）的环境中。为了提供对IP的路由支持，IETF在RFC1195中对IS-IS进行了扩充和修改，使它能够同时应用在TCP/IP和OSI环境中，称为集成化IS-IS（Integrated IS-IS或Dual IS-IS）<br>    集成型IS-IS和OSPF都是20世纪80年代后期定义的，大约是1988年。OSPF实际上是从IS-IS的早期版本进化而来的，不过它采用IP作为前提。<br>    IS-IS是路由选择协议，传递CLNP的路由信息。在ISO协议族，我们可以把ES终端系统理解为主机，把IS中间系统理解为路由器。因此IS-IS的出生，其实是为CLNS服务的，往后发展成了集成性IS-IS就做了扩展，也就可以支持IP路由了。<br>    IS-IS协议管理距离115<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day4/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day4/">
+    <time datetime="2018-08-13T04:26:51.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day3" class="post-网络笔记day3 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day3/">网络笔记day3</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day3/" data-id="cjkrs832u000ahsv64sojqqbm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>链路状态协议<br>路由器会将自己接口所在的链路的信息署名，然后发给自己的邻居<br>邻居收到链路状态信息后，存储在链路状态数据库中<br>当收敛完成后路由器几乎收到网络中所由路有器的链路状态后，会计算全网拓扑<br>使用spf算法得到去没一个网段的最短路线，然后去往每个网段的下一条写进路由表</p>
+<p>典型代表<br>Ospf is-is<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day3/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day3/">
+    <time datetime="2018-08-13T04:25:46.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-网络笔记day2" class="post-网络笔记day2 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -76,7 +542,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjkrrv1aj0006t0v65bilc3m1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjkrs832s0008hsv6qulozn0q" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -108,146 +574,12 @@
 
 
   
-    <article id="post-网络笔记" class="post-网络笔记 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记/">网络笔记Day1</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记/" data-id="cjkrrv1af0004t0v6dxjsoc4z" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p><a href="http://eagleslab.com:9000/blog/post/aaron/20180719" target="_blank" rel="noopener">http://eagleslab.com:9000/blog/post/aaron/20180719</a>   哲哥笔记<br>IP路由选择原理<br>  1.IP路由选择原理<br>  2.有类及无类路由协议<br>  3.静态路由的配置<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记/">
-    <time datetime="2018-08-13T03:54:20.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-my-first-blog" class="post-my-first-blog post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/07/26/my-first-blog/">my-first-blog</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/my-first-blog/" data-id="cjkrrv1ah0005t0v60zk7s2z7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/07/26/my-first-blog/">
-    <time datetime="2018-07-26T05:15:06.000Z" class="entry-date">
-        2018-07-26
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/07/26/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/hello-world/" data-id="cjkrrv1ad0002t0v641wiuyla" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-xinbiji"><a href="#Create-a-xinbiji" class="headerlink" title="Create a xinbiji"></a>Create a xinbiji</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/07/26/hello-world/">
-    <time datetime="2018-07-26T04:43:53.372Z" class="entry-date">
-        2018-07-26
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
+    <nav id="pagination">
+      <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      </nav>
+    </nav>
   
 
 </div></div>
@@ -271,19 +603,23 @@
       <ul>
         
           <li>
-            <a href="/2018/08/13/网络笔记day2/">网络笔记day2</a>
+            <a href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/网络笔记/">网络笔记Day1</a>
+            <a href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
           </li>
         
           <li>
-            <a href="/2018/07/26/my-first-blog/">my-first-blog</a>
+            <a href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
           </li>
         
           <li>
-            <a href="/2018/07/26/hello-world/">Hello World</a>
+            <a href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
           </li>
         
       </ul>

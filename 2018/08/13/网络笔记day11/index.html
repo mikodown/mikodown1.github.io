@@ -4,7 +4,13 @@
   <meta charset="utf-8">
   
   
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in " />
+  <meta name="description" content="Mpls 多协议标签交换    支持三层协议
+fib表
+    就是cef表
+lib表
+    路由器为每一个igp前缀在本地生成一个标签并发给ldp邻居，同时也冲其他ldp邻居收到为特定千醉分发的标签，路由器将本地标签和远程标签储存在lib表中。
+lfib表（标签转发信息库）
+    i. LSR路由可能收到某个特定前缀的多个标签（多个LDP邻居分发的），但他只需要使用其中一个，IP路由表用来确定这个IPv4前缀的下一跳。(LFIB表的构造需要依赖IGP的路由表，因为LFIB的下一跳就是IGP表算的)。LSR用这样的信息来创建它的LFIB。在LFIB中本地捆绑的标签最为入站标签，LDP邻居通告的标签作为出站标签" />
   
 
   
@@ -13,19 +19,19 @@
   
   
   
-  <title>Hello World | Welcome my friend！</title>
+  <title>网络笔记day11 | Welcome my friend！</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="Mpls 多协议标签交换    支持三层协议 fib表     就是cef表 lib表     路由器为每一个igp前缀在本地生成一个标签并发给ldp邻居，同时也冲其他ldp邻居收到为特定千醉分发的标签，路由器将本地标签和远程标签储存在lib表中。 lfib表（标签转发信息库）     i. LSR路由可能收到某个特定前缀的多个标签（多个LDP邻居分发的），但他只需要使用其中一个，IP路由表用来确">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/07/26/hello-world/index.html">
+<meta property="og:title" content="网络笔记day11">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/网络笔记day11/index.html">
 <meta property="og:site_name" content="Welcome my friend！">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Mpls 多协议标签交换    支持三层协议 fib表     就是cef表 lib表     路由器为每一个igp前缀在本地生成一个标签并发给ldp邻居，同时也冲其他ldp邻居收到为特定千醉分发的标签，路由器将本地标签和远程标签储存在lib表中。 lfib表（标签转发信息库）     i. LSR路由可能收到某个特定前缀的多个标签（多个LDP邻居分发的），但他只需要使用其中一个，IP路由表用来确">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-13T03:15:45.116Z">
+<meta property="og:updated_time" content="2018-08-13T04:32:25.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="网络笔记day11">
+<meta name="twitter:description" content="Mpls 多协议标签交换    支持三层协议 fib表     就是cef表 lib表     路由器为每一个igp前缀在本地生成一个标签并发给ldp邻居，同时也冲其他ldp邻居收到为特定千醉分发的标签，路由器将本地标签和远程标签储存在lib表中。 lfib表（标签转发信息库）     i. LSR路由可能收到某个特定前缀的多个标签（多个LDP邻居分发的），但他只需要使用其中一个，IP路由表用来确">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -65,7 +71,7 @@
     </nav>
 </header>
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-网络笔记day11" class="post-网络笔记day11 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -73,36 +79,46 @@
         
   
     <h1 class="entry-title article-title">
-      Hello World
+      网络笔记day11
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/hello-world/" data-id="cjkrs832f0000hsv6qjkwog29" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day11/" data-id="cjkrs832p0006hsv6hp8ijrlm" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-xinbiji"><a href="#Create-a-xinbiji" class="headerlink" title="Create a xinbiji"></a>Create a xinbiji</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>Mpls 多协议标签交换<br>    支持三层协议</p>
+<pre><code>fib表
+    就是cef表
+lib表
+    路由器为每一个igp前缀在本地生成一个标签并发给ldp邻居，同时也冲其他ldp邻居收到为特定千醉分发的标签，路由器将本地标签和远程标签储存在lib表中。
+lfib表（标签转发信息库）
+    i. LSR路由可能收到某个特定前缀的多个标签（多个LDP邻居分发的），但他只需要使用其中一个，IP路由表用来确定这个IPv4前缀的下一跳。(LFIB表的构造需要依赖IGP的路由表，因为LFIB的下一跳就是IGP表算的)。LSR用这样的信息来创建它的LFIB。在LFIB中本地捆绑的标签最为入站标签，LDP邻居通告的标签作为出站标签
+</code></pre><a id="more"></a>
+<pre><code>Show mpls ldp bindings
+Show mpls ldp neibour
+Show mpls idp discovery 
+Show mpls forwarding-table 查看lfib表
+隐含空0 imp-null 起源于自己 php
+显示空3  mpls ldp explicit-null （explicit-null）
+路由报警1
 
+Mpls hello5s 
+
+No mpls idp advertise-labels
+</code></pre>
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/07/26/hello-world/">
-    <time datetime="2018-07-26T04:43:53.372Z" class="entry-date">
-        2018-07-26
+    <a href="/2018/08/13/网络笔记day11/">
+    <time datetime="2018-08-13T04:28:13.000Z" class="entry-date">
+        2018-08-13
     </time>
 </a>
     
@@ -115,8 +131,8 @@
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
     
-        <span class="nav-previous"><a href="/2018/07/26/my-first-blog/" rel="prev"><span class="meta-nav">←</span> my-first-blog</a></span>
     
+        <span class="nav-next"><a href="/2018/08/13/网络笔记day10/" rel="next">网络笔记day10 <span class="meta-nav">→</span></a></span>
     
 </nav><!-- .nav-single -->
 

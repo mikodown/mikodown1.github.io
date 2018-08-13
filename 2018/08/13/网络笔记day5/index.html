@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="路由重发布    将A协议的路由条目重新整合，发布到B协议中，这种行为是路由重发布    为了保证双向通信，我们往往需要进行双向重发布        路由重发布需要注意事项            度量值的计算规则不一样                Rip 跳数                Eigrp sk值                Ospf cost                Isis 默认度量值        重发布的路由失去了原路由的放环信息，可能出现环路        收敛时间不一致" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>网络笔记day | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="路由重发布    将A协议的路由条目重新整合，发布到B协议中，这种行为是路由重发布    为了保证双向通信，我们往往需要进行双向重发布        路由重发布需要注意事项            度量值的计算规则不一样                Rip 跳数                Eigrp sk值                Ospf cost                Isi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络笔记day">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/网络笔记day5/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="路由重发布    将A协议的路由条目重新整合，发布到B协议中，这种行为是路由重发布    为了保证双向通信，我们往往需要进行双向重发布        路由重发布需要注意事项            度量值的计算规则不一样                Rip 跳数                Eigrp sk值                Ospf cost                Isi">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T04:32:25.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络笔记day">
+<meta name="twitter:description" content="路由重发布    将A协议的路由条目重新整合，发布到B协议中，这种行为是路由重发布    为了保证双向通信，我们往往需要进行双向重发布        路由重发布需要注意事项            度量值的计算规则不一样                Rip 跳数                Eigrp sk值                Ospf cost                Isi">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-网络笔记day5" class="post-网络笔记day5 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      网络笔记day
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day5/" data-id="cjkrs8330000ehsv68z1xcatp" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>路由重发布<br>    将A协议的路由条目重新整合，发布到B协议中，这种行为是路由重发布<br>    为了保证双向通信，我们往往需要进行双向重发布<br>        路由重发布需要注意事项<br>            度量值的计算规则不一样<br>                Rip 跳数<br>                Eigrp sk值<br>                Ospf cost<br>                Isis 默认度量值<br>        重发布的路由失去了原路由的放环信息，可能出现环路<br>        收敛时间不一致<br><a id="more"></a><br>    管理距离<br>        路由来源    管理距离<br>        直链接口    0<br>        静态路由    1<br>        eigrp汇总路由    5<br>        外部BGP    20<br>        内部eigrp    90<br>        Ospf    110<br>        is-is    115<br>        Ripv1 ripv2    120<br>        外部eigrp    170<br>        内部bgp    200<br>        未知    255<br>        种子度量值<br>            由于不同协议的度量值计算方式不一样，所以我们需要在重发布的时候去设置度量值<br>            如果你不手动去指定一个度量值，那么就会给予路由条目一个默认的度量值，我们称之为种子度量值</p>
+<pre><code>可以看出来距离矢量协议默认的种子度量值为无穷大（不可达）
+链路状态路由协议的度量值没有问题
+</code></pre><p>重发布配置示例</p>
+<p>IP地址配置</p>
+<pre><code>1. R1
+2. interface Loopback0
+3. ip address 1.1.1.1 255.255.255.0
+4. !
+5. interface Ethernet0/0
+6. ip address 192.168.15.1 255.255.255.0
+
+7. R2
+8. interface Loopback0
+9. ip address 2.2.2.2 255.255.255.0
+10. !
+11. interface Ethernet0/0
+12. ip address 192.168.25.2 255.255.255.0
+
+13. R3
+14. interface Loopback0
+15. ip address 3.3.3.3 255.255.255.0
+16. !
+17. interface Ethernet0/0
+18. ip address 192.168.35.3 255.255.255.0
+
+19. R4
+20. interface Loopback0
+21. ip address 4.4.4.4 255.255.255.0
+22. !
+23. interface Ethernet0/0
+24. ip address 192.168.45.4 255.255.255.0
+
+25. R5
+26. interface Loopback0
+27. ip address 5.5.5.5 255.255.255.0
+28. !
+29. interface Ethernet0/0
+30. ip address 192.168.15.5 255.255.255.0
+31. !
+32. interface Ethernet0/1
+33. ip address 192.168.25.5 255.255.255.0
+34. !
+35. interface Ethernet0/2
+36. ip address 192.168.35.5 255.255.255.0
+37. !
+38. interface Ethernet0/3
+39. ip address 192.168.45.5 255.255.255.0
+</code></pre><p>各个协议配置</p>
+<pre><code>1. R1
+2. router rip
+3. version 2
+4. network 1.0.0.0
+5. network 192.168.15.0
+6. no auto-summary
+
+7. R2
+8. router eigrp 100
+9. network 2.0.0.0
+10. network 192.168.25.0
+
+11. R3
+12. interface Loopback0
+13. ip ospf 1 area 0
+14. !         
+15. interface Ethernet0/0
+16. ip ospf 1 area 0
+
+17. R4
+18. router isis
+19. net 49.0001.0000.0000.0004.00
+20. is-type level-2-only
+21. interface Loopback0
+22. ip router isis 
+23. !         
+24. interface Ethernet0/0
+25. ip router isis
+
+26. R5
+27. router eigrp 100
+28. network 192.168.25.0
+29. !
+30. router isis
+31. net 49.0001.0000.0000.0005.00
+32. is-type level-2-only
+33. !         
+34. router rip
+35. version 2
+36. network 192.168.15.0
+37. no auto-summary
+38. !
+39. ip route 10.0.0.0 255.0.0.0 Null0
+40. !
+41. interface Ethernet0/2
+42. ip ospf 1 area 0
+43. !
+44. interface Ethernet0/3
+45. ip router isis 
+</code></pre><p>检查协议配置</p>
+<pre><code>1. R5
+2. R5#sh ip route
+3. 1.0.0.0/24 is subnetted, 1 subnets
+4. R        1.1.1.0 [120/1] via 192.168.15.1, 00:00:10, Ethernet0/0
+5. 2.0.0.0/24 is subnetted, 1 subnets
+6. D        2.2.2.0 [90/409600] via 192.168.25.2, 00:04:13, Ethernet0/1
+7. 3.0.0.0/32 is subnetted, 1 subnets
+8. O        3.3.3.3 [110/11] via 192.168.35.3, 00:03:23, Ethernet0/2
+9. 4.0.0.0/24 is subnetted, 1 subnets
+10. i L2     4.4.4.0 [115/20] via 192.168.45.4, 00:03:09, Ethernet0/3
+11. 5.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+12. C        5.5.5.0/24 is directly connected, Loopback0
+13. L        5.5.5.5/32 is directly connected, Loopback0
+14. S     10.0.0.0/8 is directly connected, Null0
+15. 192.168.15.0/24 is variably subnetted, 2 subnets, 2 masks
+16. C        192.168.15.0/24 is directly connected, Ethernet0/0
+17. L        192.168.15.5/32 is directly connected, Ethernet0/0
+18. 192.168.25.0/24 is variably subnetted, 2 subnets, 2 masks
+19. C        192.168.25.0/24 is directly connected, Ethernet0/1
+20. L        192.168.25.5/32 is directly connected, Ethernet0/1
+21. 192.168.35.0/24 is variably subnetted, 2 subnets, 2 masks
+22. C        192.168.35.0/24 is directly connected, Ethernet0/2
+23. L        192.168.35.5/32 is directly connected, Ethernet0/2
+24. 192.168.45.0/24 is variably subnetted, 2 subnets, 2 masks
+25. C        192.168.45.0/24 is directly connected, Ethernet0/3
+26. L        192.168.45.5/32 is directly connected, Ethernet0/3
+27. R5# 
+</code></pre><p>重发布配置<br>    各种协议重发布到RIP</p>
+<pre><code>1. R5
+2. router rip
+3. redistribute connected metric 5
+4. redistribute static metric 5
+5. redistribute eigrp 100 metric 5
+6. redistribute ospf 1 metric 5
+7. redistribute isis level-2 metric 5
+8. #注意！距离矢量协议必须要加上度量值，否则不可达
+</code></pre><p>验证</p>
+<pre><code>1. R1
+2. R1#sh ip route rip
+3. 2.0.0.0/24 is subnetted, 1 subnets
+4. R        2.2.2.0 [120/5] via 192.168.15.5, 00:00:22, Ethernet0/0
+5. 3.0.0.0/32 is subnetted, 1 subnets
+6. R        3.3.3.3 [120/5] via 192.168.15.5, 00:00:22, Ethernet0/0
+7. 4.0.0.0/24 is subnetted, 1 subnets
+8. R        4.4.4.0 [120/5] via 192.168.15.5, 00:00:22, Ethernet0/0
+9. 5.0.0.0/24 is subnetted, 1 subnets
+10. R        5.5.5.0 [120/5] via 192.168.15.5, 00:00:22, Ethernet0/0
+11. R     10.0.0.0/8 [120/5] via 192.168.15.5, 00:00:22, Ethernet0/0
+12. R     192.168.25.0/24 [120/5] via 192.168.15.5, 00:00:22, Ethernet0/0
+13. R     192.168.35.0/24 [120/5] via 192.168.15.5, 00:00:22, Ethernet0/0
+14. R     192.168.45.0/24 [120/5] via 192.168.15.5, 00:00:22, Ethernet0/0
+15. R1#
+    各种协议重发布到EIGRP
+
+16. R5
+17. router eigrp 100
+18. redistribute rip metric 10000 100 255 1 1500
+19. redistribute isis level-2 metric 10000 100 255 1 1500
+20. redistribute ospf 1 metric 10000 100 255 1 1500
+21. redistribute connected metric 10000 100 255 1 1500
+22. redistribute static metric 10000 100 255 1 1500
+23. #注意！EIGRP必须要指定度量值，根据接口信息来设置
+24. #10000是带宽，100是延迟，255是可靠程度，1是负载，1500是MTU
+25. #可以通过如下命令查看接口参数
+26. R5#sh int e0/1
+27. Ethernet0/1 is up, line protocol is up 
+28. Hardware is AmdP2, address is aabb.cc00.5010 (bia aabb.cc00.5010)
+29. Internet address is 192.168.25.5/24
+30. MTU 1500 bytes, BW 10000 Kbit/sec, DLY 1000 usec, 
+31. reliability 255/255, txload 1/255, rxload 1/255
+32. --------------以下内容省略---------------
+</code></pre><p>验证</p>
+<pre><code>1. R2
+2. R2#sh ip route eigrp
+3. 1.0.0.0/24 is subnetted, 1 subnets
+4. D EX     1.1.1.0 [170/307200] via 192.168.25.5, 00:05:18, Ethernet0/0
+5. 3.0.0.0/32 is subnetted, 1 subnets
+6. D EX     3.3.3.3 [170/307200] via 192.168.25.5, 00:04:45, Ethernet0/0
+7. 4.0.0.0/24 is subnetted, 1 subnets
+8. D EX     4.4.4.0 [170/307200] via 192.168.25.5, 00:04:57, Ethernet0/0
+9. 5.0.0.0/24 is subnetted, 1 subnets
+10. D EX     5.5.5.0 [170/307200] via 192.168.25.5, 00:04:39, Ethernet0/0
+11. D EX  10.0.0.0/8 [170/307200] via 192.168.25.5, 00:04:30, Ethernet0/0
+12. D EX  192.168.15.0/24 [170/307200] via 192.168.25.5, 00:05:18, Ethernet0/0
+13. D EX  192.168.35.0/24 [170/307200] via 192.168.25.5, 00:04:45, Ethernet0/0
+14. D EX  192.168.45.0/24 [170/307200] via 192.168.25.5, 00:04:39, Ethernet0/0
+15. R2#
+</code></pre><p>各种协议重发布到OSPF</p>
+<pre><code>1. R5
+2. router ospf 1
+3. redistribute connected subnets
+4. redistribute static subnets
+5. redistribute rip subnets
+6. redistribute eigrp 100 subnets
+7. redistribute isis level-2 subnets
+8. #注意！OSPF重发布后面不加上subnets的话，被VLSM之后的路由条目不会被重发布进来
+    验证
+
+9. R3
+10. R3#sh ip route ospf
+11. 1.0.0.0/24 is subnetted, 1 subnets
+12. O E2     1.1.1.0 [110/20] via 192.168.35.5, 00:02:31, Ethernet0/0
+13. 2.0.0.0/24 is subnetted, 1 subnets
+14. O E2     2.2.2.0 [110/20] via 192.168.35.5, 00:02:25, Ethernet0/0
+15. 4.0.0.0/24 is subnetted, 1 subnets
+16. O E2     4.4.4.0 [110/20] via 192.168.35.5, 00:02:25, Ethernet0/0
+17. 5.0.0.0/24 is subnetted, 1 subnets
+18. O E2     5.5.5.0 [110/20] via 192.168.35.5, 00:02:15, Ethernet0/0
+19. O E2  10.0.0.0/8 [110/20] via 192.168.35.5, 00:02:15, Ethernet0/0
+20. O E2  192.168.15.0/24 [110/20] via 192.168.35.5, 00:02:31, Ethernet0/0
+21. O E2  192.168.25.0/24 [110/20] via 192.168.35.5, 00:02:25, Ethernet0/0
+22. O E2  192.168.45.0/24 [110/20] via 192.168.35.5, 00:02:15, Ethernet0/0
+23. R3#
+</code></pre><p>各种协议重发布到ISIS</p>
+<pre><code>1. R5
+2. router isis
+3. redistribute connected
+4. redistribute static ip
+5. redistribute rip
+6. redistribute eigrp 100
+7. redistribute ospf 1
+</code></pre><p>验证</p>
+<pre><code>    1. R4
+    2. R4#sh ip route isis
+    3. 1.0.0.0/24 is subnetted, 1 subnets
+    4. i L2     1.1.1.0 [115/10] via 192.168.45.5, 00:01:01, Ethernet0/0
+    5. 2.0.0.0/24 is subnetted, 1 subnets
+    6. i L2     2.2.2.0 [115/10] via 192.168.45.5, 00:00:56, Ethernet0/0
+    7. 3.0.0.0/32 is subnetted, 1 subnets
+    8. i L2     3.3.3.3 [115/10] via 192.168.45.5, 00:00:50, Ethernet0/0
+    9. 5.0.0.0/24 is subnetted, 1 subnets
+    10. i L2     5.5.5.0 [115/10] via 192.168.45.5, 00:00:44, Ethernet0/0
+    11. i L2  10.0.0.0/8 [115/10] via 192.168.45.5, 00:00:39, Ethernet0/0
+    12. i L2  192.168.15.0/24 [115/10] via 192.168.45.5, 00:01:01, Ethernet0/0
+    13. i L2  192.168.25.0/24 [115/10] via 192.168.45.5, 00:00:56, Ethernet0/0
+    14. i L2  192.168.35.0/24 [115/10] via 192.168.45.5, 00:00:50, Ethernet0/0
+    15. R4#
+passive-interface
+    路由器接口连接pc或者服务器，这个接口并不需要向外面发送路由器才能看懂的hello之类的协议信息，但是如果不将这个接口加入协议又会造成通信问题
+解决方案：
+    将这个直连接口重发布进协议
+    或者将这个直链接口配置位被动接口
+
+    1. Router(config)#router &lt;协议&gt;
+    2. Router(config-router)#passive-interface e0/1
+
+    3. Router(config)#router &lt;协议&gt;
+    4. Router(config-router)#passive-interface default 
+    5. Router(config-router)#no passive-interface e0/0
+
+
+    单播更新
+        只有在rip中有效，配置了但单播更新后，就不收passive-interface影响
+    6. R1(config)#router rip
+    7. R1(config-router)#passive-interface default 
+    8. R1(config-router)#neighbor 192.168.15.5
+</code></pre><p>控制管理距离<br>        拓扑</p>
+<p>基础配置</p>
+<pre><code>1. R1
+2. interface Loopback0
+3. ip address 1.1.1.1 255.255.255.0
+4. ip ospf 1 area 0
+5. !
+6. interface Ethernet0/0
+7. ip address 192.168.12.1 255.255.255.0
+8. ip ospf 1 area 0
+9. !
+10. interface Ethernet0/1
+11. ip address 192.168.13.1 255.255.255.0
+12. ip ospf 1 area 0
+
+13. R2
+14. interface Loopback0
+15. ip address 2.2.2.2 255.255.255.0
+16. ip ospf 1 area 0
+17. !
+18. interface Ethernet0/0
+19. ip address 192.168.12.2 255.255.255.0
+20. ip ospf 1 area 0
+21. !
+22. interface Ethernet0/1
+23. ip address 192.168.24.2 255.255.255.0
+24. !
+25. router rip
+26. version 2
+27. network 192.168.24.0
+28. no auto-summary
+
+29. R3
+30. interface Loopback0
+31. ip address 3.3.3.3 255.255.255.0
+32. ip ospf 1 area 0
+33. !
+34. interface Ethernet0/0
+35. ip address 192.168.13.3 255.255.255.0
+36. ip ospf 1 area 0
+37. !
+38. interface Ethernet0/1
+39. ip address 192.168.34.3 255.255.255.0
+40. !
+41. router rip
+42. version 2
+43. network 192.168.34.0
+44. no auto-summary
+
+45. R4
+46. interface Loopback0
+47. ip address 4.4.4.4 255.255.255.0
+48. !
+49. interface Ethernet0/0
+50. ip address 192.168.24.4 255.255.255.0
+51. !
+52. interface Ethernet0/1
+53. ip address 192.168.34.4 255.255.255.0
+54. !
+55. interface Ethernet0/2
+56. ip address 192.168.45.4 255.255.255.0
+57. !
+58. router rip
+59. version 2
+60. network 4.0.0.0
+61. network 192.168.24.0
+62. network 192.168.34.0
+63. network 192.168.45.0
+64. no auto-summary
+
+65. R5
+66. interface Loopback0
+67. ip address 5.5.5.5 255.255.255.0
+68. !
+69. interface Ethernet0/0
+70. ip address 192.168.45.5 255.255.255.0
+71. !
+72. router rip
+73. version 2
+74. network 5.0.0.0
+75. network 192.168.45.0
+76. no auto-summary
+R2和R3上做双向重发布
+
+77. R2
+78. router ospf 1
+79. redistribute rip subnets
+80. !
+81. router rip
+82. redistribute ospf 1 metric 1
+
+83. R3
+84. router ospf 1
+85. redistribute rip subnets
+86. !
+87. router rip
+88. redistribute ospf 1 metric 1
+观察R2或者R3的路由表(主要看5.5.5.0/24)
+
+89. R2
+90. R2#sh ip route
+91. -----------省略-----------
+92. 5.0.0.0/24 is subnetted, 1 subnets
+93. R        5.5.5.0 [120/2] via 192.168.24.4, 00:00:17, Ethernet0/1
+94. -----------省略-----------
+95. R2# 
+
+96. R3
+97. R3#sh ip route
+98. -----------省略-----------
+99. 5.0.0.0/24 is subnetted, 1 subnets
+100. O E2     5.5.5.0 [110/20] via 192.168.13.1, 00:02:31, Ethernet0/0
+101. -----------省略-----------
+102. R3# 
+在R3上出现了次优路径
+观察R4的路由表
+
+103. R4
+104. R4#sh ip route
+105. -----------省略-----------
+106. 5.0.0.0/24 is subnetted, 1 subnets
+107. R        5.5.5.0 [120/1] via 192.168.45.5, 00:00:18, Ethernet0/2
+108. [120/1] via 192.168.34.3, 00:00:12, Ethernet0/1
+109. -----------省略-----------
+110. R4# 
+发现去往5.5.5.0/24出现了负载均衡，然而从192.168.34.3走的路线发生了环路
+解决方案
+问题产生的原因是因为OSPF的管理距离为110，RIP的管理距离为120，导致R3在路径选择上发生了错误。
+
+111. R2
+112. router ospf 1
+113. distance 121 3.3.3.3 0.0.0.0
+114. #注意！此处的意思是收到Router-ID为3.3.3.3发来的路由，管理距离改为121
+
+115. R3
+116. router ospf 1
+117. distance 121 2.2.2.2 0.0.0.0
+观察R2和R3的路由表
+
+118. R2
+119. R2#sh ip route
+120. -----------省略-----------
+121. 5.0.0.0/24 is subnetted, 1 subnets
+122. R        5.5.5.0 [120/2] via 192.168.24.4, 00:00:12, Ethernet0/1
+123. -----------省略-----------
+124. R2#
+
+125. R3
+126. R3#sh ip route
+127. -----------省略-----------
+128. 5.0.0.0/24 is subnetted, 1 subnets
+129. R        5.5.5.0 [120/2] via 192.168.34.4, 00:00:18, Ethernet0/1
+130. -----------省略-----------
+131. R3#
+
+132. R4
+133. R4#sh ip route
+134. -----------省略-----------
+135. 5.0.0.0/24 is subnetted, 1 subnets
+136. R        5.5.5.0 [120/1] via 192.168.45.5, 00:00:25, Ethernet0/2
+137. -----------省略-----------
+138. R4#
+但是上述解决方案会影响到R3或者R2上正常路由的管理距离，我们只是想针对来自OSPF外部的路由做更改
+
+139. R2
+140. R2#sh ip route
+141. -----------省略-----------
+142. 3.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+143. R        3.3.3.0/24 [120/2] via 192.168.24.4, 00:00:21, Ethernet0/1
+144. O        3.3.3.3/32 [121/21] via 192.168.12.1, 00:09:42, Ethernet0/0
+145. -----------省略-----------
+146. R2#
+
+147. R2
+148. router ospf 1
+149. distance ospf external 121
+150. #修改ospf默认的OE或者ON路由的管理距离
+
+151. R3
+152. router ospf 1
+153. distance ospf external 121
+
+154. R2
+155. R2#sh ip route
+156. 1.0.0.0/32 is subnetted, 1 subnets
+157. O        1.1.1.1 [110/11] via 192.168.12.1, 00:00:10, Ethernet0/0
+158. 2.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+159. C        2.2.2.0/24 is directly connected, Loopback0
+160. L        2.2.2.2/32 is directly connected, Loopback0
+161. 3.0.0.0/24 is subnetted, 1 subnets
+162. R        3.3.3.0 [120/2] via 192.168.24.4, 00:00:02, Ethernet0/1
+163. 4.0.0.0/24 is subnetted, 1 subnets
+164. R        4.4.4.0 [120/1] via 192.168.24.4, 00:00:02, Ethernet0/1
+165. 5.0.0.0/24 is subnetted, 1 subnets
+166. R        5.5.5.0 [120/2] via 192.168.24.4, 00:00:02, Ethernet0/1
+167. 192.168.12.0/24 is variably subnetted, 2 subnets, 2 masks
+168. C        192.168.12.0/24 is directly connected, Ethernet0/0
+169. L        192.168.12.2/32 is directly connected, Ethernet0/0
+170. O     192.168.13.0/24 [110/20] via 192.168.12.1, 00:00:10, Ethernet0/0
+171. 192.168.24.0/24 is variably subnetted, 2 subnets, 2 masks
+172. C        192.168.24.0/24 is directly connected, Ethernet0/1
+173. L        192.168.24.2/32 is directly connected, Ethernet0/1
+174. R     192.168.34.0/24 [120/1] via 192.168.24.4, 00:00:02, Ethernet0/1
+175. R     192.168.45.0/24 [120/1] via 192.168.24.4, 00:00:02, Ethernet0/1
+176. R2# 
+</code></pre><p>route-map<br>    之前重发布的路由都是将完整的a协议的条目重新发布到b协议中 如果需要过滤掉默写路由条目，或者将某些路由的metric值想设置的不一样，或者metric-type不一样等等</p>
+<pre><code>route-map语法
+    route-map &lt;名字&gt; permit/deny&lt;序号&gt;
+        Match 条件一 条件二
+        Match 条件一条件二
+        Set 动作
+        Set 动作
+    route-map的序号默认是10，并且不会自动增加，推荐10递增
+    如果是用来拒绝路由条目的，那么一般是deny，如果是用来改变路由属性的，一般是permit
+    如果不写match条件，那么这条route-map就match any
+    多个条件写在同一行，只要有一个满足就匹配上了。单行使用or进行逻辑判断
+    写了多行条件，那么每行都必须匹配。多行使用and进行逻辑判断
+    如果不写set，那么就没有动作
+    route-map最后隐含一条deny，并且是match any
+</code></pre><p>案例演示</p>
+<p>拓扑</p>
+<p>基础配置</p>
+<pre><code>a. R1
+b. interface Loopback0
+c.  ip address 1.1.1.1 255.255.255.0
+d. !
+e. interface Ethernet0/0
+f.  ip address 192.168.12.1 255.255.255.0
+g. !
+h. router rip
+i.  version 2
+j.  network 1.0.0.0
+k.  network 192.168.12.0
+l.  no auto-summary
+
+a. R2
+b. interface Loopback0
+c.  ip address 2.2.2.2 255.255.255.0
+d. !
+e. interface Ethernet0/0
+f.  ip address 192.168.12.2 255.255.255.0
+g. !
+h. interface Ethernet0/1
+i.  ip address 192.168.23.2 255.255.255.0
+j. !
+k. router eigrp 100
+l.  network 2.0.0.0
+m.  network 192.168.23.0
+n. !
+o. router rip
+p.  version 2
+q.  network 192.168.12.0
+r.  no auto-summary
+
+a. R3
+b. interface Loopback0
+c.  ip address 3.3.3.3 255.255.255.0
+d.  ip ospf 1 area 0
+e. !
+f. interface Ethernet0/0
+g.  ip address 192.168.23.3 255.255.255.0
+h. !
+i. interface Ethernet0/1
+j.  ip address 192.168.34.3 255.255.255.0
+k.  ip ospf 1 area 0
+l. !
+m. router eigrp 100
+n.  network 192.168.23.0
+
+a. R4
+b. interface Loopback0
+c.  ip address 4.4.4.4 255.255.255.0
+d.  ip ospf 1 area 0
+e. !
+f. interface Ethernet0/0
+g.  ip address 192.168.34.4 255.255.255.0
+h.  ip ospf 1 area 0
+i. !
+j. interface Ethernet0/1
+k.  ip address 192.168.45.4 255.255.255.0
+l.  ip ospf 1 area 1
+
+a. R5
+b. interface Loopback0
+c.  ip address 5.5.5.5 255.255.255.0
+d.  ip ospf 1 area 1
+e. !
+f. interface Ethernet0/0
+g.  ip address 192.168.45.5 255.255.255.0
+h.  ip ospf 1 area 1
+</code></pre><p> 双向重发布</p>
+<pre><code>a. R1
+b. interface Loopback10
+c.  ip address 172.16.1.1 255.255.255.0
+d. !
+e. interface Loopback20
+f.  ip address 172.16.2.1 255.255.255.0
+g. !
+h. interface Loopback30
+i.  ip address 172.16.3.1 255.255.255.0
+j. !
+k. interface Loopback40
+l.  ip address 172.16.4.1 255.255.255.0
+m. !
+n. router rip
+o.  redistribute connected metric 5
+
+a. R2
+b. router eigrp 100
+c.  redistribute rip metric 10000 100 255 1 1500
+d. !
+e. router rip
+f.  redistribute eigrp 100 metric 5
+
+a. R3
+b. router eigrp 100
+c.  redistribute ospf 1 metric 10000 100 255 1 1500
+d. !
+e. router ospf 1
+f.  redistribute eigrp 100 subnets
+</code></pre><p>验证</p>
+<pre><code>a. R5
+b. R5#sh ip route ospf
+c.       1.0.0.0/24 is subnetted, 1 subnets
+d. O E2     1.1.1.0 [110/20] via 192.168.45.4, 00:01:39, Ethernet0/0
+e.       2.0.0.0/24 is subnetted, 1 subnets
+f. O E2     2.2.2.0 [110/20] via 192.168.45.4, 00:01:39, Ethernet0/0
+g.       3.0.0.0/32 is subnetted, 1 subnets
+h. O IA     3.3.3.3 [110/21] via 192.168.45.4, 00:05:39, Ethernet0/0
+i.       4.0.0.0/32 is subnetted, 1 subnets
+j. O IA     4.4.4.4 [110/11] via 192.168.45.4, 00:05:39, Ethernet0/0
+k.       172.16.0.0/24 is subnetted, 4 subnets
+l. O E2     172.16.1.0 [110/20] via 192.168.45.4, 00:01:39, Ethernet0/0
+m. O E2     172.16.2.0 [110/20] via 192.168.45.4, 00:01:39, Ethernet0/0
+n. O E2     172.16.3.0 [110/20] via 192.168.45.4, 00:01:39, Ethernet0/0
+o. O E2     172.16.4.0 [110/20] via 192.168.45.4, 00:01:39, Ethernet0/0
+p. O E2  192.168.12.0/24 [110/20] via 192.168.45.4, 00:01:39, Ethernet0/0
+q. O E2  192.168.23.0/24 [110/20] via 192.168.45.4, 00:01:39, Ethernet0/0
+r. O IA  192.168.34.0/24 [110/20] via 192.168.45.4, 00:05:39, Ethernet0/0
+s. R5#
+</code></pre><p> 实现策﻿略</p>
+<pre><code>a. R1
+b. access-list 1 permit 172.16.4.0
+c. route-map c-r deny 10
+d. match ip address 1
+e. route-map c-r permit 20
+f. !
+g. router rip
+h. redistribute connected metric 5 route-map c-r
+
+a. R2
+b. access-list 1 permit 172.16.3.0
+c. route-map r-e deny 10
+d. match ip address 1
+e. route-map r-e permit 20
+f. set tag 666
+g. #给来自rip的路由条目全部打上666的tag
+h. router eigrp 100
+i. redistribute rip metric 10000 100 255 1 1500 route-map r-e
+
+a. R3
+b. route-map e-o permit 10
+c. match tag 666
+d. set metric-type type-1
+e. route-map e-o permit 20
+f. !
+g. router ospf 1
+h. redistribute eigrp 100 metric 50 subnets route-map e-o
+
+a. R4
+b. router ospf 1
+c. area 1 stub
+
+a. R5
+b. router ospf 1
+c. area 1 stub
+</code></pre><p>验证</p>
+<pre><code>    1. R2
+    2. R2#sh ip route rip
+    3. 1.0.0.0/24 is subnetted, 1 subnets
+    4. R        1.1.1.0 [120/1] via 192.168.12.1, 00:00:02, Ethernet0/0
+    5. 172.16.0.0/24 is subnetted, 3 subnets
+    6. R        172.16.1.0 [120/5] via 192.168.12.1, 00:00:02, Ethernet0/0
+    7. R        172.16.2.0 [120/5] via 192.168.12.1, 00:00:02, Ethernet0/0
+    8. R        172.16.3.0 [120/5] via 192.168.12.1, 00:00:02, Ethernet0/0
+    9. R2#
+
+    1. R3
+    2. R3#sh ip route eigrp
+    3. 1.0.0.0/24 is subnetted, 1 subnets
+    4. D EX     1.1.1.0 [170/307200] via 192.168.23.2, 01:39:52, Ethernet0/0
+    5. 2.0.0.0/24 is subnetted, 1 subnets
+    6. D        2.2.2.0 [90/409600] via 192.168.23.2, 01:56:01, Ethernet0/0
+    7. 172.16.0.0/24 is subnetted, 2 subnets
+    8. D EX     172.16.1.0 [170/307200] via 192.168.23.2, 01:39:52, Ethernet0/0
+    9. D EX     172.16.2.0 [170/307200] via 192.168.23.2, 01:39:52, Ethernet0/0
+    10. D EX  192.168.12.0/24 [170/307200] via 192.168.23.2, 01:39:52, Ethernet0/0
+    11. R3#
+
+    1. R4
+    2. R4#sh ip route ospf
+    3. Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+    4. D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+    5. N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+    6. E1 - OSPF external type 1, E2 - OSPF external type 2
+    7. i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+    8. ia - IS-IS inter area, * - candidate default, U - per-user static route
+    9. o - ODR, P - periodic downloaded static route, H - NHRP, l - LISP
+    10. a - application route
+    11. + - replicated route, % - next hop override
+    12.  
+    13. Gateway of last resort is not set
+    14.  
+    15. 1.0.0.0/24 is subnetted, 1 subnets
+    16. O E1     1.1.1.0 [110/60] via 192.168.34.3, 01:35:33, Ethernet0/0
+    17. 2.0.0.0/24 is subnetted, 1 subnets
+    18. O E2     2.2.2.0 [110/50] via 192.168.34.3, 01:35:33, Ethernet0/0
+    19. 3.0.0.0/32 is subnetted, 1 subnets
+    20. O        3.3.3.3 [110/11] via 192.168.34.3, 01:35:33, Ethernet0/0
+    21. 5.0.0.0/32 is subnetted, 1 subnets
+    22. O        5.5.5.5 [110/11] via 192.168.45.5, 01:35:13, Ethernet0/1
+    23. 172.16.0.0/24 is subnetted, 2 subnets
+    24. O E1     172.16.1.0 [110/60] via 192.168.34.3, 01:35:33, Ethernet0/0
+    25. O E1     172.16.2.0 [110/60] via 192.168.34.3, 01:35:33, Ethernet0/0
+    26. O E1  192.168.12.0/24 [110/60] via 192.168.34.3, 01:35:33, Ethernet0/0
+    27. O E2  192.168.23.0/24 [110/50] via 192.168.34.3, 01:35:33, Ethernet0/0
+    28. R4#
+ distribute-list 
+过滤路由条目的工具，在使用的时候要配置一个acl列表来抓取路由条目
+在使用的时候要注意in或out的方向
+在距离矢量路由协议可以随意使用in和out方向
+由于OSPF传递的不是路由条目，所以distribute-list在OSPF中只能在ASBR上使用out过滤5类LSA的条目
+在OSPF路由器上使用in方向，只会影响到自己
+
+    1. access-list 1 deny 172.16.4.0
+    2. access-list 1 permit any
+    3. router rip
+    4. distribute-list 1 out e0/0
+    5. #注意后面不加接口，即任意接口都会过滤掉，后面也可以加协议，用于重发时针对协议做过滤
+
+
+prefix-list
+和acl类似，但是只能用来抓取路由，更加方便抓取子网掩码
+
+    1. ip prefix-list cisco seq 5 deny 172.16.4.0/24
+    2. ip prefix-list cisco seq 10 permit 0.0.0.0/0 le 32
+    3. !
+    4. router rip
+    5. distribute-list prefix cisco out
+</code></pre><p>使用ACL来表示</p>
+<pre><code>1. access-list 100 deny ip 
+2.  172.16.4.0  255.255.255.0
+3. access-list 100 per ip any any
+4. !
+5. router rip
+6. distribute-list 100 out
+</code></pre><p>Offset-list </p>
+<pre><code> 实现PBR
+
+1. access-list 1 permit 192.168.45.0 0.0.0.255
+2. access-list 2 permit 192.168.46.0 0.0.0.255
+3. ！
+4. route-map pbr permit 10
+5. match ip address 1
+6. set ip next-hop 192.168.13.1 192.168.23.2
+7. !
+8. route-map pbr permit 20
+9. match ip address 2
+10. set ip next-hop 192.168.23.2
+11. !
+12. route-map pbr permit 30
+13. set ip next-hop 192.168.13.1
+14. ！
+15. interface Ethernet0/2
+16. ip address 192.168.34.3 255.255.255.0
+17. ip policy route-map pbr
+验证
+
+18. R5
+19. R5#telnet 100.1.1.1
+20. Trying 100.1.1.1 ... Open
+21. User Access Verification
+22. Password: 
+23. R1&gt;
+24. R1&gt;q
+25. [Connection to 100.1.1.1 closed by foreign host]
+26. R5#
+
+27. R6
+28. R6#telnet 100.1.1.1
+29. Trying 100.1.1.1 ... Open
+30. User Access Verification
+31. Password: 
+32. R2&gt;q
+33. [Connection to 100.1.1.1 closed by foreign host]
+34. R6#
+综合实验
+拓扑
+
+需求
+    1. 所有路由器全部启环回接口0 ，地址为X.X.X.X/32 X=路由器编号，接口地址使用192.168.X.Y X=相连路由器标号组合，例如R1和R2就使用X=12 Y=路由器编号
+    2. R1和R2起RIPv2协议,R1建立3个环回接口，地址为172.16.X.1/24 X=1-3 只允许R1和R2之间存在更新，并且R2要只看到一条172.16网段的路由,并且这条路由不允许通告到其它网络
+    3. R2、R3和R4的E0/0接口启EIGRP 100 R2、R3和R4的环回接口通告到EIGRP中
+    4. R3、R4和R5启用OSPF
+    5. 在R6只要看到直连路由和关于OSPF的一条默认路由
+    6. R6上重分布直连环回接口，只重分布一个环回接口，需过滤其它端口
+    7. R2上双向的重分发，R3和R4都做OSPF和EIGRP的双向重分发，并使OSPF路由器优先选择R3为主路由，当R3 down掉，使用路由器R4为可用下一跳
+    8. 实验完成后需要全网通信，使用traceroute验证路由下一跳是否正确，重点观察R2 R3 R4的路由下一跳
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day5/">
+    <time datetime="2018-08-13T04:27:27.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/08/13/网络笔记day6/" rel="prev"><span class="meta-nav">←</span> 网络笔记day6</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/网络笔记day4/" rel="next">网络笔记day4 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

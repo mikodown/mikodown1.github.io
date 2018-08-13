@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="bgp选路原则BGP属性众多，每个属性都可以影响到最终路线的选择，如果BGP从不同的Peer收到了同一个路由，BGP会按照一定的选路原则去按照顺序比对属性。一旦某个属性比对出结果，就不会继续比对。BGP默认不支持负载均衡，必须要选出唯一的路线。" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>网络笔记day8 | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="bgp选路原则BGP属性众多，每个属性都可以影响到最终路线的选择，如果BGP从不同的Peer收到了同一个路由，BGP会按照一定的选路原则去按照顺序比对属性。一旦某个属性比对出结果，就不会继续比对。BGP默认不支持负载均衡，必须要选出唯一的路线。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络笔记day8">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/网络笔记day8/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="bgp选路原则BGP属性众多，每个属性都可以影响到最终路线的选择，如果BGP从不同的Peer收到了同一个路由，BGP会按照一定的选路原则去按照顺序比对属性。一旦某个属性比对出结果，就不会继续比对。BGP默认不支持负载均衡，必须要选出唯一的路线。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T04:32:25.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络笔记day8">
+<meta name="twitter:description" content="bgp选路原则BGP属性众多，每个属性都可以影响到最终路线的选择，如果BGP从不同的Peer收到了同一个路由，BGP会按照一定的选路原则去按照顺序比对属性。一旦某个属性比对出结果，就不会继续比对。BGP默认不支持负载均衡，必须要选出唯一的路线。">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-网络笔记day8" class="post-网络笔记day8 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      网络笔记day8
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day8/" data-id="cjkrs8331000fhsv6ln1p50eq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>bgp选路原则<br>BGP属性众多，每个属性都可以影响到最终路线的选择，如果BGP从不同的Peer收到了同一个路由，BGP会按照一定的选路原则去按照顺序比对属性。一旦某个属性比对出结果，就不会继续比对。<br>BGP默认不支持负载均衡，必须要选出唯一的路线。<br><a id="more"></a></p>
+<p>权重（Weight）<br>CISCO 私有，越大越优先<br>作用范围是本路由器（不传递），该值不既不会被包含在update消息中，也不会传递给任何BGP邻居<br>范围0-65535<br>如果路由是从其他邻居学过来的，则（在本地该路由的WT）默认值是0<br>本地network产生的路由weight是32768<br>本地重发布的直连接口路由、静态路由的weight为32768<br>本地汇总产生的BGP路由weight值也为32768</p>
+<p>本地优先级 local_pref<br>    只存在于ibdp中 越大越优<br>    公认自决属性，值越大越优先 LOCAL_PREF只能在IBGP Peer之间传递,不能在EBGP Peer之间传递 默认情况下，本地始发的路由的LP为100 可用bgp default local-preference ? 修改默认值 BGP路由器在向其EBGP邻居发送路由更新时，不能携带LP属性，但是对方会在本地为这条路由赋一个默认值，也就是100，然后再传递给自己的IBGP邻居 本地network及重发布的路由，LP默认100，并能在AS内向其他IBGP邻居传输，传输过程中除非部署策略，否则LP不变</p>
+<p>优选起源于本地的路由<br>    优选本As产生的路由条目，特征是Next-hop为0.0.0.0</p>
+<p>优选AS-Path最短的路由<br>    AS-Path可以使用Route-map加长，一般加长的时候要注意不能产生影响<br>    比如在AS100内部想要加长AS-Path就会多加几个100 100 100<br>    规则补充：在做聚合路由时，使用as-set关键字后产生的AS-Path列表中的{}里的AS号长度只算一个AS号的长度 </p>
+<p>起源（origin）<br>    i&gt;e&gt;?<br>    一般network的路由都是I<br>    一般重发布进bgp的路由都是？</p>
+<p>优先选med最小的路由</p>
+<pre><code>MED属性设置方法 
+    将IGP路由引入BGP时关联Route-map进行设置 
+    对BGP Peer应用IN/OUT方向的Route-map进行设置 
+    使用network或redistribute方式将IGP路由引入BGP时,MED将继承IGP路由的Metric(直联路由及静态路由的Metric为0) 
+    使用aggregate-address方式引入路由，则MED为空 
+MED注意事项 
+    默认情况下，只比较来自同一邻居AS的BGP路由的MED值，就是说如果同一个目的地的两条路由来自不同的AS，则不进行MED值的比较。如果仍然希望比较来自不同邻接AS的路由，可使用如下命令： bgp always-compare-med 
+    MED只是在直接相连的自治系统间影响业务流量，而不会跨AS传递
+</code></pre><p>选到next-hop 最近的路由<br>    注意，这里严格的说应该这么表述：我从两个BGP邻居各收到一条路由，这两条BGP路由有相同的路由前缀，首先这两条BGP路由的NEXT_HOP是不相同的，否则不具有可比性，那么我比较本地到达这两个NEXT_HOP的IGP度量值，谁metric小，我就优选谁。 </p>
+<p>bgp负载均衡</p>
+<pre><code>当前面的8条选路原则都无法优选出最优路由时，并且在BGP进程下面配置了maximum-paths [ibgp] n,n的取值为2-6,那么将执行等价负载均衡，也就是将这些等代价的BGP路径都放进IP路由表使用，但是要注意，虽然这些路径在本地都用了，最终却只有一条BGP路径是best最优的。
+具备等价负载均衡条件的候选路径需满足如下条件：
+
+必须有相同的路径属性，如weight、LP、AS_PATH（不仅是长度，整个AS_PATH包括AS号都要相同）、origin code、MED及IGP的Distance值
+每一条路径的下一跳都不相同
+</code></pre><p>优先选最老的ebgp邻居<br>    规则描述 如果路由都来自EBGP邻居，则优选最老的路由，降低滚翻的影响（此条主要对EBGP路由起效，但是现在基本不用该条，因不确定性太强） </p>
+<p>优选RouterID最小的BGP邻居的路由<br>优选Cluster_List最短的路由<br>选择邻居IP地址最小的路由 </p>
+<pre><code>bgp非等价负载均衡
+    BGP非等价负载均衡
+    拓扑
+
+    基础配置
+
+        1. R1
+        2. interface Loopback0
+        3. ip address 1.1.1.1 255.255.255.0
+        4. ip ospf 1 area 0
+        5. interface Ethernet0/0
+        6. ip address 192.168.123.1 255.255.255.0
+        7. ip ospf 1 area 0
+        8. !
+        9. router bgp 100
+        10. bgp router-id 1.1.1.1
+        11. bgp log-neighbor-changes
+        12. network 1.1.1.0 mask 255.255.255.0
+        13. neighbor 2.2.2.2 remote-as 100
+        14. neighbor 2.2.2.2 update-source Loopback0
+        15. neighbor 2.2.2.2 route-reflector-client
+        16. neighbor 3.3.3.3 remote-as 100
+        17. neighbor 3.3.3.3 update-source Loopback0
+        18. neighbor 3.3.3.3 route-reflector-client
+
+        1. R2
+        2. interface Loopback0
+        3. ip address 2.2.2.2 255.255.255.0
+        4. ip ospf 1 area 0
+        5. interface Ethernet0/0
+        6. ip address 192.168.123.2 255.255.255.0
+        7. ip ospf 1 area 0
+        8. interface Ethernet0/1
+        9. ip address 192.168.24.2 255.255.255.0
+        10. !
+        11. ip route 4.4.4.4 255.255.255.255 192.168.24.4
+        12. !
+        13. router bgp 100
+        14. bgp router-id 2.2.2.2
+        15. bgp log-neighbor-changes
+        16. neighbor 1.1.1.1 remote-as 100
+        17. neighbor 1.1.1.1 update-source Loopback0
+        18. neighbor 1.1.1.1 next-hop-self
+        19. neighbor 4.4.4.4 remote-as 200
+        20. neighbor 4.4.4.4 ebgp-multihop 255
+        21. neighbor 4.4.4.4 update-source Loopback0s
+
+        1. R3
+        2. interface Loopback0
+        3. ip address 3.3.3.3 255.255.255.0
+        4. ip ospf 1 area 0
+        5. interface Ethernet0/0
+        6. ip address 192.168.123.3 255.255.255.0
+        7. ip ospf 1 area 0
+        8. interface Serial1/1
+        9. ip address 192.168.34.3 255.255.255.0
+        10. !
+        11. ip route 4.4.4.4 255.255.255.255 192.168.34.4
+        12. !
+        13. router bgp 100
+        14. bgp router-id 3.3.3.3
+        15. bgp log-neighbor-changes
+        16. neighbor 1.1.1.1 remote-as 100
+        17. neighbor 1.1.1.1 update-source Loopback0
+        18. neighbor 1.1.1.1 next-hop-self
+        19. neighbor 4.4.4.4 remote-as 200
+        20. neighbor 4.4.4.4 ebgp-multihop 255
+        21. neighbor 4.4.4.4 update-source Loopback0
+
+        1. R4
+        2. interface Loopback0
+        3. ip address 4.4.4.4 255.255.255.0
+        4. interface Ethernet0/0
+        5. ip address 192.168.24.4 255.255.255.0
+        6. interface Serial1/1
+        7. ip address 192.168.34.4 255.255.255.0
+        8. !
+        9. ip route 2.2.2.2 255.255.255.255 192.168.24.2
+        10. ip route 3.3.3.3 255.255.255.255 192.168.34.3
+        11. !
+        12. router bgp 200
+        13. bgp router-id 4.4.4.4
+        14. bgp log-neighbor-changes
+        15. network 4.4.4.0 mask 255.255.255.0
+        16. neighbor 2.2.2.2 remote-as 100
+        17. neighbor 2.2.2.2 ebgp-multihop 255
+        18. neighbor 2.2.2.2 update-source Loopback0
+        19. neighbor 3.3.3.3 remote-as 100
+        20. neighbor 3.3.3.3 ebgp-multihop 255
+        21. neighbor 3.3.3.3 update-source Loopback0
+    检查负载均衡的先决条件，bgp表中必须要出现去往目的地的多个下一跳
+
+        1. R4
+        2. R4#sh ip bgp
+        3. Network          Next Hop            Metric LocPrf Weight Path
+        4. *   1.1.1.0/24       3.3.3.3                                0 100 i
+        5. *&gt;                   2.2.2.2                                0 100 i
+        6. *&gt;  4.4.4.0/24       0.0.0.0                  0         32768 i
+        7. R4#
+    实现EBGP不等价负载均衡
+
+        1. R4
+        2. R4(config)#router bgp 200
+        3. R4(config-router)#bgp dmzlink-bw
+        4. R4(config-router)#neighbor 2.2.2.2 dmzlink-bw 
+        5. %BGP: Propagation of DMZ-Link-Bandwidth is supported only for single-hop EBGP peers
+        6. #通过实践发现，EBGP非等价负载均衡并不支持EBGP多跳
+    下面将多跳改回来
+
+        1. R2
+        2. R2(config)#no ip route 4.4.4.4 255.255.255.255 192.168.24.4
+        3. R2(config)#router bgp 100
+        4. R2(config-router)#no neighbor 4.4.4.4
+        5. R2(config-router)#nei 192.168.24.4 remote 200
+
+        1. R4
+        2. R4(config)#no ip route 2.2.2.2 255.255.255.255 192.168.24.2
+        3. R4(config)#no ip route 3.3.3.3 255.255.255.255 192.168.34.3
+        4. R4(config)#router bgp 200
+        5. R4(config-router)#no neighbor 2.2.2.2
+        6. R4(config-router)#no neighbor 3.3.3.3
+        7. R4(config-router)#nei 192.168.24.2 remote 100
+        8. R4(config-router)#nei 192.168.34.3 remote 100
+
+        1. R3
+        2. R3(config)#no ip route 4.4.4.4 255.255.255.255 192.168.34.4
+        3. R3(config)#router bgp 100
+        4. R3(config-router)#no nei 4.4.4.4
+        5. R3(config-router)#nei 192.168.34.4 remote 200
+    下面开始配置EBGP非等价负载均衡
+
+        1. R4
+        2. router bgp 200
+        3. bgp dmzlink-bw
+        4. #启用基于链路带宽的非等价负载均衡
+        5. neighbor 192.168.24.2 dmzlink-bw
+        6. #针对邻居192.168.24.2开启非等价负载均衡
+        7. neighbor 192.168.34.3 dmzlink-bw
+        8. maximum-paths 2
+        9. #单条路由最大负载均衡数
+    验证结果
+
+        1. R4
+        2. R4#sh ip route bgp 
+        3. 1.0.0.0/24 is subnetted, 1 subnets
+        4. B        1.1.1.0 [20/0] via 192.168.34.3, 00:01:06
+        5. [20/0] via 192.168.24.2, 00:01:06
+        6. R4#sh ip route 1.1.1.0
+        7. Routing entry for 1.1.1.0/24
+        8. Known via &quot;bgp 200&quot;, distance 20, metric 0
+        9. Tag 100, type external
+        10. Last update from 192.168.24.2 00:01:09 ago
+        11. Routing Descriptor Blocks:
+        12. * 192.168.34.3, from 192.168.34.3, 00:01:09 ago
+        13. Route metric is 0, traffic share count is 37
+        14. AS Hops 1
+        15. Route tag 100
+        16. MPLS label: none
+        17. 192.168.24.2, from 192.168.24.2, 00:01:09 ago
+        18. Route metric is 0, traffic share count is 240
+        19. AS Hops 1
+        20. Route tag 100
+        21. MPLS label: none
+        22. R4#sh ip bgp 1.1.1.0
+        23. BGP routing table entry for 1.1.1.0/24, version 9
+        24. Paths: (2 available, best #2, table default)
+        25. Multipath: eBGP
+        26. Advertised to update-groups:
+        27. 2         
+        28. Refresh Epoch 1
+        29. 100
+        30. 192.168.34.3 from 192.168.34.3 (3.3.3.3)
+        31. Origin IGP, localpref 100, valid, external, multipath(oldest)
+        32. DMZ-Link Bw 193 kbytes
+        33. rx pathid: 0, tx pathid: 0
+        34. Refresh Epoch 1
+        35. 100
+        36. 192.168.24.2 from 192.168.24.2 (2.2.2.2)
+        37. Origin IGP, localpref 100, valid, external, multipath, best
+        38. DMZ-Link Bw 1250 kbytes
+        39. rx pathid: 0, tx pathid: 0x0
+        40. R4#
+    通过13行和18行看出来这两条线路的比例是37:240
+    通过32行和38行，可以看到这两条路由都带上了带宽的属性
+    配置IBGP负载均衡
+    由于EBGP邻居可以直接读取直连接口的带宽，所以可以便捷的计算出负载均衡的比例
+    iBGP邻居一般都是位于AS内部，所以针对AS之间的链路是无法直接获得
+    可以通过扩展的团体属性，将AS之间的链路带宽传递给AS内部的IBGP邻居，从而让IBGP邻居也可以负载均衡
+
+        1. R1
+        2. router bgp 100
+        3. bgp dmzlink-bw
+        4. maximum-paths ibgp 2
+
+        1. R2
+        2. router bgp 100
+        3. bgp dmzlink-bw
+        4. neighbor 1.1.1.1 send-community extended
+        5. #向R1发送扩展的团体属性
+        6. neighbor 192.168.24.4 dmzlink-bw
+        7. #开启读取邻居链路带宽的属性
+
+        1. R3
+        2. router bgp 100
+        3. bgp dmzlink-bw
+        4. neighbor 1.1.1.1 send-community extended
+        5. neighbor 192.168.34.4 dmzlink-bw
+    检查
+
+        1. R1
+        2. R1#sh ip route bgp
+        3. 4.0.0.0/24 is subnetted, 1 subnets
+        4. B        4.4.4.0 [200/0] via 3.3.3.3, 00:00:06
+        5. [200/0] via 2.2.2.2, 00:00:06
+        6. R1#sh ip route 4.4.4.0
+        7. Routing entry for 4.4.4.0/24
+        8. Known via &quot;bgp 100&quot;, distance 200, metric 0
+        9. Tag 200, type internal
+        10. Last update from 2.2.2.2 00:00:13 ago
+        11. Routing Descriptor Blocks:
+        12. * 3.3.3.3, from 3.3.3.3, 00:00:13 ago
+        13. Route metric is 0, traffic share count is 37
+        14. AS Hops 1
+        15. Route tag 200
+        16. MPLS label: none
+        17. 2.2.2.2, from 2.2.2.2, 00:00:13 ago
+        18. Route metric is 0, traffic share count is 240
+        19. AS Hops 1
+        20. Route tag 200
+        21. MPLS label: none
+        22. R1#sh ip bgp 4.4.4.0
+        23. BGP routing table entry for 4.4.4.0/24, version 8
+        24. Paths: (2 available, best #2, table default)
+        25. Multipath: iBGP
+        26. Advertised to update-groups:
+        27. 1         
+        28. Refresh Epoch 1
+        29. 200, (Received from a RR-client)
+        30. 3.3.3.3 (metric 11) from 3.3.3.3 (3.3.3.3)
+        31. Origin IGP, metric 0, localpref 100, valid, internal, multipath(oldest)
+        32. DMZ-Link Bw 193 kbytes
+        33. rx pathid: 0, tx pathid: 0
+        34. Refresh Epoch 1
+        35. 200, (Received from a RR-client)
+        36. 2.2.2.2 (metric 11) from 2.2.2.2 (2.2.2.2)
+        37. Origin IGP, metric 0, localpref 100, valid, internal, multipath, best
+        38. DMZ-Link Bw 1250 kbytes
+        39. rx pathid: 0, tx pathid: 0x0
+        40. R1#
+
+COST Community
+比较规则
+比较相同ID的Value值，越小的越优
+比较ID的时候从1开始比较，如果某方不存在此ID，那么创建该ID，并且赋予默认值2147483648
+从1开始，每个ID必须进行比较
+
+验证在EBGP之间传递
+
+    1. R4
+    2. router bgp 200
+    3. neighbor 192.168.34.3 weight 10
+检查路径选择
+
+    1. R4
+    2. R4#sh ip bgp
+    3. Network          Next Hop            Metric LocPrf Weight Path
+    4. *&gt;  1.1.1.0/24       192.168.34.3                          10 100 i
+    5. *                    192.168.24.2                           0 100 i
+    6. *&gt;  4.4.4.0/24       0.0.0.0                  0         32768 i
+    7. R4#
+在R2上配置扩展团体属性
+
+    1. R2
+    2. access-list 1 permit 1.1.1.0
+    3. !
+    4. route-map R4 permit 10
+    5. match ip address 1
+    6. set extcommunity cost pre-bestpath 1 10
+    7. route-map R4 permit 20
+    8. !
+    9. router bgp 100
+    10. neighbor 192.168.24.4 route-map R4 out
+检查结果
+
+    1. R4
+    2. R4#sh ip bgp
+    3. Network          Next Hop            Metric LocPrf Weight Path
+    4. *&gt;  1.1.1.0/24       192.168.34.3                          10 100 i
+    5. *                    192.168.24.2                           0 100 i
+    6. *&gt;  4.4.4.0/24       0.0.0.0                  0         32768 i
+    7. R4#sh ip bgp 1.1.1.0
+    8. BGP routing table entry for 1.1.1.0/24, version 10
+    9. Paths: (2 available, best #1, table default)
+    10. Multipath: eBGP
+    11. Advertised to update-groups:
+    12. 2         
+    13. Refresh Epoch 3
+    14. 100
+    15. 192.168.34.3 from 192.168.34.3 (3.3.3.3)
+    16. Origin IGP, localpref 100, weight 10, valid, external, best
+    17. DMZ-Link Bw 193 kbytes
+    18. rx pathid: 0, tx pathid: 0x0
+    19. Refresh Epoch 2
+    20. 100
+    21. 192.168.24.2 from 192.168.24.2 (2.2.2.2)
+    22. Origin IGP, localpref 100, valid, external
+    23. DMZ-Link Bw 1250 kbytes
+    24. rx pathid: 0, tx pathid: 0
+    25. R4#
+结论，扩展的团体属性无法在EBGP邻居之间传递
+验证在IBGP之间传递
+通过修改R1上4.4.4.0/24的权重，影响其选路
+
+    1. R1
+    2. router bgp 100
+    3. neighbor 3.3.3.3 weight 10
+在R2上配置cost community
+
+    1. R2
+    2. access-list 1 permit 4.4.4.0
+    3. !
+    4. route-map R1 permit 10
+    5. match ip address 1
+    6. set extcommunity cost pre-bestpath 1 10
+    7. route-map R1 permit 20
+    8. !
+    9. router bgp 100
+    10. neighbor 1.1.1.1 send-community extended
+    11. neighbor 1.1.1.1 route-map R1 out
+检查
+
+    1. R1
+    2. R1#sh ip bgp
+    3. Network          Next Hop            Metric LocPrf Weight Path
+    4. *&gt;  1.1.1.0/24       0.0.0.0                  0         32768 i
+    5. * i 4.4.4.0/24       3.3.3.3                  0    100     10 200 i
+    6. *&gt;i                  2.2.2.2                  0    100      0 200 i
+    7. R1#sh ip bgp 4.4.4.0
+    8. BGP routing table entry for 4.4.4.0/24, version 10
+    9. Paths: (2 available, best #2, table default)
+    10. Multipath: iBGP
+    11. Advertised to update-groups:
+    12. 1         
+    13. Refresh Epoch 2
+    14. 200, (Received from a RR-client)
+    15. 3.3.3.3 (metric 11) from 3.3.3.3 (3.3.3.3)
+    16. Origin IGP, metric 0, localpref 100, weight 10, valid, internal
+    17. DMZ-Link Bw 193 kbytes
+    18. rx pathid: 0, tx pathid: 0
+    19. Refresh Epoch 3
+    20. 200, (Received from a RR-client)
+    21. 2.2.2.2 (metric 11) from 2.2.2.2 (2.2.2.2)
+    22. Origin IGP, metric 0, localpref 100, valid, internal, best
+    23. Extended Community: Cost:pre-bestpath:1:10
+    24. DMZ-Link Bw 1250 kbytes
+    25. rx pathid: 0, tx pathid: 0x0
+    26. R1#
+我们在R1上尝试能不能阻止cost community进入bgp表
+
+    1. R1
+    2. ip extcommunity-list 100 permit 1:10
+    3. !
+    4. route-map R2 permit 10
+    5. set extcomm-list 100 delete
+    6. route-map R2 permit 20
+    7. !
+    8. router bgp 100
+    9. neighbor 2.2.2.2 route-map R2 in
+检查
+
+    1. R1
+    2. R1#sh ip bgp 4.4.4.0
+    3. BGP routing table entry for 4.4.4.0/24, version 11
+    4. Paths: (2 available, best #1, table default)
+    5. Multipath: iBGP
+    6. Advertised to update-groups:
+    7. 1         
+    8. Refresh Epoch 5
+    9. 200, (Received from a RR-client)
+    10. 3.3.3.3 (metric 11) from 3.3.3.3 (3.3.3.3)
+    11. Origin IGP, metric 0, localpref 100, weight 10, valid, internal, best
+    12. DMZ-Link Bw 193 kbytes
+    13. rx pathid: 0, tx pathid: 0x0
+    14. Refresh Epoch 6
+    15. 200, (Received from a RR-client)
+    16. 2.2.2.2 (metric 11) from 2.2.2.2 (2.2.2.2)
+    17. Origin IGP, metric 0, localpref 100, valid, internal
+    18. DMZ-Link Bw 1250 kbytes
+    19. rx pathid: 0, tx pathid: 0
+    20. R1#
+</code></pre><p>路由反射器<br>    路由反射规则<br>        如果路由学习非client ibgp对等体，则反射给所有的client<br>        如果路由学习自一client，则反射给所有非client ibgp 邻居和除了该client以外的所有client<br>        • 如果路由学习自EBGP邻居，则发送给所有client和非client IBGP邻居<br>    路由反射器防环<br>        • Originator_ID<br>            ○ 每当一条路由被路由反射器反射时，该路由的始发IBGP路由器的Router-ID将会被存在路由的originator_ID属性中<br>            ○ 当一台路由器收到IBGP路由且其originator_ID与该路由器的Router_ID相同，则路由器忽略该条路由<br>Originator_ID及Cluster-list属性将会影响BGP路径决策<br>        • 路由反射簇包括反射器及其Client<br>        • 每一个簇都有唯一的簇ID<br>        • 每当一条路由被反射器反射后，该反射器（该簇）的Cluster_ID就会被添加至路由的Cluster_list属性中<br>        • 每当反射器收到一条Cluster_list属性已经包含该簇的Cluster_ID的路由时，该路由基于防环的目的将不被反射</p>
+<pre><code>    1. router bgp 100
+    2.  bgp cluster-id 11.11.11.11
+    3.     #为了防止单点故障，我们在一个AS的多个冗余RR中可以设置一样的Cluster-id。做到进一步防环
+BGP联邦
+    • 在联邦内部保留联邦外部路由的NEXT_HOP属性 
+    • 公布给联邦的路由的MED属性在整个联邦范围内予以保留 
+    • 路由的LP属性在整个联邦范围内予以保留 
+    • 在联邦范围内，将成员AS号压入AS_PATH，但不公布到联邦外，并且使用TYPE3、4的AS_PATH 
+    • AS_PATH中的联邦成员AS号用于在联邦内部避免环路；联邦内成员AS号不参与AS_PATH长度计算 
+拓扑
+
+基础配置
+
+    1. R1
+    2. interface Loopback0
+    3.  ip address 1.1.1.1 255.255.255.0
+    4. interface Ethernet0/0
+    5.  ip address 192.168.12.1 255.255.255.0
+    6. ！
+    7. ip route 2.2.2.2 255.255.255.255 192.168.12.2
+
+    1. R2
+    2. interface Loopback0
+    3.  ip address 2.2.2.2 255.255.255.0
+    4.  ip ospf 1 area 0
+    5. interface Ethernet0/0
+    6.  ip address 192.168.12.2 255.255.255.0
+    7. interface Ethernet0/1
+    8.  ip address 192.168.23.2 255.255.255.0
+    9.  ip ospf 1 area 0
+    10. !
+    11. ip route 1.1.1.1 255.255.255.255 192.168.12.1
+
+    1. R3
+    2. interface Loopback0
+    3.  ip address 3.3.3.3 255.255.255.0
+    4.  ip ospf 1 area 0
+    5. interface Ethernet0/0
+    6.  ip address 192.168.23.3 255.255.255.0
+    7.  ip ospf 1 area 0
+    8. interface Ethernet0/1
+    9.  ip address 192.168.34.3 255.255.255.0
+    10. !
+    11. ip route 4.4.4.4 255.255.255.255 192.168.34.4
+
+    1. R4
+    2. interface Loopback0
+    3.  ip address 4.4.4.4 255.255.255.0
+    4. interface Ethernet0/0
+    5.  ip address 192.168.34.4 255.255.255.0
+    6. interface Ethernet0/1
+    7.  ip address 192.168.45.4 255.255.255.0
+    8. !
+    9. ip route 3.3.3.3 255.255.255.255 192.168.34.3
+    10. ip route 5.5.5.5 255.255.255.255 192.168.45.5
+
+    1. R5
+    2. interface Loopback0
+    3.  ip address 5.5.5.5 255.255.255.0
+    4. interface Ethernet0/0
+    5.  ip address 192.168.45.5 255.255.255.0
+    6. !
+    7. ip route 4.4.4.4 255.255.255.255 192.168.45.4
+BGP配置
+
+    1. R1
+    2. router bgp 100
+    3.  bgp log-neighbor-changes
+    4.  network 1.1.1.0 mask 255.255.255.0
+    5.  neighbor 2.2.2.2 remote-as 345
+    6.     #由于BGP联邦对外是统一AS号，所以在其他的AS上是正常的BGP配置
+    7.  neighbor 2.2.2.2 ebgp-multihop 255
+    8.  neighbor 2.2.2.2 update-source Loopback0
+
+    1. R2
+    2. router bgp 64512
+    3.     #配置为私有AS号
+    4.  bgp log-neighbor-changes
+    5.  bgp confederation identifier 345
+    6.     #设置BGP联邦AS号
+    7.  neighbor 1.1.1.1 remote-as 100
+    8.  neighbor 1.1.1.1 ebgp-multihop 255
+    9.  neighbor 1.1.1.1 update-source Loopback0
+    10.  neighbor 3.3.3.3 remote-as 64512
+    11.  neighbor 3.3.3.3 update-source Loopback0
+    12.  neighbor 3.3.3.3 next-hop-self
+
+    1. R3
+    2. router bgp 64512
+    3.  bgp log-neighbor-changes
+    4.  bgp confederation identifier 345
+    5.  bgp confederation peers 64513 
+    6.     #如果邻居是AS64513,那么按照联邦内EBGP邻居对待（各种路由属性保持不变）
+    7.  neighbor 2.2.2.2 remote-as 64512
+    8.  neighbor 2.2.2.2 update-source Loopback0
+    9.  neighbor 2.2.2.2 next-hop-self
+    10.  neighbor 4.4.4.4 remote-as 64513
+    11.  neighbor 4.4.4.4 ebgp-multihop 255
+    12.  neighbor 4.4.4.4 update-source Loopback0
+    13.  neighbor 4.4.4.4 next-hop-self
+    14.     #由于联邦内EBGP邻居属性不变，导致下一跳不会自己变化，所以需要手工设置
+
+    1. R4
+    2. router bgp 64513
+    3.  bgp log-neighbor-changes
+    4.  bgp confederation identifier 345
+    5.  bgp confederation peers 64512 
+    6.  neighbor 3.3.3.3 remote-as 64512
+    7.  neighbor 3.3.3.3 ebgp-multihop 255
+    8.  neighbor 3.3.3.3 update-source Loopback0
+    9.  neighbor 3.3.3.3 next-hop-self
+    10.  neighbor 5.5.5.5 remote-as 400
+    11.  neighbor 5.5.5.5 ebgp-multihop 255
+    12.  neighbor 5.5.5.5 update-source Loopback0
+
+    1. R5
+    2. router bgp 400
+    3.  bgp log-neighbor-changes
+    4.  network 5.5.5.0 mask 255.255.255.0
+    5.  neighbor 4.4.4.4 remote-as 345
+    6.  neighbor 4.4.4.4 ebgp-multihop 255
+    7.  neighbor 4.4.4.4 update-source Loopback0
+验证
+
+    1. R5
+    2. R5#sh ip bgp
+    3. BGP table version is 3, local router ID is 5.5.5.5
+    4. Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal, 
+    5.               r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter, 
+    6.               x best-external, a additional-path, c RIB-compressed, 
+    7. Origin codes: i - IGP, e - EGP, ? - incomplete
+    8. RPKI validation codes: V valid, I invalid, N Not found
+    9.  
+    10.      Network          Next Hop            Metric LocPrf Weight Path
+    11.  *&gt;  1.1.1.0/24       4.4.4.4                                0 345 100 i
+    12.  *&gt;  5.5.5.0/24       0.0.0.0                  0         32768 i
+    13. R5#
+    14.     #可以看到1.1.1.0/24的AS-Path没有暴露联邦内部的情况
+
+    1. R4
+    2. R4#sh ip bgp
+    3. BGP table version is 3, local router ID is 4.4.4.4
+    4. Status codes: s suppressed, d damped, h history, * valid, &gt; best, i - internal, 
+    5.               r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter, 
+    6.               x best-external, a additional-path, c RIB-compressed, 
+    7. Origin codes: i - IGP, e - EGP, ? - incomplete
+    8. RPKI validation codes: V valid, I invalid, N Not found
+    9.  
+    10.      Network          Next Hop            Metric LocPrf Weight Path
+    11.  *&gt;  1.1.1.0/24       3.3.3.3                  0    100      0 (64512) 100 i
+    12.  *&gt;  5.5.5.0/24       5.5.5.5                  0             0 400 i
+    13. R4#
+    14.     #在联邦内部的AS会用()来标识穿越过的AS，进而防止环路
+
+    1. R5
+    2. R5#ping 1.1.1.1 so 5.5.5.5
+    3. Type escape sequence to abort.
+    4. Sending 5, 100-byte ICMP Echos to 1.1.1.1, timeout is 2 seconds:
+    5. Packet sent with a source address of 5.5.5.5 
+    6. !!!!!
+    7. Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+    8. R5#
+BGP实验
+拓扑
+
+需求
+1、按照如图所示配置好接口的IP地址，在每台路由器上配置loopback0接口，地址为x.x.x.x（x为路由器编号）。所有的PC和Server的IP地址，都要通过8.8.8.8来DHCP获得。
+2、路由器R1、R2、R3配置ospf保障loopback0可达性。路由器R4、R5、R6配置ospf保障loopback0可达性。
+3、路由器R7、R8、R9、R10配置IS-IS区域为49.0001，保障loopback0可达性。路由器R12、R13配置IS-IS区域为49.0001，保障loopback0可达性。
+4、按照如图所示配置好BGP区域20001、20002、10001、10002、10003，要求全部使用loopback0作为bgp的router-id，和用来建立邻居关系。
+5、其中AS10002内部含有两个联邦成员，分别为65111和65112。
+6、在R14上宣告192.168.114.0/24进BGP。R6、R11、R13分别向BGP宣告PC所在的网段。R8宣告loopback0进BGP。
+7、在R14上做NAT，保障Server1和Server2可以访问8.8.8.8，并且当telnet 192.168.114.14的1111端口的时候，是Server1来回应，2222端口是Server2来回应。
+8、在R8上添加A类解析domain.com域名到192.168.114.14。在每台PC上测试telnet domain.com 1111和2222。确保可以正常访问Server1和Server2。
+9、在R13上添加loopback10接口，地址为130.130.130.130/24，并且宣告进BGP。要求该路由不能被除了AS10002以外的区域学习到。
+10、在R14上创建lo10、lo20、lo30、地址为172.16.10.1/24、172.16.20.1/24、172.16.30.1/24。要求在AS10002中只能看到汇总路由，并且该汇总路由保留as_path属性。其他AS可以看到明细路由。
+11、通过as-path access-list在R11上过滤起源于AS10001的路由。并且在R6和R1上重分布外部路由进行测试。
+12、在AS10001中，默认所有的路由都从R4离开AS，只有8.8.8.0/24这条路由是从R5离开AS的，在PC1上进行测试。
+13、要求R13能学习到172.16.0.0这条汇总路由的明细，并且当172.16.0.0/16出现故障的时候，R13上的明细也能消失。
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day8/">
+    <time datetime="2018-08-13T04:28:03.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/08/13/网络笔记day9/" rel="prev"><span class="meta-nav">←</span> 网络笔记day9</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/网络笔记day7/" rel="next">网络笔记day7 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

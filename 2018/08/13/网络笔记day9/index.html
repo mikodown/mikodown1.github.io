@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="• 当一条链路，需要承载多VLAN信息的时候，需使用trunk来实现。• Trunk两端的交换机需采用相同的干道协议。• 一般见于交换机之间或交换机与路由器、服务器之间。802.1Q
+• IEEE公有协议• 插入Tag字段，同时重新计算FCSNative VLAN• Native VLAN所属的帧在经过trunk时不打标签• Native VLAN在Trunk两端必须匹配，否则会出现VLAN流量互串• 默认的native vlan是vlan 1• 建议将一个生僻的VLAN配置为Native vlan" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>网络笔记day9 | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="• 当一条链路，需要承载多VLAN信息的时候，需使用trunk来实现。• Trunk两端的交换机需采用相同的干道协议。• 一般见于交换机之间或交换机与路由器、服务器之间。802.1Q • IEEE公有协议• 插入Tag字段，同时重新计算FCSNative VLAN• Native VLAN所属的帧在经过trunk时不打标签• Native VLAN在Trunk两端必须匹配，否则会出现VLAN流量互">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络笔记day9">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/网络笔记day9/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="• 当一条链路，需要承载多VLAN信息的时候，需使用trunk来实现。• Trunk两端的交换机需采用相同的干道协议。• 一般见于交换机之间或交换机与路由器、服务器之间。802.1Q • IEEE公有协议• 插入Tag字段，同时重新计算FCSNative VLAN• Native VLAN所属的帧在经过trunk时不打标签• Native VLAN在Trunk两端必须匹配，否则会出现VLAN流量互">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T04:32:25.702Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络笔记day9">
+<meta name="twitter:description" content="• 当一条链路，需要承载多VLAN信息的时候，需使用trunk来实现。• Trunk两端的交换机需采用相同的干道协议。• 一般见于交换机之间或交换机与路由器、服务器之间。802.1Q • IEEE公有协议• 插入Tag字段，同时重新计算FCSNative VLAN• Native VLAN所属的帧在经过trunk时不打标签• Native VLAN在Trunk两端必须匹配，否则会出现VLAN流量互">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-网络笔记day9" class="post-网络笔记day9 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      网络笔记day9
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day9/" data-id="cjkrs832y000dhsv6gtbwof2q" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>• 当一条链路，需要承载多VLAN信息的时候，需使用trunk来实现。<br>• Trunk两端的交换机需采用相同的干道协议。<br>• 一般见于交换机之间或交换机与路由器、服务器之间。<br>802.1Q</p>
+<p>• IEEE公有协议<br>• 插入Tag字段，同时重新计算FCS<br>Native VLAN<br>• Native VLAN所属的帧在经过trunk时不打标签<br>• Native VLAN在Trunk两端必须匹配，否则会出现VLAN流量互串<br>• 默认的native vlan是vlan 1<br>• 建议将一个生僻的VLAN配置为Native vlan<br><a id="more"></a><br>拓扑</p>
+<p>配置</p>
+<ol>
+<li>R1&amp;R2&amp;R3&amp;R4</li>
+<li>no ip routing</li>
+<li>int e0/0</li>
+<li>ip add 192.168.xx.xx 255.255.255.0 </li>
+<li><p>no sh</p>
+</li>
+<li><p>SW1</p>
+</li>
+<li>vlan 10</li>
+<li>vlan 20</li>
+<li>int e0/1</li>
+<li>sw mo ac</li>
+<li>sw ac vl 10</li>
+<li>int e0/2</li>
+<li>sw mo ac</li>
+<li>sw ac vl 20</li>
+<li>int e0/3</li>
+<li>sw tr en do</li>
+<li><p>sw mo tr</p>
+</li>
+<li><p>SW2</p>
+</li>
+<li>vlan 10</li>
+<li>vlan 20</li>
+<li>int e0/1</li>
+<li>sw tr en do</li>
+<li>sw mo tr</li>
+<li>int e0/2</li>
+<li>sw tr en do</li>
+<li><p>sw mo tr</p>
+</li>
+<li><p>SW3</p>
+</li>
+<li>vlan 10</li>
+<li>vlan 20</li>
+<li>int e0/2</li>
+<li>sw mo ac</li>
+<li>sw ac vl 10</li>
+<li>int e0/3</li>
+<li>sw mo ac</li>
+<li>sw ac vl 20</li>
+<li>int e0/1</li>
+<li>sw tr en do</li>
+<li>sw mo tr<br>通过抓取SW1的e0/3的数据，我们可以发现802.1q的标签</li>
+</ol>
+<p>我们尝试将VLAN 10 配置为Native VLAN</p>
+<ol start="39">
+<li>SW1</li>
+<li>interface Ethernet0/3</li>
+<li><p>switchport trunk native vlan 10</p>
+</li>
+<li><p>SW2</p>
+</li>
+<li>interface Ethernet0/1</li>
+<li>switchport trunk native vlan 10</li>
+</ol>
+<p>我们将SW1上面native配置为10，SW2上面native配置为20</p>
+<ol start="45">
+<li>SW2</li>
+<li>interface Ethernet0/1</li>
+<li>switchport trunk native vlan 20</li>
+<li><p>*Jul 31 07:26:17.382: %CDP-4-NATIVE_VLAN_MISMATCH: Native VLAN mismatch discovered on Ethernet0/1 (20), with SW1 Ethernet0/3 (10).</p>
+</li>
+<li><p>R1</p>
+</li>
+<li>R1#ping 192.168.20.2</li>
+<li>Type escape sequence to abort.</li>
+<li>Sending 5, 100-byte ICMP Echos to 192.168.20.2, timeout is 2 seconds:</li>
+<li>!!!!!</li>
+<li>Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/1 ms</li>
+<li>R1#<br>综上所述，如果native两边配置不一致，会导致交换机控制台报错，但是依旧转发流量，导致数据传输会串到其他VLAN<br>DTP<br>思科私有<br>用来发现相连的对方也是交换机，然后自动协商成为Trunk<br>默认为主动模式，一般手动关闭<br>trunk    永久干道模式，强制trunk，发送DTP帧<br>Nonegotiate    不发送DTP帧。一般用于对端设备不支持DTP的情况；需搭配手动指定的trunk或access模式命令<br>Desirable    主动尝试将链路成为干道（默认模式），发送DTP帧，如果邻接接口为trunk、desirable、或auto，那么此接口成为Trunk<br>Auto    接口有意愿成为trunk，但是不会主动发送DTP。如果邻接接口被设置为trunk或desirable,那么接口就成为trunk，会被动响应DTP协商数据帧<br>Access    永久的nontrunking模式，并且与对端接口协商，使其成为nontrunking链路</li>
+</ol>
+<p>Allow VLAN<br>Trunk可以设置允许哪些VLAN通过</p>
+<ol start="56">
+<li>SW2#sh int t</li>
+<li></li>
+<li>Port        Mode             Encapsulation  Status        Native vlan</li>
+<li>Et0/1       desirable        802.1q         trunking      10</li>
+<li>Et0/2       on               802.1q         trunking      1</li>
+<li></li>
+<li>Port        Vlans allowed on trunk</li>
+<li>Et0/1       1-4094</li>
+<li>Et0/2       1-4094</li>
+<li>#默认允许通过的VLAN ID范围为1-4094</li>
+<li></li>
+<li>Port        Vlans allowed and active in management domain</li>
+<li>Et0/1       1,10,20</li>
+<li>Et0/2       1,10,20</li>
+<li></li>
+<li>Port        Vlans in spanning tree forwarding state and not pruned</li>
+<li>Et0/1       1,10,20</li>
+<li>Et0/2       1,10,20</li>
+<li><p>SW2#</p>
+</li>
+<li><p>SW2</p>
+</li>
+<li>interface Ethernet0/1</li>
+<li>switchport trunk allowed vlan 1-9,11-4094</li>
+<li>SW2#sh int tr</li>
+<li></li>
+<li>Port        Mode             Encapsulation  Status        Native vlan</li>
+<li>Et0/1       desirable        802.1q         trunking      10</li>
+<li>Et0/2       on               802.1q         trunking      1</li>
+<li></li>
+<li>Port        Vlans allowed on trunk</li>
+<li>Et0/1       1-9,11-4094</li>
+<li>Et0/2       1-4094</li>
+<li></li>
+<li>Port        Vlans allowed and active in management domain</li>
+<li>Et0/1       1,20</li>
+<li>Et0/2       1,10,20</li>
+<li></li>
+<li>Port        Vlans in spanning tree forwarding state and not pruned</li>
+<li>Et0/1       1,20</li>
+<li><p>Et0/2       1,10,20<br>VTP<br>• VTP是思科私有协议<br>• VTP主要作用是用来同步VLAN信息<br>• VTP周期性更新5分钟一次，触发更新<br>• VTP有三种模式<br>○ Server</p>
+<pre><code>§ 可以修改创建删除VLAN信息
+§ 会将VLAN信息传递同步
+</code></pre><p>○ Client</p>
+<pre><code>§ 无法修改创建删除VLAN信息
+§ 会接受Server的VTP信息，并且完成VTP同步
+</code></pre><p>○ Transport<br>可以修改创建删除VLAN信息<br>不受Server的VTP信息影响，只是会帮Server传递。<br>拓扑</p>
+<p>配置步骤</p>
+<pre><code>1. 配置Trunk
+2. 配置VTP
+3. 设置VLAN
+</code></pre><p>配置</p>
+<pre><code>1. SW1
+2. int range e0/1 -2
+3. sw tr en do
+4. sw mo tr
+5. vtp do cisco
+6. vtp mo server
+7. vtp pass cisco
+8. vlan 10
+9. name cisco
+10. vlan 20
+11. name huawei 
+12. vlan 30
+13. name h3c
+
+1. SW2
+2. int e0/1
+3. sw tr en do
+4. sw mo tr
+5. vtp do cisco
+6. vtp mo client
+7. vtp pass cisco
+
+1. SW3
+2. int range e0/1 -2
+3. sw tr en do
+4. sw mo tr
+5. vtp do cisco
+6. vtp mo tr
+7. vtp pass cisco
+
+1. SW4
+2. int e0/1
+3. sw tr en do
+4. sw mo tr
+5. vtp do cisco
+6. vtp mo client
+7. vtp pass cisco
+</code></pre><p>验证</p>
+<pre><code>1. SW2
+2. SW2#sh vlan brief 
+3.  
+4. VLAN Name                             Status    Ports
+5. ---- -------------------------------- --------- -------------------------------
+6. 1    default                          active    Et0/0, Et0/2, Et0/3
+7. 10   cisco                            active    
+8. 20   huawei                           active    
+9. 30   h3c                              active    
+10. 1002 fddi-default                     act/unsup 
+11. 1003 token-ring-default               act/unsup 
+12. 1004 fddinet-default                  act/unsup 
+13. 1005 trnet-default                    act/unsup 
+14. SW2#
+
+1. SW3
+2. SW3#sh vlan br
+3.  
+4. VLAN Name                             Status    Ports
+5. ---- -------------------------------- --------- -------------------------------
+6. 1    default                          active    Et0/0, Et0/3
+7. 1002 fddi-default                     act/unsup 
+8. 1003 token-ring-default               act/unsup 
+9. 1004 fddinet-default                  act/unsup 
+10. 1005 trnet-default                    act/unsup 
+11. SW3#
+
+1. SW4
+2. SW4#sh vlan br
+3.  
+4. VLAN Name                             Status    Ports
+5. ---- -------------------------------- --------- -------------------------------
+6. 1    default                          active    Et0/0, Et0/2, Et0/3
+7. 10   cisco                            active    
+8. 20   huawei                           active    
+9. 30   h3c                              active    
+10. 1002 fddi-default                     act/unsup 
+11. 1003 token-ring-default               act/unsup 
+12. 1004 fddinet-default                  act/unsup 
+13. 1005 trnet-default                    act/unsup 
+14. SW4#
+</code></pre></li>
+</ol>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day9/">
+    <time datetime="2018-08-13T04:28:06.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/08/13/网络笔记day10/" rel="prev"><span class="meta-nav">←</span> 网络笔记day10</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/网络笔记day8/" rel="next">网络笔记day8 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

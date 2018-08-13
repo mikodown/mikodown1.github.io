@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="IS-IS协议简介    • IS-IS是一个链路状态的、内部网关协议。它被设计成适用在OSI无连接网络服务（CLNS：Connctionless Network Service）的环境中。为了提供对IP的路由支持，IETF在RFC1195中对IS-IS进行了扩充和修改，使它能够同时应用在TCP/IP和OSI环境中，称为集成化IS-IS（Integrated IS-IS或Dual IS-IS）    集成型IS-IS和OSPF都是20世纪80年代后期定义的，大约是1988年。OSPF实际上是从IS-IS的早期版本进化而来的，不过它采用IP作为前提。    IS-IS是路由选择协议，传递CLNP的路由信息。在ISO协议族，我们可以把ES终端系统理解为主机，把IS中间系统理解为路由器。因此IS-IS的出生，其实是为CLNS服务的，往后发展成了集成性IS-IS就做了扩展，也就可以支持IP路由了。    IS-IS协议管理距离115" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>网络笔记day4 | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="IS-IS协议简介    • IS-IS是一个链路状态的、内部网关协议。它被设计成适用在OSI无连接网络服务（CLNS：Connctionless Network Service）的环境中。为了提供对IP的路由支持，IETF在RFC1195中对IS-IS进行了扩充和修改，使它能够同时应用在TCP/IP和OSI环境中，称为集成化IS-IS（Integrated IS-IS或Dual IS-IS）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络笔记day4">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/网络笔记day4/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="IS-IS协议简介    • IS-IS是一个链路状态的、内部网关协议。它被设计成适用在OSI无连接网络服务（CLNS：Connctionless Network Service）的环境中。为了提供对IP的路由支持，IETF在RFC1195中对IS-IS进行了扩充和修改，使它能够同时应用在TCP/IP和OSI环境中，称为集成化IS-IS（Integrated IS-IS或Dual IS-IS）">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T04:32:25.582Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络笔记day4">
+<meta name="twitter:description" content="IS-IS协议简介    • IS-IS是一个链路状态的、内部网关协议。它被设计成适用在OSI无连接网络服务（CLNS：Connctionless Network Service）的环境中。为了提供对IP的路由支持，IETF在RFC1195中对IS-IS进行了扩充和修改，使它能够同时应用在TCP/IP和OSI环境中，称为集成化IS-IS（Integrated IS-IS或Dual IS-IS）">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-网络笔记day4" class="post-网络笔记day4 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      网络笔记day4
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day4/" data-id="cjkrs832t0009hsv6mo8m23eb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>IS-IS协议简介<br>    • IS-IS是一个链路状态的、内部网关协议。它被设计成适用在OSI无连接网络服务（CLNS：Connctionless Network Service）的环境中。为了提供对IP的路由支持，IETF在RFC1195中对IS-IS进行了扩充和修改，使它能够同时应用在TCP/IP和OSI环境中，称为集成化IS-IS（Integrated IS-IS或Dual IS-IS）<br>    集成型IS-IS和OSPF都是20世纪80年代后期定义的，大约是1988年。OSPF实际上是从IS-IS的早期版本进化而来的，不过它采用IP作为前提。<br>    IS-IS是路由选择协议，传递CLNP的路由信息。在ISO协议族，我们可以把ES终端系统理解为主机，把IS中间系统理解为路由器。因此IS-IS的出生，其实是为CLNS服务的，往后发展成了集成性IS-IS就做了扩展，也就可以支持IP路由了。<br>    IS-IS协议管理距离115<br><a id="more"></a><br>osi协议栈术语</p>
+<p>ISO编址</p>
+<p>is-is邻居类型<br>Leve1只能和Leve1建立邻居<br>Leve2只能和Leve2建立邻居<br>Leve1/2可以和任意路由器建立邻居<br>Leve1<br>用于一个区域内部的路由器，L1路由器只能和自己区域号一致的L1路由器建立邻居<br>L1路由器是无法学习到其他区域的路由条目，类似于OSPF的T-Stub区域中的路由器<br>Leve2<br>只能与L2路由器建立邻居关系，无论对方是否是自己这个区域的，都可以建立L2邻居关系<br>L2路由器可以学习到全网路由<br>Leve1/2（默认）<br>以上所有特点都有<br>可以学习到全网路由</p>
+<p>拓扑</p>
+<p>配置</p>
+<pre><code>1. R1
+2. interface Loopback0
+3. ip address 1.1.1.1 255.255.255.0
+4. ip router isis 
+5. !         
+6. interface Ethernet0/0
+7. ip address 192.168.123.1 255.255.255.0
+8. ip router isis 
+9. !
+10. router isis
+11. net 49.0001.0000.0000.0001.00
+12. is-type level-1
+13. log-adjacency-changes
+
+1. R2
+2. interface Loopback0
+3. ip address 2.2.2.2 255.255.255.0
+4. ip router isis 
+5. !
+6. interface Ethernet0/0
+7. ip address 192.168.123.2 255.255.255.0
+8. ip router isis 
+9. !
+10. interface Ethernet0/1
+11. ip address 192.168.24.2 255.255.255.0
+12. ip router isis 
+13. !
+14. router isis
+15. net 49.0001.0000.0000.0002.00
+16. log-adjacency-changes
+
+1. R3
+2. interface Loopback0
+3. ip address 3.3.3.3 255.255.255.0
+4. ip router isis 
+5. !
+6. interface Ethernet0/0
+7. ip address 192.168.123.3 255.255.255.0
+8. ip router isis 
+9. !
+10. interface Ethernet0/1
+11. ip address 192.168.34.3 255.255.255.0
+12. ip router isis 
+13. !
+14. router isis
+15. net 49.0001.0000.0000.0003.00
+
+1. R4
+2. interface Loopback0
+3. ip address 4.4.4.4 255.255.255.0
+4. ip router isis 
+5. !         
+6. interface Ethernet0/0
+7. ip address 192.168.24.4 255.255.255.0
+8. ip router isis 
+9. !
+10. interface Ethernet0/1
+11. ip address 192.168.34.4 255.255.255.0
+12. ip router isis 
+13. !
+14. interface Ethernet0/2
+15. ip address 192.168.45.4 255.255.255.0
+16. ip router isis 
+17. !
+18. router isis
+19. net 49.0002.0000.0000.0004.00
+20. is-type level-2-only
+
+1. R5
+2. interface Loopback0
+3. ip address 5.5.5.5 255.255.255.0
+4. ip router isis 
+5. !         
+6. interface Ethernet0/0
+7. ip address 192.168.45.5 255.255.255.0
+8. ip router isis 
+9. !
+10. router isis
+11. net 49.0003.0000.0000.0005.00
+12. is-type level-2-only
+</code></pre><p>验证</p>
+<pre><code>1. R1
+2. R1#sh isis nei
+3. System Id      Type Interface   IP Address      State Holdtime Circuit Id
+4. R2             L1   Et0/0       192.168.123.2   UP    22       R3.01    
+5. R3             L1   Et0/0       192.168.123.3   UP    8        R3.01        
+6. R1#sh ip route isis
+7. i*L1  0.0.0.0/0 [115/10] via 192.168.123.3, 00:04:38, Ethernet0/0
+8. [115/10] via 192.168.123.2, 00:04:38, Ethernet0/0
+9. 2.0.0.0/24 is subnetted, 1 subnets
+10. i L1     2.2.2.0 [115/20] via 192.168.123.2, 00:07:09, Ethernet0/0
+11. 3.0.0.0/24 is subnetted, 1 subnets
+12. i L1     3.3.3.0 [115/20] via 192.168.123.3, 00:05:42, Ethernet0/0
+13. i L1  192.168.24.0/24 [115/20] via 192.168.123.2, 00:07:09, Ethernet0/0
+14. i L1  192.168.34.0/24 [115/20] via 192.168.123.3, 00:05:42, Ethernet0/0
+15. R1#
+
+1. R4
+2. R4#sh isis nei
+3. System Id      Type Interface   IP Address      State Holdtime Circuit Id
+4. R2             L2   Et0/0       192.168.24.2    UP    26       R4.01          
+5. R3             L2   Et0/1       192.168.34.3    UP    23       R4.02        
+6. R5             L2   Et0/2       192.168.45.5    UP    8        R5.01        
+7. R4#sh ip route isis
+8. 1.0.0.0/24 is subnetted, 1 subnets
+9. i L2     1.1.1.0 [115/30] via 192.168.34.3, 00:06:03, Ethernet0/1
+10. [115/30] via 192.168.24.2, 00:06:03, Ethernet0/0
+11. 2.0.0.0/24 is subnetted, 1 subnets
+12. i L2     2.2.2.0 [115/20] via 192.168.24.2, 00:06:03, Ethernet0/0
+13. 3.0.0.0/24 is subnetted, 1 subnets
+14. i L2     3.3.3.0 [115/20] via 192.168.34.3, 00:06:03, Ethernet0/1
+15. 5.0.0.0/24 is subnetted, 1 subnets
+16. i L2     5.5.5.0 [115/20] via 192.168.45.5, 00:02:02, Ethernet0/2
+17. i L2  192.168.123.0/24 [115/20] via 192.168.34.3, 00:06:03, Ethernet0/1
+18. [115/20] via 192.168.24.2, 00:06:03, Ethernet0/0
+19. R4#
+
+1. R5
+2. R5#ping 1.1.1.1
+3. Type escape sequence to abort.
+4. Sending 5, 100-byte ICMP Echos to 1.1.1.1, timeout is 2 seconds:
+5. !!!!!
+6. Success rate is 100 percent (5/5), round-trip min/avg/max = 1/1/2 ms
+7. R5#
+</code></pre><p>DIS和PSN<br>    • Designated IS（DIS）<br>        ○ 类似OSPF中DR的概念<br>        ○ 在广播多路访问网络中，一台router会被选举为DIS，点对点网络不需要DIS<br>        ○ Level1有level1的DIS，Level2有Level2的DIS，选举结果有可能不一样<br>        ○ 与OSPF不同的是，DIS是可抢占的，并且不存在备份DIS。当一个DIS挂掉了，直接再选举。<br>        ○ DIS发送HELLO数据包的时间间隔是普通router的1/3（默认是3.3S），这样可以确保DIS出现故障的时候能够被更快速的被发现。<br>    • PseudoNode（PSN）<br>        ○ 也叫伪节点，是广播多路访问网络中的一台虚拟路由器，由DIS创建<br>        ○ DIS在“伪节点LSP”（类似于OSPF中的LSA）中通告LAN中的所有邻居<br>        ○ LAN中的所有路由器在它们的LSP中通告自己与伪节点的连接性（自己和伪节点的邻接关系）<br>        ○ PSN可以减少泛洪扩散和数据库同步的数量。<br>选举DIS的顺序<br>    • 接口优先级（默认64），注意与OSPF不同的是，优先级为0的IS也参与DIS的选举，优先级数值越大越优。<br>    • SNPA（Subnetwork point of attachment），比大<br>        ○ 在LAN中，SNPA指的是MAC地址<br>        ○ 在帧中继网络中，SNPA是DLCI<br>    • 系统ID，比大<br>注意：DIS是可抢占的，而且没有备份的DIS，也就是说当DIS挂掉了，立即重选。</p>
+<pre><code>1. R2#sh isis database 
+2.  
+3. IS-IS Level-1 Link State Database:
+4. LSPID                 LSP Seq Num  LSP Checksum  LSP Holdtime      ATT/P/OL
+5. R1.00-00              0x0000000B   0x8EF3        1187              0/0/0
+6. R1.01-00              0x00000002   0xA41F        1185              0/0/0
+7. #.后面的数字如果不是00-00那么代表这条LSP是伪节点产生的
+8. R2.00-00            * 0x0000000D   0x2F25        1197              1/0/0
+9. R3.00-00              0x00000009   0xBF85        1187              1/0/0
+</code></pre><p>OSI pdu<br>Hello<br>    建立和维护邻居关系<br>    普通路由器10s一次pns路由器3.3s一次 三倍hello时间没收到就判定邻居的down<br>Lsp<br>    用来发布数据链路状态<br>    刷新时间 900s 刷新LSP<br>    数据库中的链路状态信息寿命时1200s<br>Csnp<br>    （完全序列号pdu）<br>    完整的更新信息，用于刷新其他路由稀奇的lspdb<br>Psnp<br>    部分更新信息，用来确认和请求链路状态信息<br>链路状态数据库</p>
+<p>R1、R4作为L1 router，只维护Level1的链路状态数据库，R2、R3是L1/L2 router，因此维护两个互相独立的L1链路状态数据库及L2链路状态数据库。那么，如果骨干中，若有一台路由器并不与L1 router相连，可以配置为L2 router。<br>LSP主要包含如下信息<br>区域信息<br>邻接路由器<br>IP子网<br>度量值<br>认证信息</p>
+<p>LSPID<br>标识着这条LSP是从谁那边收到的，一般会使用hostname来标识<br>可以使用如下命令查看hostname和SystemID的对应关系<br>R2#sh isis hostname<br>Level  System ID      Dynamic Hostname  (notag)<br> 1     0000.0000.0001 R1</p>
+<pre><code>* 0000.0000.0002 R2
+</code></pre><p> 2     0000.0000.0003 R3<br> 2     0000.0000.0004 R4<br> 2     0000.0000.0005 R5<br>R2#<br>LSP Seq Num<br>序列号为16进制，由0x00000001变为0xffffffff<br>如果序列号到头，那么路由器就会停止运行1260s，以此来刷新整个数据库<br>这种情况其实不会出现，因为即使每秒钟产生一个LSP，也要到136年后序列号才能从1达到0XFFFFFFFF。<br>LSP Holdtime<br>1200s的老化时间<br>每隔900s刷新一次<br>ATT/P/OL<br>ATT<br>用于表示这条LSP是否携带默认路由<br>P<br>用于标识发送这个LSP的路由器是否使用了区域修复<br>OL<br>用户标识发送这个LSP的路由器是否已经过载，如果过载，转发数据时尽量避开<br>IS-IS metric<br>Default metric 所有IS-IS路由器都支持，被解释成跟带宽成反比的度量方式，越小越优先<br>Delay metric 可选，链路的传输延迟，不支持<br>Expense metric 可选，链路的传输开销，不支持<br>Error metric 可选，链路的出错概率，不支持<br>在CISCO IOS路由器中，IOS无法自动分配基于带宽的链路（接口）度量，无论链路的带宽多少，所有的接口默认IS-IS度量都是10，一完整路径的最大度量值是1023</p>
+<p>默认路由的产生<br>    默认路由只能由l2和l1-l2上个产生<br>    等同ospf<br>    Router isis<br>    No default-information originate</p>
+<p>汇总路由<br>    由于链路状态路由协议的特性，无法在同一区域中汇总<br>    hi总必须在l2或l1-l2上进行<br>    汇总的那台路由器，本地会产生一条指向Null0的汇总路由</p>
+<pre><code>    1. R5(config)#router isis 
+    2. R5(config-router)#summary-address 172.16.0.0 255.255.0.0 level-2
+    3. R5#sh ip route isis
+    4. 1.0.0.0/24 is subnetted, 1 subnets
+    5. i L2     1.1.1.0 [115/40] via 192.168.45.4, 00:14:23, Ethernet0/0
+    6. 2.0.0.0/24 is subnetted, 1 subnets
+    7. i L2     2.2.2.0 [115/30] via 192.168.45.4, 00:32:13, Ethernet0/0
+    8. 3.0.0.0/24 is subnetted, 1 subnets
+    9. i L2     3.3.3.0 [115/30] via 192.168.45.4, 00:32:13, Ethernet0/0
+    10. 4.0.0.0/24 is subnetted, 1 subnets
+    11. i L2     4.4.4.0 [115/20] via 192.168.45.4, 00:32:13, Ethernet0/0
+    12. i L2  10.0.0.0/8 [115/40] via 192.168.45.4, 00:02:34, Ethernet0/0
+    13. 172.16.0.0/16 is variably subnetted, 7 subnets, 3 masks
+    14. i su     172.16.0.0/16 [115/10] via 0.0.0.0, 00:04:41, Null0
+    15. i L2  192.168.24.0/24 [115/20] via 192.168.45.4, 00:32:13, Ethernet0/0
+    16. i L2  192.168.34.0/24 [115/20] via 192.168.45.4, 00:32:13, Ethernet0/0
+    17. i L2  192.168.123.0/24 [115/30] via 192.168.45.4, 00:32:13, Ethernet0/0
+本区域产生的路由条目，只能在本区域的L2或L1/L2上被汇总，无法汇总其他区域的路由
+
+
+路由泄露
+由于L1路由器无法学习到其他区域的条目，只能通过做尽调l1/l2路由下发的默认路由离开所在区域。所以有时候会出现次优路径
+可以尝试着在L1/L2路由器上泄露一部分L2的条目到L1路由器上，
+来防止这种情况的发生
+
+    access-list 100 permit IP 5.5.5.0 0.0.0.0 255.255.255.0 0.0.0.0
+    Redistribute isis ip level-2 into level
+
+ISIS认证
+IS-IS支持明文及密文MD5认证。下面做个小小的汇总：
+
+明文接口认证
+我们可以为IS-IS的level1或level2分配一个接口认证密码。如果不指定level2，则默认的level1的认证。如果接口开启了明文认证，那么密码会被插入到所有的IS-IS报文中：IIH、LSP、CSNP、以及PSNP（基于特定的level）。实际在CISCO设备上抓包的时候，发现只有IIH中携带了明文的密码信息（放在用于认证的TLV中）， 其他报文没有看到。
+命令如下（接口级别）：
+Isis password &lt;string&gt;
+
+明文area认证
+区域验证，其实就是Level1 area的验证。在一台IS-IS路由器上增加了区域验证后，其将会检查自己收到的IS-IS报文，如果报文中没有验证信息或者错误，则忽略。而其自身在产生的IS-IS报文则会携带验证信息，如果接收方没有配置区域认证，在接收到这些携带了验证信息的报文后，仍然可以正常的学习。Area认证的认证信息只会包含在LSPs报文中，其他报文不包含。命令如下（路由进程中）：
+area-password &lt;string&gt;
+
+明文domain认证
+是在Level2 LSP、CSNP、PSNP中插入密码。命令如下（路由进程中）：
+domain-password &lt;string&gt;
+在CISCO IOS上，我经过抓包验证，发现使用domain认证，IIH报文、CSNP、PSNP是不携带认证信息的，LSP则携带用于认证的TLV
+
+密文接口认证
+原理与明文接口认证差不多，只不过可以给予HMAC-MD5认证
+
+密文LSPs认证
+在LSP中携带密文的认证信息，可以指定level1或level2的密文lsp认证
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day4/">
+    <time datetime="2018-08-13T04:26:51.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/08/13/网络笔记day5/" rel="prev"><span class="meta-nav">←</span> 网络笔记day</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/网络笔记day3/" rel="next">网络笔记day3 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

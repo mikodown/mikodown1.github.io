@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="二层网络冗余    交换网络由于需要提供快速稳定的内网环境，所以冗余成为了必须要考虑的因素    二层线路冗余带来的问题
+    • 广播风暴
+    • 抖动的MAC地址表
+    • 重复收到同一个广播帧
+怎样的网络存在不会环路的情况
+
+但是这样的网络又不具备冗余性
+
+但是这样的网络又会出现环路，我们从中心根节点发出桥协议数据单元（BPDU），规定其他节点收到BPDU就传递下去
+
+这样除了根节点，
+其他节点都发现自己会从不同的接口都收到根节点发送的BPDU，如果一台交换机从多个口都收到BPDU，那么证明环路了，交换机就会保留收到最佳BPDU的那个端口，其他端口都阻塞，直到最佳BPDU的端口不再收到，那么就会释放其他端口
+
+最终网络的逻辑拓扑又变成了没环路的样子，但是物理是有冗余的，如果出现线路故障，可以自己发现和恢复。" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>网络笔记day10 | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="二层网络冗余    交换网络由于需要提供快速稳定的内网环境，所以冗余成为了必须要考虑的因素    二层线路冗余带来的问题     • 广播风暴     • 抖动的MAC地址表     • 重复收到同一个广播帧 怎样的网络存在不会环路的情况  但是这样的网络又不具备冗余性  但是这样的网络又会出现环路，我们从中心根节点发出桥协议数据单元（BPDU），规定其他节点收到BPDU就传递下去  这样除了根节">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络笔记day10">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/网络笔记day10/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="二层网络冗余    交换网络由于需要提供快速稳定的内网环境，所以冗余成为了必须要考虑的因素    二层线路冗余带来的问题     • 广播风暴     • 抖动的MAC地址表     • 重复收到同一个广播帧 怎样的网络存在不会环路的情况  但是这样的网络又不具备冗余性  但是这样的网络又会出现环路，我们从中心根节点发出桥协议数据单元（BPDU），规定其他节点收到BPDU就传递下去  这样除了根节">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T04:32:25.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络笔记day10">
+<meta name="twitter:description" content="二层网络冗余    交换网络由于需要提供快速稳定的内网环境，所以冗余成为了必须要考虑的因素    二层线路冗余带来的问题     • 广播风暴     • 抖动的MAC地址表     • 重复收到同一个广播帧 怎样的网络存在不会环路的情况  但是这样的网络又不具备冗余性  但是这样的网络又会出现环路，我们从中心根节点发出桥协议数据单元（BPDU），规定其他节点收到BPDU就传递下去  这样除了根节">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-网络笔记day10" class="post-网络笔记day10 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      网络笔记day10
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day10/" data-id="cjkrs832q0007hsv6oxmsace9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>二层网络冗余<br>    交换网络由于需要提供快速稳定的内网环境，所以冗余成为了必须要考虑的因素<br>    二层线路冗余带来的问题</p>
+<pre><code>    • 广播风暴
+    • 抖动的MAC地址表
+    • 重复收到同一个广播帧
+怎样的网络存在不会环路的情况
+
+但是这样的网络又不具备冗余性
+
+但是这样的网络又会出现环路，我们从中心根节点发出桥协议数据单元（BPDU），规定其他节点收到BPDU就传递下去
+
+这样除了根节点，
+其他节点都发现自己会从不同的接口都收到根节点发送的BPDU，如果一台交换机从多个口都收到BPDU，那么证明环路了，交换机就会保留收到最佳BPDU的那个端口，其他端口都阻塞，直到最佳BPDU的端口不再收到，那么就会释放其他端口
+
+最终网络的逻辑拓扑又变成了没环路的样子，但是物理是有冗余的，如果出现线路故障，可以自己发现和恢复。
+</code></pre><a id="more"></a>
+<pre><code>802.1D
+BPDU
+
+
+
+
+其他节点都发现自己会从不同的接口都收到根节点发送的BPDU，如果一台交换机从多个口都收到BPDU，那么证明环路了，交换机就会保留收到最佳BPDU的那个端口，其他端口都阻塞，直到最佳BPDU的端口不再收到，那么就会释放其他端口
+
+最终网络的逻辑拓扑又变成了没环路的样子，但是物理是有冗余的，如果出现线路故障，可以自己发现和恢复。
+802.1D
+BPDU
+
+
+
+
+
+网桥ID
+
+桥优先级
+在802.1D中，桥优先级是2个字节，不存在桥扩展ID
+默认桥优先级为32768，是范围0~65535的一半
+桥系统ID
+就是MAC地址，由于一台交换机存在很多个MAC地址，会使用最小的那个MAC地址
+
+    1. SW1#sh int | in bia
+    2. Hardware is AmdP2, address is aabb.cc00.1000 (bia aabb.cc00.1000)
+    3. Hardware is AmdP2, address is aabb.cc00.1010 (bia aabb.cc00.1010)
+    4. Hardware is AmdP2, address is aabb.cc00.1020 (bia aabb.cc00.1020)
+    5. Hardware is AmdP2, address is aabb.cc00.1030 (bia aabb.cc00.1030)
+    6. Hardware is Ethernet SVI, address is aabb.cc80.1000 (bia aabb.cc80.1000)
+    7. SW1#
+COST
+
+端口ID
+2字节
+    • 1个字节的优先级，默认为范围0~255的一半，即128
+    • 1个字节的端口ID，第几个端口，ID就是几
+生成树的判断依据
+• 每个广播域选择一个根桥
+    ○ 桥ID最小的
+    ○ 根桥可抢占
+• 每个非根桥上选择一个根端口
+    ○ 最低根桥ID 
+    ○ 到根桥的最低路径成本 
+    ○ 最低的发送者网桥ID 
+    ○ 最低的发送者端口ID 
+• 每个段选择一个指定端口
+    ○ 最低根桥ID
+    ○ 到根桥的最低路径成本
+    ○ 最低的发送者网桥ID
+    ○ 最低的发送者端口ID
+• 选择一个非指定端口
+    ○ 什么角色都没抢到的通通阻塞
+</code></pre><p>在根桥上查看</p>
+<pre><code>1. Sw1#show spanning-tree 
+2. VLAN0001
+3. Spanning tree enabled protocol ieee
+4. Root ID    Priority    32769
+5. Address     aabb.cc00.1000
+6. This bridge is the root
+7. Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+8.  
+9. Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)
+10. Address     aabb.cc00.1000
+11. Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+12. Aging Time  300 sec
+13.  
+14. Interface           Role Sts Cost      Prio.Nbr Type
+15. ------------------- ---- --- --------- -------- --------------------------------
+16. Et0/0               Desg FWD 100       128.1    Shr 
+17. Et0/1               Desg FWD 100       128.2    Shr 
+18. Et0/2               Desg FWD 100       128.3    Shr 
+19. Et0/3               Desg FWD 100       128.4    Shr 
+20. Sw1#
+</code></pre><p>在非根桥上查看</p>
+<ol>
+<li>SW2#sh spanning-tree </li>
+<li>VLAN0001</li>
+<li>Spanning tree enabled protocol ieee</li>
+<li>Root ID    Priority    32769</li>
+<li>Address     aabb.cc00.1000</li>
+<li>Cost        100</li>
+<li>Port        2 (Ethernet0/1)</li>
+<li>Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec</li>
+<li></li>
+<li>Bridge ID  Priority    32769  (priority 32768 sys-id-ext 1)</li>
+<li>Address     aabb.cc00.2000</li>
+<li>Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec</li>
+<li>Aging Time  300 sec</li>
+<li></li>
+<li>Interface           Role Sts Cost      Prio.Nbr Type</li>
+<li><hr>
+</li>
+<li>Et0/0               Desg FWD 100       128.1    Shr </li>
+<li>Et0/1               Root FWD 100       128.2    Shr </li>
+<li>Et0/2               Desg FWD 100       128.3    Shr </li>
+<li>Et0/3               Desg FWD 100       128.4    Shr </li>
+<li>SW2#</li>
+</ol>
+<p>端口状态</p>
+<p>STP拓扑变更</p>
+<pre><code>• SwitchA挂掉
+• SwitchB最先检测到拓扑变化，于是产生TCN BPDU并从根端口发送出去（因为根端口是朝着根桥的方向），B将连续发送TCN BPDU直到指定交换机C发送TCN ACK进行确认
+• SwitchB收到这个TCN BPDU，回送一个TCN ACK进行确认，同时向自己的根端口转发这个TCN BPDU
+• Root收到这个TCN，回送一个TCN ACK给C。
+• Root修改自己的配置BPDU，以此来通告整个交换网络关于拓扑变更的情况。Root在配置BPDU中设置一段时间的拓扑变更（TC标志），这段时间等于转发延迟+Max. Age，默认35S
+• 当交换机收到Root发出的这个TC标志置位的配置BPDU，它们使用转发延迟计时器（默认15S）来更新其MAC地址表中的条目。也就是说条目的寿命由原来的300S的默认值变成15S，这样能保证MAC地址条目更快速的刷新。交换机将持续这个过程，直到不再从Root收到TC BPDU消息为止。
+</code></pre><p>PVST+<br>原理<br>802.1D将所有的VLAN都放在一颗生成树中，导致哪怕二层交换网络再多的冗余线路也只有一条固定的线路有流量<br>思科私有的PVST+可以一个VLAN一颗生成树，每棵生成树都可以单独的设置根桥改变阻塞接口，这样可以做到不同的VLAN选择不同的路线<br>不过在VLAN数量众多的情况下，会导致交换机的负载过高。</p>
+<p>扩展的系统ID<br>原理<br>扩展系统id<br>• CISCO CATALYST交换机的MAC地址池最多可以容纳1024个地址，交换机的型号决定了可用MAC的数目，并不是所有catalyst交换机都能支持到这么多个MAC<br>• 这些MAC地址作为VLAN生成树中的网桥ID的MAC地址部分。不同的交换机型号支持不同的可用MAC地址数目。交换机依照次序分配MAC地址<br>• Show run int | include bia 能看到所有的MAC，其中第一个MAC将被生成树使用，也就是CPU的MAC。接下去就是每个以太网接口的MAC。<br>• 我们知道交换机能够支持的VLAN的数据是很庞大的，如果开启PVST+，每个VLAN一棵生成树，而没棵生成树都要有一个独立的标识，都需要耗费一个MAC的话，那么MAC地址池肯定是无法承受的。<br>• 因此需要使用到MAC地址缩减方案</p>
+<p>拓扑</p>
+<p>配置</p>
+<pre><code>1. SW1
+2. SW1(config)#spanning-tree vlan 10 root primary 
+3. SW1(config)#spanning-tree vlan 20 root secondary
+
+1. SW2
+2. SW2(config)#spanning-tree vlan 10 root secondary 
+3. SW2(config)#spanning-tree vlan 20 root primary
+</code></pre><p>验证</p>
+<pre><code>1. SW1
+2. SW1#sh spanning-tree 
+3. VLAN0010
+4. Spanning tree enabled protocol ieee
+5. Root ID    Priority    24586
+6. Address     aabb.cc00.1000
+7. This bridge is the root
+8. Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+9.  
+10. Bridge ID  Priority    24586  (priority 24576 sys-id-ext 10)
+11. Address     aabb.cc00.1000
+12. Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+13. Aging Time  300 sec
+14.  
+15. Interface           Role Sts Cost      Prio.Nbr Type
+16. ------------------- ---- --- --------- -------- --------------------------------
+17. Et0/1               Desg FWD 100       128.2    Shr 
+18. Et0/2               Desg FWD 100       128.3    Shr 
+19.  
+20. VLAN0020
+21. Spanning tree enabled protocol ieee
+22. Root ID    Priority    24596
+23. Address     aabb.cc00.2000
+24. Cost        100
+25. Port        2 (Ethernet0/1)
+26. Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+27.  
+28. Bridge ID  Priority    28692  (priority 28672 sys-id-ext 20)
+29. Address     aabb.cc00.1000
+30. Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+31. Aging Time  300 sec
+32.  
+33. Interface           Role Sts Cost      Prio.Nbr Type
+34. ------------------- ---- --- --------- -------- --------------------------------
+35. Et0/1               Root FWD 100       128.2    Shr 
+36. Et0/2               Desg FWD 100       128.3    Shr 
+37. SW1# 
+
+1. SW2
+2. SW2#sh spanning-tree 
+3. VLAN0010
+4. Spanning tree enabled protocol ieee
+5. Root ID    Priority    24586
+6. Address     aabb.cc00.1000
+7. Cost        100
+8. Port        2 (Ethernet0/1)
+9. Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+10.  
+11. Bridge ID  Priority    28682  (priority 28672 sys-id-ext 10)
+12. Address     aabb.cc00.2000
+13. Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+14. Aging Time  300 sec
+15.  
+16. Interface           Role Sts Cost      Prio.Nbr Type
+17. ------------------- ---- --- --------- -------- --------------------------------
+18. Et0/1               Root FWD 100       128.2    Shr 
+19. Et0/2               Desg FWD 100       128.3    Shr 
+20. VLAN0020
+21. Spanning tree enabled protocol ieee
+22. Root ID    Priority    24596
+23. Address     aabb.cc00.2000
+24. This bridge is the root
+25. Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+26.  
+27. Bridge ID  Priority    24596  (priority 24576 sys-id-ext 20)
+28. Address     aabb.cc00.2000
+29. Hello Time   2 sec  Max Age 20 sec  Forward Delay 15 sec
+30. Aging Time  300 sec
+31.  
+32. Interface           Role Sts Cost      Prio.Nbr Type
+33. ------------------- ---- --- --------- -------- --------------------------------
+34. Et0/1               Desg FWD 100       128.2    Shr 
+35. Et0/2               Desg FWD 100       128.3    Shr 
+36. SW2# 
+</code></pre><p>Portfast<br>    • Portfast接口不参与生成树计算，直接为FWD，经历15s的listening和15s的learning<br>    • 只能配置在连接终端设备的接口上，不然会环路<br>    • 有时候与服务器建立Trunk可能会在Trunk上配置PortFast</p>
+<ol>
+<li>SW1(config)#int e0/3</li>
+<li>SW1(config-if)#spanning-tree portfast [trunk]</li>
+</ol>
+<p>RSTP<br>RSTP为快速生成树，用来解决802.1D收敛速度较慢的问题<br>RSTP修改了BPDU的type字段，其中7位和0位是一对，6位和1位是一对</p>
+<p>Proposal agreement的机制是非常快速的，因为它们不用受限于任何计时器，这个握手机制会迅速的蔓延到整个交换网络末梢，并且能在拓扑发生变更的时候迅速收敛。<br>如果一个designated discarding接口在发出proposal后，没有收到agreement，它将慢慢的过渡到forwarding状态，这种情况有可能发生在对交换机不理解RSTP BPDUs或者对端交换机的端口被block的情况。</p>
+<p>MSTP</p>
+<p>PVRST+是每个VLAN维护一颗生成树<br>园区网中VLAN的数量往往比较庞大，如此一来设备为了给每个单独的VLAN维护一颗生成树，资源消耗特别大，管理也不方便。<br>因此MSTP是一个更优的解决方案，将多个VLAN放到一个实例组中，然后一个实例一颗生成树</p>
+<p>配置<br>spanning-tree mode mst<br>spanning-tree extend system-id<br>spanning-tree mst configuration<br> instance 10 vlan 10, 20<br> instance 20 vlan 30, 40<br>spanning-tree mst 10 priority 28672<br>spanning-tree mst 20 priority 24576</p>
+<p>各个生成树协议对比</p>
+<p>生成树的各种特性（扩展内容）</p>
+<p>生成树的各种特性（扩展内容）<br>PortFast<br>Portfast接口不参与生成树计算，直接为FWD，经历15s的listening和15s的learning<br>只能配置在连接终端设备的接口上，不然会环路<br>有时候与服务器建立Trunk可能会在Trunk上配置PortFast<br>SW1(config)#int e0/3<br>SW1(config-if)#spanning-tree portfast [trunk]﻿​<br>SW2(config)#spanning-tree portfast default</p>
+<pre><code>#全局配置模式下可以将所有的接口都配置PortFast，然后可以单独到接口下去no掉
+</code></pre><p>%MCEPASTEBIN%<br>BPDUGuard<br>该接口在收到BPDU报文后，会立即切换到err-disable状态<br>常搭配portfast特性在接口上一起使用，用于连接主机<br>可在接口模式上激活，也可在全局模式上配置<br>interface Ethernet0/1<br> spanning-tree bpduguard enable<br>BPDUFilter<br>全局配置：spanning-tree portfast bpdufilter default<br>启用了portfast的接口将激活bpdufilter特性<br>上述接口在link up后瞬间会发送BPDU（a few），此后不在发送任何BPDU<br>上述接口在收到BPDU后立即丢失portfast及bpdufilter特性，成为一个普通的spanning-tree接口<br>接口配置： spanning-tree bpdufilter enable<br>该接口将不会发送BPDU，也忽略接收到的BPDU<br>Enabling BPDU filtering on an interface is the same as disabling spanning tree on it and can result in spanning-tree loops.<br>在接口上配置，不一定必须portfast特性，可独立实施。当然，建议搭配portfast特性使用。</p>
+<p>Uplink fast</p>
+<p>Backbonefast<br>SW1(config)#spanning-tree backbonefast<br>SW2(config)#spanning-tree backbonefast<br>SW3(config)#spanning-tree backbonefast</p>
+<p>Rootguard</p>
+<p>注意inconsistent跟err-diasble的区别是，err-disable会disable掉整个接口，而inconsistentport是针对特定的VLAN的。<br>LoopGuard<br>软件的方式检测单向链路故障<br>如果发现单向链路故障则将接口进入inconsistent<br>UDLD<br>硬件的方式检测单向链路故障<br>如果发现单向链路故障则看模式<br>Normal Mode:检测到单向链路故障后，仅仅触发一个syslog<br>Aggressive Mode:检测到单向链路故障后，每一秒发送1个报文，连续发8秒，如果这些报文都丢失了，则将接口shutdown(err-disable)</p>
+<p>vlan之间的通信<br>    三层交换机 </p>
+<p>管理VLAN<br>哪怕是二层交换机，都允许你配置一个SVI，不过二层交换机不具备路由功能，只能当成PC来配置默认网关，然后就可以远程telnet登录了。<br>这个管理的SVI所属的那个VLAN我们称为管理VLAN，为了安全，公司内网会专门划分一个VLAN用于管理VLAN，在这个VLAN中的地址都是管理使用的。</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day10/">
+    <time datetime="2018-08-13T04:28:10.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/08/13/网络笔记day11/" rel="prev"><span class="meta-nav">←</span> 网络笔记day11</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/网络笔记day9/" rel="next">网络笔记day9 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
