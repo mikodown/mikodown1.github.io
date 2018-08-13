@@ -4,6 +4,14 @@
   <meta charset="utf-8">
   
   
+  <meta name="description" content="距离矢量路由协议    路由器会将参与距离矢量协议的路由周期性更新给新邻居    典型代表 rip eigrp
+Rip
+RIP目前有三个版本 v1 v2 ng
+
+RIPv1
+管理距离120，更新使用UDP520，更新周期30s，使用跳数作为度量值，最大为15
+所有的更新消息使用255.255.255" />
+  
 
   
   
@@ -11,15 +19,19 @@
   
   
   
-  <title>Welcome my friend！</title>
+  <title>网络笔记day2 | Welcome my friend！</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Welcome my friend！">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="距离矢量路由协议    路由器会将参与距离矢量协议的路由周期性更新给新邻居    典型代表 rip eigrp Rip RIP目前有三个版本 v1 v2 ng  RIPv1 管理距离120，更新使用UDP520，更新周期30s，使用跳数作为度量值，最大为15 所有的更新消息使用255.255.255.255这个目的地址 更新消息中不包含子网掩码等信息，所以不支持对子网掩码的操作比如VLSM，CID">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网络笔记day2">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/网络笔记day2/index.html">
 <meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="距离矢量路由协议    路由器会将参与距离矢量协议的路由周期性更新给新邻居    典型代表 rip eigrp Rip RIP目前有三个版本 v1 v2 ng  RIPv1 管理距离120，更新使用UDP520，更新周期30s，使用跳数作为度量值，最大为15 所有的更新消息使用255.255.255.255这个目的地址 更新消息中不包含子网掩码等信息，所以不支持对子网掩码的操作比如VLSM，CID">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T04:00:29.504Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Welcome my friend！">
+<meta name="twitter:title" content="网络笔记day2">
+<meta name="twitter:description" content="距离矢量路由协议    路由器会将参与距离矢量协议的路由周期性更新给新邻居    典型代表 rip eigrp Rip RIP目前有三个版本 v1 v2 ng  RIPv1 管理距离120，更新使用UDP520，更新周期30s，使用跳数作为度量值，最大为15 所有的更新消息使用255.255.255.255这个目的地址 更新消息中不包含子网掩码等信息，所以不支持对子网掩码的操作比如VLSM，CID">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -59,17 +71,15 @@
     </nav>
 </header>
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main">
-  
-    <article id="post-网络笔记day2" class="post-网络笔记day2 post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-网络笔记day2" class="post-网络笔记day2 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
         
         
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day2/">网络笔记day2</a>
+    <h1 class="entry-title article-title">
+      网络笔记day2
     </h1>
   
 
@@ -631,172 +641,20 @@ RIPv2配置
 </article>
 
 
-
-
-
-
-  
-    <article id="post-网络笔记" class="post-网络笔记 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记/">网络笔记Day1</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记/" data-id="cjkrqzhka000680v6au8nide4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p><a href="http://eagleslab.com:9000/blog/post/aaron/20180719" target="_blank" rel="noopener">http://eagleslab.com:9000/blog/post/aaron/20180719</a>   哲哥笔记<br>IP路由选择原理<br>  1.IP路由选择原理<br>  2.有类及无类路由协议<br>  3.静态路由的配置</p>
-<p>一.<br>   路由信息来源<br>直连路由<br>  接口配置ip， 该接口的物理层和数据链路层up<br>  通过接口感知到的直连网络<br>静态路由<br>  使用静态路由命令手工配置的路由<br>动态路由<br> 通过动态路由</p>
-<p>当路由器收到一个数据包<br>    成帧<br>    校验fcs（帧尾校验序列）查看数据帧是否完整<br>        完整进入下一步<br>        不完整丢弃<br>    查看目的MAC地址是否为当前NIC（网卡）的mac地址<br>        是 拆开数据帧的头部 进入下一步<br>        不是丢弃<br>    查看IP头部的目的ip地址 查询路由表<br>        有匹配项 转发<br>        无匹配项 丢弃<br>        广播地址 进入更高层<br>路由信息的来源<br>    直连接口<br>        接口必须是有效的ip地址<br>        接口不能是down<br>    静态路由<br>        静态路由的下一条或者出接口必须有效<br>            添加permanent 命令后 接口down不影响<br>            但是对下一条无效<br>            静态路由可以设置管理距离 默认为1<br>            如果是同一的目的地有多条静态路由，管理距离一样的情况下会负载均衡<br>        动态路由选择协议<br>            常见协议<br>             rip1 rip2 ripng<br>            Eigrp<br>            is-is<br>            Bgp<br>            ospf<br>        如果</p>
-<p>有类与无类</p>
-<p>Codes ：表示的路由来源的参照表<br>Gateway ：是表示缺省路由<br>路由表项中 192.168.12.0/24 不是表示一个IP地址 而是表示匹配条件<br>192.168.12.0/24的意思是，目的ip地址的前24位必须与192.168.12.0前24位一致才算匹配成功</p>
-<p>最长匹配原则<br>如果路由表中有多条和目的ip地址匹配，那么选择走匹配位数最多的条目<br>路由表递归查询<br>并不是每次找到匹配项，后面都会标注出接口，数据转发的目的就是要知道从哪个口出去</p>
-<p>静态路由的配置<br>使用下一条ip地址的静态路由不同于使用接口</p>
-<p>使用接口的情况下 arp表会多出一条如图<br>假如使用缺省路由配置接口为下一条 则不管通不通arp表上都会产生条目<br>最终会导致arp表产生过多垃圾</p>
-<p>浮动静态路由<br>一般用于线路的备份， 比如一台宽带是电信 一台是移动<br>可以将电信的静态路由管理距离默认为1<br>移动管理距离大于一<br>当电信路由挂掉时可以走移动路由</p>
-<p>静态汇总路由<br>配置静态路由其实就是在配置匹配条件，一般一个静态路由匹配一个网段<br>放宽条件可以让多个网段都能被同一条匹配到这种路由称为汇总路由<br>可以精简条目加快查询速度 但是会导致无结果的数据发送</p>
-<p>ACL访问控制列表<br>Acl 可以在<br>作用：过滤</p>
-<p>ACL的方向<br>In<br>针对流量在进入接口的时候做策略<br>流量在没有进入路有前就会被ACL过滤<br>Out<br>当流量在路由器中被确定可以转发，然后从接口发出去之前被ACL过滤<br>路由器自己产生的流量不会被过滤<br>ACL的语法<br>标准的ACL<br>access-list 1 permit host 192.168.12.x<br>默认有一条拒绝所有的 deny any<br>如果一条ACL没有任何拒绝的的条目则其没有意义<br>acl按照配置顺序逐条匹配 一旦匹配上就不再会向下继续</p>
-<p>命名的acl<br>传统的acl无论是标准还是扩展都无法任意追加条目如果no掉其中一条其他的全部都会消失<br>Ip access-list 类型 名字<br>No xx<br>Xx deny。。。。。。。。。。。</p>
-<p>私有IP地址<br>只能用于组织内部或者实验环境的地址，这些地址无法被公网上的路由器所识别和转发对应的数据包<br>NAT网络地址转换<br>缺点增加转发延迟</p>
-<p>ipv4地址紧缺，但是私有ip地址无法在公网上路由，nat可以解决问题<br>术语    解释<br>内部本地（inside local）    转换前内部源地址的名字<br>外部本地（outside）    转换前目标主机的名字<br>内部全局（inside global）    转换之后内部主机的名字<br>外部全局（outside global）    转换之后外部主机的名字<br>Inside =内部=源地址<br>Outside<br>local</p>
-<p>nat原理<br>首先定义路有器的接口为outside（面对公网的接口），还是inside（面对私有ip地址）<br>inside接收到源地址为私有ip的数据包后，将私有IP地址替换为outside接口的公网ip<br>NAT实现<br>静态nat<br>    基于地址池的源地址转换是一种动态的nat，其实也是一种一对一的映射关系。将公网地址放置在一个地址池中，在需要对外数据包的源地址进行转换时，从地址池中取出一个公网地址供该私有地址专用，并形成NAT映射表项<br>    当已占用的一个公网地址的用户在一定时间内没有数据传输时，该公网地址资源被收回到地址池中，供其他用户使用<br>    这种方式的nat不会对数据包头中的端口地址进行转换</p>
-<p>动态Nat<br>    静态NAt可以解决内部的和外部的通信问题，但是不可能公司有多少主机就去申请多少IP地址我们就去申请一些公网ip，将其放在一个pool中谁有需求，谁就去占用一个ip 我们必须规定那些内部的私有ip地址可以放到pool中取ip<br>    配置示例<br>    拓扑见实验</p>
-<p>Pat<br>向运营商申请多个公网ip地址是比较昂贵的，至少个人家庭网络是不会申请的<br>。但是个人家庭网络一九有很多台设备需要上网的需求，这边就用到了pat</p>
-<p>端口映射<br>如果公司内部有服务器，需要让外部可以访问服务器的某个端口号，就要用到端接口映射<br>以上配置我们能实现<br>端口映射与源地址转换的命令区别</p>
-<p>ip nat outside source list<br>转换IP包的源，这些IP包正在从外部传输到内部<br>转换IP包的目的地，这些IP包正在从内部传输到外部</p>
-<p>ip nat inside source list<br>转换IP包的源，这些IP包正在从内部传输到外部<br>转换IP包的目的地，这些IP包正在从外部传输到内部<br>D-NAT</p>
-<p>DNS<br>域名解析<br>Ip domain lookup<br>Ip dns server<br>IP host baidu.com 12.12.12.1<br>IP name-server 1.1.1.1 设置路由如果需要查询域名该区查询那个地址</p>
-<p>DHCP<br>IP dhcp pool eagle<br>Network 192.168.234.0 255.255.255.0<br>default-router 192.168.234.2<br>dns-server 1.1.1.1 114.114.114.114<br>IP dhcp excluded-address 192.168.234.2</p>
-<p>Int e0/0<br>IP add dhcp</p>
-<p>Sh ip dhcp binding<br>IP<br>小实验</p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记/">
-    <time datetime="2018-08-13T03:54:20.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
     
     
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-my-first-blog" class="post-my-first-blog post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/07/26/my-first-blog/">my-first-blog</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/my-first-blog/" data-id="cjkrqzhk0000080v6aub0m3qh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/07/26/my-first-blog/">
-    <time datetime="2018-07-26T05:15:06.000Z" class="entry-date">
-        2018-07-26
-    </time>
-</a>
+        <span class="nav-next"><a href="/2018/08/13/网络笔记/" rel="next">网络笔记Day1 <span class="meta-nav">→</span></a></span>
     
-    
-    </footer>
-</article>
+</nav><!-- .nav-single -->
 
 
 
 
 
 
-  
-    <article id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/07/26/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/hello-world/" data-id="cjkrqzhk9000580v6vtvoue4k" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-xinbiji"><a href="#Create-a-xinbiji" class="headerlink" title="Create a xinbiji"></a>Create a xinbiji</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/07/26/hello-world/">
-    <time datetime="2018-07-26T04:43:53.372Z" class="entry-date">
-        2018-07-26
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-  
 
 </div></div>
         <div id="secondary" class="widget-area" role="complementary">
