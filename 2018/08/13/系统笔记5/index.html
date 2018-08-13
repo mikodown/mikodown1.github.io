@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="IP add查看网络接口，网卡是否被激活如果物理网卡未被激活    Ifup 网卡设备    修改ssh配置文件启动ssh服务        Vim /etc/ssh/sshd_config    ssh登陆格式        Ssh username@hostname port
+更新yum软件厂库" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>系统笔记5 | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="IP add查看网络接口，网卡是否被激活如果物理网卡未被激活    Ifup 网卡设备    修改ssh配置文件启动ssh服务        Vim /etc/ssh/sshd_config    ssh登陆格式        Ssh username@hostname port 更新yum软件厂库  Yum clean all  screen 虚拟终端 screen -r screen -l r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统笔记5">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/系统笔记5/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="IP add查看网络接口，网卡是否被激活如果物理网卡未被激活    Ifup 网卡设备    修改ssh配置文件启动ssh服务        Vim /etc/ssh/sshd_config    ssh登陆格式        Ssh username@hostname port 更新yum软件厂库  Yum clean all  screen 虚拟终端 screen -r screen -l r">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T09:02:49.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统笔记5">
+<meta name="twitter:description" content="IP add查看网络接口，网卡是否被激活如果物理网卡未被激活    Ifup 网卡设备    修改ssh配置文件启动ssh服务        Vim /etc/ssh/sshd_config    ssh登陆格式        Ssh username@hostname port 更新yum软件厂库  Yum clean all  screen 虚拟终端 screen -r screen -l r">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-系统笔记5" class="post-系统笔记5 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      系统笔记5
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记5/" data-id="cjks1ncs5000520v6k0vcid5u" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>IP add查看网络接口，网卡是否被激活<br>如果物理网卡未被激活<br>    Ifup 网卡设备<br>    修改ssh配置文件启动ssh服务<br>        Vim /etc/ssh/sshd_config<br>    ssh登陆格式<br>        Ssh username@hostname port</p>
+<pre><code>更新yum软件厂库
+
+Yum clean all
+</code></pre><p> screen 虚拟终端 screen -r screen -l</p>
+<p>rpm是rpm package manager的缩写<br>rpm的五大功能<br>    安装 卸载 升级 查询 验证<br>rpm组件<br>    本地数据库<br>    rpm及相关的可执行文件</p>
+<pre><code>软件包文件
+</code></pre><p>获得rpm软件包<br>    从发行套件cd中查找<br>    从软件的主站点查找下载<br>    从<a href="http://www.atrpms.net" target="_blank" rel="noopener">http://www.atrpms.net</a> 查找下载</p>
+<p>yum更新系统</p>
+<pre><code>• yum 的宗旨是自动化地升级，安装/移除rpm包，收集rpm包的相关信息，检查依赖性并自动提示用户解决。
+• yum 是 rpm 的前端程序 ，RHEL 的 up2date 的替代工具。
+• yum 的关键之处是要有可靠的 repository（软件仓库）
+    • 可以是 http 或 ftp 站点，也可以是本地软件池
+    • 包含rpm 包的各种信息（包括描述，功能，提供的文件，依赖性等）
+    • yum 正是由于对收集的这些 header并加以分析，才能自动化地完成安装/更新/删除等任务
+
+
+
+
+• 简洁的配置文件
+    • /etc/yum.conf 和 /etc/yum.repos.d/*.repo
+</code></pre><p>yum仓库<br>    一个yum软件仓库其实就是一个包含了仓库数据的存放众多rpm文件的目录<br>    yum仓库数据通常存放在名为repodata的子目录中</p>
+<p>yum命令语法<br>    yum是yum是系统的字符界面管理系统<br>        -y 提问回答 yes<br>        -c 只利用本地缓存不从远程仓库下载文件<br>        • –enablerepo=REPO：临时启用指定的名为REPO的仓库<br>        • –disablerepo=REPO：临时禁用指定的名为REPO的仓库<br>        • –installlroot=PATH：指定安装软件时的根目录，主要用于为chroot环境安装软件<br>• </p>
+<p>容易形成性能瓶颈的监视对象<br>    cpu性能<br>    内存性能<br>    磁盘性能<br>    网络带宽</p>
+<p>系统性能监视常用工具<br>    cpu监视工具<br>    Top 动态输出系统进程任务<br>    Mpstat 输出cpu各种统计信息<br>内存监视工具<br>    Free 显示系统内存使用<br>    Vmstat 报告需要你内存的各种统计信息</p>
+<pre><code>内核管理
+
+    Rpm -q  {redhat，centos}
+显示当前运行的内核版本
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记5/">
+    <time datetime="2018-08-13T05:41:33.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/系统笔记4/" rel="next">系统笔记4 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记5/">系统笔记5</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记4/">系统笔记4</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记3/">系统笔记3</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记2/">系统笔记2</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记1/">系统笔记1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

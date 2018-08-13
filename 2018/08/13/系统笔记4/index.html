@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额
+硬盘及相关概念    硬盘的技术指标        主轴转速：指硬盘盘片一分钟内能完成的最大转速        平均" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>系统笔记4 | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额 硬盘及相关概念    硬盘的技术指标        主轴转速：指硬盘盘片一分钟内能完成的最大转速        平均寻道时间：指磁头从得到指令到寻找到数据所在磁道的时间，他描述硬盘读取数据的能力        数据传">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统笔记4">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/系统笔记4/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额 硬盘及相关概念    硬盘的技术指标        主轴转速：指硬盘盘片一分钟内能完成的最大转速        平均寻道时间：指磁头从得到指令到寻找到数据所在磁道的时间，他描述硬盘读取数据的能力        数据传">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T09:01:45.258Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统笔记4">
+<meta name="twitter:description" content="概要    磁盘相关概念    磁盘分区工具    创建和维护lvm系统    linux文件系统的挂载和卸载    ext2/ext3/ext4、xfs文件系统管理    磁盘限额 硬盘及相关概念    硬盘的技术指标        主轴转速：指硬盘盘片一分钟内能完成的最大转速        平均寻道时间：指磁头从得到指令到寻找到数据所在磁道的时间，他描述硬盘读取数据的能力        数据传">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-系统笔记4" class="post-系统笔记4 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      系统笔记4
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记4/" data-id="cjks1ncs4000420v6qbxeh89d" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>概要<br>    磁盘相关概念<br>    磁盘分区工具<br>    创建和维护lvm系统<br>    linux文件系统的挂载和卸载<br>    ext2/ext3/ext4、xfs文件系统管理<br>    磁盘限额</p>
+<p>硬盘及相关概念<br>    硬盘的技术指标<br>        主轴转速：指硬盘盘片一分钟内能完成的最大转速<br>        平均寻道时间：指磁头从得到指令到寻找到数据所在磁道的时间，他描述硬盘读取数据的能力<br>        数据传输率：指的是从硬盘缓存向外输出数据的速度，单位MB/s<br>        高速缓存：缓存数数据的临时寄存器，主要用来缓解速度差和实现数据与存取等<br>        单碟容量：指每张碟片的最大容量。这是反应硬盘综合性能指标的一个重要因素<br>硬盘接口方式<br>    FC-Al接口主要应用于任务级的关键数据的大容量实时存储。可以满足高性能、高可靠和高扩展的存储需要。<br>    scsi接口主要应用于商业级的关键数据的大容量存储<br>    Sas 接口是个全才，可以支持sas和sata硬盘，很可靠地，满足不同性价比地存储需要，被商业公认为取代并行的scsi<br>    sata接口主要应用于非关键数据的大容量存储，近线存储和关键性应用<br>    Pata 基本淘汰<br>主引导记录<br>    • MBR位于硬盘的0磁道0柱面1扇区【512字节】<br>        • 装载操作系统的硬盘引导程序【446字节】<br>        • 硬盘分区表 (Disk Partition Table, DPT) 【64字节】<br>            ○ 分区ID或者类型<br>            ○ 分区起始磁道<br>            ○ 分区磁道数<br>        • 最后两个字节“55，AA”是分区的结束标志<br>    • MBR是由分区程序（如fdisk）所产生的<br>        • 不依赖任何操作系统<br>    硬盘引导程序是可以改变的，从而实现多系统共存<br>    （现在多为gpt分区）</p>
+<p>磁盘分区<br>    指向附加分区描述符的扩展分区<br>    内核最多支持分区数<br>        ide驱动器为63<br>        scsi驱动器为15<br>两种硬盘存储方式<br>    基本硬盘存储方式<br>        在基本硬盘上存储数据需要在磁盘上创建主分区，扩展分区，和逻辑分区然后对这些分区进行管理<br>    动态硬盘存储<br>        在动态磁盘上存储数据需要在磁盘上创建动态分区，然后对这些卷进行管理</p>
+<p>磁盘分区工具<br>    分区管理工具<br>        Fdisk<br>        Sfdisk<br>        Gun parted 高级分区操作<br>    Partprobe 重新设置内存中的内核分区表版本</p>
+<p>磁盘分区工具 –fdisk<br>    进入fdisk的交互操作方式<br>    Fdisk 硬盘设备名<br>    在命令行方式下显示指定硬盘的分区表信息<br>    Fdisk -l 硬盘设备名</p>
+<pre><code>磁盘分区工具 --parted
+• 交互模式
+    # parted [选项] &lt;硬盘设备名&gt; 
+• 命令行模式
+    # parted [选项] &lt;硬盘设备名&gt; &lt;子命令&gt; [&lt;子命令参数&gt;]
+    • 子命令
+        ○ 打印帮助信息：help [COMMAND] 
+        ○ 显示分区表： print [free|NUMBER|all]
+        ○ 创建新分区：mkpart PART-TYPE [FS-TYPE] START END 
+        ○ 删除指定分区：rm NUMBER
+        ○ 设置分区标记：set NUMBER FLAG STATE 
+• 静态分区的缺点
+    • 在安装linux的过程中如何正确的评估各分区大小是一个难题，因此需要系统管理员不但要考虑到当前某个分区需要的容量还要遇见该分区以后可能需要的容量最大值
+    • 某个分区空间耗尽时，通常的解决办法时
+        ○ 使用符号链接--破环linux系统标准结构
+        ○ 使用调整分区大小的工具--必须停机一段时间进行调整
+        ○ 备份整个系统，清除硬盘重新对硬盘分区，然后恢复数据到新分区--必须停机一段时间进行恢复操作
+• lvm的相关概念
+    • 什么时逻辑卷管理器
+        LVM 是逻辑盘卷管理（Logical Volume Manager）的简称，它是 Linux 环境下对卷进行方便操作的抽象层。
+        LVM 是建立在硬盘和分区之上的一个逻辑层，来为文件系统屏蔽下层磁盘分区布局，从而提高磁盘分区管理的灵活性。
+        LVM允许在多个物理设备间重新组织文件系统，包括重新设定文件系统的大小。
+• 使用lvm
+    • 通过lvm可以轻松管理磁盘分区如将若干磁盘分区连接成为一个整块的卷组，形成一个存储池
+    • 可以在卷组中随意创建逻辑卷 并进一步在逻辑卷上常见文件系统
+    • 通过lvm可以方便地调整存储卷组的大小并且可以对磁盘存储按照组的方式进行命名、管理和分配
+    • 
+    • lvm术语--物理卷
+        ○ 物理卷在lvm系统中处于最低层
+        ○ 物理卷可以是整个硬盘、硬盘上的分区或者从逻辑上与磁盘分区具有相同功能的设备
+        ○ 物理卷时lvm的基本存储逻辑块，但和基本的物理存储介质比较。却含有与lvm相关的管理参数
+    • lvm术语--物理区域
+        ○ 每一个物理卷被划分为基本单元pe，具有唯一编号的pe时可以被lvm寻址的最小存储单元
+        ○ pe的大小可以根据实际情况在创建物理卷时指定，默认为4MB
+        ○ pe的大小一旦确定将不能更改，同一个卷组中的所有物理卷的pe大小需要一致
+</code></pre><p>LVM术语——卷组<br>    卷组(Volume Group, VG)建立在物理卷之上，它由一个或多个物理卷组成<br>    卷组创建之后，可以动态添加物理卷到卷组中，在卷组上可以创建一个或多个“LVM 分区”（逻辑卷）<br>    一个 LVM 系统中可以只有一个卷组，也可以包含多个卷组<br>    LVM 的卷组类似于非LVM系统中的物理硬盘</p>
+<p>lvm术语–逻辑卷</p>
+<pre><code>逻辑卷建立在卷组上，它是卷组中切除的一块空间
+逻辑卷创建之后，其大小可以伸缩
+lvm的逻辑卷类似于非lvm系统中的硬盘分区，在逻辑卷之上可以建立文件系统（比如/home或者/usr等）
+逻辑卷也被划分为可被寻址的基本单位（称为 Logical Extent, LE）
+在同一个卷组中，LE 的大小和 PE 是相同的，并且一一对应
+</code></pre><p>lvm术语–vgda<br>• 和非 LVM 系统将包含分区信息的元数据保存在位于分区的起始位置的分区表中一样，逻辑卷以及卷组相关的元数据也是保存在位于物理卷起始处的卷组描述符区域 (Volume Group Descriptor Area, VGDA)中。<br>• VGDA 包括以下内容： PV描述符、VG描述符、LV描述符、和一些PE描述符。<br>•<br>• 使用lvm系统的步骤<br>    • 创建lvm类型的分区<br>    • 在新硬盘上创建物理卷<br>    • 将新创建的物理卷添加到卷组<br>    • 在卷组中创建逻辑卷<br>    • 在逻辑卷中创建文件系统<br>    • 挂载创建的文件系统</p>
+<p>• lvm管理工具的使用<br>    • 创建物理卷<br>    • Pvcreate 磁盘或分区设备名<br>    • Vgcreate 卷组 物理卷设备名<br>    • Lvcreate -L逻辑卷大小 -n 逻辑卷名 卷组名<br>    • Lvcreate -ipe值 -n逻辑卷名 -卷组名<br>    • PE值可以通过使用命令 vgdisplay|grep “Free  PE” 获得。<br>    • 查看卷信息<br>        • 查看物理卷<br>            ○ Pvdisplay<br>        • 查看卷组<br>            ○ Vgdispaly<br>        • 查看逻辑卷<br>            ○ Lvdisplay</p>
+<pre><code>    • 扩展逻辑卷
+        ○ 扩展卷组 
+        ○ Vgextend 卷组 物理卷设备名
+    • 若卷组中有剩余空间，扩展卷组中的逻辑卷
+        ○ Lvextend -L逻辑卷增量 逻辑卷设备名
+        ○ Lvextend -l +pe 逻辑卷设备名
+    • 对已经扩展的逻辑卷中的文件系统进行容量扩容
+        ○ resize2f分区或逻辑卷设备名
+• 缩减逻辑卷
+    • 使用umount 命令卸载文件系统
+    • 使用e2fsck检查文件系统
+    • 使用resize2fs命令缩减文件系统容量
+    • 缩减逻辑卷
+        ○ Lvreduce -L 增量 设备名
+        ○ Lvreduce -l -pe 设备名
+</code></pre><p>lvm常用命令集</p>
+<pre><code>文件系统概念
+    文件系统是包括在一个磁盘（硬盘、光盘及其他存储设备）上的目录结构；一个磁盘设备可以包含一个或多个文件系统
+    文件系统是在一个磁盘上组织文件的方法
+    文件系统是文件的数据结构或组织方法
+    文件系统是基于被划分的存储设备上的一种文件的命名、存储组织及读取方法
+    一个文件系统是有组织存储文件或数据的方法穆蒂阿是已于查询和存取。文件系统是基于一个存储设备，比如硬盘或光盘，并且包含文件物理位置的维护。
+
+使用linux文件系统的一般方法
+    挂装文件系统到系统中
+        手工挂装：使用mount命令
+        启动时自动挂装：编辑“/etc/fstab” 添加相应的配置行。
+
+挂载文件系统
+    Mount 选项 分区设备名 挂载点
+挂载文件系统注意事项
+    不能再同一个目录下挂载两个文件系统
+fuser命令
+    fuser命令可以根据文件（目录设备）查找使用它的进程，同时也提供了啥事这些进程的方法
+        使用距离：
+        查看挂载点有哪些进程需要杀掉
+            Fuser -cu /mount_point
+        杀死这些进程
+            Fuser -ck/mount_point
+        查看是否还有进程再访问挂载点
+            Fuser -c /mount_point
+        卸载挂接点上的设备
+            Umount /mount_point
+    可移动介质
+        ○ 访问前、介质必须被挂载 
+        ○ 挂载（Mounting）意味着使外来的文件系统看起来如同是主目录树的一部分。 
+        ○ 摘除时，介质必须被卸载 
+        ○ 按照默认设置，非根用户只能挂载某些设备（光盘、DVD、软盘、USB等等） 
+        ○ 挂载点通常在 /media 下
+系统启动挂装表
+    /etc/fstab
+    fstab是一个纯文本文件，开机后，系统会自动搜索该文件中的内容，对于该文件中的文件系统进行挂装
+    被mount、fsck和其他程序使用
+    使用mount、fsck和其他命令挂载/etc/fstab中的所有文件系统
+    可以在设备栏使用文件系统卷标
+
+
+
+
+
+交换空间
+    基本设置包括
+        创建交换分区或者文件
+        使用mkswap创建交换文件系统
+        在/etc/fstab 文件中添加适当的条目
+        使用swapon -a激活空间
+    生成交换文件
+    • dd if=/dev/zero of=/swapfile bs=1024 count=X
+
+
+Ext 2/3/4 文件系统管理
+    创建文件系统
+        前端命令mkfs的格式
+         mkfs -t &lt;fstype&gt;-c &lt;分区设备名&gt;
+            -t fstype
+            -c 
+        Mksf.ext4 /dev/sda1
+
+    检查文件系统 
+        Fsck 是操作系统扫描文件系统内容检查内部一致性的工具
+    使用label和uuid
+        ○ 显示Label
+            e2label  &lt;设备名&gt;
+        ○ 根据Label查找设备名
+            findfs LABEL=&lt;label&gt;
+        ○ 在 mount 命令中使用 LABEL和UUID
+            mount [options] -L &lt;label&gt; &lt;mount_point&gt;
+            mount [options] -U &lt;uuid&gt;  &lt;mount_point&gt;
+        ○ 在 /etc/fstab 中使用 LABEL和UUID
+            UUID=uuid    /mountpoint     ext4   default   1   2
+        LABEL=label  /mountpoint    ext4   default   1   2
+
+
+
+
+
+
+        ○ 显示UUID
+            blkid   &lt;设备名&gt;
+        ○ 根据UUID查找设备名
+            findfs UUID=&lt;uuid&gt;
+
+
+磁盘限额
+        磁盘限额是系统管理员用来监控和限制用户或组对磁盘的使用的工具
+            磁盘限额可以从两方面限制
+                限制用户和组可以拥有的inode数（即文件个数）
+                限制分配给用户或组的磁盘块的数目
+            磁盘配额是以每一个使用者，每一个文件系统为基础的。如果使用者可以在超过一个以上的文件系统上建立文件，那么必须在每一个文件系统上分别设定
+    磁盘限额的限制策略
+        硬限制：超过此设定之后不能继续存储新的文件
+        软限制：超过此限定值后仍可以继续存储新的文件，同时系统发出警告信息，建议用户清理自己的文件，释放出更多的空间。
+        时限：超过软限制多长时间之内可以继续存储新的文件
+
+
+    编辑/etc/fstab
+    在中添加文件系统挂载选项
+    usrquota，grpqupta
+    重新挂载
+    Mount -o remount /home
+    创建quota数据库并开启
+    创建数据库
+        Quoatcheck -cmvug/home
+    开启quota
+        Quotaon -avug
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记4/">
+    <time datetime="2018-08-13T05:41:29.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/08/13/系统笔记5/" rel="prev"><span class="meta-nav">←</span> 系统笔记5</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/系统笔记3/" rel="next">系统笔记3 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记5/">系统笔记5</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记4/">系统笔记4</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记3/">系统笔记3</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记2/">系统笔记2</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记1/">系统笔记1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

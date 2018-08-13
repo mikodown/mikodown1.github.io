@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制
+账户管理的相关概念    账户实质就是一个用户在系统上的标识        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>系统笔记3 | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制 账户管理的相关概念    账户实质就是一个用户在系统上的标识        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及x-windows环境的配置等）是每个用户的工作都能独立不受干扰地进行    linux中的账户包括">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统笔记3">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/系统笔记3/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制 账户管理的相关概念    账户实质就是一个用户在系统上的标识        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及x-windows环境的配置等）是每个用户的工作都能独立不受干扰地进行    linux中的账户包括">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T09:01:23.574Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统笔记3">
+<meta name="twitter:description" content="1.账户实质2.账户文件3.账户设置4.口令管理5.权限表示6.权限设置7.进程描述8.进程管理9.作业控制 账户管理的相关概念    账户实质就是一个用户在系统上的标识        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及x-windows环境的配置等）是每个用户的工作都能独立不受干扰地进行    linux中的账户包括">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-系统笔记3" class="post-系统笔记3 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      系统笔记3
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记3/" data-id="cjks1ncs6000620v6qy1h0r9r" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>1.账户实质<br>2.账户文件<br>3.账户设置<br>4.口令管理<br>5.权限表示<br>6.权限设置<br>7.进程描述<br>8.进程管理<br>9.作业控制</p>
+<p>账户管理的相关概念<br>    账户实质就是一个用户在系统上的标识<br>        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及x-windows环境的配置等）是每个用户的工作都能独立不受干扰地进行<br>    linux中的账户包括<br>        用户账户<br>        组账户</p>
+<p>用户<br>linux系统下有两个种用户<br>    普通用户账户，在系统上的是普通任务<br>    超级用户账户，在系统上的任务是对普通用户和整个系统进行管理<br>每个用户都被分配了一个唯一的用户id号（UID）<br>    超级用户：uid=0，GID=0<br>    普通用户：UID&gt;=1000<br>    系统用户（伪用户不可登陆） ：0&lt;UID&lt;1000<br>用户名和UID被保存在/etc/passwd这个文件中<br>当用户登陆时，他们被分配了一个主目录和一个运行的文件通常是shell<br>若无适当权限，用户无法读取、写入或执行彼此的文件</p>
+<p>组<br>    组时用户的集合<br>    每个组都被分配了一个唯一的组id号（gid）<br>    组和gid被保存在/etc/group文件中<br>    每个用户都有他们自己的私有组<br>    每个用户都可以被添加到其他组中来获得额外的存储权限<br>    组中的所有用户都可以共享属于改组的文件</p>
+<p>标准组<br>    标准组可以容纳多个用户<br>    若使用标准组，在传概念一个心得用户时就应该指定他所在的组<br>    私有组<br>        私有组中只有自己<br>        当在创建一个新用户时，若没有指定他所属于的组 RHCE/Centos就建立一个和该用户同名的私有组，且用户被分配到这个私有组中<br>        缺点：可能会鼓励创建任何人都可以访问的文件<br>当一个用户同属于多个组时，将这些组分为：<br>主组（初始组）：用户登陆时的组<br>附加组：登陆后可切换的组</p>
+<p>Centos帐号管理<br>    默认启用shadow passwords功能<br>        /etc/passwd文件对任何用户均可读，为了增强系统的安全性，用户的口令通常用shadow passwords保护<br>        经过shadow passward 保护的账户密码和相关设置信息存在/etc/shadow文件里。 /etc/shadow支队root用户可读<br>        默认使用sha512哈希算法存储用户的口令<br>    一般不设置组口令。因为绝大多数应用程序不适用它。<br>    建议尽量使用私有组来提高系统的安全性<br>    管理工具由shadow-utils软件包提供<br>    不建议管理员直接变价修改系统账户文件来维护账户</p>
+<p>帐号验证信息文件<br>    口令文件 /etc/passwd<br>        文件权限（-rw-r–r–）<br>    影子口令文件 /etc/shadow<br>        文件权限（-r——）<br>    组长帐号文件 /etc/group<br>        文件权限（-rw-r–r–）<br>    组口令文件 /etc/gshadow<br>        文件权限（-r—–）</p>
+<p>口令文件 /etc/passwd<br>    每个用户一条记录<br>    每条记录由用分号间隔的七个字段组成</p>
+<p>影子口令文件/etc/shadow<br>    每个由分号间隔的九个字段组成</p>
+<p>组帐号文件/etc/group<br>四个字段 组名 口令 组id 组内用户列表</p>
+<p>组口令文件 /etc/gshadow<br>每一个组一条记录 四个字段 组名 加密的组口令<br>组的管理员帐号 组内的用户列表</p>
+<p>验证账号文件的一致性<br>    Pwck 验证用户文件对比 /etc/passwd 和 /etc/shadow<br>    Grpck 验证组帐号 /etc/group 和 /etc/gshadow</p>
+<p>用户默认环境配置和模板<br>    用户默认配置文件<br>        /etc/login.defs<br>        /etc/default/useradd<br>    新用户基本信息<br>        /etc/skel<br>        如果手工创建用户，则需复制改目录到用户主目录</p>
+<p>用户和组管理工具<br>    用户管理<br>        添加用户帐号（useradd）<br>        格式 useradd 选项 用户名</p>
+<pre><code>useradd命令添加用户的过程
+    编辑账户验证信息文件
+    /etc/passwd /etc/shadow
+    /etc/group/ /etc/gshadow
+    创建主目录/home/用户名
+        根据骨架目录 /etc/skel的内容填充用户主目录
+        设置权限和拥有者
+
+设置用户口令
+    Passwd 用户名
+    Passwd
+Root 设置他人的口令 
+    Passwd user1
+</code></pre><p>显示useradd默认命令参数的默认值<br>        Useradd -D<br>        从文件 /etc/default/useradd中读取<br>修改用户账号（usermod）<br>    格式<br>        Usermod 选项 用户名<br>        选项与useradd命令基本相同<br>删除用户帐号（userdel）<br>添加组账号（groupadd）<br>    格式<br>        Group 参数 组账号名<br>修改组账号（groupmod）<br>    Groupmod  参数 组账号名<br>删除组账号名（groupdel）</p>
+<pre><code>批量用户管理
+        成批添加/更新一组用户
+            Newusers filename 必须与/etc/password 格式一致
+        成批更新用户的口令
+            Chpasswd
+        批量生成安全的口令
+            Pwgen
+            Secpwgen（由RPMForge仓库提供）
+    chpasswd命令
+        Chpasswd &lt; filename文件格式（注意重定向）
+        username：password
+    口令维护
+        禁用恢复和删除用户口令
+    禁用用户账户口令
+        Passwd -l 用户账户ming
+    查看用户账户口令状态
+        Passwd -s 用户帐户名
+    恢复用户账户口令
+        Passwd -u 用户账户名
+    清除用户账户口令
+        Passwd -d 用户账户名
+</code></pre><p>对要新添加的用户设置口令时效<br>        修改/etc/login.defs</p>
+<p>设置已存在的用户的口令时效<br>    chage命令</p>
+<p>用户切换命令<br>    Su 切换为超级用户 适用于只有一个系统管理员的情况<br>    Sudo 直接使用sudo命令前缀执行系统管理命令<br>    执行系统管理命令时无需知道超级用户的口令，使用普通用户自己的口令即可<br>    用于执行系统管理命令式无需知道超级管理员的用户口令，所以适用于系统中有多个系统管理员的情况</p>
+<p>账户相关信息<br>    id、 显示当前的用户uid、gid和用户所属的组列表<br>    groups显示指定的用户所属的组列表<br>    Whoami 显示当前用户的名称<br>    w/who 显示登陆用户即相关信息<br>    Newgrp 用于转换用户当前组到指定的的组账号，用户必须属于改组才可以正确的执行该命令。</p>
+<p>文件和目录的基本权限<br>    普通用户只能不受限制的操作主目录下的的文件，对系统中其他目录的文件的访问受到限制<br>三种基本权限<br>    读 r<br>    写 w<br>    执行 x<br>分配三种基本权限<br>    文件和目录的使用者<br>        属主、同组人、其他人<br>    权限确认顺序<br>        先匹配uid 在gid 最后 other<br>    读写执行 421 rwx</p>
+<p>与权限相关的命令<br>    Chmod 改变文件或目录的权限 -r 表示递归操作<br>    Chown 改变文件或目录的属主<br>    Chgrp 改变文件或目录所属的组<br>    Umask 设置文件的缺省生成掩码 umask 属主 同组人 其他人 不允许有的权限<br>设置生成文件目录时的默认权限<br>    创建新文件或新目录的时候，系统夺回为他们指定默认的访问权限，这个缺省的访问权限就由umask值来确定<br>    系统不允许用户在创建一个普通文件时就赋予他可执行权限，必须在创建后用chmod修改，目录则允许设定可执行权限<br>使用umask命令临时设置<br>进入shell环境配置文件中配置<br>    /etc/bashrc<br>    用户在~/.bashrc中设置<br>在/etc/fstab的文明考吗系统挂装参数中指定<br>    /dev/sda10  /home  ext3  noauto,umask=022,iocharset=cp936,ro,users  0 0</p>
+<p>三种特殊权限<br>    特殊权限<br>        可执行文件的特殊权限<br>            Suid 使用命令的所属用户的权限来运行，而不是命令执行者的权限<br>            Sgid 所属组<br>        目录的特殊权限<br>            Sgid 在设置了sgid权限的目录中创建的文件会具备该目录的权限<br>            sticky-bit 在带有粘滞位的目录中的文件只能被文件所属的用户和root用户删除，不管改目录的写入权限是如何设置的</p>
+<pre><code>Ext 2/3/4的文件扩展属性
+    linux内核中有大量安全特征。 Ext2/3/4文件系统的扩展属性可以在某种程度上保护系统的安全
+    常见扩展属性
+
+
+
+    显示ext2/3/4的文件扩展属性
+        Lsattr 命令格式
+            Lsattr 
+            Lsattr myfile
+
+        Chattr 命令格式 
+        chattr（+-=）Asai 文件
+
+
+posix文件访问控制列表
+• IEEE POSIX 1003.1e 制定了ACL标准。
+
+    文件访问控制列表acl 给与了管理员更灵活的控制文件读写和权限赋予的能力
+    支持FAcl的操作系统
+    主流的商业unix系统
+    Freebsd linux系统
+</code></pre><p>linux的facl支持<br>    acl需要内核和文件系统的同时支持<br>            linux从内核2.6开始提供里对ext2/ext3，jfs，xfs，reiserfs等文件系统的acl支持<br>    acl文件系统支持mount<br>        通过文件系统的挂载选项实现acl支持<br>        一、什么是ACL（文件访问控制列表）</p>
+<pre><code>    假设用户hadoop在某个公共目录（具有sgid权限的目录）下创建了一个文件/u01/tutor/test/test.txt，那么该文件的属主和属组分别是是hadoop和hadoop，且该文件的权限为664，即属主属组有读写权限，其他用户有只读权限：
+
+    [hadoop@localhost tutor]$ ls -ld test
+    1    drwxrwxr-x. 2root mygrp 4096 Jul 13 21:34 test
+
+    [hadoop@localhost tutor]$ cd test
+
+    [hadoop@localhost test]$ touch test.txt
+
+    [hadoop@localhost test]$ ll
+    1    -rw-rw-r--. 1hadoop hadoop   0 Jul 13 21:36 test.txt
+    2    # hadoop用户创建的文件具有664权限
+
+    现在hadoop用户希望hive用户能够写此文件，但是hive用户对该文件即不是属主也不是属组，而其他用户为只读权限，而hadoop用户又不能修改文件的属主和属组，如果修改了other权限，使其具有写权限，那么除了hive用户外，其他所有的用户都对test.txt文件有写权限了，这样是不合适的。于是这里就需要引入新的机制——ACL（文件访问控制列表）。
+    ACL用于实现在原有的访问控制机制之外补充一种文件访问控制机制。
+
+二、如何设置ACL（文件控制访问列表）
+
+    获取文件控制访问列表的方式为：
+        getfacl FileName
+    设定文件控制访问列表的命令为setfacl，如果加上-m，就表示设定访问权限，-x表示取消访问权限：
+        setfacl -m u:USERNAME:MODE FileName
+        setfacl -m g:GROUPNAME:MODE FileName
+        如果是取消权限，则无需指定具体的权限，只指定用户名或组名即可：
+        setfacl -x u:USERNAME:MODE FileName
+        setfacl -x g:GROUPNAME:MODE FileName
+
+    现在继续上面的例子：
+
+    [hadoop@localhost test]$ getfacl test.txt
+    1    # file:test.txt
+    2    # owner:hadoop
+    3    # group:hadoop
+    4    user::rw-
+    5    group::rw-
+    6    other::r--
+
+    [hadoop@localhost test]$ setfacl -m u:hive:rw- test.txt
+    # 为hive用户设定文件访问权限
+
+    [hadoop@localhost test]$ getfacl
+    1    Usage: getfacl[-aceEsRLPtpndvh] file ...
+    2    Try `getfacl--help&apos; for more information.
+
+    [hadoop@localhost test]$ getfacl test.txt
+    1    # file:test.txt
+    2    # owner:hadoop
+    3    # group:hadoop
+    4    user::rw-
+    5    user:hive:rw-
+    6    # 可以看到hive用户具有了读写权限
+    7    group::rw-
+    8    mask::rw-
+    9    other::r--
+
+    用户能否访问文件，需经过以下几重判断：
+        1、用户是否为文件属主？
+        2、用户是否有特定的访问控制条目？
+        3、用户是否属于文件属组？
+        4、用户所属的组是否有特定的访问控制条目？
+        5、其它。
+
+    故上述例子中hive用户对test.txt文件有特定的访问控制条目，故可以进行读写操作：
+    [hadoop@localhost test]$ exit
+    1    exit
+
+    [root@localhost test]# su openstack
+    # 切换到openstack用户
+
+    [openstack@localhost test]$ echo Hello &gt;&gt; test.txt
+    1    bash:test.txt: Permission denied
+    2    # openstack用户无法对test.txt文件进行写操作
+
+    [openstack@localhost test]$ exit
+    1    exit
+    [root@localhost test]# su hive
+
+    [hive@localhost test]$ echo Hello &gt;&gt; test.txt
+
+    [hive@localhost test]$ cat test.txt
+    1    Hello
+    2    # hive用户可以对test.txt文件进行写操作
+
+     现在hadoop用户想要取消hive用户对test.txt文件的写权限，那么可以进行如下操作：
+
+    [hive@localhost test]$ exit
+    1    exit
+    [root@localhost test]# su hadoop
+
+    [hadoop@localhost test]$ setfacl -x u:hive test.txt
+    # 取消hive用户的权限，无需指定具体的权限
+
+    [hadoop@localhost test]$ getfacl test.txt
+    1    # file:test.txt
+    2    # owner:hadoop
+    3    # group:hadoop
+    4    user::rw-
+    5    group::rw-
+    6    mask::rw-
+    7    other::r--
+    [hadoop@localhost test]$ exit
+    1    exit
+
+    [root@localhost test]# su hive
+
+    [hive@localhost test]$ echo World &gt;&gt; test.txt
+    1    bash:test.txt: Permission denied
+    2    # hive用户不能再对test.txt进行写操作了。
+
+三、挂载设备的文件控制访问列表
+    并不是在任何情况下都可以设置文件访问控制列表的，现在看下面这个例子：
+
+    [root@localhost ~]# df -lh
+    1    Filesystem                    Size  Used Avail Use% Mounted on
+    2    /dev/mapper/VolGroup-lv_root   23G 4.5G   17G  22% /
+    3    tmpfs                         499M  268K 498M   1% /dev/shm
+    4    /dev/sda1                     485M   35M 426M   8% /boot
+    5    /dev/sdb3                     9.9G   36M 9.7G   1% /mydata
+    6    # 可以看到/dev/sdb3这个设备挂载到了/mydata目录下
+    7    /dev/sr0                      288K  288K    0 100% /media/20140715_2041
+
+    [root@localhost ~]# cd /mydata
+
+    [root@localhost mydata]# ll
+    1    total 13
+    2    -rw-r--r--. 1root root   884 Jul 11 02:11 inittab
+    3    drwx------. 2root root 12288 Jul 11 01:09 lost+found
+
+    [root@localhost mydata]# getfacl inittab
+    1    # file:inittab
+    2    # owner: root
+    3    # group: root
+    4    user::rw-
+    5    group::r--
+    6    other::r--
+    7    # 进入/mydata目录，查看inittab这个文件的文件控制访问列表
+
+     [root@localhost mydata]# setfacl -m u:hadoop:rw inittab
+    1    setfacl:inittab: Operation not supported
+    2    # 无法为用户hadoop指定特殊访问权限
+
+    注意：任何挂载的设备，默认是不支持ACL（文件控制访问列表）的。
+
+    如果要让挂载的设备支持ACL，可以有以下几种方案：
+
+    A. 手动设置挂载选项
+    手动设置挂载选项，使其支持ACL，是指在挂载设备时通过选项来指定acl：
+        mount -o acl DEVICE MOUNT_POINT
+
+    接上文的例子：
+    [root@localhost mydata]# cd
+
+    [root@localhost ~]# umount /mydata
+
+    [root@localhost ~]# mount -o acl /dev/sdb3 /mydata
+
+    [root@localhost ~]# mount
+    1    /dev/mapper/VolGroup-lv_rooton / type ext4 (rw)
+    2    proc on /proctype proc (rw)
+    3    sysfs on /systype sysfs (rw)
+    4    devpts on/dev/pts type devpts (rw,gid=5,mode=620)
+    5    tmpfs on/dev/shm type tmpfs (rw,rootcontext=&quot;system_u:object_r:tmpfs_t:s0&quot;)
+    6    /dev/sda1 on/boot type ext4 (rw)
+    7    none on/proc/sys/fs/binfmt_misc type binfmt_misc (rw)
+    8    gvfs-fuse-daemonon /root/.gvfs type fuse.gvfs-fuse-daemon (rw,nosuid,nodev)
+    9    /dev/sr0 on/media/20140715_2041 type iso9660(ro,nosuid,nodev,uhelper=udisks,uid=0,gid=0,iocharset=utf8,mode=0400,dmode=0500)
+    10    /dev/sdb3 on/mydata type ext4 (rw,acl)
+    11    # 挂载的设备/dev/sdb3多了一项acl
+
+    [root@localhost ~]# cd /mydata
+
+    [root@localhost mydata]# setfacl -m u:hadoop:rw- inittab
+    # 此时可以设定acl了
+
+    [root@localhost mydata]# getfacl inittab
+    1    # file:inittab
+    2    # owner: root
+    3    # group: root
+    4    user::rw-
+    5    user:hadoop:rw-
+    6    # hadoop用户对inittab具有了读写权限
+    7    group::r--
+    8    mask::rw-
+    9    other::r--
+
+    B.修改配置环境：
+    上述操作为手动设置挂载设备的acl选项，如果希望开机自动挂载设备时也支持acl，就需要编辑/etc/fstab，在挂载选项后面附加acl选项：
+
+     [root@localhostmydata]# vim /etc/fstab
+    1    #
+    2    # /etc/fstab
+    3    # Created byanaconda on Wed Jul  9 21:21:40 2014
+    4    #
+    5    # Accessiblefilesystems, by reference, are maintained under &apos;/dev/disk&apos;
+    6    # See manpages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+    7    #
+    8    /dev/mapper/VolGroup-lv_root/            ext4    defaults        1 1
+    9    UUID=d9512fb3-8dd6-4613-ae55-8e99ba0ef627/boot  ext4  defaults   1 2
+    10    /dev/mapper/VolGroup-lv_swapswap                swap  defaults   0 0
+    11    tmpfs                   /dev/shm                tmpfs  defaults  0 0
+    12    devpts                  /dev/pts        devpts  gid=5,mode=620   0 0
+    13    sysfs                   /sys            sysfs   defaults         0 0
+    14    proc                    /proc            proc   defaults         0 0
+    15    /dev/sdb3               /mydata      ext4  defaults,noatime,acl  0 0
+    16    # 在defaluts后面加上acl,就可以实现自动挂载时支持acl了
+    17    LABEL=&quot;NEWSWAP&quot;         swap            swap    defaults         0 0
+
+    C. 使用tune2fs命令来指定acl
+    除了修改使用修改配置环境的方法，还可以使用tune2fs命令来实现挂载设备支持acl：
+        tun2efs -o acl DEVICE
+    如果要取消默认的挂载选项，则使用：
+        tun2efs -o ^acl DEVICE
+
+    演示实例如下：
+    [root@localhost mydata]# man tune2fs
+    TUNE2FS(8)                                                         TUNE2FS(8)
+    NAME
+           tune2fs - adjust tunable filesystemparameters on ext2/ext3/ext4 filesystems
+      -o [^]mount-option[,...]  Set or  clear  the indicated default mount options in thefilesystem.
+    # 使用-o选项，可以设置挂载选项，如果加上[^]脱字符，就能取消相应的挂载选项。
+
+    [root@localhost ~]# umount /dev/sdb3
+
+    [root@localhost ~]# mount /dev/sdb3 /mydata
+
+    [root@localhost ~]# cd /mydata
+
+    [root@localhost mydata]# setfacl -m u:hive:rw- inittab
+    1    setfacl:inittab: Operation not supported
+    2    # 重新挂载/dev/sdb3之后，默认无法设置文件访问控制列表
+
+    [root@localhost mydata]# cd
+
+    [root@localhost ~]# tune2fs -o acl /dev/sdb3
+    1    tune2fs1.41.12 (17-May-2010)
+    2    # 使用tune2fs -o来指定挂载选项
+
+    [root@localhost ~]# tune2fs -l /dev/sdb3
+
+1    tune2fs1.41.12 (17-May-2010)
+2    Filesystemvolume name:   MYDAT
+3    Last mountedon:          /mydata
+4    Default mountoptions:    acl
+5    # 默认挂载选项为acl
+6    Filesystemstate:         clean
+
+    [root@localhost ~]# umount /dev/sdb3
+
+    [root@localhost ~]# mount /dev/sdb3 /mydata
+
+    [root@localhost ~]# cd /mydata
+    # 重新挂载/dev/sdb3，并进入/mydata目录
+
+    [root@localhost mydata]# setfacl -m u:hive:rw- inittab
+
+    [root@localhost mydata]# getfacl inittab
+    1    # file:inittab
+    2    # owner: root
+    3    # group: root
+    4    user::rw-
+    5    user:hive:rw-
+    6    group::r--
+    7    mask::rw-
+    8    other::r--
+    9    # 这次能够成功设置acl了
+
+    如果要取消acl，则可以使用^设定：
+
+    [root@localhost mydata]# cd
+
+    [root@localhost ~]# tune2fs -o ^acl /dev/sdb3
+    1    tune2fs1.41.12 (17-May-2010)
+
+    [root@localhost ~]# tune2fs -l /dev/sdb3
+    1    tune2fs1.41.12 (17-May-2010)
+    2    Filesystemvolume name:   MYDAT
+    3    Last mountedon:          /mydata
+    4    Default mountoptions:    (none)
+    5    # 这次没有acl项了
+    6    FilesystemUUID:         ead64b7a-80bd-4ad7-af3f-bece9a76e04c
+    [root@localhost mydata]# cd
+
+    [root@localhost ~]# umount /dev/sdb3
+
+    [root@localhost ~]# mount /dev/sdb3 /mydata
+
+    [root@localhost ~]# cd /mydata
+
+    [root@localhost mydata]# setfacl -m u:hive:rw- inittab
+    1    setfacl:inittab: Operation not supported
+    2    # 无法再为hive用户指定acl了
+
+    四、不允许某个用户访问文件
+
+        上文介绍的都是为某个用户提供特殊的访问权限，如果现在不想让某个用户具有任何访问权限，则可以使用setfacl -m u:USERNAME:--- FileName
+
+        如hadoop用户不希望hive用户有任何权限，可以进行如下操作：
+
+    [root@localhost tutor]# cd test
+
+    [root@localhost test]# su hadoop
+
+    [hadoop@localhost test]$ setfacl -m u:hive:--- test.txt
+
+    [hadoop@localhost test]$ exit
+    1    exit
+
+    [root@localhost test]# su hive
+
+    [hive@localhost test]$ cat test.txt
+    1    cat: test.txt:Permission denied
+</code></pre><p>acl类型<br>    存取acl（access acls）<br>        是指对指定文件或目录的存取控制列表<br>    默认ACl（sefaultacls）<br>        只能和目录有关<br>            若目录中的文件没有存取acl，就会使用目录的默认acl。但是访问acl的优先级更高。<br>            默认acl时可选的<br>    自动获取acl权限<br>            若目录设置了默认acl，则新创文件将从其目录继承acl设置<br>            使用mv命令和cp-p命令操作文件时将保持acl设置</p>
+<p>  进程相关概念<br>        程序进程和作业<br>            程序是机器机灵的集合，文件形式存储<br>        进程process<br>            进程是一个程序在其自身的虚拟地址空间中的一次执行活动<br>        作业/任务（job/task）<br>            用户通过操作系统用户接口（shell或x环境）提供给计算机进行加工处理的程序。如用户发出一个打印命令，就产生一个打印作业任务。<br>        • 进程之间可以通过称为进程间通信（IPC）的机制进行交互。<br>        • 当进程之间共享数据时，操作系统使用了同步技术来保证共享的合法性。<br>    linux时多用户多任务系统<br>        每个用户均可同时运行多个程序。位区分每一个陨星的程序，linux给每个进程都做了标识，称为进程号 （processID） 每个进程的进程号都是唯一的。<br>        系统启动后的第一个晋城市init， 他的pid是1<br>        init是唯一一个由系统内核直接运行的进程<br>        除了init之外，每个进程都有父进程ppid</p>
+<pre><code>    Ruid rgid 识别正在运行此进程的用户和组
+    Euid egid 以什么身份运行 （除了设置特殊权限时即suid guid时 其他时刻上下uid gid一致）
+进程的启动方式
+    手动方式：使用操作系统提供的用户接口
+        前台
+        后台
+    调度方式：按照预先指定的时间执行
+    At
+    Batch
+    cron
+
+    • 前台进程
+        • 指一个程序控制着标准输入/输出，在程序运行时，shell 被暂时挂起，直到该程序运行结束后，才退回到 shell。在这个过程中，用户不能再执行其它程序。
+    • 后台进程
+        • 用户不必等待程序运行结束就可以执行其它程序。
+        • 运行后台进程的方法是在命令行最后加上 “ &amp;”
+
+
+
+进程管理
+    查看系统中的进程
+        使用ps命令查看进程状态信息
+            显示那些进程正在执行和执行的状态
+            进程是否结束、进程有没有僵死
+            那些进程占用了过多的资源
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记3/">
+    <time datetime="2018-08-13T05:41:26.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/08/13/系统笔记4/" rel="prev"><span class="meta-nav">←</span> 系统笔记4</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/系统笔记2/" rel="next">系统笔记2 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记5/">系统笔记5</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记4/">系统笔记4</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记3/">系统笔记3</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记2/">系统笔记2</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记1/">系统笔记1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

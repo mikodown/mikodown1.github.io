@@ -61,6 +61,259 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-网络笔记day6" class="post-网络笔记day6 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day6/">网络笔记day6</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day6/" data-id="cjks1ncsn000i20v6puh3si8h" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Bgp 概述<br>    路由协议分类</p>
+<pre><code>Igp
+    内部网关协议
+    执行拓扑发现
+    尽力完成快速收敛
+    需要周期性的更新来确保路由选择信息的精确性
+    受同一个管理机构的控制
+    提供了优先的策略控制能力
+BGP
+    AS：autonomous system 自治系统，指的是在同一个组织管理下使用相同策略的设备的集合。 
+    不同AS通过AS号区分，AS号取值范围1－65535，其中64512－65535是私有AS号。
+    IANA负责AS号的分发。(https://www.iana.org/)
+    中国电信163 AS号：4134 中国电信CN2 AS号：4809 中国网通AS 号：9929
+    使用BGP的理由
+    大量路由需要承载，IGP只能容纳千条，而BGP可以容纳上万 
+    支撑MPLS/VPN的应用，传递客户VPN路由。 
+    策略能力强，可以很好的实现路由决策与数据控制
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day6/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day6/">
+    <time datetime="2018-08-13T04:27:56.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day5" class="post-网络笔记day5 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day5/">网络笔记day5</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day5/" data-id="cjks1ncsm000h20v6zktww9cv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>路由重发布<br>    将A协议的路由条目重新整合，发布到B协议中，这种行为是路由重发布<br>    为了保证双向通信，我们往往需要进行双向重发布<br>        路由重发布需要注意事项<br>            度量值的计算规则不一样<br>                Rip 跳数<br>                Eigrp sk值<br>                Ospf cost<br>                Isis 默认度量值<br>        重发布的路由失去了原路由的放环信息，可能出现环路<br>        收敛时间不一致<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day5/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day5/">
+    <time datetime="2018-08-13T04:27:27.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day4" class="post-网络笔记day4 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day4/">网络笔记day4</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day4/" data-id="cjks1ncsk000f20v6z557dh2g" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>IS-IS协议简介<br>    • IS-IS是一个链路状态的、内部网关协议。它被设计成适用在OSI无连接网络服务（CLNS：Connctionless Network Service）的环境中。为了提供对IP的路由支持，IETF在RFC1195中对IS-IS进行了扩充和修改，使它能够同时应用在TCP/IP和OSI环境中，称为集成化IS-IS（Integrated IS-IS或Dual IS-IS）<br>    集成型IS-IS和OSPF都是20世纪80年代后期定义的，大约是1988年。OSPF实际上是从IS-IS的早期版本进化而来的，不过它采用IP作为前提。<br>    IS-IS是路由选择协议，传递CLNP的路由信息。在ISO协议族，我们可以把ES终端系统理解为主机，把IS中间系统理解为路由器。因此IS-IS的出生，其实是为CLNS服务的，往后发展成了集成性IS-IS就做了扩展，也就可以支持IP路由了。<br>    IS-IS协议管理距离115<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day4/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day4/">
+    <time datetime="2018-08-13T04:26:51.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day3" class="post-网络笔记day3 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day3/">网络笔记day3</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day3/" data-id="cjks1ncsh000d20v6sf0g8uua" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>链路状态协议<br>路由器会将自己接口所在的链路的信息署名，然后发给自己的邻居<br>邻居收到链路状态信息后，存储在链路状态数据库中<br>当收敛完成后路由器几乎收到网络中所由路有器的链路状态后，会计算全网拓扑<br>使用spf算法得到去没一个网段的最短路线，然后去往每个网段的下一条写进路由表</p>
+<p>典型代表<br>Ospf is-is<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day3/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day3/">
+    <time datetime="2018-08-13T04:25:46.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day2" class="post-网络笔记day2 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day2/">网络笔记day2</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjks1ncse000b20v69c2kydvg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>距离矢量路由协议<br>    路由器会将参与距离矢量协议的路由周期性更新给新邻居<br>    典型代表 rip eigrp<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day2/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day2/">
+    <time datetime="2018-08-13T03:56:59.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-网络笔记day1" class="post-网络笔记day1 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -76,7 +329,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day1/" data-id="cjkrsaaj20004dcv6j791xpum" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day1/" data-id="cjks1ncs7000720v6zuqoo6mb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -123,7 +376,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/my-first-blog/" data-id="cjkrsaaiz0002dcv6cjga2cxj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/my-first-blog/" data-id="cjks1ncsc000a20v62wtim37m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -165,7 +418,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/hello-world/" data-id="cjkrsaaj30005dcv6tc28moyb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/hello-world/" data-id="cjks1ncsa000920v6r2oeax9h" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -230,23 +483,23 @@
       <ul>
         
           <li>
-            <a href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
+            <a href="/2018/08/13/系统笔记5/">系统笔记5</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+            <a href="/2018/08/13/系统笔记4/">系统笔记4</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+            <a href="/2018/08/13/系统笔记3/">系统笔记3</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+            <a href="/2018/08/13/系统笔记2/">系统笔记2</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+            <a href="/2018/08/13/系统笔记1/">系统笔记1</a>
           </li>
         
       </ul>

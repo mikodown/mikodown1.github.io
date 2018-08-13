@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="自由软件和linux    自由软件    Linux及其历史    linux的内核版本与其发行版本    rhce与Centos
+cpu系统架构介绍    cpu架构        X86        IA-64 英特尔和hp开发的专门为服务器服务的cpu架构
+操作系统安全等级划分      " />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>系统笔记2 | Welcome my friend！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="自由软件和linux    自由软件    Linux及其历史    linux的内核版本与其发行版本    rhce与Centos cpu系统架构介绍    cpu架构        X86        IA-64 英特尔和hp开发的专门为服务器服务的cpu架构 操作系统安全等级划分        tcsec安全标价标准        D 最小的保护        C 任意的保护">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统笔记2">
+<meta property="og:url" content="http://yoursite.com/2018/08/13/系统笔记2/index.html">
+<meta property="og:site_name" content="Welcome my friend！">
+<meta property="og:description" content="自由软件和linux    自由软件    Linux及其历史    linux的内核版本与其发行版本    rhce与Centos cpu系统架构介绍    cpu架构        X86        IA-64 英特尔和hp开发的专门为服务器服务的cpu架构 操作系统安全等级划分        tcsec安全标价标准        D 最小的保护        C 任意的保护">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-13T09:00:50.621Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统笔记2">
+<meta name="twitter:description" content="自由软件和linux    自由软件    Linux及其历史    linux的内核版本与其发行版本    rhce与Centos cpu系统架构介绍    cpu架构        X86        IA-64 英特尔和hp开发的专门为服务器服务的cpu架构 操作系统安全等级划分        tcsec安全标价标准        D 最小的保护        C 任意的保护">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Welcome my friend！" rel="home">Welcome my friend！</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-系统笔记2" class="post-系统笔记2 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      系统笔记2
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记2/" data-id="cjks1ncs1000220v6bcp9gypv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>自由软件和linux<br>    自由软件<br>    Linux及其历史<br>    linux的内核版本与其发行版本<br>    rhce与Centos</p>
+<p>cpu系统架构介绍<br>    cpu架构<br>        X86<br>        IA-64 英特尔和hp开发的专门为服务器服务的cpu架构</p>
+<p>操作系统安全等级划分<br>        tcsec安全标价标准<br>        D 最小的保护<br>        C 任意的保护<br>        B必须的保护<br>        A被核实的保护</p>
+<p>linux简史</p>
+<pre><code>linux系统的特点
+    ○ 开放性
+    ○ 多用户
+    ○ 多任务
+    ○ 出色的速度和性能
+    ○ 良好的用户界面
+    ○ 丰富的网络系统
+    ○ 可靠的系统安全
+    ○ 良好的可移植性
+    ○ 具有标准兼容性
+linux系统组成
+    内核 汇编 c语言编写 是运行程序和管理磁盘打印机等硬件设备的核心装置
+    Shell 提供一些命令 是系统的用户界面 提供了用户与内核进行交互操作的接口
+    linux文件系统 文件系统是文件存放在磁盘等存储设备上的组织方法，linux能支持多种目前的流行文件系统
+    linux应用程序 标准的linux系统都有一套应用程序集，包括文本编辑器，编程语言，办公套件，internet工具等等
+linux内核与发行版本
+linux内核版本
+内核版本是子啊linus领导下的开发小组开发出的系统内核版本号
+内核版本号是由三个数字组成的 rxy
+R 目前发布的kernel的主版本
+X 偶数代表稳定版本，奇数代表开发中的版本
+Y 错误修补的次数
+        初始版本
+软件开发 debian Ubuntu (友帮拓)
+
+
+
+获取系统基本信息的一些基本指令
+        通过的DMI获取系统硬件信息：dmidecode或ishw
+        显示pci/usb接口信息 ispci/isusb
+        显示cpu信息 iscpu或cat /proc/cpuinfo
+        检查硬件虚拟汉化的支持：egrep-color
+        显示物理内存的大小free-m
+
+        查看系统发行版本 cat /etc/systnem-release
+        查看系统内核版本 uname -r
+        查看机器的系统的结构 arch
+        显示系统加载的内核模块 lsmod
+        查看系统启动信息 dmesg
+        显示系统中的块设备 isblk
+        显示磁盘的分区 fdisk -l 或gdisk -l或parted -l
+        查看磁盘的剩余空间 df -ph
+        查看日期和时间 timedatectl 或date
+        查看已启用的软件更新源 yum repolist
+        显示主机名 hostnamectl 或hostname
+        显示网络状态信息 ss或netstat
+        显示防火墙规则 firewall-cmd-list-all 或IPtables-nvl
+        语言环境的全局配置文件位置
+        /etc/locale.conf
+        更改时间设置日期或时间
+        Timedatectl set-time
+        设置时区为中国或上海
+        Timedatectl set-timezone Asia/Shanghai
+        关闭selinux 
+        临时关闭重启后失效
+        Setenforce 0
+        永久关闭，重启后生效
+        Vim /etc/selinux/config SELINUX=disable
+
+        最小化安装只提供了日常应用软件的最小子集，为了方便日常操作和管理，可输入如下命令安装必要的软件:
+         # yum install lshw pciutils usbutils gdisk system-storage-manager
+         # yum install   bash-completion zip unzip bzip2 tree tmpwatch pinfo man-pages # yum install   nano vim-enhanced tmux screen
+         # yum install   net-tools psmisc lsof sysstat # yum install   yum-plugin-security yum-utils createrepo 
+        # yum install   git wget curl elinks lynx lftp mailx mutt rsync 
+        使用如下命令更新系统： yum –y update
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记2/">
+    <time datetime="2018-08-13T05:41:23.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/08/13/系统笔记3/" rel="prev"><span class="meta-nav">←</span> 系统笔记3</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/08/13/系统笔记1/" rel="next">系统笔记1 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记5/">系统笔记5</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记4/">系统笔记4</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记3/">系统笔记3</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记2/">系统笔记2</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记1/">系统笔记1</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

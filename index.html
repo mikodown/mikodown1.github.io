@@ -61,6 +61,1024 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-系统笔记5" class="post-系统笔记5 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/系统笔记5/">系统笔记5</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记5/" data-id="cjks1ncs5000520v6k0vcid5u" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>IP add查看网络接口，网卡是否被激活<br>如果物理网卡未被激活<br>    Ifup 网卡设备<br>    修改ssh配置文件启动ssh服务<br>        Vim /etc/ssh/sshd_config<br>    ssh登陆格式<br>        Ssh username@hostname port</p>
+<pre><code>更新yum软件厂库
+
+Yum clean all
+</code></pre><p> screen 虚拟终端 screen -r screen -l</p>
+<p>rpm是rpm package manager的缩写<br>rpm的五大功能<br>    安装 卸载 升级 查询 验证<br>rpm组件<br>    本地数据库<br>    rpm及相关的可执行文件</p>
+<pre><code>软件包文件
+</code></pre><p>获得rpm软件包<br>    从发行套件cd中查找<br>    从软件的主站点查找下载<br>    从<a href="http://www.atrpms.net" target="_blank" rel="noopener">http://www.atrpms.net</a> 查找下载</p>
+<p>yum更新系统</p>
+<pre><code>• yum 的宗旨是自动化地升级，安装/移除rpm包，收集rpm包的相关信息，检查依赖性并自动提示用户解决。
+• yum 是 rpm 的前端程序 ，RHEL 的 up2date 的替代工具。
+• yum 的关键之处是要有可靠的 repository（软件仓库）
+    • 可以是 http 或 ftp 站点，也可以是本地软件池
+    • 包含rpm 包的各种信息（包括描述，功能，提供的文件，依赖性等）
+    • yum 正是由于对收集的这些 header并加以分析，才能自动化地完成安装/更新/删除等任务
+
+
+
+
+• 简洁的配置文件
+    • /etc/yum.conf 和 /etc/yum.repos.d/*.repo
+</code></pre><p>yum仓库<br>    一个yum软件仓库其实就是一个包含了仓库数据的存放众多rpm文件的目录<br>    yum仓库数据通常存放在名为repodata的子目录中</p>
+<p>yum命令语法<br>    yum是yum是系统的字符界面管理系统<br>        -y 提问回答 yes<br>        -c 只利用本地缓存不从远程仓库下载文件<br>        • –enablerepo=REPO：临时启用指定的名为REPO的仓库<br>        • –disablerepo=REPO：临时禁用指定的名为REPO的仓库<br>        • –installlroot=PATH：指定安装软件时的根目录，主要用于为chroot环境安装软件<br>• </p>
+<p>容易形成性能瓶颈的监视对象<br>    cpu性能<br>    内存性能<br>    磁盘性能<br>    网络带宽</p>
+<p>系统性能监视常用工具<br>    cpu监视工具<br>    Top 动态输出系统进程任务<br>    Mpstat 输出cpu各种统计信息<br>内存监视工具<br>    Free 显示系统内存使用<br>    Vmstat 报告需要你内存的各种统计信息</p>
+<pre><code>内核管理
+
+    Rpm -q  {redhat，centos}
+显示当前运行的内核版本
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记5/">
+    <time datetime="2018-08-13T05:41:33.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-系统笔记4" class="post-系统笔记4 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/系统笔记4/">系统笔记4</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记4/" data-id="cjks1ncs4000420v6qbxeh89d" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>概要<br>    磁盘相关概念<br>    磁盘分区工具<br>    创建和维护lvm系统<br>    linux文件系统的挂载和卸载<br>    ext2/ext3/ext4、xfs文件系统管理<br>    磁盘限额</p>
+<p>硬盘及相关概念<br>    硬盘的技术指标<br>        主轴转速：指硬盘盘片一分钟内能完成的最大转速<br>        平均寻道时间：指磁头从得到指令到寻找到数据所在磁道的时间，他描述硬盘读取数据的能力<br>        数据传输率：指的是从硬盘缓存向外输出数据的速度，单位MB/s<br>        高速缓存：缓存数数据的临时寄存器，主要用来缓解速度差和实现数据与存取等<br>        单碟容量：指每张碟片的最大容量。这是反应硬盘综合性能指标的一个重要因素<br>硬盘接口方式<br>    FC-Al接口主要应用于任务级的关键数据的大容量实时存储。可以满足高性能、高可靠和高扩展的存储需要。<br>    scsi接口主要应用于商业级的关键数据的大容量存储<br>    Sas 接口是个全才，可以支持sas和sata硬盘，很可靠地，满足不同性价比地存储需要，被商业公认为取代并行的scsi<br>    sata接口主要应用于非关键数据的大容量存储，近线存储和关键性应用<br>    Pata 基本淘汰<br>主引导记录<br>    • MBR位于硬盘的0磁道0柱面1扇区【512字节】<br>        • 装载操作系统的硬盘引导程序【446字节】<br>        • 硬盘分区表 (Disk Partition Table, DPT) 【64字节】<br>            ○ 分区ID或者类型<br>            ○ 分区起始磁道<br>            ○ 分区磁道数<br>        • 最后两个字节“55，AA”是分区的结束标志<br>    • MBR是由分区程序（如fdisk）所产生的<br>        • 不依赖任何操作系统<br>    硬盘引导程序是可以改变的，从而实现多系统共存<br>    （现在多为gpt分区）</p>
+<p>磁盘分区<br>    指向附加分区描述符的扩展分区<br>    内核最多支持分区数<br>        ide驱动器为63<br>        scsi驱动器为15<br>两种硬盘存储方式<br>    基本硬盘存储方式<br>        在基本硬盘上存储数据需要在磁盘上创建主分区，扩展分区，和逻辑分区然后对这些分区进行管理<br>    动态硬盘存储<br>        在动态磁盘上存储数据需要在磁盘上创建动态分区，然后对这些卷进行管理</p>
+<p>磁盘分区工具<br>    分区管理工具<br>        Fdisk<br>        Sfdisk<br>        Gun parted 高级分区操作<br>    Partprobe 重新设置内存中的内核分区表版本</p>
+<p>磁盘分区工具 –fdisk<br>    进入fdisk的交互操作方式<br>    Fdisk 硬盘设备名<br>    在命令行方式下显示指定硬盘的分区表信息<br>    Fdisk -l 硬盘设备名</p>
+<pre><code>磁盘分区工具 --parted
+• 交互模式
+    # parted [选项] &lt;硬盘设备名&gt; 
+• 命令行模式
+    # parted [选项] &lt;硬盘设备名&gt; &lt;子命令&gt; [&lt;子命令参数&gt;]
+    • 子命令
+        ○ 打印帮助信息：help [COMMAND] 
+        ○ 显示分区表： print [free|NUMBER|all]
+        ○ 创建新分区：mkpart PART-TYPE [FS-TYPE] START END 
+        ○ 删除指定分区：rm NUMBER
+        ○ 设置分区标记：set NUMBER FLAG STATE 
+• 静态分区的缺点
+    • 在安装linux的过程中如何正确的评估各分区大小是一个难题，因此需要系统管理员不但要考虑到当前某个分区需要的容量还要遇见该分区以后可能需要的容量最大值
+    • 某个分区空间耗尽时，通常的解决办法时
+        ○ 使用符号链接--破环linux系统标准结构
+        ○ 使用调整分区大小的工具--必须停机一段时间进行调整
+        ○ 备份整个系统，清除硬盘重新对硬盘分区，然后恢复数据到新分区--必须停机一段时间进行恢复操作
+• lvm的相关概念
+    • 什么时逻辑卷管理器
+        LVM 是逻辑盘卷管理（Logical Volume Manager）的简称，它是 Linux 环境下对卷进行方便操作的抽象层。
+        LVM 是建立在硬盘和分区之上的一个逻辑层，来为文件系统屏蔽下层磁盘分区布局，从而提高磁盘分区管理的灵活性。
+        LVM允许在多个物理设备间重新组织文件系统，包括重新设定文件系统的大小。
+• 使用lvm
+    • 通过lvm可以轻松管理磁盘分区如将若干磁盘分区连接成为一个整块的卷组，形成一个存储池
+    • 可以在卷组中随意创建逻辑卷 并进一步在逻辑卷上常见文件系统
+    • 通过lvm可以方便地调整存储卷组的大小并且可以对磁盘存储按照组的方式进行命名、管理和分配
+    • 
+    • lvm术语--物理卷
+        ○ 物理卷在lvm系统中处于最低层
+        ○ 物理卷可以是整个硬盘、硬盘上的分区或者从逻辑上与磁盘分区具有相同功能的设备
+        ○ 物理卷时lvm的基本存储逻辑块，但和基本的物理存储介质比较。却含有与lvm相关的管理参数
+    • lvm术语--物理区域
+        ○ 每一个物理卷被划分为基本单元pe，具有唯一编号的pe时可以被lvm寻址的最小存储单元
+        ○ pe的大小可以根据实际情况在创建物理卷时指定，默认为4MB
+        ○ pe的大小一旦确定将不能更改，同一个卷组中的所有物理卷的pe大小需要一致
+</code></pre><p>LVM术语——卷组<br>    卷组(Volume Group, VG)建立在物理卷之上，它由一个或多个物理卷组成<br>    卷组创建之后，可以动态添加物理卷到卷组中，在卷组上可以创建一个或多个“LVM 分区”（逻辑卷）<br>    一个 LVM 系统中可以只有一个卷组，也可以包含多个卷组<br>    LVM 的卷组类似于非LVM系统中的物理硬盘</p>
+<p>lvm术语–逻辑卷</p>
+<pre><code>逻辑卷建立在卷组上，它是卷组中切除的一块空间
+逻辑卷创建之后，其大小可以伸缩
+lvm的逻辑卷类似于非lvm系统中的硬盘分区，在逻辑卷之上可以建立文件系统（比如/home或者/usr等）
+逻辑卷也被划分为可被寻址的基本单位（称为 Logical Extent, LE）
+在同一个卷组中，LE 的大小和 PE 是相同的，并且一一对应
+</code></pre><p>lvm术语–vgda<br>• 和非 LVM 系统将包含分区信息的元数据保存在位于分区的起始位置的分区表中一样，逻辑卷以及卷组相关的元数据也是保存在位于物理卷起始处的卷组描述符区域 (Volume Group Descriptor Area, VGDA)中。<br>• VGDA 包括以下内容： PV描述符、VG描述符、LV描述符、和一些PE描述符。<br>•<br>• 使用lvm系统的步骤<br>    • 创建lvm类型的分区<br>    • 在新硬盘上创建物理卷<br>    • 将新创建的物理卷添加到卷组<br>    • 在卷组中创建逻辑卷<br>    • 在逻辑卷中创建文件系统<br>    • 挂载创建的文件系统</p>
+<p>• lvm管理工具的使用<br>    • 创建物理卷<br>    • Pvcreate 磁盘或分区设备名<br>    • Vgcreate 卷组 物理卷设备名<br>    • Lvcreate -L逻辑卷大小 -n 逻辑卷名 卷组名<br>    • Lvcreate -ipe值 -n逻辑卷名 -卷组名<br>    • PE值可以通过使用命令 vgdisplay|grep “Free  PE” 获得。<br>    • 查看卷信息<br>        • 查看物理卷<br>            ○ Pvdisplay<br>        • 查看卷组<br>            ○ Vgdispaly<br>        • 查看逻辑卷<br>            ○ Lvdisplay</p>
+<pre><code>    • 扩展逻辑卷
+        ○ 扩展卷组 
+        ○ Vgextend 卷组 物理卷设备名
+    • 若卷组中有剩余空间，扩展卷组中的逻辑卷
+        ○ Lvextend -L逻辑卷增量 逻辑卷设备名
+        ○ Lvextend -l +pe 逻辑卷设备名
+    • 对已经扩展的逻辑卷中的文件系统进行容量扩容
+        ○ resize2f分区或逻辑卷设备名
+• 缩减逻辑卷
+    • 使用umount 命令卸载文件系统
+    • 使用e2fsck检查文件系统
+    • 使用resize2fs命令缩减文件系统容量
+    • 缩减逻辑卷
+        ○ Lvreduce -L 增量 设备名
+        ○ Lvreduce -l -pe 设备名
+</code></pre><p>lvm常用命令集</p>
+<pre><code>文件系统概念
+    文件系统是包括在一个磁盘（硬盘、光盘及其他存储设备）上的目录结构；一个磁盘设备可以包含一个或多个文件系统
+    文件系统是在一个磁盘上组织文件的方法
+    文件系统是文件的数据结构或组织方法
+    文件系统是基于被划分的存储设备上的一种文件的命名、存储组织及读取方法
+    一个文件系统是有组织存储文件或数据的方法穆蒂阿是已于查询和存取。文件系统是基于一个存储设备，比如硬盘或光盘，并且包含文件物理位置的维护。
+
+使用linux文件系统的一般方法
+    挂装文件系统到系统中
+        手工挂装：使用mount命令
+        启动时自动挂装：编辑“/etc/fstab” 添加相应的配置行。
+
+挂载文件系统
+    Mount 选项 分区设备名 挂载点
+挂载文件系统注意事项
+    不能再同一个目录下挂载两个文件系统
+fuser命令
+    fuser命令可以根据文件（目录设备）查找使用它的进程，同时也提供了啥事这些进程的方法
+        使用距离：
+        查看挂载点有哪些进程需要杀掉
+            Fuser -cu /mount_point
+        杀死这些进程
+            Fuser -ck/mount_point
+        查看是否还有进程再访问挂载点
+            Fuser -c /mount_point
+        卸载挂接点上的设备
+            Umount /mount_point
+    可移动介质
+        ○ 访问前、介质必须被挂载 
+        ○ 挂载（Mounting）意味着使外来的文件系统看起来如同是主目录树的一部分。 
+        ○ 摘除时，介质必须被卸载 
+        ○ 按照默认设置，非根用户只能挂载某些设备（光盘、DVD、软盘、USB等等） 
+        ○ 挂载点通常在 /media 下
+系统启动挂装表
+    /etc/fstab
+    fstab是一个纯文本文件，开机后，系统会自动搜索该文件中的内容，对于该文件中的文件系统进行挂装
+    被mount、fsck和其他程序使用
+    使用mount、fsck和其他命令挂载/etc/fstab中的所有文件系统
+    可以在设备栏使用文件系统卷标
+
+
+
+
+
+交换空间
+    基本设置包括
+        创建交换分区或者文件
+        使用mkswap创建交换文件系统
+        在/etc/fstab 文件中添加适当的条目
+        使用swapon -a激活空间
+    生成交换文件
+    • dd if=/dev/zero of=/swapfile bs=1024 count=X
+
+
+Ext 2/3/4 文件系统管理
+    创建文件系统
+        前端命令mkfs的格式
+         mkfs -t &lt;fstype&gt;-c &lt;分区设备名&gt;
+            -t fstype
+            -c 
+        Mksf.ext4 /dev/sda1
+
+    检查文件系统 
+        Fsck 是操作系统扫描文件系统内容检查内部一致性的工具
+    使用label和uuid
+        ○ 显示Label
+            e2label  &lt;设备名&gt;
+        ○ 根据Label查找设备名
+            findfs LABEL=&lt;label&gt;
+        ○ 在 mount 命令中使用 LABEL和UUID
+            mount [options] -L &lt;label&gt; &lt;mount_point&gt;
+            mount [options] -U &lt;uuid&gt;  &lt;mount_point&gt;
+        ○ 在 /etc/fstab 中使用 LABEL和UUID
+            UUID=uuid    /mountpoint     ext4   default   1   2
+        LABEL=label  /mountpoint    ext4   default   1   2
+
+
+
+
+
+
+        ○ 显示UUID
+            blkid   &lt;设备名&gt;
+        ○ 根据UUID查找设备名
+            findfs UUID=&lt;uuid&gt;
+
+
+磁盘限额
+        磁盘限额是系统管理员用来监控和限制用户或组对磁盘的使用的工具
+            磁盘限额可以从两方面限制
+                限制用户和组可以拥有的inode数（即文件个数）
+                限制分配给用户或组的磁盘块的数目
+            磁盘配额是以每一个使用者，每一个文件系统为基础的。如果使用者可以在超过一个以上的文件系统上建立文件，那么必须在每一个文件系统上分别设定
+    磁盘限额的限制策略
+        硬限制：超过此设定之后不能继续存储新的文件
+        软限制：超过此限定值后仍可以继续存储新的文件，同时系统发出警告信息，建议用户清理自己的文件，释放出更多的空间。
+        时限：超过软限制多长时间之内可以继续存储新的文件
+
+
+    编辑/etc/fstab
+    在中添加文件系统挂载选项
+    usrquota，grpqupta
+    重新挂载
+    Mount -o remount /home
+    创建quota数据库并开启
+    创建数据库
+        Quoatcheck -cmvug/home
+    开启quota
+        Quotaon -avug
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记4/">
+    <time datetime="2018-08-13T05:41:29.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-系统笔记3" class="post-系统笔记3 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/系统笔记3/">系统笔记3</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记3/" data-id="cjks1ncs6000620v6qy1h0r9r" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>1.账户实质<br>2.账户文件<br>3.账户设置<br>4.口令管理<br>5.权限表示<br>6.权限设置<br>7.进程描述<br>8.进程管理<br>9.作业控制</p>
+<p>账户管理的相关概念<br>    账户实质就是一个用户在系统上的标识<br>        系统依据账户来区分每个用户的文件、进程、任务、给每个用户提供特定的工作环境（如用户的工作目录，shell版本、以及x-windows环境的配置等）是每个用户的工作都能独立不受干扰地进行<br>    linux中的账户包括<br>        用户账户<br>        组账户</p>
+<p>用户<br>linux系统下有两个种用户<br>    普通用户账户，在系统上的是普通任务<br>    超级用户账户，在系统上的任务是对普通用户和整个系统进行管理<br>每个用户都被分配了一个唯一的用户id号（UID）<br>    超级用户：uid=0，GID=0<br>    普通用户：UID&gt;=1000<br>    系统用户（伪用户不可登陆） ：0&lt;UID&lt;1000<br>用户名和UID被保存在/etc/passwd这个文件中<br>当用户登陆时，他们被分配了一个主目录和一个运行的文件通常是shell<br>若无适当权限，用户无法读取、写入或执行彼此的文件</p>
+<p>组<br>    组时用户的集合<br>    每个组都被分配了一个唯一的组id号（gid）<br>    组和gid被保存在/etc/group文件中<br>    每个用户都有他们自己的私有组<br>    每个用户都可以被添加到其他组中来获得额外的存储权限<br>    组中的所有用户都可以共享属于改组的文件</p>
+<p>标准组<br>    标准组可以容纳多个用户<br>    若使用标准组，在传概念一个心得用户时就应该指定他所在的组<br>    私有组<br>        私有组中只有自己<br>        当在创建一个新用户时，若没有指定他所属于的组 RHCE/Centos就建立一个和该用户同名的私有组，且用户被分配到这个私有组中<br>        缺点：可能会鼓励创建任何人都可以访问的文件<br>当一个用户同属于多个组时，将这些组分为：<br>主组（初始组）：用户登陆时的组<br>附加组：登陆后可切换的组</p>
+<p>Centos帐号管理<br>    默认启用shadow passwords功能<br>        /etc/passwd文件对任何用户均可读，为了增强系统的安全性，用户的口令通常用shadow passwords保护<br>        经过shadow passward 保护的账户密码和相关设置信息存在/etc/shadow文件里。 /etc/shadow支队root用户可读<br>        默认使用sha512哈希算法存储用户的口令<br>    一般不设置组口令。因为绝大多数应用程序不适用它。<br>    建议尽量使用私有组来提高系统的安全性<br>    管理工具由shadow-utils软件包提供<br>    不建议管理员直接变价修改系统账户文件来维护账户</p>
+<p>帐号验证信息文件<br>    口令文件 /etc/passwd<br>        文件权限（-rw-r–r–）<br>    影子口令文件 /etc/shadow<br>        文件权限（-r——）<br>    组长帐号文件 /etc/group<br>        文件权限（-rw-r–r–）<br>    组口令文件 /etc/gshadow<br>        文件权限（-r—–）</p>
+<p>口令文件 /etc/passwd<br>    每个用户一条记录<br>    每条记录由用分号间隔的七个字段组成</p>
+<p>影子口令文件/etc/shadow<br>    每个由分号间隔的九个字段组成</p>
+<p>组帐号文件/etc/group<br>四个字段 组名 口令 组id 组内用户列表</p>
+<p>组口令文件 /etc/gshadow<br>每一个组一条记录 四个字段 组名 加密的组口令<br>组的管理员帐号 组内的用户列表</p>
+<p>验证账号文件的一致性<br>    Pwck 验证用户文件对比 /etc/passwd 和 /etc/shadow<br>    Grpck 验证组帐号 /etc/group 和 /etc/gshadow</p>
+<p>用户默认环境配置和模板<br>    用户默认配置文件<br>        /etc/login.defs<br>        /etc/default/useradd<br>    新用户基本信息<br>        /etc/skel<br>        如果手工创建用户，则需复制改目录到用户主目录</p>
+<p>用户和组管理工具<br>    用户管理<br>        添加用户帐号（useradd）<br>        格式 useradd 选项 用户名</p>
+<pre><code>useradd命令添加用户的过程
+    编辑账户验证信息文件
+    /etc/passwd /etc/shadow
+    /etc/group/ /etc/gshadow
+    创建主目录/home/用户名
+        根据骨架目录 /etc/skel的内容填充用户主目录
+        设置权限和拥有者
+
+设置用户口令
+    Passwd 用户名
+    Passwd
+Root 设置他人的口令 
+    Passwd user1
+</code></pre><p>显示useradd默认命令参数的默认值<br>        Useradd -D<br>        从文件 /etc/default/useradd中读取<br>修改用户账号（usermod）<br>    格式<br>        Usermod 选项 用户名<br>        选项与useradd命令基本相同<br>删除用户帐号（userdel）<br>添加组账号（groupadd）<br>    格式<br>        Group 参数 组账号名<br>修改组账号（groupmod）<br>    Groupmod  参数 组账号名<br>删除组账号名（groupdel）</p>
+<pre><code>批量用户管理
+        成批添加/更新一组用户
+            Newusers filename 必须与/etc/password 格式一致
+        成批更新用户的口令
+            Chpasswd
+        批量生成安全的口令
+            Pwgen
+            Secpwgen（由RPMForge仓库提供）
+    chpasswd命令
+        Chpasswd &lt; filename文件格式（注意重定向）
+        username：password
+    口令维护
+        禁用恢复和删除用户口令
+    禁用用户账户口令
+        Passwd -l 用户账户ming
+    查看用户账户口令状态
+        Passwd -s 用户帐户名
+    恢复用户账户口令
+        Passwd -u 用户账户名
+    清除用户账户口令
+        Passwd -d 用户账户名
+</code></pre><p>对要新添加的用户设置口令时效<br>        修改/etc/login.defs</p>
+<p>设置已存在的用户的口令时效<br>    chage命令</p>
+<p>用户切换命令<br>    Su 切换为超级用户 适用于只有一个系统管理员的情况<br>    Sudo 直接使用sudo命令前缀执行系统管理命令<br>    执行系统管理命令时无需知道超级用户的口令，使用普通用户自己的口令即可<br>    用于执行系统管理命令式无需知道超级管理员的用户口令，所以适用于系统中有多个系统管理员的情况</p>
+<p>账户相关信息<br>    id、 显示当前的用户uid、gid和用户所属的组列表<br>    groups显示指定的用户所属的组列表<br>    Whoami 显示当前用户的名称<br>    w/who 显示登陆用户即相关信息<br>    Newgrp 用于转换用户当前组到指定的的组账号，用户必须属于改组才可以正确的执行该命令。</p>
+<p>文件和目录的基本权限<br>    普通用户只能不受限制的操作主目录下的的文件，对系统中其他目录的文件的访问受到限制<br>三种基本权限<br>    读 r<br>    写 w<br>    执行 x<br>分配三种基本权限<br>    文件和目录的使用者<br>        属主、同组人、其他人<br>    权限确认顺序<br>        先匹配uid 在gid 最后 other<br>    读写执行 421 rwx</p>
+<p>与权限相关的命令<br>    Chmod 改变文件或目录的权限 -r 表示递归操作<br>    Chown 改变文件或目录的属主<br>    Chgrp 改变文件或目录所属的组<br>    Umask 设置文件的缺省生成掩码 umask 属主 同组人 其他人 不允许有的权限<br>设置生成文件目录时的默认权限<br>    创建新文件或新目录的时候，系统夺回为他们指定默认的访问权限，这个缺省的访问权限就由umask值来确定<br>    系统不允许用户在创建一个普通文件时就赋予他可执行权限，必须在创建后用chmod修改，目录则允许设定可执行权限<br>使用umask命令临时设置<br>进入shell环境配置文件中配置<br>    /etc/bashrc<br>    用户在~/.bashrc中设置<br>在/etc/fstab的文明考吗系统挂装参数中指定<br>    /dev/sda10  /home  ext3  noauto,umask=022,iocharset=cp936,ro,users  0 0</p>
+<p>三种特殊权限<br>    特殊权限<br>        可执行文件的特殊权限<br>            Suid 使用命令的所属用户的权限来运行，而不是命令执行者的权限<br>            Sgid 所属组<br>        目录的特殊权限<br>            Sgid 在设置了sgid权限的目录中创建的文件会具备该目录的权限<br>            sticky-bit 在带有粘滞位的目录中的文件只能被文件所属的用户和root用户删除，不管改目录的写入权限是如何设置的</p>
+<pre><code>Ext 2/3/4的文件扩展属性
+    linux内核中有大量安全特征。 Ext2/3/4文件系统的扩展属性可以在某种程度上保护系统的安全
+    常见扩展属性
+
+
+
+    显示ext2/3/4的文件扩展属性
+        Lsattr 命令格式
+            Lsattr 
+            Lsattr myfile
+
+        Chattr 命令格式 
+        chattr（+-=）Asai 文件
+
+
+posix文件访问控制列表
+• IEEE POSIX 1003.1e 制定了ACL标准。
+
+    文件访问控制列表acl 给与了管理员更灵活的控制文件读写和权限赋予的能力
+    支持FAcl的操作系统
+    主流的商业unix系统
+    Freebsd linux系统
+</code></pre><p>linux的facl支持<br>    acl需要内核和文件系统的同时支持<br>            linux从内核2.6开始提供里对ext2/ext3，jfs，xfs，reiserfs等文件系统的acl支持<br>    acl文件系统支持mount<br>        通过文件系统的挂载选项实现acl支持<br>        一、什么是ACL（文件访问控制列表）</p>
+<pre><code>    假设用户hadoop在某个公共目录（具有sgid权限的目录）下创建了一个文件/u01/tutor/test/test.txt，那么该文件的属主和属组分别是是hadoop和hadoop，且该文件的权限为664，即属主属组有读写权限，其他用户有只读权限：
+
+    [hadoop@localhost tutor]$ ls -ld test
+    1    drwxrwxr-x. 2root mygrp 4096 Jul 13 21:34 test
+
+    [hadoop@localhost tutor]$ cd test
+
+    [hadoop@localhost test]$ touch test.txt
+
+    [hadoop@localhost test]$ ll
+    1    -rw-rw-r--. 1hadoop hadoop   0 Jul 13 21:36 test.txt
+    2    # hadoop用户创建的文件具有664权限
+
+    现在hadoop用户希望hive用户能够写此文件，但是hive用户对该文件即不是属主也不是属组，而其他用户为只读权限，而hadoop用户又不能修改文件的属主和属组，如果修改了other权限，使其具有写权限，那么除了hive用户外，其他所有的用户都对test.txt文件有写权限了，这样是不合适的。于是这里就需要引入新的机制——ACL（文件访问控制列表）。
+    ACL用于实现在原有的访问控制机制之外补充一种文件访问控制机制。
+
+二、如何设置ACL（文件控制访问列表）
+
+    获取文件控制访问列表的方式为：
+        getfacl FileName
+    设定文件控制访问列表的命令为setfacl，如果加上-m，就表示设定访问权限，-x表示取消访问权限：
+        setfacl -m u:USERNAME:MODE FileName
+        setfacl -m g:GROUPNAME:MODE FileName
+        如果是取消权限，则无需指定具体的权限，只指定用户名或组名即可：
+        setfacl -x u:USERNAME:MODE FileName
+        setfacl -x g:GROUPNAME:MODE FileName
+
+    现在继续上面的例子：
+
+    [hadoop@localhost test]$ getfacl test.txt
+    1    # file:test.txt
+    2    # owner:hadoop
+    3    # group:hadoop
+    4    user::rw-
+    5    group::rw-
+    6    other::r--
+
+    [hadoop@localhost test]$ setfacl -m u:hive:rw- test.txt
+    # 为hive用户设定文件访问权限
+
+    [hadoop@localhost test]$ getfacl
+    1    Usage: getfacl[-aceEsRLPtpndvh] file ...
+    2    Try `getfacl--help&apos; for more information.
+
+    [hadoop@localhost test]$ getfacl test.txt
+    1    # file:test.txt
+    2    # owner:hadoop
+    3    # group:hadoop
+    4    user::rw-
+    5    user:hive:rw-
+    6    # 可以看到hive用户具有了读写权限
+    7    group::rw-
+    8    mask::rw-
+    9    other::r--
+
+    用户能否访问文件，需经过以下几重判断：
+        1、用户是否为文件属主？
+        2、用户是否有特定的访问控制条目？
+        3、用户是否属于文件属组？
+        4、用户所属的组是否有特定的访问控制条目？
+        5、其它。
+
+    故上述例子中hive用户对test.txt文件有特定的访问控制条目，故可以进行读写操作：
+    [hadoop@localhost test]$ exit
+    1    exit
+
+    [root@localhost test]# su openstack
+    # 切换到openstack用户
+
+    [openstack@localhost test]$ echo Hello &gt;&gt; test.txt
+    1    bash:test.txt: Permission denied
+    2    # openstack用户无法对test.txt文件进行写操作
+
+    [openstack@localhost test]$ exit
+    1    exit
+    [root@localhost test]# su hive
+
+    [hive@localhost test]$ echo Hello &gt;&gt; test.txt
+
+    [hive@localhost test]$ cat test.txt
+    1    Hello
+    2    # hive用户可以对test.txt文件进行写操作
+
+     现在hadoop用户想要取消hive用户对test.txt文件的写权限，那么可以进行如下操作：
+
+    [hive@localhost test]$ exit
+    1    exit
+    [root@localhost test]# su hadoop
+
+    [hadoop@localhost test]$ setfacl -x u:hive test.txt
+    # 取消hive用户的权限，无需指定具体的权限
+
+    [hadoop@localhost test]$ getfacl test.txt
+    1    # file:test.txt
+    2    # owner:hadoop
+    3    # group:hadoop
+    4    user::rw-
+    5    group::rw-
+    6    mask::rw-
+    7    other::r--
+    [hadoop@localhost test]$ exit
+    1    exit
+
+    [root@localhost test]# su hive
+
+    [hive@localhost test]$ echo World &gt;&gt; test.txt
+    1    bash:test.txt: Permission denied
+    2    # hive用户不能再对test.txt进行写操作了。
+
+三、挂载设备的文件控制访问列表
+    并不是在任何情况下都可以设置文件访问控制列表的，现在看下面这个例子：
+
+    [root@localhost ~]# df -lh
+    1    Filesystem                    Size  Used Avail Use% Mounted on
+    2    /dev/mapper/VolGroup-lv_root   23G 4.5G   17G  22% /
+    3    tmpfs                         499M  268K 498M   1% /dev/shm
+    4    /dev/sda1                     485M   35M 426M   8% /boot
+    5    /dev/sdb3                     9.9G   36M 9.7G   1% /mydata
+    6    # 可以看到/dev/sdb3这个设备挂载到了/mydata目录下
+    7    /dev/sr0                      288K  288K    0 100% /media/20140715_2041
+
+    [root@localhost ~]# cd /mydata
+
+    [root@localhost mydata]# ll
+    1    total 13
+    2    -rw-r--r--. 1root root   884 Jul 11 02:11 inittab
+    3    drwx------. 2root root 12288 Jul 11 01:09 lost+found
+
+    [root@localhost mydata]# getfacl inittab
+    1    # file:inittab
+    2    # owner: root
+    3    # group: root
+    4    user::rw-
+    5    group::r--
+    6    other::r--
+    7    # 进入/mydata目录，查看inittab这个文件的文件控制访问列表
+
+     [root@localhost mydata]# setfacl -m u:hadoop:rw inittab
+    1    setfacl:inittab: Operation not supported
+    2    # 无法为用户hadoop指定特殊访问权限
+
+    注意：任何挂载的设备，默认是不支持ACL（文件控制访问列表）的。
+
+    如果要让挂载的设备支持ACL，可以有以下几种方案：
+
+    A. 手动设置挂载选项
+    手动设置挂载选项，使其支持ACL，是指在挂载设备时通过选项来指定acl：
+        mount -o acl DEVICE MOUNT_POINT
+
+    接上文的例子：
+    [root@localhost mydata]# cd
+
+    [root@localhost ~]# umount /mydata
+
+    [root@localhost ~]# mount -o acl /dev/sdb3 /mydata
+
+    [root@localhost ~]# mount
+    1    /dev/mapper/VolGroup-lv_rooton / type ext4 (rw)
+    2    proc on /proctype proc (rw)
+    3    sysfs on /systype sysfs (rw)
+    4    devpts on/dev/pts type devpts (rw,gid=5,mode=620)
+    5    tmpfs on/dev/shm type tmpfs (rw,rootcontext=&quot;system_u:object_r:tmpfs_t:s0&quot;)
+    6    /dev/sda1 on/boot type ext4 (rw)
+    7    none on/proc/sys/fs/binfmt_misc type binfmt_misc (rw)
+    8    gvfs-fuse-daemonon /root/.gvfs type fuse.gvfs-fuse-daemon (rw,nosuid,nodev)
+    9    /dev/sr0 on/media/20140715_2041 type iso9660(ro,nosuid,nodev,uhelper=udisks,uid=0,gid=0,iocharset=utf8,mode=0400,dmode=0500)
+    10    /dev/sdb3 on/mydata type ext4 (rw,acl)
+    11    # 挂载的设备/dev/sdb3多了一项acl
+
+    [root@localhost ~]# cd /mydata
+
+    [root@localhost mydata]# setfacl -m u:hadoop:rw- inittab
+    # 此时可以设定acl了
+
+    [root@localhost mydata]# getfacl inittab
+    1    # file:inittab
+    2    # owner: root
+    3    # group: root
+    4    user::rw-
+    5    user:hadoop:rw-
+    6    # hadoop用户对inittab具有了读写权限
+    7    group::r--
+    8    mask::rw-
+    9    other::r--
+
+    B.修改配置环境：
+    上述操作为手动设置挂载设备的acl选项，如果希望开机自动挂载设备时也支持acl，就需要编辑/etc/fstab，在挂载选项后面附加acl选项：
+
+     [root@localhostmydata]# vim /etc/fstab
+    1    #
+    2    # /etc/fstab
+    3    # Created byanaconda on Wed Jul  9 21:21:40 2014
+    4    #
+    5    # Accessiblefilesystems, by reference, are maintained under &apos;/dev/disk&apos;
+    6    # See manpages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+    7    #
+    8    /dev/mapper/VolGroup-lv_root/            ext4    defaults        1 1
+    9    UUID=d9512fb3-8dd6-4613-ae55-8e99ba0ef627/boot  ext4  defaults   1 2
+    10    /dev/mapper/VolGroup-lv_swapswap                swap  defaults   0 0
+    11    tmpfs                   /dev/shm                tmpfs  defaults  0 0
+    12    devpts                  /dev/pts        devpts  gid=5,mode=620   0 0
+    13    sysfs                   /sys            sysfs   defaults         0 0
+    14    proc                    /proc            proc   defaults         0 0
+    15    /dev/sdb3               /mydata      ext4  defaults,noatime,acl  0 0
+    16    # 在defaluts后面加上acl,就可以实现自动挂载时支持acl了
+    17    LABEL=&quot;NEWSWAP&quot;         swap            swap    defaults         0 0
+
+    C. 使用tune2fs命令来指定acl
+    除了修改使用修改配置环境的方法，还可以使用tune2fs命令来实现挂载设备支持acl：
+        tun2efs -o acl DEVICE
+    如果要取消默认的挂载选项，则使用：
+        tun2efs -o ^acl DEVICE
+
+    演示实例如下：
+    [root@localhost mydata]# man tune2fs
+    TUNE2FS(8)                                                         TUNE2FS(8)
+    NAME
+           tune2fs - adjust tunable filesystemparameters on ext2/ext3/ext4 filesystems
+      -o [^]mount-option[,...]  Set or  clear  the indicated default mount options in thefilesystem.
+    # 使用-o选项，可以设置挂载选项，如果加上[^]脱字符，就能取消相应的挂载选项。
+
+    [root@localhost ~]# umount /dev/sdb3
+
+    [root@localhost ~]# mount /dev/sdb3 /mydata
+
+    [root@localhost ~]# cd /mydata
+
+    [root@localhost mydata]# setfacl -m u:hive:rw- inittab
+    1    setfacl:inittab: Operation not supported
+    2    # 重新挂载/dev/sdb3之后，默认无法设置文件访问控制列表
+
+    [root@localhost mydata]# cd
+
+    [root@localhost ~]# tune2fs -o acl /dev/sdb3
+    1    tune2fs1.41.12 (17-May-2010)
+    2    # 使用tune2fs -o来指定挂载选项
+
+    [root@localhost ~]# tune2fs -l /dev/sdb3
+
+1    tune2fs1.41.12 (17-May-2010)
+2    Filesystemvolume name:   MYDAT
+3    Last mountedon:          /mydata
+4    Default mountoptions:    acl
+5    # 默认挂载选项为acl
+6    Filesystemstate:         clean
+
+    [root@localhost ~]# umount /dev/sdb3
+
+    [root@localhost ~]# mount /dev/sdb3 /mydata
+
+    [root@localhost ~]# cd /mydata
+    # 重新挂载/dev/sdb3，并进入/mydata目录
+
+    [root@localhost mydata]# setfacl -m u:hive:rw- inittab
+
+    [root@localhost mydata]# getfacl inittab
+    1    # file:inittab
+    2    # owner: root
+    3    # group: root
+    4    user::rw-
+    5    user:hive:rw-
+    6    group::r--
+    7    mask::rw-
+    8    other::r--
+    9    # 这次能够成功设置acl了
+
+    如果要取消acl，则可以使用^设定：
+
+    [root@localhost mydata]# cd
+
+    [root@localhost ~]# tune2fs -o ^acl /dev/sdb3
+    1    tune2fs1.41.12 (17-May-2010)
+
+    [root@localhost ~]# tune2fs -l /dev/sdb3
+    1    tune2fs1.41.12 (17-May-2010)
+    2    Filesystemvolume name:   MYDAT
+    3    Last mountedon:          /mydata
+    4    Default mountoptions:    (none)
+    5    # 这次没有acl项了
+    6    FilesystemUUID:         ead64b7a-80bd-4ad7-af3f-bece9a76e04c
+    [root@localhost mydata]# cd
+
+    [root@localhost ~]# umount /dev/sdb3
+
+    [root@localhost ~]# mount /dev/sdb3 /mydata
+
+    [root@localhost ~]# cd /mydata
+
+    [root@localhost mydata]# setfacl -m u:hive:rw- inittab
+    1    setfacl:inittab: Operation not supported
+    2    # 无法再为hive用户指定acl了
+
+    四、不允许某个用户访问文件
+
+        上文介绍的都是为某个用户提供特殊的访问权限，如果现在不想让某个用户具有任何访问权限，则可以使用setfacl -m u:USERNAME:--- FileName
+
+        如hadoop用户不希望hive用户有任何权限，可以进行如下操作：
+
+    [root@localhost tutor]# cd test
+
+    [root@localhost test]# su hadoop
+
+    [hadoop@localhost test]$ setfacl -m u:hive:--- test.txt
+
+    [hadoop@localhost test]$ exit
+    1    exit
+
+    [root@localhost test]# su hive
+
+    [hive@localhost test]$ cat test.txt
+    1    cat: test.txt:Permission denied
+</code></pre><p>acl类型<br>    存取acl（access acls）<br>        是指对指定文件或目录的存取控制列表<br>    默认ACl（sefaultacls）<br>        只能和目录有关<br>            若目录中的文件没有存取acl，就会使用目录的默认acl。但是访问acl的优先级更高。<br>            默认acl时可选的<br>    自动获取acl权限<br>            若目录设置了默认acl，则新创文件将从其目录继承acl设置<br>            使用mv命令和cp-p命令操作文件时将保持acl设置</p>
+<p>  进程相关概念<br>        程序进程和作业<br>            程序是机器机灵的集合，文件形式存储<br>        进程process<br>            进程是一个程序在其自身的虚拟地址空间中的一次执行活动<br>        作业/任务（job/task）<br>            用户通过操作系统用户接口（shell或x环境）提供给计算机进行加工处理的程序。如用户发出一个打印命令，就产生一个打印作业任务。<br>        • 进程之间可以通过称为进程间通信（IPC）的机制进行交互。<br>        • 当进程之间共享数据时，操作系统使用了同步技术来保证共享的合法性。<br>    linux时多用户多任务系统<br>        每个用户均可同时运行多个程序。位区分每一个陨星的程序，linux给每个进程都做了标识，称为进程号 （processID） 每个进程的进程号都是唯一的。<br>        系统启动后的第一个晋城市init， 他的pid是1<br>        init是唯一一个由系统内核直接运行的进程<br>        除了init之外，每个进程都有父进程ppid</p>
+<pre><code>    Ruid rgid 识别正在运行此进程的用户和组
+    Euid egid 以什么身份运行 （除了设置特殊权限时即suid guid时 其他时刻上下uid gid一致）
+进程的启动方式
+    手动方式：使用操作系统提供的用户接口
+        前台
+        后台
+    调度方式：按照预先指定的时间执行
+    At
+    Batch
+    cron
+
+    • 前台进程
+        • 指一个程序控制着标准输入/输出，在程序运行时，shell 被暂时挂起，直到该程序运行结束后，才退回到 shell。在这个过程中，用户不能再执行其它程序。
+    • 后台进程
+        • 用户不必等待程序运行结束就可以执行其它程序。
+        • 运行后台进程的方法是在命令行最后加上 “ &amp;”
+
+
+
+进程管理
+    查看系统中的进程
+        使用ps命令查看进程状态信息
+            显示那些进程正在执行和执行的状态
+            进程是否结束、进程有没有僵死
+            那些进程占用了过多的资源
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记3/">
+    <time datetime="2018-08-13T05:41:26.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-系统笔记2" class="post-系统笔记2 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/系统笔记2/">系统笔记2</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记2/" data-id="cjks1ncs1000220v6bcp9gypv" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>自由软件和linux<br>    自由软件<br>    Linux及其历史<br>    linux的内核版本与其发行版本<br>    rhce与Centos</p>
+<p>cpu系统架构介绍<br>    cpu架构<br>        X86<br>        IA-64 英特尔和hp开发的专门为服务器服务的cpu架构</p>
+<p>操作系统安全等级划分<br>        tcsec安全标价标准<br>        D 最小的保护<br>        C 任意的保护<br>        B必须的保护<br>        A被核实的保护</p>
+<p>linux简史</p>
+<pre><code>linux系统的特点
+    ○ 开放性
+    ○ 多用户
+    ○ 多任务
+    ○ 出色的速度和性能
+    ○ 良好的用户界面
+    ○ 丰富的网络系统
+    ○ 可靠的系统安全
+    ○ 良好的可移植性
+    ○ 具有标准兼容性
+linux系统组成
+    内核 汇编 c语言编写 是运行程序和管理磁盘打印机等硬件设备的核心装置
+    Shell 提供一些命令 是系统的用户界面 提供了用户与内核进行交互操作的接口
+    linux文件系统 文件系统是文件存放在磁盘等存储设备上的组织方法，linux能支持多种目前的流行文件系统
+    linux应用程序 标准的linux系统都有一套应用程序集，包括文本编辑器，编程语言，办公套件，internet工具等等
+linux内核与发行版本
+linux内核版本
+内核版本是子啊linus领导下的开发小组开发出的系统内核版本号
+内核版本号是由三个数字组成的 rxy
+R 目前发布的kernel的主版本
+X 偶数代表稳定版本，奇数代表开发中的版本
+Y 错误修补的次数
+        初始版本
+软件开发 debian Ubuntu (友帮拓)
+
+
+
+获取系统基本信息的一些基本指令
+        通过的DMI获取系统硬件信息：dmidecode或ishw
+        显示pci/usb接口信息 ispci/isusb
+        显示cpu信息 iscpu或cat /proc/cpuinfo
+        检查硬件虚拟汉化的支持：egrep-color
+        显示物理内存的大小free-m
+
+        查看系统发行版本 cat /etc/systnem-release
+        查看系统内核版本 uname -r
+        查看机器的系统的结构 arch
+        显示系统加载的内核模块 lsmod
+        查看系统启动信息 dmesg
+        显示系统中的块设备 isblk
+        显示磁盘的分区 fdisk -l 或gdisk -l或parted -l
+        查看磁盘的剩余空间 df -ph
+        查看日期和时间 timedatectl 或date
+        查看已启用的软件更新源 yum repolist
+        显示主机名 hostnamectl 或hostname
+        显示网络状态信息 ss或netstat
+        显示防火墙规则 firewall-cmd-list-all 或IPtables-nvl
+        语言环境的全局配置文件位置
+        /etc/locale.conf
+        更改时间设置日期或时间
+        Timedatectl set-time
+        设置时区为中国或上海
+        Timedatectl set-timezone Asia/Shanghai
+        关闭selinux 
+        临时关闭重启后失效
+        Setenforce 0
+        永久关闭，重启后生效
+        Vim /etc/selinux/config SELINUX=disable
+
+        最小化安装只提供了日常应用软件的最小子集，为了方便日常操作和管理，可输入如下命令安装必要的软件:
+         # yum install lshw pciutils usbutils gdisk system-storage-manager
+         # yum install   bash-completion zip unzip bzip2 tree tmpwatch pinfo man-pages # yum install   nano vim-enhanced tmux screen
+         # yum install   net-tools psmisc lsof sysstat # yum install   yum-plugin-security yum-utils createrepo 
+        # yum install   git wget curl elinks lynx lftp mailx mutt rsync 
+        使用如下命令更新系统： yum –y update
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记2/">
+    <time datetime="2018-08-13T05:41:23.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-系统笔记1" class="post-系统笔记1 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/系统笔记1/">系统笔记1</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记1/" data-id="cjks1ncrw000020v6vmlyekf1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <pre><code>1. shell及其功能
+2. 命令操作基础
+3. linux的文件和目录
+4. 信息显示命令
+5. 正则表达式和文本文件操作命令
+6. vim文本编辑器
+7. 命令补全、命令别名、命令历史
+8. 重定向、管道、命令替换、命令聚合 
+9. shell变量 和 shell环境
+
+
+shell
+shell接收用户输入的命令并把他送入内核去执行
+
+起协调用户与系统的作用
+
+shell的重要功能
+
+
+命令解释过程
+</code></pre><p>shell可以执行<br>内部命令<br>应用程序<br>shell脚本</p>
+<p>Shell 的主要版本<br>    bash    bash是大多是linux系统默认shell<br>    ksh    Korn shell 是unix上的标准shell<br>    tcsh    tcsh是C Shell的扩展。tcsh与csh完全向后兼容，但它包 含了更多的使用户感觉方便的新特性，其最大的提高是 在命令行编辑和历史浏览方面</p>
+<p>linux的元字符<br>在shell中 若不以转义字符指明，shell并不会把他们当作普通字符使用</p>
+<p>linux命令格式<br>• 选项和参数都作为Shell命令执行时的输入，它们之间用空格分隔开。</p>
+<p>• 最简单的Shell命令只有命令名，复杂的Shell命令可以有多个选项和参数。 </p>
+<p>注：linux区分大小写</p>
+<p>linux系统中的可执行文件分类<br>            内置命令：出于效率考虑。常将一些常用命令的解释程序构造在shell内部<br>            外置命令：存放在/bin、/sbin目录下的命令<br>            实用程序：存放在/usr/bin、 /usr/sbin、/usr/share<br>            、/usr/local/bin等目录下的实用程序<br>            用户程序：用户程序经过编译后生成的可执行文件，可作为shell命令运行<br>            shell脚本：由shell语言编写的的批处理文件，可作为shell命令运行</p>
+<p>linux常用命令</p>
+<p>通配符使用举例<br>• ls <em>.c • 列出当前目录下的所有C语言源文件。<br>• ls /home/</em>/<em>.c • 列出/home目录下所有子目录中的所有C语言源文件。<br>• ls n</em>.conf • 列出当前目录下的所有以字母n开始的conf文件。<br>• ls test?.dat • 列出当前目录下的以test开始的，随后一个字符是任意的.dat文件。<br>• ls [abc]<em> • 列出当前目录下的首字符是a或b或c的所有文件。<br>• ls [!abc]</em> • 列出当前目录下的首字符不是a或b或c的所有文件。<br>• ls [a-zA-Z]* • 列出当前目录下的首字符是字母的所有文件</p>
+<p>linux下的文件和目录<br>    文件类型<br>        普通文件（-）<br>        目录(d)<br>        符号链接(i)<br>        字符设备文件(c)<br>        块设备文件(b)<br>        套接字(s)<br>        命名管道(p)</p>
+<p>用户主目录<br>    • 用户登陆后，将会进入一个系统指定的专属目录，即用户的主目录，该目录名通常为用户的登陆帐号。<br>    • 主目录为/home/用户名<br>    • 在创建用户是系统管理员会给每一个用户建立一个主目录通常在/home/目录下<br>    • 用户对自己主目录的文件拥有所有权，可以在自己的主目录下进行相关操作<br>    • 每个用户对应一个用户i的好：每个用户都被分配到一个指定的组中<br>    • 默认情况下rhce/centos 在创建用户是会创建一个和用户同名的私有组</p>
+<p>符号链接<br>符号链接又称软链接，是指将一个文件指向另一个文件的文件名<br>这种符号链接的关系由IN-s命令行来建立</p>
+<p>硬链接和软链接的比较<br>        硬链接<br>            链接文件和被链接文件必须位于同一个文件系统内<br>            部内建立指向目录的硬链接<br>        软链接<br>            链接文件和被链接文件可以位于不同的文件系统<br>            可以建立指向目录的软链接</p>
+<p>设备文件<br>    外围硬件装置 为屏蔽用户对设备方位的复杂性 每个硬件设备字少和一盒设备文件相关联<br>    设备文件分为： 字符设备 和块设备</p>
+<p>所有设备文件存放在/dev目录下<br>几个特殊设备<br>    /dev/null  -空设备<br>    /dev/zero -零设备</p>
+<p>linux的目录结构</p>
+<p>文件和目录操作命令<br>    Ls 显示文件和目录列表<br>    Cd 切换目录<br>    Pwd 显示当前工作目录<br>    Mkdir 创建目录<br>    Rmdir 删除空目录<br>    Tree 显示目录树</p>
+<p>ls命令选项</p>
+<p>常用文件操作命令<br>命令    功能<br>Touch    生成一个空文件或更改文件的时间<br>cp    复制文件或目录<br>mv    移动文件或目录、文件或目录改名<br>rm    删除文件或目录<br>In    建立链接文件<br>find    查找文件<br>file/stat    查看文件类型或文件属性信息</p>
+<p>文件打包和压缩命令</p>
+<p>在bash中提高工作效率</p>
+<p>按下一次tab键后，bash就试图完成整个命令的输入，如果不成功可在按一次tab键，这是bash将列出所有能够与当前输入字符相匹配的命令列表</p>
+<p>命令历史<br>    BASH可以记录一定数量的以前在shell中输入的命令<br>        默认的记录文件是.bash_history这是一个隐含文件，位于用户自己的目录中<br>        记录命令的条目由环境变量histsize的值指定，默认是1000<br>    查看历史命令<br>        History<br>        History 30<br>命令别名<br>    Alias 别名=原来的命令 #若命令中包含空格或其他的特殊支付必定使用引号<br>    如果用户需要别名的定义在每次登陆时均有效，应该将其写入用户自家目录下的.bashrc文件中。</p>
+<pre><code>、
+</code></pre><p>正则表达式<br>定义：正则表达式时使用某种模式去匹配一类字符串的一个公式<br>    作用：通常使用正则表达式进行查找、替换等操作 适当情况下使用正则表达式可以极大的提高工作效率</p>
+<pre><code>正则表达式的元字符
+</code></pre><p>文本文件操作命令<br>    常用文件提取命令<br>    命令    功能<br>    cat、tac    滚屏显示文本文件内容<br>    more、less    分屏显示文本文件的内容<br>    head、tail    显示文本文件的前或后若干行<br>    Cut    纵向切割文本指定的部分<br>    Grep     在文本文件中查找指定的字符串</p>
+<p>grep简介<br>    Grep 是一个强大的文本搜素工具，grep使用正则表达式搜索文本，并把匹配的行打印出来<br>    grep命令选项</p>
+<pre><code>vim在normal模式下的基本操作
+    • G 用于直接跳转到文件尾 
+    • x 删除光标所在的字符 
+    • r 替换光标所在的字符
+    • ~ 切换光标所在字母的大小写 
+    • /和？用于查找字符串 
+    • dd、YY、p分别用于剪切、复制和粘贴一行文本 
+    • u 取消上一次编辑操作（undo） 
+    • . 重复上一次编辑操作（redo） 
+    • ZZ 用于存盘退出Vi • ZQ用于不存盘退出Vi 
+
+
+Vim 在命令行模式下的基本操作
+    • :n1,n2 co n3 用于块复制 
+    • :n1,n2 m n3 用于块移动 
+    • :n1,n2 d 用于块删除 
+    • :w   保存当前编辑文件，但并不退出 
+    • :w newfile  存为另外一个名为 “newfile” 的文件 
+    • :wq 用于存盘退出Vi 
+    • :q! 用于不存盘退出Vi
+    • :q 用于直接退出Vi （未做修改）
+    • :set autoindent  缩进,常用于程序的编写 
+    • :set noautoindent 取消缩进 
+    • :set number 在编辑文件时显示行号 
+    • :set nonumber 不显示行号 
+    • :set tabstop=value 设置显示制表符的空格字符个数 
+    • :set 显示设置的所有选项 
+    • :set all 显示所有可以设置的选项
+
+常用的系统信息显示命令
+    命令    功能
+    Hostname     显示主机名称
+    Uname    显示操作系统信息
+    Dmesg    显示系统启动信息
+    Ismod    显示系统加载的内核模块
+    Env    显示系统环境变量
+    Locale    显示当前的语言环境
+    Cat /etc/centos-release    显示操作系统版本信息
+    Cat /prom/cpuinfo    显示cpu信息
+    ispcl/isusb    显示pcl/usb接口信息
+    Rmp -qa     显示系统已安装的所有软件包
+</code></pre><p>重定向<br>    重定向分为输出重定向、输入重定向和错误重定向，通常情况下重定向到一个文件。<br>    在shell中要实现重定向主要依靠重定向符实现，即shell是检查命令行中是否存在重定向夫来决定是否需要实施重定向</p>
+<p>空设备（/dev/null）<br>    空设备是个黑洞，任何发往他的东西都将不复存在<br>    经常用于屏蔽命令的输出或错误输出，尤其用于shell脚本中<br>    空设备使用举例<br>        屏蔽命令的输出和错误输出<br>        Myprogram &amp;&gt;/dev/null<br>        清空文件内容<br>        Cp /dev/null 待清空文件<br>        &gt;待清空文件</p>
+<p>管道的引入<br>    一个小命令能够很好的完成一项单一的工作，现在需要有一些东西能够将这些简单的命令连接起来，这样的管道就应运而生<br>    许多linux命令具有过滤特性，即一条命令通过标准输入端口接收一个文件中的数据，命令执行后产生的结果数据又通过标准输出端口送给后一条命令</p>
+<pre><code>管道（pipe）
+管道（使用符号“|”表示）用来连接命令
+用来组合多种工具的功能
+管道先中的每一条命令都作为一个单独的程序运行，每一条命令的输出作为下一条命令的输入
+由于管道线中的命令总是从做到用顺序执行的，因此管道线是单向的
+</code></pre><p>shell变量和shell环境</p>
+<pre><code>shell变量
+    shell变量大致可以分为三类
+    内部变量：由系统提供，用户只能使用不能修改
+    用户变量：由用户建立和修改，在shell脚本编程中经常会用到
+    环境变量：这些变量决定了用户工作的环境，他们不需要用户去定义，可以直接在shell中使用其中某些变量用户可以修改。
+引用
+    在bash中，有些字符具有特殊含义，如果需要忽略这些字符的特殊含义，就必须使用引用技术
+    引用可以通过下面三种方式实现
+        使用转义字符：\
+        使用单引号：‘ ‘
+        使用双引号 ： “ ”
+    转义字符的引用方法就是直接在字符前加反斜杠
+</code></pre><p>强引用和弱引用<br>    强引用<br>        单引号对是强引号<br>        单引号对中的字符都将作为普通字符，段不允许出现另外的单引号<br>    弱引号<br>        双引号对是弱引号<br>        双引号对中的部分字符仍保留特殊含义<br>        • $（美元符号）－ 变量扩展 • `（反引号） － 命令替换 • \（反斜线） － 禁止单个字符扩展 • !（叹号） － 历史命令替换</p>
+<pre><code>命令行执行过程
+• 将命令行分成单个命令词 
+• 展开别名
+• 展开大括号中的声明（{}）
+• 展开颚化声明（~） 
+• 命令替换 （$() 或 ``）
+• 再次把命令行分成命令词 • 展开文件通配（*、?、[abc]等等） 
+• 准备I/0重定向（&lt;、&gt;） • 运行命令！
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记1/">
+    <time datetime="2018-08-13T05:40:54.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-网络笔记day11" class="post-网络笔记day11 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -76,7 +1094,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day11/" data-id="cjkrsaaj40006dcv64keo8nws" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day11/" data-id="cjks1ncsg000c20v60ntuobtq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -130,7 +1148,7 @@ lfib表（标签转发信息库）
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day10/" data-id="cjkrsaaj60008dcv62l5ip9uq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day10/" data-id="cjks1ncsj000e20v67zpaazy4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -191,7 +1209,7 @@ lfib表（标签转发信息库）
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day9/" data-id="cjkrsaaje000edcv6v3a3n07g" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day9/" data-id="cjks1ncsp000k20v6oiy0fx00" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -239,7 +1257,7 @@ lfib表（标签转发信息库）
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day8/" data-id="cjkrsaajf000fdcv6yloyoehr" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day8/" data-id="cjks1ncso000j20v60kzayc8f" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -286,7 +1304,7 @@ lfib表（标签转发信息库）
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day7/" data-id="cjkrsaajb000cdcv6tshp38il" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day7/" data-id="cjks1ncsl000g20v6hm4oqiyu" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -307,259 +1325,6 @@ lfib表（标签转发信息库）
     <footer class="entry-meta">
     <a href="/2018/08/13/网络笔记day7/">
     <time datetime="2018-08-13T04:28:00.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-网络笔记day6" class="post-网络笔记day6 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day6/">网络笔记day6</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day6/" data-id="cjkrsaajc000ddcv65z1vi3bw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Bgp 概述<br>    路由协议分类</p>
-<pre><code>Igp
-    内部网关协议
-    执行拓扑发现
-    尽力完成快速收敛
-    需要周期性的更新来确保路由选择信息的精确性
-    受同一个管理机构的控制
-    提供了优先的策略控制能力
-BGP
-    AS：autonomous system 自治系统，指的是在同一个组织管理下使用相同策略的设备的集合。 
-    不同AS通过AS号区分，AS号取值范围1－65535，其中64512－65535是私有AS号。
-    IANA负责AS号的分发。(https://www.iana.org/)
-    中国电信163 AS号：4134 中国电信CN2 AS号：4809 中国网通AS 号：9929
-    使用BGP的理由
-    大量路由需要承载，IGP只能容纳千条，而BGP可以容纳上万 
-    支撑MPLS/VPN的应用，传递客户VPN路由。 
-    策略能力强，可以很好的实现路由决策与数据控制
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day6/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day6/">
-    <time datetime="2018-08-13T04:27:56.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-网络笔记day5" class="post-网络笔记day5 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day5/">网络笔记day5</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day5/" data-id="cjkrsaaja000bdcv64rthmoyz" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>路由重发布<br>    将A协议的路由条目重新整合，发布到B协议中，这种行为是路由重发布<br>    为了保证双向通信，我们往往需要进行双向重发布<br>        路由重发布需要注意事项<br>            度量值的计算规则不一样<br>                Rip 跳数<br>                Eigrp sk值<br>                Ospf cost<br>                Isis 默认度量值<br>        重发布的路由失去了原路由的放环信息，可能出现环路<br>        收敛时间不一致<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day5/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day5/">
-    <time datetime="2018-08-13T04:27:27.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-网络笔记day4" class="post-网络笔记day4 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day4/">网络笔记day4</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day4/" data-id="cjkrsaaj80009dcv6lz0rv2bh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>IS-IS协议简介<br>    • IS-IS是一个链路状态的、内部网关协议。它被设计成适用在OSI无连接网络服务（CLNS：Connctionless Network Service）的环境中。为了提供对IP的路由支持，IETF在RFC1195中对IS-IS进行了扩充和修改，使它能够同时应用在TCP/IP和OSI环境中，称为集成化IS-IS（Integrated IS-IS或Dual IS-IS）<br>    集成型IS-IS和OSPF都是20世纪80年代后期定义的，大约是1988年。OSPF实际上是从IS-IS的早期版本进化而来的，不过它采用IP作为前提。<br>    IS-IS是路由选择协议，传递CLNP的路由信息。在ISO协议族，我们可以把ES终端系统理解为主机，把IS中间系统理解为路由器。因此IS-IS的出生，其实是为CLNS服务的，往后发展成了集成性IS-IS就做了扩展，也就可以支持IP路由了。<br>    IS-IS协议管理距离115<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day4/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day4/">
-    <time datetime="2018-08-13T04:26:51.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-网络笔记day3" class="post-网络笔记day3 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day3/">网络笔记day3</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day3/" data-id="cjkrsaaj9000adcv6ypvm5zmx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>链路状态协议<br>路由器会将自己接口所在的链路的信息署名，然后发给自己的邻居<br>邻居收到链路状态信息后，存储在链路状态数据库中<br>当收敛完成后路由器几乎收到网络中所由路有器的链路状态后，会计算全网拓扑<br>使用spf算法得到去没一个网段的最短路线，然后去往每个网段的下一条写进路由表</p>
-<p>典型代表<br>Ospf is-is<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day3/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day3/">
-    <time datetime="2018-08-13T04:25:46.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-网络笔记day2" class="post-网络笔记day2 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day2/">网络笔记day2</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjkrsaaj50007dcv63b9q03sq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>距离矢量路由协议<br>    路由器会将参与距离矢量协议的路由周期性更新给新邻居<br>    典型代表 rip eigrp<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day2/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day2/">
-    <time datetime="2018-08-13T03:56:59.000Z" class="entry-date">
         2018-08-13
     </time>
 </a>
@@ -603,23 +1368,23 @@ BGP
       <ul>
         
           <li>
-            <a href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
+            <a href="/2018/08/13/系统笔记5/">系统笔记5</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+            <a href="/2018/08/13/系统笔记4/">系统笔记4</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+            <a href="/2018/08/13/系统笔记3/">系统笔记3</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+            <a href="/2018/08/13/系统笔记2/">系统笔记2</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+            <a href="/2018/08/13/系统笔记1/">系统笔记1</a>
           </li>
         
       </ul>
