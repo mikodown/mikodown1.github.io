@@ -61,6 +61,56 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-网络笔记day7" class="post-网络笔记day7 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day7/" data-id="cjlm6yz7p000ffov65f0gci88" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>Route-map</p>
+<p>你懂的<br>policy-list<br>ip policy-list AS100 permit<br> match ip address 1<br> match community 1 exact-match<br> match policy-list R3<br>!<br>route-map R1 permit 10<br> match policy-list R3<br>advertise-map<br>条件通告，当advertise-map后面的route-map中路由消失的时候，none-exist-map后面的路由也会跟着消失<br>ip prefix-list 10 seq 5 permit 172.16.1.0/24<br>ip prefix-list 20 seq 5 permit 172.16.2.0/24<br>!<br>route-map 1 permit 10<br> match ip address prefix-list 10<br>route-map 2 permit 10<br> match ip address prefix-list 20<br>!<br>router bgp 200<br> neighbor 192.168.23.3 advertise-map 2 non-exist-map 1</p>
+<pre><code>#当1不存在的时候，就向192.168.23.3通告2的路由
+</code></pre><p>ORF<br>BGP优化命令，在BGP建立邻居的时候会更新完整的路由表，如果接收方在in方向上有策略，那可能有些更新就是不必要的，会造成资源的浪费<br>配置了ORF功能的路由器，可以事先将in接口的策略告诉对方，这样在更新的时候就可以避免带宽资源的浪费<br>必须要两边都配置了ORF才可以<br>路由拆分<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day7/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day7/">
+    <time datetime="2018-08-13T04:28:00.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-网络笔记day6" class="post-网络笔记day6 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -76,7 +126,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day6/" data-id="cjks2jhhb000h54v66vy83vta" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day6/" data-id="cjlm6yz7r000hfov6hlnznudq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -140,7 +190,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day5/" data-id="cjks2jhhf000j54v6f2q6k9ut" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day5/" data-id="cjlm6yz7q000gfov6979nnz04" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -187,7 +237,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day4/" data-id="cjks2jhh9000f54v6j21dwjta" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day4/" data-id="cjlm6yz7k000cfov62cf3e964" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -234,7 +284,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day3/" data-id="cjks2jhha000g54v6rfde1zvd" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day3/" data-id="cjlm6yz7m000dfov61e110l8h" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -282,7 +332,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjks2jhh7000e54v6do5t9g0o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjlm6yz7j000bfov6jfo1pbmx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -329,7 +379,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day1/" data-id="cjks2jhh2000b54v6nbi3fhcz" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day1/" data-id="cjlm6yz7c0007fov6topwb7qe" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -376,7 +426,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/my-first-blog/" data-id="cjks2jhgd000054v6jwjvcyyo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/my-first-blog/" data-id="cjlm6yz700002fov6ctv30ccc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -418,7 +468,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/hello-world/" data-id="cjks2jhgn000454v6g8n4v3vz" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/hello-world/" data-id="cjlm6yz770004fov6hdzwlbgq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -483,6 +533,10 @@ BGP
       <ul>
         
           <li>
+            <a href="/2018/09/03/计算机组成原理/">计算机组成原理</a>
+          </li>
+        
+          <li>
             <a href="/2018/08/13/系统笔记5/">系统笔记5</a>
           </li>
         
@@ -496,10 +550,6 @@ BGP
         
           <li>
             <a href="/2018/08/13/系统笔记2/">系统笔记2</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/13/系统笔记1/">系统笔记1</a>
           </li>
         
       </ul>
