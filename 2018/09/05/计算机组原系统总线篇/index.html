@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="title: 计算机组原系统总线篇date: 2018-09-05 17:16:23
+tags:系统总线
+    1.总线的定义和分类
+    2.常见的总线结构和其特点
+    3.总线判优方式的特点
+    4.总线通话方式的特点
+
+
+    1.总线的基本概念
+        计算机系统的五大" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>一个技术小白的Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="title: 计算机组原系统总线篇date: 2018-09-05 17:16:23 tags:系统总线     1.总线的定义和分类     2.常见的总线结构和其特点     3.总线判优方式的特点     4.总线通话方式的特点       1.总线的基本概念         计算机系统的五大部件之间的互连方式由两种，一种是各部件之间使用单独的线，称为分散练级，另一种是将各部件连到一组公共">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个技术小白的Blog">
+<meta property="og:url" content="http://yoursite.com/2018/09/05/计算机组原系统总线篇/index.html">
+<meta property="og:site_name" content="一个技术小白的Blog">
+<meta property="og:description" content="title: 计算机组原系统总线篇date: 2018-09-05 17:16:23 tags:系统总线     1.总线的定义和分类     2.常见的总线结构和其特点     3.总线判优方式的特点     4.总线通话方式的特点       1.总线的基本概念         计算机系统的五大部件之间的互连方式由两种，一种是各部件之间使用单独的线，称为分散练级，另一种是将各部件连到一组公共">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-05T10:10:32.553Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个技术小白的Blog">
+<meta name="twitter:description" content="title: 计算机组原系统总线篇date: 2018-09-05 17:16:23 tags:系统总线     1.总线的定义和分类     2.常见的总线结构和其特点     3.总线判优方式的特点     4.总线通话方式的特点       1.总线的基本概念         计算机系统的五大部件之间的互连方式由两种，一种是各部件之间使用单独的线，称为分散练级，另一种是将各部件连到一组公共">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="一个技术小白的Blog" rel="home">一个技术小白的Blog</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-计算机组原系统总线篇" class="post-计算机组原系统总线篇 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/05/计算机组原系统总线篇/" data-id="cjlozfh0a000m8wv68bgepxe0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <hr>
+<p>title: 计算机组原系统总线篇<br>date: 2018-09-05 17:16:23</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><pre><code>系统总线
+    1.总线的定义和分类
+    2.常见的总线结构和其特点
+    3.总线判优方式的特点
+    4.总线通话方式的特点
+
+
+    1.总线的基本概念
+        计算机系统的五大部件之间的互连方式由两种，一种是各部件之间使用单独的线，称为分散练级，另一种是将各部件连到一组公共信息传输线上，称为总线连接。
+        总线是连接多个部件的信息传输线，是个各部件共享的传输介质。当多个部件与总线相连的时候，如果出现两个或两个以上的部件同时向纵向发送信息，势必导致信号冲突传输无效，因此在某一时刻只允许有一个部件像总线发送信息，而多个部件可以同时从总线上接收相同的信息。
+        总线实际上是由许多传输线或通络组成，每条线可一位一位的传输二进制代码，一串二进制代码可在一段时间内逐一传输完成，若干传输线可以同时传输若干位二进制码，例如16条传输线可以同时传输16位二进制代码。
+    面向cpu的双总线结构框图 
+        这种结构在i/o设备与主存进行信息交换时仍要占用cpu，因此还会影响cpu的工作效率
+    单总线结构
+        这种结构cpu效率有所提高，因为只有一条总线，当某一时刻各部件都要用到总线时，就会发生冲突
+    以存储器为中心的双总线结构
+        它是在单总线基础上开辟出一条cpu和主存之间的总线，称为存储总线。这组总线速度高，只供主存与cpu之间传输信息。这样既提高了传输效率，又减轻系统总线的负担，还保留了i/o设备与存储器之间交换信息不经过cpu的特点。
+
+    总线的分类
+        总线的分类很广范。从不同角度可以有不同的分发，按数据传输的凡是可以分为并行传输总线，和串行传输总线
+        若按照总线的使用范围划分，则又有计算机（包括外设）总线，测控总线、网络通信总线等。
+        并行通信传输中有多个数据位，同时在两个设备之间传输。发送设备将这些数据位通过 对应的数据线传送给接收设备，还可附加一位数据校验位。接收设备可同时接收到这些数据，不需要做任何变换就可直接使用。并行方式主要用于近距离通信。计算 机内的总线结构就是并行通信的例子。这种方法的优点是传输速度快，处理简单。
+        串行数据传输时，数据是一位一位地在通信线上传输的，先由具有几位总线的计算机内的发送设备，将几位并行数据经并--串转换硬件转换成串行方式，再逐位经传输线到达接收站的设备中，并在接收端将数据从串行方式重新转换成并行方式，以供接收方使用。串行数据传输的速度要比并行传输慢得多，但对于覆盖面极其广 阔的公用电话系统来说具有更大的现实意义。
+        当信息以串行方式传送时，只有一条传输线，且采用脉冲传送。在串行传送时，按顺序来传送表示一个数码的所有二进制位的脉冲信号，每次一位，通常以第一个脉冲信号表示数码的最低有效位，最后一个脉冲信号表示数码的最高有效位。
+        串行传送的优点只需要一条传输线，成本比较低廉。
+        用并行方式传送二进制信息时，对每个数据位都需要单独一条传输线。
+        并行传送一般采用电位传送。
+
+    按照连接部件的不同介绍三类总线
+        片内总线
+            片内总线是指芯片内部的总线，如在cpu芯片内部，寄存器与寄存器之间、寄存器与算术逻辑单元ALU之间都是由总线连接。
+        系统总线
+            系统总线是指cpu主存、i/o设备各大部件之间的信息传输线。
+            按系统总线传输信息的不同，又可分为三类：数据总线、地址总线、控制总线
+            1.数据总线
+                数据总线用来传输各个功能部件之间的数据信息，它是双向传输的总线，其位数与机器字长、存储字长有关一般为8位16位32位
+                数据总线的位数称为数据总线宽度，它是衡量系统性能的一个重要参数。
+            2.地址总线
+                地址总线主要用来指出数据总线上的源数据在主存单元的地址或i/o设备的地址。地址总线上的代码是用来指明cpu欲访问的存储单元或i/o端口的地址，由cpu输出单向传输。
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/09/05/计算机组原系统总线篇/">
+    <time datetime="2018-09-05T09:16:23.799Z" class="entry-date">
+        2018-09-05
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2018/09/03/数据库系统概论/" rel="next">数据库系统概论 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/09/05/计算机组原系统总线篇/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/03/数据库系统概论/">数据库系统概论</a>
+          </li>
+        
+          <li>
+            <a href="/2018/09/03/计算机组成原理/">计算机组成原理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记5/">系统笔记5</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/13/系统笔记4/">系统笔记4</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

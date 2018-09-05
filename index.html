@@ -61,6 +61,81 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-计算机组原系统总线篇" class="post-计算机组原系统总线篇 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/05/计算机组原系统总线篇/" data-id="cjlozfh0a000m8wv68bgepxe0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <hr>
+<p>title: 计算机组原系统总线篇<br>date: 2018-09-05 17:16:23</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><pre><code>系统总线
+    1.总线的定义和分类
+    2.常见的总线结构和其特点
+    3.总线判优方式的特点
+    4.总线通话方式的特点
+
+
+    1.总线的基本概念
+        计算机系统的五大部件之间的互连方式由两种，一种是各部件之间使用单独的线，称为分散练级，另一种是将各部件连到一组公共信息传输线上，称为总线连接。
+        总线是连接多个部件的信息传输线，是个各部件共享的传输介质。当多个部件与总线相连的时候，如果出现两个或两个以上的部件同时向纵向发送信息，势必导致信号冲突传输无效，因此在某一时刻只允许有一个部件像总线发送信息，而多个部件可以同时从总线上接收相同的信息。
+        总线实际上是由许多传输线或通络组成，每条线可一位一位的传输二进制代码，一串二进制代码可在一段时间内逐一传输完成，若干传输线可以同时传输若干位二进制码，例如16条传输线可以同时传输16位二进制代码。
+    面向cpu的双总线结构框图 
+        这种结构在i/o设备与主存进行信息交换时仍要占用cpu，因此还会影响cpu的工作效率
+    单总线结构
+        这种结构cpu效率有所提高，因为只有一条总线，当某一时刻各部件都要用到总线时，就会发生冲突
+    以存储器为中心的双总线结构
+        它是在单总线基础上开辟出一条cpu和主存之间的总线，称为存储总线。这组总线速度高，只供主存与cpu之间传输信息。这样既提高了传输效率，又减轻系统总线的负担，还保留了i/o设备与存储器之间交换信息不经过cpu的特点。
+
+    总线的分类
+        总线的分类很广范。从不同角度可以有不同的分发，按数据传输的凡是可以分为并行传输总线，和串行传输总线
+        若按照总线的使用范围划分，则又有计算机（包括外设）总线，测控总线、网络通信总线等。
+        并行通信传输中有多个数据位，同时在两个设备之间传输。发送设备将这些数据位通过 对应的数据线传送给接收设备，还可附加一位数据校验位。接收设备可同时接收到这些数据，不需要做任何变换就可直接使用。并行方式主要用于近距离通信。计算 机内的总线结构就是并行通信的例子。这种方法的优点是传输速度快，处理简单。
+        串行数据传输时，数据是一位一位地在通信线上传输的，先由具有几位总线的计算机内的发送设备，将几位并行数据经并--串转换硬件转换成串行方式，再逐位经传输线到达接收站的设备中，并在接收端将数据从串行方式重新转换成并行方式，以供接收方使用。串行数据传输的速度要比并行传输慢得多，但对于覆盖面极其广 阔的公用电话系统来说具有更大的现实意义。
+        当信息以串行方式传送时，只有一条传输线，且采用脉冲传送。在串行传送时，按顺序来传送表示一个数码的所有二进制位的脉冲信号，每次一位，通常以第一个脉冲信号表示数码的最低有效位，最后一个脉冲信号表示数码的最高有效位。
+        串行传送的优点只需要一条传输线，成本比较低廉。
+        用并行方式传送二进制信息时，对每个数据位都需要单独一条传输线。
+        并行传送一般采用电位传送。
+
+    按照连接部件的不同介绍三类总线
+        片内总线
+            片内总线是指芯片内部的总线，如在cpu芯片内部，寄存器与寄存器之间、寄存器与算术逻辑单元ALU之间都是由总线连接。
+        系统总线
+            系统总线是指cpu主存、i/o设备各大部件之间的信息传输线。
+            按系统总线传输信息的不同，又可分为三类：数据总线、地址总线、控制总线
+            1.数据总线
+                数据总线用来传输各个功能部件之间的数据信息，它是双向传输的总线，其位数与机器字长、存储字长有关一般为8位16位32位
+                数据总线的位数称为数据总线宽度，它是衡量系统性能的一个重要参数。
+            2.地址总线
+                地址总线主要用来指出数据总线上的源数据在主存单元的地址或i/o设备的地址。地址总线上的代码是用来指明cpu欲访问的存储单元或i/o端口的地址，由cpu输出单向传输。
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/09/05/计算机组原系统总线篇/">
+    <time datetime="2018-09-05T09:16:23.799Z" class="entry-date">
+        2018-09-05
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-数据库系统概论" class="post-数据库系统概论 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -76,7 +151,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/03/数据库系统概论/" data-id="cjlmbb4cu0005y8v6xoj9uq4u" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/03/数据库系统概论/" data-id="cjlozfh04000k8wv6z001v0kb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -119,7 +194,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/03/计算机组成原理/" data-id="cjlmbb4dx000ly8v65voyu9sw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/03/计算机组成原理/" data-id="cjlozfh0b000n8wv6stex3wta" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -166,7 +241,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记5/" data-id="cjlmbb4d30008y8v697ijdpx9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记5/" data-id="cjlozfgzs00098wv6qbar9ezc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -213,7 +288,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记4/" data-id="cjlmbb4d00007y8v6zjvi3aur" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记4/" data-id="cjlozfgzq00078wv6b7v8ljj6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -260,7 +335,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记3/" data-id="cjlmbb4db000ay8v6p7ovotd2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记3/" data-id="cjlozfgzr00088wv66r9k06c0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -307,7 +382,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记2/" data-id="cjlmbb4d80009y8v6ausw1yjs" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记2/" data-id="cjlozfgzo00068wv6yub1fzlt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -354,7 +429,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记1/" data-id="cjlmbb4cx0006y8v6j75vrl2v" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记1/" data-id="cjlozfgzi00028wv6bf9gbmbx" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -410,7 +485,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day11/" data-id="cjlmbb4df000by8v6t43w6ann" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day11/" data-id="cjlozfgzw000c8wv6htcpjxcj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -464,7 +539,7 @@ lfib表（标签转发信息库）
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day10/" data-id="cjlmbb4dk000dy8v6evagvt0y" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day10/" data-id="cjlozfgzt000a8wv63vmp700p" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -510,58 +585,10 @@ lfib表（标签转发信息库）
 
 
   
-    <article id="post-网络笔记day9" class="post-网络笔记day9 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day9/" data-id="cjlmbb4dw000ky8v6ds0kkxqq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>• 当一条链路，需要承载多VLAN信息的时候，需使用trunk来实现。<br>• Trunk两端的交换机需采用相同的干道协议。<br>• 一般见于交换机之间或交换机与路由器、服务器之间。<br>802.1Q</p>
-<p>• IEEE公有协议<br>• 插入Tag字段，同时重新计算FCS<br>Native VLAN<br>• Native VLAN所属的帧在经过trunk时不打标签<br>• Native VLAN在Trunk两端必须匹配，否则会出现VLAN流量互串<br>• 默认的native vlan是vlan 1<br>• 建议将一个生僻的VLAN配置为Native vlan<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day9/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day9/">
-    <time datetime="2018-08-13T04:28:06.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
   
     <nav id="pagination">
       <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
       </nav>
     </nav>
   
@@ -587,6 +614,10 @@ lfib表（标签转发信息库）
       <ul>
         
           <li>
+            <a href="/2018/09/05/计算机组原系统总线篇/">(no title)</a>
+          </li>
+        
+          <li>
             <a href="/2018/09/03/数据库系统概论/">数据库系统概论</a>
           </li>
         
@@ -600,10 +631,6 @@ lfib表（标签转发信息库）
         
           <li>
             <a href="/2018/08/13/系统笔记4/">系统笔记4</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/13/系统笔记3/">系统笔记3</a>
           </li>
         
       </ul>
