@@ -61,109 +61,35 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
-    <article id="post-计算机组原系统总线篇" class="post-计算机组原系统总线篇 post type-post status-publish format-standard hentry">
+    <article id="post-蛇形矩阵" class="post-蛇形矩阵 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
         
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/11/13/蛇形矩阵/">蛇形矩阵</a>
+    </h1>
+  
+
+        
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/05/计算机组原系统总线篇/" data-id="cjlrs7era000hocv6d1nn1i3a" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/13/蛇形矩阵/" data-id="cjoft0trt000su8v601b0o943" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <hr>
-<p>title: 计算机组原系统总线篇<br>date: 2018-09-05 17:16:23</p>
-<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><pre><code>系统总线
-    1.总线的定义和分类
-    2.常见的总线结构和其特点
-    3.总线判优方式的特点
-    4.总线通话方式的特点
-
-
-    1.总线的基本概念
-        计算机系统的五大部件之间的互连方式由两种，一种是各部件之间使用单独的线，称为分散练级，另一种是将各部件连到一组公共信息传输线上，称为总线连接。
-        总线是连接多个部件的信息传输线，是个各部件共享的传输介质。当多个部件与总线相连的时候，如果出现两个或两个以上的部件同时向纵向发送信息，势必导致信号冲突传输无效，因此在某一时刻只允许有一个部件像总线发送信息，而多个部件可以同时从总线上接收相同的信息。
-        总线实际上是由许多传输线或通络组成，每条线可一位一位的传输二进制代码，一串二进制代码可在一段时间内逐一传输完成，若干传输线可以同时传输若干位二进制码，例如16条传输线可以同时传输16位二进制代码。
-    面向cpu的双总线结构框图 
-        这种结构在i/o设备与主存进行信息交换时仍要占用cpu，因此还会影响cpu的工作效率
-    单总线结构
-        这种结构cpu效率有所提高，因为只有一条总线，当某一时刻各部件都要用到总线时，就会发生冲突
-    以存储器为中心的双总线结构
-        它是在单总线基础上开辟出一条cpu和主存之间的总线，称为存储总线。这组总线速度高，只供主存与cpu之间传输信息。这样既提高了传输效率，又减轻系统总线的负担，还保留了i/o设备与存储器之间交换信息不经过cpu的特点。
-
-    总线的分类
-        总线的分类很广范。从不同角度可以有不同的分发，按数据传输的凡是可以分为并行传输总线，和串行传输总线
-        若按照总线的使用范围划分，则又有计算机（包括外设）总线，测控总线、网络通信总线等。
-        并行通信传输中有多个数据位，同时在两个设备之间传输。发送设备将这些数据位通过 对应的数据线传送给接收设备，还可附加一位数据校验位。接收设备可同时接收到这些数据，不需要做任何变换就可直接使用。并行方式主要用于近距离通信。计算 机内的总线结构就是并行通信的例子。这种方法的优点是传输速度快，处理简单。
-        串行数据传输时，数据是一位一位地在通信线上传输的，先由具有几位总线的计算机内的发送设备，将几位并行数据经并--串转换硬件转换成串行方式，再逐位经传输线到达接收站的设备中，并在接收端将数据从串行方式重新转换成并行方式，以供接收方使用。串行数据传输的速度要比并行传输慢得多，但对于覆盖面极其广 阔的公用电话系统来说具有更大的现实意义。
-        当信息以串行方式传送时，只有一条传输线，且采用脉冲传送。在串行传送时，按顺序来传送表示一个数码的所有二进制位的脉冲信号，每次一位，通常以第一个脉冲信号表示数码的最低有效位，最后一个脉冲信号表示数码的最高有效位。
-        串行传送的优点只需要一条传输线，成本比较低廉。
-        用并行方式传送二进制信息时，对每个数据位都需要单独一条传输线。
-        并行传送一般采用电位传送。
-
-    按照连接部件的不同介绍三类总线
-        片内总线
-            片内总线是指芯片内部的总线，如在cpu芯片内部，寄存器与寄存器之间、寄存器与算术逻辑单元ALU之间都是由总线连接。
-        系统总线
-            系统总线是指cpu主存、i/o设备各大部件之间的信息传输线。
-            按系统总线传输信息的不同，又可分为三类：数据总线、地址总线、控制总线
-            1.数据总线
-                数据总线用来传输各个功能部件之间的数据信息，它是双向传输的总线，其位数与机器字长、存储字长有关一般为8位16位32位
-                数据总线的位数称为数据总线宽度，它是衡量系统性能的一个重要参数。
-            2.地址总线
-                地址总线主要用来指出数据总线上的源数据在主存单元的地址或i/o设备的地址。地址总线上的代码是用来指明cpu欲访问的存储单元或i/o端口的地址，由cpu输出单向传输。
-            3.控制总线
-                由于数据总线和地址总线都是被挂在总线上的所有部件所共享的，如何是各部件能在不同时间占有总线的使用权，需要依靠控制总线来完成。因此控制总线是用来发出各种控制命信号的传输线。通常对任意控制线来讲，它的传输是单向的。但对于控制总线总体来讲，它的传输又是双向的，控制总线还起到监视器它部件的作用，控制信号既有输出又有输入。
-        通信总线        
-            这类总线用于计算机系统之间或计算机系统和其他系统之间（如控制仪表、移动通信）的通信。按照传输方式可分为串行通信和并行通信，
-            串行通信和并行通信详细解释见上
-
-    2.总线的特型
-        1 机械特性
-            机械特性是指总线在机械连接方式上的一些性能，如插头与插座的使用标准，他们的几何尺寸、形状、引脚的个数以及排列的顺序、接头处的可靠接触等等。
-        2 电气特性
-            电气特性是指总线上每一根传输线上的信号的传递方向和有有效的电平范围。通常规定由cpu发出的信号称为输出信号，送入cpu的信号是输入信号，例如地址总线属于单向输出线，数据总线属于双向输出线，它们都定义高电平为1低电平为0。控制总线的每一根都是单向的，但从总体来看有输入也有输出，有的定义为高电平有的定义为低电平。必须注意不同的规格。
-        3 功能特性
-            功能特性是指总线种每根传输线的功能。例如：地址总线用来指出地址码；数据总线用来传输数据；控制总线用来发出控制信号，由此可见各条线功能不同。
-        4 时间特性
-            时间特性是总线中的任意一根线在什么时间内有效，每条总线上的各种信号互相存在一种有效的时序关系。
-
-    3.总线的性能指标
-        总线宽度：通常是指数据总线的根数，如8位16位等等
-        总线带宽：总线带宽可理解为总线的数据传输速率，即单位时间内总线上传输数据的位数通常用每秒传输的字节数来衡量，单位可用MBps（兆字节每秒）表示，例如总线工作的频率为33MHz，总线的宽度为32位，则总线的带宽为33*(32/8)=132MBps.
-        时钟同步/异步：总线上的数据与时钟信号同步工作的总线称为同步总线，与时钟信号不同步工作的总线称为异步总线
-        总线复用：一条信号线上分时传输两种信号，例如：通常地址总线与数据总线在物理上是分开的两条线，为了提高总线的利用效率，特将地址总线和数据总线公用一组物理线路，在这组物理线路上分时传输地址信号和数据信号，即为总线的多路复用。
-        信号线数：地址总线，数据总线，和控制总线三种总线数的总和
-        总线控制方式：包括突发工作、自动配置、仲裁方式、逻辑方式、技术方式调度等等
-        其他指标：负载能力、电源电压、总线宽度能否扩展等等
-
-    4.总线结构
-        总线结构通常可分为单总线结构和多总线结构
-    5.总线控制
-        由于总线上连接着多个部件，总线的使用权以及其效率问题都由总线控制器解决。它主要包括判优控制（或称仲裁逻辑）和通信控制。
-            总线判优控制
-                总线上连接的各类设备，按其对总线有无控制功能可分为主设备（模块）和从设备（模块）两种。主设备对总线有控制权，从设备只能相应从主设备发来的总线命令，对总线没有控制权。
-            总线判优控制可分集中式和分布式两种，前者将控制逻辑集中在一处，后者将逻辑控制分散在与总线连接的各个部件或设备上。
-            常见的集中控制优先权仲裁方式有以下几种
-                链式查询
-                    易扩展成本低，但对电路故障敏感，且优先级别低的设备很难获得请求。
-                计数查询
-                    相比于链式查询，多了一组设备地址线，少了一组纵总线同意线bg，计数可以从0开始，也可以从上次计数终止的地方开始，即是一种循环方法 优先次序可以改变这种方式对电路故障不敏感，单增加了控制线数，控制也较为复杂。
-                独立请求方式
-                    相应速度块，优先次序控制灵活，但控制线数量多，总线控制更复杂。、
-    总线通信控制
-        通常将完成
-</code></pre>
+        
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/09/05/计算机组原系统总线篇/">
-    <time datetime="2018-09-05T09:16:23.799Z" class="entry-date">
-        2018-09-05
+    <a href="/2018/11/13/蛇形矩阵/">
+    <time datetime="2018-11-13T13:57:00.000Z" class="entry-date">
+        2018-11-13
     </time>
 </a>
     
@@ -177,7 +103,7 @@
 
 
   
-    <article id="post-数据库系统概论" class="post-数据库系统概论 post type-post status-publish format-standard hentry">
+    <article id="post-2k进制数" class="post-2k进制数 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -185,28 +111,27 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/09/03/数据库系统概论/">数据库系统概论</a>
+      <a class="article-title" href="/2018/11/13/2k进制数/">2k进制数</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/03/数据库系统概论/" data-id="cjlrs7epx0003ocv6sguiyv5r" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/13/2k进制数/" data-id="cjoft0toc0000u8v6uql1nouh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>数据库系统概述<br>    数据data<br>        描述事物的符号记录称为数据<br>        数据的含义称为数据的语义，数据与其语义是不可分割的<br>    数据库<br>        数据库是长期存储在计算机内、有组织的、可共享的大量数据集合。数据库中的数据按照一定的数量模型组织，描述和存储，具有较小的冗余度，较高的数据独立性，和易扩展性，并可为各种用户共享。<br>    数据库管理系统<br>        如何高效地科学的组织和存储数据，如何高效的获取和维护数据，完成这个任务的是一个系统软件-数据库管理系统<br>        数据定义<br>            数据管理系统是位于用户和操作系统之间的一层数据管理软件，数据源管理系统和操作系统一样是计算机的基础软件，也是一个大型复杂的软件系统。它的主要功能包括以下几个方面。<br>            数据定义功能<br>                数据管理系统提供数据定义语言，（data definition language，ddl），用户可以通过它方便的对数据库中的数据对象的组成进行定义<br>            数据组织、存储和管理<br>                数据库管理系统要分类组织、存储和组织管理各种数据，<br>            数据操纵功能<br>                数据库还提供数据操纵语言（Data manipulation language dml） 用户可以通过它操纵数据，进行插入，查询、删除和修改等操作、<br>            数据库的事务管理和运行管理<br>                数据库在建立、运行、和维护时由数据库管理系统统一管理和控制。<br>            数据库的建立和维护功能<br>                数据库的建立和维护功能包括数据库初始数据的输入、转换功能。数据库的转储、恢复功能数据库的重组织功能和性能监视、分析功能等等这些功能通常是由一行应用或管理工具完成的。<br>            其他功能<br>                其他功能包括数据库管理系统与网络中其他软件系统的通信能力，一个数据库管理系统与另一个数据库管理系统或文件系统的数据转换功能，异构数据库之间的互访和互操作功能等等。</p>
-
+        
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/09/03/数据库系统概论/">
-    <time datetime="2018-09-03T12:08:19.000Z" class="entry-date">
-        2018-09-03
+    <a href="/2018/11/13/2k进制数/">
+    <time datetime="2018-11-13T13:54:19.000Z" class="entry-date">
+        2018-11-13
     </time>
 </a>
     
@@ -220,7 +145,7 @@
 
 
   
-    <article id="post-计算机组成原理" class="post-计算机组成原理 post type-post status-publish format-standard hentry">
+    <article id="post-DNA" class="post-DNA post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -228,32 +153,116 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/09/03/计算机组成原理/">计算机组成原理</a>
+      <a class="article-title" href="/2018/11/13/DNA/">DNA</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/03/计算机组成原理/" data-id="cjlrs7erh000locv6cwmck4x4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/13/DNA/" data-id="cjoft0tp50002u8v6aaaitp2f" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>计算机组成原理第一天笔记<br>第一章 计算机系统概论<br>    1.1计算机系统简介<br>        1.冯诺依曼原理<br>        2.评价标准<br>        3.层次结构<br>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/11/13/DNA/">
+    <time datetime="2018-11-13T13:51:03.000Z" class="entry-date">
+        2018-11-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-母牛的故事" class="post-母牛的故事 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/11/13/母牛的故事/">母牛的故事</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/13/母牛的故事/" data-id="cjoft0tqy000du8v6lg6zw8xh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/11/13/母牛的故事/">
+    <time datetime="2018-11-13T13:48:36.000Z" class="entry-date">
+        2018-11-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-编程入门" class="post-编程入门 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/11/13/编程入门/">编程入门</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/13/编程入门/" data-id="cjoft0tr3000fu8v61fiu6r9v" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>兰顿蚂蚁<br>
         
           <p class="article-more-link">
-            <a href="/2018/09/03/计算机组成原理/#more" class="more-link">More <span class="meta-nav">→</span></a>
+            <a href="/2018/11/13/编程入门/#more" class="more-link">More <span class="meta-nav">→</span></a>
           </p>
         
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/09/03/计算机组成原理/">
-    <time datetime="2018-09-03T10:56:53.000Z" class="entry-date">
-        2018-09-03
+    <a href="/2018/11/13/编程入门/">
+    <time datetime="2018-11-13T13:01:38.000Z" class="entry-date">
+        2018-11-13
     </time>
 </a>
     
@@ -267,7 +276,7 @@
 
 
   
-    <article id="post-系统笔记5" class="post-系统笔记5 post type-post status-publish format-standard hentry">
+    <article id="post-html" class="post-html post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -275,32 +284,38 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/系统笔记5/">系统笔记5</a>
+      <a class="article-title" href="/2018/10/27/html/">html</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记5/" data-id="cjlrs7eq20006ocv6ki8w874q" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/10/27/html/" data-id="cjoft0tp90003u8v68rxe7e1s" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>IP add查看网络接口，网卡是否被激活<br>如果物理网卡未被激活<br>    Ifup 网卡设备<br>    修改ssh配置文件启动ssh服务<br>        Vim /etc/ssh/sshd_config<br>    ssh登陆格式<br>        Ssh username@hostname port<br>    可进入.bashrc 进行用户模式下的修改<br>    vim .bashrc<br>    alisa ser=‘ssh <a href="mailto:root@172.25.0.11" target="_blank" rel="noopener">root@172.25.0.11</a>’<br>    source .bashrc<br>    或者在/etc/bashrc下进行全局配置<br>    需要root权限<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/系统笔记5/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
+        <p>html 是用来描述网页的一种语言，html不是一种编程语言而是一种标记语言。标记语言是一套标记标签，html 使用标记标签来描述网页。<br>html标题 html标题是通过</p><h1>-<h6>等标签进行定义的。<br>html段落 html段落是通过<p>标签进行定义的<br>html链接 html 链接是通过<a>标签进行定义的<br>html图像 是通过<img>标签进行实现的<br>html元素是指从开始标签到结束标签的所有代码<br>开始标签通常被称为开放标签，结束标签被称为闭合标签。<br>嵌套的html元素<br>html标签可以拥有属性。属性提供了有关html元素更多的信息<br>属性总是以名称/值对的形式出现比如 name=“value”<br>  <a href="http://www.w3school.com.cn" target="_blank" rel="noopener">This is a link</a></a></p>
+<p></p><h1 align="center"><p></p>
+<body bgcolor="yellow"> 
+
+<p>搜索引擎将使用标题为您的网页结构和内容编制索引</p>
+<p><hr> 标签在 HTML 页面中创建水平线。<br><!-- This is a comment -->添加注释的方式<br>如果您希望在不产生一个新段落的情况下进行换行（新行），请使用 <br> 标签：</p>
+<p>This is<br>a para<br>graph with line breaks</p>
+
+<p>当浏览器读到一个样式表，他就会按照这个岩石表来对文档进行格式化，有一下三种方式来插入样式表：<br>外部样式表<br>内部样式表<br>内联样式表<br>无序列表是一个项目的列表，此列项目使用粗体圆点（典型的小黑圆圈）进行标记。</p>
+<p>无序列表始于 <ul> 标签。每个列表项始于 <li>。同样，有序列表也是一列项目，列表项目使用数字进行标记。</li></ul></p>
+<p>有序列表始于 <ol> 标签。每个列表项始于 <li> 标签。</li></ol></p>
+</body></h1></h6></h1>
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/系统笔记5/">
-    <time datetime="2018-08-13T05:41:33.000Z" class="entry-date">
-        2018-08-13
+    <a href="/2018/10/27/html/">
+    <time datetime="2018-10-27T01:09:06.000Z" class="entry-date">
+        2018-10-27
     </time>
 </a>
     
@@ -314,7 +329,7 @@
 
 
   
-    <article id="post-系统笔记4" class="post-系统笔记4 post type-post status-publish format-standard hentry">
+    <article id="post-安全入门扫盲" class="post-安全入门扫盲 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -322,32 +337,28 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/系统笔记4/">系统笔记4</a>
+      <a class="article-title" href="/2018/10/20/安全入门扫盲/">安全入门扫盲</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记4/" data-id="cjlrs7eq40007ocv6vqe95o54" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/10/20/安全入门扫盲/" data-id="cjoft0tpt0008u8v6oqs9q7jd" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>概要<br>    磁盘相关概念<br>    磁盘分区工具<br>    创建和维护lvm系统<br>    linux文件系统的挂载和卸载<br>    ext2/ext3/ext4、xfs文件系统管理<br>    磁盘限额</p>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/系统笔记4/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
+        <p>http常见请求<br>http 状态码<br>请求过程<br>发送请求<br>接受请求<br>服务器端 判断是不是普通的静态 是否交给脚本层处理 （脚本层类似翻译器）html了解时间大概两天 JS<br>脚本层学习python<br>服务层搭建各种服务<br>数据层 学习sql语言<br>操作系统 包括 Windows linux<br>github 交流站 开源项目交流地点<br>nmap </p>
+
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/系统笔记4/">
-    <time datetime="2018-08-13T05:41:29.000Z" class="entry-date">
-        2018-08-13
+    <a href="/2018/10/20/安全入门扫盲/">
+    <time datetime="2018-10-20T07:43:31.000Z" class="entry-date">
+        2018-10-20
     </time>
 </a>
     
@@ -361,7 +372,7 @@
 
 
   
-    <article id="post-系统笔记3" class="post-系统笔记3 post type-post status-publish format-standard hentry">
+    <article id="post-DES加密算法" class="post-DES加密算法 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -369,32 +380,28 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/系统笔记3/">系统笔记3</a>
+      <a class="article-title" href="/2018/10/16/DES加密算法/">DES加密算法</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记3/" data-id="cjlrs7eq50008ocv67gav1i29" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/10/16/DES加密算法/" data-id="cjoft0tpe0004u8v69fd1ogqh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>1.账户实质<br>2.账户文件<br>3.账户设置<br>4.口令管理<br>5.权限表示<br>6.权限设置<br>7.进程描述<br>8.进程管理<br>9.作业控制<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/系统笔记3/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
+        <p>ps: </p>
+
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/系统笔记3/">
-    <time datetime="2018-08-13T05:41:26.000Z" class="entry-date">
-        2018-08-13
+    <a href="/2018/10/16/DES加密算法/">
+    <time datetime="2018-10-16T01:26:35.000Z" class="entry-date">
+        2018-10-16
     </time>
 </a>
     
@@ -408,7 +415,7 @@
 
 
   
-    <article id="post-系统笔记2" class="post-系统笔记2 post type-post status-publish format-standard hentry">
+    <article id="post-回家第一天" class="post-回家第一天 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -416,32 +423,27 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/系统笔记2/">系统笔记2</a>
+      <a class="article-title" href="/2018/09/28/回家第一天/">回家第一天</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记2/" data-id="cjlrs7eq10005ocv66nhxb3hs" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/28/回家第一天/" data-id="cjoft0tpq0007u8v63ohxavmk" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>自由软件和linux<br>    自由软件<br>    Linux及其历史<br>    linux的内核版本与其发行版本<br>    rhce与Centos<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/系统笔记2/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
         
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/系统笔记2/">
-    <time datetime="2018-08-13T05:41:23.000Z" class="entry-date">
-        2018-08-13
+    <a href="/2018/09/28/回家第一天/">
+    <time datetime="2018-09-28T14:22:03.000Z" class="entry-date">
+        2018-09-28
     </time>
 </a>
     
@@ -455,7 +457,7 @@
 
 
   
-    <article id="post-系统笔记1" class="post-系统笔记1 post type-post status-publish format-standard hentry">
+    <article id="post-rhce" class="post-rhce post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -463,156 +465,27 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/系统笔记1/">系统笔记1</a>
+      <a class="article-title" href="/2018/09/26/rhce/">rhce</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记1/" data-id="cjlrs7epz0004ocv678ji6y6l" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/26/rhce/" data-id="cjoft0tpi0005u8v6v27dbl2e" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <pre><code>1. shell及其功能
-2. 命令操作基础
-3. linux的文件和目录
-4. 信息显示命令
-5. 正则表达式和文本文件操作命令
-6. vim文本编辑器
-7. 命令补全、命令别名、命令历史
-8. 重定向、管道、命令替换、命令聚合 
-9. shell变量 和 shell环境
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/系统笔记1/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
         
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/系统笔记1/">
-    <time datetime="2018-08-13T05:40:54.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-网络笔记day11" class="post-网络笔记day11 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day11/" data-id="cjlrs7eq70009ocv6u2s84990" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Mpls 多协议标签交换<br>    支持三层协议</p>
-<pre><code>fib表
-    就是cef表
-lib表
-    路由器为每一个igp前缀在本地生成一个标签并发给ldp邻居，同时也冲其他ldp邻居收到为特定千醉分发的标签，路由器将本地标签和远程标签储存在lib表中。
-lfib表（标签转发信息库）
-    i. LSR路由可能收到某个特定前缀的多个标签（多个LDP邻居分发的），但他只需要使用其中一个，IP路由表用来确定这个IPv4前缀的下一跳。(LFIB表的构造需要依赖IGP的路由表，因为LFIB的下一跳就是IGP表算的)。LSR用这样的信息来创建它的LFIB。在LFIB中本地捆绑的标签最为入站标签，LDP邻居通告的标签作为出站标签
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day11/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day11/">
-    <time datetime="2018-08-13T04:28:13.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-网络笔记day10" class="post-网络笔记day10 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day10/" data-id="cjlrs7eqh000bocv6miaabylo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>二层网络冗余<br>    交换网络由于需要提供快速稳定的内网环境，所以冗余成为了必须要考虑的因素<br>    二层线路冗余带来的问题</p>
-<pre><code>    • 广播风暴
-    • 抖动的MAC地址表
-    • 重复收到同一个广播帧
-怎样的网络存在不会环路的情况
-
-但是这样的网络又不具备冗余性
-
-但是这样的网络又会出现环路，我们从中心根节点发出桥协议数据单元（BPDU），规定其他节点收到BPDU就传递下去
-
-这样除了根节点，
-其他节点都发现自己会从不同的接口都收到根节点发送的BPDU，如果一台交换机从多个口都收到BPDU，那么证明环路了，交换机就会保留收到最佳BPDU的那个端口，其他端口都阻塞，直到最佳BPDU的端口不再收到，那么就会释放其他端口
-
-最终网络的逻辑拓扑又变成了没环路的样子，但是物理是有冗余的，如果出现线路故障，可以自己发现和恢复。
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day10/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day10/">
-    <time datetime="2018-08-13T04:28:10.000Z" class="entry-date">
-        2018-08-13
+    <a href="/2018/09/26/rhce/">
+    <time datetime="2018-09-26T14:09:46.000Z" class="entry-date">
+        2018-09-26
     </time>
 </a>
     
@@ -629,7 +502,7 @@ lfib表（标签转发信息库）
   
     <nav id="pagination">
       <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
       </nav>
     </nav>
   
@@ -655,23 +528,23 @@ lfib表（标签转发信息库）
       <ul>
         
           <li>
-            <a href="/2018/09/05/计算机组原系统总线篇/">(no title)</a>
+            <a href="/2018/11/13/蛇形矩阵/">蛇形矩阵</a>
           </li>
         
           <li>
-            <a href="/2018/09/03/数据库系统概论/">数据库系统概论</a>
+            <a href="/2018/11/13/2k进制数/">2k进制数</a>
           </li>
         
           <li>
-            <a href="/2018/09/03/计算机组成原理/">计算机组成原理</a>
+            <a href="/2018/11/13/DNA/">DNA</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/系统笔记5/">系统笔记5</a>
+            <a href="/2018/11/13/母牛的故事/">母牛的故事</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/系统笔记4/">系统笔记4</a>
+            <a href="/2018/11/13/编程入门/">编程入门</a>
           </li>
         
       </ul>
@@ -708,3 +581,5 @@ lfib表（标签转发信息库）
   </div>
 </body>
 </html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

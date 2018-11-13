@@ -61,7 +61,123 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
-    <article id="post-网络笔记day9" class="post-网络笔记day9 post type-post status-publish format-standard hentry">
+    <article id="post-计算机组原系统总线篇" class="post-计算机组原系统总线篇 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/05/计算机组原系统总线篇/" data-id="cjoft0trv000tu8v6y96hfex3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <hr>
+<p>title: 计算机组原系统总线篇<br>date: 2018-09-05 17:16:23</p>
+<h2 id="tags"><a href="#tags" class="headerlink" title="tags:"></a>tags:</h2><pre><code>系统总线
+    1.总线的定义和分类
+    2.常见的总线结构和其特点
+    3.总线判优方式的特点
+    4.总线通话方式的特点
+
+
+    1.总线的基本概念
+        计算机系统的五大部件之间的互连方式由两种，一种是各部件之间使用单独的线，称为分散练级，另一种是将各部件连到一组公共信息传输线上，称为总线连接。
+        总线是连接多个部件的信息传输线，是个各部件共享的传输介质。当多个部件与总线相连的时候，如果出现两个或两个以上的部件同时向纵向发送信息，势必导致信号冲突传输无效，因此在某一时刻只允许有一个部件像总线发送信息，而多个部件可以同时从总线上接收相同的信息。
+        总线实际上是由许多传输线或通络组成，每条线可一位一位的传输二进制代码，一串二进制代码可在一段时间内逐一传输完成，若干传输线可以同时传输若干位二进制码，例如16条传输线可以同时传输16位二进制代码。
+    面向cpu的双总线结构框图 
+        这种结构在i/o设备与主存进行信息交换时仍要占用cpu，因此还会影响cpu的工作效率
+    单总线结构
+        这种结构cpu效率有所提高，因为只有一条总线，当某一时刻各部件都要用到总线时，就会发生冲突
+    以存储器为中心的双总线结构
+        它是在单总线基础上开辟出一条cpu和主存之间的总线，称为存储总线。这组总线速度高，只供主存与cpu之间传输信息。这样既提高了传输效率，又减轻系统总线的负担，还保留了i/o设备与存储器之间交换信息不经过cpu的特点。
+
+    总线的分类
+        总线的分类很广范。从不同角度可以有不同的分发，按数据传输的凡是可以分为并行传输总线，和串行传输总线
+        若按照总线的使用范围划分，则又有计算机（包括外设）总线，测控总线、网络通信总线等。
+        并行通信传输中有多个数据位，同时在两个设备之间传输。发送设备将这些数据位通过 对应的数据线传送给接收设备，还可附加一位数据校验位。接收设备可同时接收到这些数据，不需要做任何变换就可直接使用。并行方式主要用于近距离通信。计算 机内的总线结构就是并行通信的例子。这种方法的优点是传输速度快，处理简单。
+        串行数据传输时，数据是一位一位地在通信线上传输的，先由具有几位总线的计算机内的发送设备，将几位并行数据经并--串转换硬件转换成串行方式，再逐位经传输线到达接收站的设备中，并在接收端将数据从串行方式重新转换成并行方式，以供接收方使用。串行数据传输的速度要比并行传输慢得多，但对于覆盖面极其广 阔的公用电话系统来说具有更大的现实意义。
+        当信息以串行方式传送时，只有一条传输线，且采用脉冲传送。在串行传送时，按顺序来传送表示一个数码的所有二进制位的脉冲信号，每次一位，通常以第一个脉冲信号表示数码的最低有效位，最后一个脉冲信号表示数码的最高有效位。
+        串行传送的优点只需要一条传输线，成本比较低廉。
+        用并行方式传送二进制信息时，对每个数据位都需要单独一条传输线。
+        并行传送一般采用电位传送。
+
+    按照连接部件的不同介绍三类总线
+        片内总线
+            片内总线是指芯片内部的总线，如在cpu芯片内部，寄存器与寄存器之间、寄存器与算术逻辑单元ALU之间都是由总线连接。
+        系统总线
+            系统总线是指cpu主存、i/o设备各大部件之间的信息传输线。
+            按系统总线传输信息的不同，又可分为三类：数据总线、地址总线、控制总线
+            1.数据总线
+                数据总线用来传输各个功能部件之间的数据信息，它是双向传输的总线，其位数与机器字长、存储字长有关一般为8位16位32位
+                数据总线的位数称为数据总线宽度，它是衡量系统性能的一个重要参数。
+            2.地址总线
+                地址总线主要用来指出数据总线上的源数据在主存单元的地址或i/o设备的地址。地址总线上的代码是用来指明cpu欲访问的存储单元或i/o端口的地址，由cpu输出单向传输。
+            3.控制总线
+                由于数据总线和地址总线都是被挂在总线上的所有部件所共享的，如何是各部件能在不同时间占有总线的使用权，需要依靠控制总线来完成。因此控制总线是用来发出各种控制命信号的传输线。通常对任意控制线来讲，它的传输是单向的。但对于控制总线总体来讲，它的传输又是双向的，控制总线还起到监视器它部件的作用，控制信号既有输出又有输入。
+        通信总线        
+            这类总线用于计算机系统之间或计算机系统和其他系统之间（如控制仪表、移动通信）的通信。按照传输方式可分为串行通信和并行通信，
+            串行通信和并行通信详细解释见上
+
+    2.总线的特型
+        1 机械特性
+            机械特性是指总线在机械连接方式上的一些性能，如插头与插座的使用标准，他们的几何尺寸、形状、引脚的个数以及排列的顺序、接头处的可靠接触等等。
+        2 电气特性
+            电气特性是指总线上每一根传输线上的信号的传递方向和有有效的电平范围。通常规定由cpu发出的信号称为输出信号，送入cpu的信号是输入信号，例如地址总线属于单向输出线，数据总线属于双向输出线，它们都定义高电平为1低电平为0。控制总线的每一根都是单向的，但从总体来看有输入也有输出，有的定义为高电平有的定义为低电平。必须注意不同的规格。
+        3 功能特性
+            功能特性是指总线种每根传输线的功能。例如：地址总线用来指出地址码；数据总线用来传输数据；控制总线用来发出控制信号，由此可见各条线功能不同。
+        4 时间特性
+            时间特性是总线中的任意一根线在什么时间内有效，每条总线上的各种信号互相存在一种有效的时序关系。
+
+    3.总线的性能指标
+        总线宽度：通常是指数据总线的根数，如8位16位等等
+        总线带宽：总线带宽可理解为总线的数据传输速率，即单位时间内总线上传输数据的位数通常用每秒传输的字节数来衡量，单位可用MBps（兆字节每秒）表示，例如总线工作的频率为33MHz，总线的宽度为32位，则总线的带宽为33*(32/8)=132MBps.
+        时钟同步/异步：总线上的数据与时钟信号同步工作的总线称为同步总线，与时钟信号不同步工作的总线称为异步总线
+        总线复用：一条信号线上分时传输两种信号，例如：通常地址总线与数据总线在物理上是分开的两条线，为了提高总线的利用效率，特将地址总线和数据总线公用一组物理线路，在这组物理线路上分时传输地址信号和数据信号，即为总线的多路复用。
+        信号线数：地址总线，数据总线，和控制总线三种总线数的总和
+        总线控制方式：包括突发工作、自动配置、仲裁方式、逻辑方式、技术方式调度等等
+        其他指标：负载能力、电源电压、总线宽度能否扩展等等
+
+    4.总线结构
+        总线结构通常可分为单总线结构和多总线结构
+    5.总线控制
+        由于总线上连接着多个部件，总线的使用权以及其效率问题都由总线控制器解决。它主要包括判优控制（或称仲裁逻辑）和通信控制。
+            总线判优控制
+                总线上连接的各类设备，按其对总线有无控制功能可分为主设备（模块）和从设备（模块）两种。主设备对总线有控制权，从设备只能相应从主设备发来的总线命令，对总线没有控制权。
+            总线判优控制可分集中式和分布式两种，前者将控制逻辑集中在一处，后者将逻辑控制分散在与总线连接的各个部件或设备上。
+            常见的集中控制优先权仲裁方式有以下几种
+                链式查询
+                    易扩展成本低，但对电路故障敏感，且优先级别低的设备很难获得请求。
+                计数查询
+                    相比于链式查询，多了一组设备地址线，少了一组纵总线同意线bg，计数可以从0开始，也可以从上次计数终止的地方开始，即是一种循环方法 优先次序可以改变这种方式对电路故障不敏感，单增加了控制线数，控制也较为复杂。
+                独立请求方式
+                    相应速度块，优先次序控制灵活，但控制线数量多，总线控制更复杂。、
+    总线通信控制
+        通常将完成
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/09/05/计算机组原系统总线篇/">
+    <time datetime="2018-09-05T09:16:23.799Z" class="entry-date">
+        2018-09-05
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-数据库系统概论" class="post-数据库系统概论 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -69,32 +185,125 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day9/">网络笔记day9</a>
+      <a class="article-title" href="/2018/09/03/数据库系统概论/">数据库系统概论</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day9/" data-id="cjlrs7er0000gocv6ifb2i84v" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/03/数据库系统概论/" data-id="cjoft0tpz000au8v6mml0lnag" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>• 当一条链路，需要承载多VLAN信息的时候，需使用trunk来实现。<br>• Trunk两端的交换机需采用相同的干道协议。<br>• 一般见于交换机之间或交换机与路由器、服务器之间。<br>802.1Q</p>
-<p>• IEEE公有协议<br>• 插入Tag字段，同时重新计算FCS<br>Native VLAN<br>• Native VLAN所属的帧在经过trunk时不打标签<br>• Native VLAN在Trunk两端必须匹配，否则会出现VLAN流量互串<br>• 默认的native vlan是vlan 1<br>• 建议将一个生僻的VLAN配置为Native vlan<br>
+        <p>数据库系统概述<br>
         
           <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day9/#more" class="more-link">More <span class="meta-nav">→</span></a>
+            <a href="/2018/09/03/数据库系统概论/#more" class="more-link">More <span class="meta-nav">→</span></a>
           </p>
         
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day9/">
-    <time datetime="2018-08-13T04:28:06.000Z" class="entry-date">
+    <a href="/2018/09/03/数据库系统概论/">
+    <time datetime="2018-09-03T12:08:19.000Z" class="entry-date">
+        2018-09-03
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-计算机组成原理" class="post-计算机组成原理 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/09/03/计算机组成原理/">计算机组成原理</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/09/03/计算机组成原理/" data-id="cjoft0ts1000wu8v6vm760nb5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>计算机组成原理第一天笔记<br>第一章 计算机系统概论<br>    1.1计算机系统简介<br>        1.冯诺依曼原理<br>        2.评价标准<br>        3.层次结构<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/09/03/计算机组成原理/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/09/03/计算机组成原理/">
+    <time datetime="2018-09-03T10:56:53.000Z" class="entry-date">
+        2018-09-03
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-系统笔记5" class="post-系统笔记5 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/系统笔记5/">系统笔记5</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记5/" data-id="cjoft0tr9000hu8v63usl01c0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>IP add查看网络接口，网卡是否被激活<br>如果物理网卡未被激活<br>    Ifup 网卡设备<br>    修改ssh配置文件启动ssh服务<br>        Vim /etc/ssh/sshd_config<br>    ssh登陆格式<br>        Ssh username@hostname port<br>    可进入.bashrc 进行用户模式下的修改<br>    vim .bashrc<br>    alisa ser=‘ssh <a href="mailto:root@172.25.0.11" target="_blank" rel="noopener">root@172.25.0.11</a>’<br>    source .bashrc<br>    或者在/etc/bashrc下进行全局配置<br>    需要root权限<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/系统笔记5/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记5/">
+    <time datetime="2018-08-13T05:41:33.000Z" class="entry-date">
         2018-08-13
     </time>
 </a>
@@ -109,7 +318,7 @@
 
 
   
-    <article id="post-网络笔记day8" class="post-网络笔记day8 post type-post status-publish format-standard hentry">
+    <article id="post-系统笔记4" class="post-系统笔记4 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -117,31 +326,31 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day8/">网络笔记day8</a>
+      <a class="article-title" href="/2018/08/13/系统笔记4/">系统笔记4</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day8/" data-id="cjlrs7ere000jocv68s2v6fbs" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记4/" data-id="cjoft0tr5000gu8v6jm37pxxe" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>bgp选路原则<br>BGP属性众多，每个属性都可以影响到最终路线的选择，如果BGP从不同的Peer收到了同一个路由，BGP会按照一定的选路原则去按照顺序比对属性。一旦某个属性比对出结果，就不会继续比对。<br>BGP默认不支持负载均衡，必须要选出唯一的路线。<br>
+        <p>概要<br>    磁盘相关概念<br>    磁盘分区工具<br>    创建和维护lvm系统<br>    linux文件系统的挂载和卸载<br>    ext2/ext3/ext4、xfs文件系统管理<br>    磁盘限额</p>
         
           <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day8/#more" class="more-link">More <span class="meta-nav">→</span></a>
+            <a href="/2018/08/13/系统笔记4/#more" class="more-link">More <span class="meta-nav">→</span></a>
           </p>
         
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day8/">
-    <time datetime="2018-08-13T04:28:03.000Z" class="entry-date">
+    <a href="/2018/08/13/系统笔记4/">
+    <time datetime="2018-08-13T05:41:29.000Z" class="entry-date">
         2018-08-13
     </time>
 </a>
@@ -156,7 +365,7 @@
 
 
   
-    <article id="post-网络笔记day7" class="post-网络笔记day7 post type-post status-publish format-standard hentry">
+    <article id="post-系统笔记3" class="post-系统笔记3 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -164,34 +373,31 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day7/">网络笔记day7</a>
+      <a class="article-title" href="/2018/08/13/系统笔记3/">系统笔记3</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day7/" data-id="cjlrs7eqp000docv69wjf31mh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记3/" data-id="cjoft0trc000ju8v690bjzxgn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>Route-map</p>
-<p>你懂的<br>policy-list<br>ip policy-list AS100 permit<br> match ip address 1<br> match community 1 exact-match<br> match policy-list R3<br>!<br>route-map R1 permit 10<br> match policy-list R3<br>advertise-map<br>条件通告，当advertise-map后面的route-map中路由消失的时候，none-exist-map后面的路由也会跟着消失<br>ip prefix-list 10 seq 5 permit 172.16.1.0/24<br>ip prefix-list 20 seq 5 permit 172.16.2.0/24<br>!<br>route-map 1 permit 10<br> match ip address prefix-list 10<br>route-map 2 permit 10<br> match ip address prefix-list 20<br>!<br>router bgp 200<br> neighbor 192.168.23.3 advertise-map 2 non-exist-map 1</p>
-<pre><code>#当1不存在的时候，就向192.168.23.3通告2的路由
-</code></pre><p>ORF<br>BGP优化命令，在BGP建立邻居的时候会更新完整的路由表，如果接收方在in方向上有策略，那可能有些更新就是不必要的，会造成资源的浪费<br>配置了ORF功能的路由器，可以事先将in接口的策略告诉对方，这样在更新的时候就可以避免带宽资源的浪费<br>必须要两边都配置了ORF才可以<br>路由拆分<br>
+        <p>1.账户实质<br>2.账户文件<br>3.账户设置<br>4.口令管理<br>5.权限表示<br>6.权限设置<br>7.进程描述<br>8.进程管理<br>9.作业控制<br>
         
           <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day7/#more" class="more-link">More <span class="meta-nav">→</span></a>
+            <a href="/2018/08/13/系统笔记3/#more" class="more-link">More <span class="meta-nav">→</span></a>
           </p>
         
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day7/">
-    <time datetime="2018-08-13T04:28:00.000Z" class="entry-date">
+    <a href="/2018/08/13/系统笔记3/">
+    <time datetime="2018-08-13T05:41:26.000Z" class="entry-date">
         2018-08-13
     </time>
 </a>
@@ -206,7 +412,7 @@
 
 
   
-    <article id="post-网络笔记day6" class="post-网络笔记day6 post type-post status-publish format-standard hentry">
+    <article id="post-系统笔记2" class="post-系统笔记2 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -214,48 +420,87 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day6/">网络笔记day6</a>
+      <a class="article-title" href="/2018/08/13/系统笔记2/">系统笔记2</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day6/" data-id="cjlrs7erm000nocv615t4c43m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记2/" data-id="cjoft0tqu000bu8v6bkgilxwa" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>Bgp 概述<br>    路由协议分类</p>
-<pre><code>Igp
-    内部网关协议
-    执行拓扑发现
-    尽力完成快速收敛
-    需要周期性的更新来确保路由选择信息的精确性
-    受同一个管理机构的控制
-    提供了优先的策略控制能力
-BGP
-    AS：autonomous system 自治系统，指的是在同一个组织管理下使用相同策略的设备的集合。 
-    不同AS通过AS号区分，AS号取值范围1－65535，其中64512－65535是私有AS号。
-    IANA负责AS号的分发。(https://www.iana.org/)
-    中国电信163 AS号：4134 中国电信CN2 AS号：4809 中国网通AS 号：9929
-    使用BGP的理由
-    大量路由需要承载，IGP只能容纳千条，而BGP可以容纳上万 
-    支撑MPLS/VPN的应用，传递客户VPN路由。 
-    策略能力强，可以很好的实现路由决策与数据控制
+        <p>自由软件和linux<br>    自由软件<br>    Linux及其历史<br>    linux的内核版本与其发行版本<br>    rhce与Centos<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/系统笔记2/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/系统笔记2/">
+    <time datetime="2018-08-13T05:41:23.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-系统笔记1" class="post-系统笔记1 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/系统笔记1/">系统笔记1</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/系统笔记1/" data-id="cjoft0tpx0009u8v69lvy4eiy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <pre><code>1. shell及其功能
+2. 命令操作基础
+3. linux的文件和目录
+4. 信息显示命令
+5. 正则表达式和文本文件操作命令
+6. vim文本编辑器
+7. 命令补全、命令别名、命令历史
+8. 重定向、管道、命令替换、命令聚合 
+9. shell变量 和 shell环境
 </code></pre>
         
           <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day6/#more" class="more-link">More <span class="meta-nav">→</span></a>
+            <a href="/2018/08/13/系统笔记1/#more" class="more-link">More <span class="meta-nav">→</span></a>
           </p>
         
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day6/">
-    <time datetime="2018-08-13T04:27:56.000Z" class="entry-date">
+    <a href="/2018/08/13/系统笔记1/">
+    <time datetime="2018-08-13T05:40:54.000Z" class="entry-date">
         2018-08-13
     </time>
 </a>
@@ -270,7 +515,7 @@ BGP
 
 
   
-    <article id="post-网络笔记day5" class="post-网络笔记day5 post type-post status-publish format-standard hentry">
+    <article id="post-网络笔记day11" class="post-网络笔记day11 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -278,31 +523,38 @@ BGP
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day5/">网络笔记day5</a>
+      <a class="article-title" href="/2018/08/13/网络笔记day11/">网络笔记day11</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day5/" data-id="cjlrs7erj000mocv60cnk2m63" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day11/" data-id="cjoft0trg000lu8v61dozrug7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>路由重发布<br>    将A协议的路由条目重新整合，发布到B协议中，这种行为是路由重发布<br>    为了保证双向通信，我们往往需要进行双向重发布<br>        路由重发布需要注意事项<br>            度量值的计算规则不一样<br>                Rip 跳数<br>                Eigrp sk值<br>                Ospf cost<br>                Isis 默认度量值<br>        重发布的路由失去了原路由的放环信息，可能出现环路<br>        收敛时间不一致<br>
+        <p>Mpls 多协议标签交换<br>    支持三层协议</p>
+<pre><code>fib表
+    就是cef表
+lib表
+    路由器为每一个igp前缀在本地生成一个标签并发给ldp邻居，同时也冲其他ldp邻居收到为特定千醉分发的标签，路由器将本地标签和远程标签储存在lib表中。
+lfib表（标签转发信息库）
+    i. LSR路由可能收到某个特定前缀的多个标签（多个LDP邻居分发的），但他只需要使用其中一个，IP路由表用来确定这个IPv4前缀的下一跳。(LFIB表的构造需要依赖IGP的路由表，因为LFIB的下一跳就是IGP表算的)。LSR用这样的信息来创建它的LFIB。在LFIB中本地捆绑的标签最为入站标签，LDP邻居通告的标签作为出站标签
+</code></pre>
         
           <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day5/#more" class="more-link">More <span class="meta-nav">→</span></a>
+            <a href="/2018/08/13/网络笔记day11/#more" class="more-link">More <span class="meta-nav">→</span></a>
           </p>
         
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day5/">
-    <time datetime="2018-08-13T04:27:27.000Z" class="entry-date">
+    <a href="/2018/08/13/网络笔记day11/">
+    <time datetime="2018-08-13T04:28:13.000Z" class="entry-date">
         2018-08-13
     </time>
 </a>
@@ -317,7 +569,7 @@ BGP
 
 
   
-    <article id="post-网络笔记day4" class="post-网络笔记day4 post type-post status-publish format-standard hentry">
+    <article id="post-网络笔记day10" class="post-网络笔记day10 post type-post status-publish format-standard hentry">
     <!---->
 
       <header class="entry-header">
@@ -325,216 +577,46 @@ BGP
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day4/">网络笔记day4</a>
+      <a class="article-title" href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day4/" data-id="cjlrs7eqs000eocv6v1wprnpo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day10/" data-id="cjoft0tre000ku8v6beth0mo0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <p>IS-IS协议简介<br>    • IS-IS是一个链路状态的、内部网关协议。它被设计成适用在OSI无连接网络服务（CLNS：Connctionless Network Service）的环境中。为了提供对IP的路由支持，IETF在RFC1195中对IS-IS进行了扩充和修改，使它能够同时应用在TCP/IP和OSI环境中，称为集成化IS-IS（Integrated IS-IS或Dual IS-IS）<br>    集成型IS-IS和OSPF都是20世纪80年代后期定义的，大约是1988年。OSPF实际上是从IS-IS的早期版本进化而来的，不过它采用IP作为前提。<br>    IS-IS是路由选择协议，传递CLNP的路由信息。在ISO协议族，我们可以把ES终端系统理解为主机，把IS中间系统理解为路由器。因此IS-IS的出生，其实是为CLNS服务的，往后发展成了集成性IS-IS就做了扩展，也就可以支持IP路由了。<br>    IS-IS协议管理距离115<br>
+        <p>二层网络冗余<br>    交换网络由于需要提供快速稳定的内网环境，所以冗余成为了必须要考虑的因素<br>    二层线路冗余带来的问题</p>
+<pre><code>    • 广播风暴
+    • 抖动的MAC地址表
+    • 重复收到同一个广播帧
+怎样的网络存在不会环路的情况
+
+但是这样的网络又不具备冗余性
+
+但是这样的网络又会出现环路，我们从中心根节点发出桥协议数据单元（BPDU），规定其他节点收到BPDU就传递下去
+
+这样除了根节点，
+其他节点都发现自己会从不同的接口都收到根节点发送的BPDU，如果一台交换机从多个口都收到BPDU，那么证明环路了，交换机就会保留收到最佳BPDU的那个端口，其他端口都阻塞，直到最佳BPDU的端口不再收到，那么就会释放其他端口
+
+最终网络的逻辑拓扑又变成了没环路的样子，但是物理是有冗余的，如果出现线路故障，可以自己发现和恢复。
+</code></pre>
         
           <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day4/#more" class="more-link">More <span class="meta-nav">→</span></a>
+            <a href="/2018/08/13/网络笔记day10/#more" class="more-link">More <span class="meta-nav">→</span></a>
           </p>
         
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day4/">
-    <time datetime="2018-08-13T04:26:51.000Z" class="entry-date">
+    <a href="/2018/08/13/网络笔记day10/">
+    <time datetime="2018-08-13T04:28:10.000Z" class="entry-date">
         2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-网络笔记day3" class="post-网络笔记day3 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day3/">网络笔记day3</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day3/" data-id="cjlrs7eql000cocv65r9n1jjj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>链路状态协议<br>路由器会将自己接口所在的链路的信息署名，然后发给自己的邻居<br>邻居收到链路状态信息后，存储在链路状态数据库中<br>当收敛完成后路由器几乎收到网络中所由路有器的链路状态后，会计算全网拓扑<br>使用spf算法得到去没一个网段的最短路线，然后去往每个网段的下一条写进路由表</p>
-<p>典型代表<br>Ospf is-is<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day3/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day3/">
-    <time datetime="2018-08-13T04:25:46.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-网络笔记day2" class="post-网络笔记day2 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day2/">网络笔记day2</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjlrs7eqb000aocv6ixizp8ah" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>距离矢量路由协议<br>    路由器会将参与距离矢量协议的路由周期性更新给新邻居<br>    典型代表 rip eigrp<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day2/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day2/">
-    <time datetime="2018-08-13T03:56:59.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-网络笔记day1" class="post-网络笔记day1 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/08/13/网络笔记day1/">网络笔记Day1</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day1/" data-id="cjlrs7eqw000focv6wxdrkxuo" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p><a href="http://eagleslab.com:9000/blog/post/aaron/20180719" target="_blank" rel="noopener">http://eagleslab.com:9000/blog/post/aaron/20180719</a>   哲哥笔记<br>IP路由选择原理<br>  1.IP路由选择原理<br>  2.有类及无类路由协议<br>  3.静态路由的配置<br>
-        
-          <p class="article-more-link">
-            <a href="/2018/08/13/网络笔记day1/#more" class="more-link">More <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/08/13/网络笔记day1/">
-    <time datetime="2018-08-13T03:54:20.000Z" class="entry-date">
-        2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-my-first-blog" class="post-my-first-blog post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/07/26/my-first-blog/">my-first-blog</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/my-first-blog/" data-id="cjlrs7eps0001ocv6rqoyxqd0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/07/26/my-first-blog/">
-    <time datetime="2018-07-26T05:15:06.000Z" class="entry-date">
-        2018-07-26
     </time>
 </a>
     
@@ -551,7 +633,7 @@ BGP
   
     <nav id="pagination">
       <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
       </nav>
     </nav>
   
@@ -577,23 +659,23 @@ BGP
       <ul>
         
           <li>
-            <a href="/2018/09/05/计算机组原系统总线篇/">(no title)</a>
+            <a href="/2018/11/13/蛇形矩阵/">蛇形矩阵</a>
           </li>
         
           <li>
-            <a href="/2018/09/03/数据库系统概论/">数据库系统概论</a>
+            <a href="/2018/11/13/2k进制数/">2k进制数</a>
           </li>
         
           <li>
-            <a href="/2018/09/03/计算机组成原理/">计算机组成原理</a>
+            <a href="/2018/11/13/DNA/">DNA</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/系统笔记5/">系统笔记5</a>
+            <a href="/2018/11/13/母牛的故事/">母牛的故事</a>
           </li>
         
           <li>
-            <a href="/2018/08/13/系统笔记4/">系统笔记4</a>
+            <a href="/2018/11/13/编程入门/">编程入门</a>
           </li>
         
       </ul>
@@ -630,3 +712,5 @@ BGP
   </div>
 </body>
 </html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
