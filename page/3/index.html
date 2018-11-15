@@ -61,6 +61,67 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-网络笔记day10" class="post-网络笔记day10 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day10/">网络笔记day10</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day10/" data-id="cjoimrgg3000l2cv6v28dfsok" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>二层网络冗余<br>    交换网络由于需要提供快速稳定的内网环境，所以冗余成为了必须要考虑的因素<br>    二层线路冗余带来的问题</p>
+<pre><code>    • 广播风暴
+    • 抖动的MAC地址表
+    • 重复收到同一个广播帧
+怎样的网络存在不会环路的情况
+
+但是这样的网络又不具备冗余性
+
+但是这样的网络又会出现环路，我们从中心根节点发出桥协议数据单元（BPDU），规定其他节点收到BPDU就传递下去
+
+这样除了根节点，
+其他节点都发现自己会从不同的接口都收到根节点发送的BPDU，如果一台交换机从多个口都收到BPDU，那么证明环路了，交换机就会保留收到最佳BPDU的那个端口，其他端口都阻塞，直到最佳BPDU的端口不再收到，那么就会释放其他端口
+
+最终网络的逻辑拓扑又变成了没环路的样子，但是物理是有冗余的，如果出现线路故障，可以自己发现和恢复。
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day10/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day10/">
+    <time datetime="2018-08-13T04:28:10.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-网络笔记day9" class="post-网络笔记day9 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -76,7 +137,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day9/" data-id="cjoft0trx000uu8v6g72vmed6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day9/" data-id="cjoimrggf000v2cv6prc29ka6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -124,7 +185,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day8/" data-id="cjoft0trz000vu8v68dzj7bsd" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day8/" data-id="cjoimrggb000s2cv6slgn7m2w" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -171,7 +232,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day7/" data-id="cjoft0trq000qu8v6uxvq5i7d" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day7/" data-id="cjoimrggc000t2cv6kc45svvt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -221,7 +282,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day6/" data-id="cjoft0trs000ru8v6tcyby4wt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day6/" data-id="cjoimrgga000r2cv6qq9xziav" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -285,7 +346,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day5/" data-id="cjoft0tro000pu8v66o0tmnb5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day5/" data-id="cjoimrgg9000q2cv6fn3gdheq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -332,7 +393,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day4/" data-id="cjoft0trk000nu8v62qbud4zs" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day4/" data-id="cjoimrgg8000p2cv6vaa2rmki" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -379,7 +440,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day3/" data-id="cjoft0tri000mu8v6xi3ouzhi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day3/" data-id="cjoimrgg7000o2cv689uxgqu0" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -427,7 +488,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjoft0trm000ou8v6139u6gzj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjoimrgg6000n2cv65zuk1e39" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -474,7 +535,7 @@ BGP
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day1/" data-id="cjoft0trb000iu8v6j36modkz" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day1/" data-id="cjoimrgg2000k2cv6torkfkt2" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -493,48 +554,6 @@ BGP
     <a href="/2018/08/13/网络笔记day1/">
     <time datetime="2018-08-13T03:54:20.000Z" class="entry-date">
         2018-08-13
-    </time>
-</a>
-    
-    
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article id="post-my-first-blog" class="post-my-first-blog post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2018/07/26/my-first-blog/">my-first-blog</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/my-first-blog/" data-id="cjoft0tpn0006u8v6xu89oqp9" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2018/07/26/my-first-blog/">
-    <time datetime="2018-07-26T05:15:06.000Z" class="entry-date">
-        2018-07-26
     </time>
 </a>
     
@@ -577,6 +596,10 @@ BGP
       <ul>
         
           <li>
+            <a href="/2018/11/15/c语言函数精要/">c语言函数精要</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/13/蛇形矩阵/">蛇形矩阵</a>
           </li>
         
@@ -590,10 +613,6 @@ BGP
         
           <li>
             <a href="/2018/11/13/母牛的故事/">母牛的故事</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/13/编程入门/">编程入门</a>
           </li>
         
       </ul>

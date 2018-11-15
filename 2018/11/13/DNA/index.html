@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   
   
+  <meta name="description" content="小强从小就喜欢生命科学，他总是好奇花草鸟兽从哪里来的。终于， 小强上中学了，接触到了神圣的名词–DNA.它有一个双螺旋的结构。这让一根筋的小强抓破头皮，“要是能画出来就好了” 小强喊道。现在就请你帮助他吧" />
+  
 
   
   
@@ -13,14 +15,17 @@
   
   <title>DNA | 一个技术小白的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="小强从小就喜欢生命科学，他总是好奇花草鸟兽从哪里来的。终于， 小强上中学了，接触到了神圣的名词–DNA.它有一个双螺旋的结构。这让一根筋的小强抓破头皮，“要是能画出来就好了” 小强喊道。现在就请你帮助他吧">
+<meta property="og:type" content="article">
 <meta property="og:title" content="DNA">
 <meta property="og:url" content="http://yoursite.com/2018/11/13/DNA/index.html">
 <meta property="og:site_name" content="一个技术小白的Blog">
+<meta property="og:description" content="小强从小就喜欢生命科学，他总是好奇花草鸟兽从哪里来的。终于， 小强上中学了，接触到了神圣的名词–DNA.它有一个双螺旋的结构。这让一根筋的小强抓破头皮，“要是能画出来就好了” 小强喊道。现在就请你帮助他吧">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-13T13:51:03.267Z">
+<meta property="og:updated_time" content="2018-11-13T14:01:55.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DNA">
+<meta name="twitter:description" content="小强从小就喜欢生命科学，他总是好奇花草鸟兽从哪里来的。终于， 小强上中学了，接触到了神圣的名词–DNA.它有一个双螺旋的结构。这让一根筋的小强抓破头皮，“要是能画出来就好了” 小强喊道。现在就请你帮助他吧">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -75,13 +80,40 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/13/DNA/" data-id="cjoft0tp50002u8v6aaaitp2f" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/13/DNA/" data-id="cjoimrgfk00042cv612w9r9s4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        
+        <p>小强从小就喜欢生命科学，他总是好奇花草鸟兽从哪里来的。终于， 小强上中学了，接触到了神圣的名词–DNA.它有一个双螺旋的结构。这让一根筋的小强抓破头皮，“要是能画出来就好了” 小强喊道。现在就请你帮助他吧<br><a id="more"></a></p>
+<p>输入要求：<br>输入包含多组测试数据。第一个整数N（N&lt;=15）,N表示组数，每组数据包含两个整数a,b。a表示一个单位的DNA串的行数，a为奇数且 3&lt;=a&lt;=39。b表示重复度(1&lt;=b&lt;=20)。</p>
+<p>输出要求：<br>输出DNA的形状，每组输出间有一空行。</p>
+<p>样例输入：<br>2<br>3 1<br>5 4</p>
+<p>样例输出：<br>X X<br> X<br>X X</p>
+<p>X   X<br> X X<br>  X<br> X X<br>X   X<br> X X<br>  X<br> X X<br>X   X<br> X X<br>  X<br> X X<br>X   X<br> X X<br>  X<br> X X<br>X   X</p>
+<p>代码实现：</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include&lt;string.h&gt;</p>
+<p>#define maxn 15<br>int main ()<br>{    int n,x,y,m,i,j,t;<br>    int half;<br>    int count;<br>    int time;<br>    int s[maxn][maxn];<br>    scanf(“%d”,&amp;n);<br>    for ( count= 1; count&lt;=n;count++)<br>        {    scanf(“%d %d”,&amp;x,&amp;y);<br>            half = (x-1)/2;<br>            for(m=0;m&lt;=x-1;m++)<br>                { if (m==half)<br>                        s[m][m]=1;<br>                    else<br>                        if(m&lt;half)<br>                        {<br>                            s[m][x-1-m]=1;<br>                            s[m][m]=1;<br>            }            else<br>                        {<br>                            s[m][x-1-m]=1;<br>                            s[m][m]=1;<br>            }<br>                    }<br>            for( t=1;t&lt;=y;t++)<br>                for( i =0;i&lt;=x-1;i++)<br>                    for( j =0 ; j &lt;=x-1;j++)<br>                        {if (s[i][j]==1 )<br>                            {printf(“X”);<br>                                s[0][0]=0;</p>
+<pre><code>                            if(j==x-1&amp;&amp;i+j!=2*x-2)
+                                printf(&quot;\n&quot;);
+                            if(i==0&amp;&amp;j==x-1)
+                                s[0][x-1]=0;
+                            }
+                    else
+                    {
+                            printf(&quot; &quot;);
+                            if(j==x-1&amp;&amp;i+j!=2*x-2)
+                                printf(&quot;\n&quot;);}        
+                }    
+                if(count!=n)
+                printf(&quot;\n\n&quot;);
+                memset(s,0,sizeof(s));
+                }    
+return 0 ;
+}
+</code></pre>
       
     </div><!-- .entry-content -->
 
@@ -135,6 +167,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/15/c语言函数精要/">c语言函数精要</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/13/蛇形矩阵/">蛇形矩阵</a>
           </li>
         
@@ -148,10 +184,6 @@
         
           <li>
             <a href="/2018/11/13/母牛的故事/">母牛的故事</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/13/编程入门/">编程入门</a>
           </li>
         
       </ul>

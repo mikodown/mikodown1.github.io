@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   
   
+  <meta name="description" content="设r是个2^k 进制数，并满足以下条件：（1）r至少是个2位的2^k 进制数。（2）作为2^k 进制数，除最后一位外，r的每一位严格小于它右边相邻的那一位。（3）将r转换为2进制数q后，则q的总位数不超过w。" />
+  
 
   
   
@@ -13,14 +15,17 @@
   
   <title>2k进制数 | 一个技术小白的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="设r是个2^k 进制数，并满足以下条件：（1）r至少是个2位的2^k 进制数。（2）作为2^k 进制数，除最后一位外，r的每一位严格小于它右边相邻的那一位。（3）将r转换为2进制数q后，则q的总位数不超过w。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="2k进制数">
 <meta property="og:url" content="http://yoursite.com/2018/11/13/2k进制数/index.html">
 <meta property="og:site_name" content="一个技术小白的Blog">
+<meta property="og:description" content="设r是个2^k 进制数，并满足以下条件：（1）r至少是个2位的2^k 进制数。（2）作为2^k 进制数，除最后一位外，r的每一位严格小于它右边相邻的那一位。（3）将r转换为2进制数q后，则q的总位数不超过w。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-13T13:54:19.226Z">
+<meta property="og:updated_time" content="2018-11-13T14:01:55.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2k进制数">
+<meta name="twitter:description" content="设r是个2^k 进制数，并满足以下条件：（1）r至少是个2位的2^k 进制数。（2）作为2^k 进制数，除最后一位外，r的每一位严格小于它右边相邻的那一位。（3）将r转换为2进制数q后，则q的总位数不超过w。">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -75,13 +80,71 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/13/2k进制数/" data-id="cjoft0toc0000u8v6uql1nouh" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/13/2k进制数/" data-id="cjoimrgfw000d2cv6zc20syp3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        
+        <p>设r是个2^k 进制数，并满足以下条件：<br>（1）r至少是个2位的2^k 进制数。<br>（2）作为2^k 进制数，除最后一位外，r的每一位严格小于它右边相邻的那一位。<br>（3）将r转换为2进制数q后，则q的总位数不超过w。<br><a id="more"></a><br>在这里，正整数k（1≤k≤9）和w（k〈w≤30000）是事先给定的。 </p>
+<p>问：满足上述条件的不同的r共有多少个？<br>我们再从另一角度作些解释：设S是长度为w 的01字符串（即字符串S由w个“0”或“1”组成），S对应于上述条件（3）中的q。将S从右起划分为若干个长度为k 的段，每段对应一位2^k进制的数，如果S至少可分成2段，则S所对应的二进制数又可以转换为上述的2^k 进制数r。<br>例：设k=3，w=7。则r是个八进制数（2^3=8）。由于w=7，长度为7的01字符串按3位一段分，可分为3段（即1，3，3，左边第一段只有一个二进制位），则满足条件的八进制数有：<br>2位数：高位为1：6个（即12，13，14，15，16，17），高位为2：5个，…，高位为6：1个（即67）。共6+5+…+1=21个。<br>3位数：高位只能是1，第2位为2：5个（即123，124，125，126，127），第2位为3：4个，…，第2位为6：1个（即167）。共5+4+…+1=15个。<br>所以，满足要求的r共有36个。 </p>
+<p>输入要求:<br>只有1行，为两个正整数，用一个空格隔开：<br>k w </p>
+<p>输出要求：<br>1行，是一个正整数，为所求的计算结果，即满足条件的不同的r的个数（用十进制数表示），要求最高位不得为0，各数字之间不得插入数字以外的其他字符（例如空格、换行符、逗号等）。<br>（提示：作为结果的正整数可能很大，但不会超过200位）</p>
+<p>样例输入：<br>3 7<br>样例输出：<br>36</p>
+<p>代码实现：</p>
+<p>#include&lt;stdio.h&gt;</p>
+<p>#include&lt;math.h&gt;<br>int main()<br>{<br>    int k =1 ,w,i,j,n,m;<br>    int count=0,count1=0,count2=1;<br>    int last=1,t;<br>    scanf(“%d %d”,&amp;k,&amp;w);<br>    if(w/k&gt;=2)<br>        {<br>        n = w%k;<br>        m = w/k;<br>        if (n)<br>        {<br>            j =pow(2.0,n)-1;<br>            i =pow(2.0,k)-1;<br>            count1=1;<br>            for (j;j&gt;=1;j–)<br>            {<br>                for (m;m&gt;=1;m–)<br>                    {count1=count1 * (i-j)/last;<br>                    i–;<br>                    last++;}<br>            }</p>
+<pre><code>        i =pow(2.0,k)-1;
+        m = w/k;
+        last=1;
+        for (m;m&gt;=2;m--)
+        {   
+            t = m;
+            for(m;m&gt;=1;m--)
+            {
+                count2=count2*i/last;    
+                i--;
+                last++;
+            }
+        m=t;
+        count=count+count2;
+        count2=1;
+        i =pow(2.0,k)-1;
+        last=1;
+    }}
+    else
+        {i =pow(2.0,k)-1;
+        last = 1;
+        for (m;m&gt;=2;m--)
+
+        {   t =m;
+            for(m;m&gt;=1;m--)
+            {
+                count2=count2*i/last;            
+                i--;
+                last++;            
+            }
+            m=t;        
+            count=count+count2;
+            count2=1;
+            i =pow(2.0,k)-1;
+            last=1;
+            }
+        }
+
+    count=count1+count;    
+    printf(&quot;%d\n&quot;,count);
+}    
+else {
+    if(w/k==1 &amp;&amp; w%k)
+        count = pow(2.0,k)-2;
+    else
+        printf(&quot;r至少是一个两位的2^k进制数&quot;);
+}
+
+return 0;
+</code></pre><p>}</p>
+
       
     </div><!-- .entry-content -->
 
@@ -135,6 +198,10 @@
       <ul>
         
           <li>
+            <a href="/2018/11/15/c语言函数精要/">c语言函数精要</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/13/蛇形矩阵/">蛇形矩阵</a>
           </li>
         
@@ -148,10 +215,6 @@
         
           <li>
             <a href="/2018/11/13/母牛的故事/">母牛的故事</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/13/编程入门/">编程入门</a>
           </li>
         
       </ul>
