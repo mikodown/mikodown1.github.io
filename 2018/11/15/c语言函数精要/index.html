@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="一个技术小白的Blog">
 <meta property="og:description" content="函数存在的意义    缩短代码长度；避免重复项操作    有利于程序的模块化（面向过程特点之一）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-15T13:28:32.598Z">
+<meta property="og:updated_time" content="2018-11-19T12:23:50.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c语言函数精要">
 <meta name="twitter:description" content="函数存在的意义    缩短代码长度；避免重复项操作    有利于程序的模块化（面向过程特点之一）">
@@ -80,7 +80,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/15/c语言函数精要/" data-id="cjoimwi38000554v6qgaq33rc" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/15/c语言函数精要/" data-id="cjooa7ys3000078v61tjzv2hb" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -91,7 +91,50 @@
     return 终止函数
     break 终止循环
 </code></pre><p>函数分类<br>    有参函数<br>    无参函数<br>    有返回值和无返回值<br>    库函数和用户自定义函数<br>    普通函数和主函数（main函数）<br>    一个程序必须有且仅有一个主函数，主函数可以调用普通函数普通函数不能调用main函数，普通函数可以相互调用<br>注意的问题<br>    普通函数要写道main函数前面<br>    注意书写习惯 严格要求 声名形参类型<br>    函数声明 可提前声明<br>    形参和实参<br>如何在软件开发中合理的设计函数解决实际问题<br>    一个函数的功能尽量独立，单一<br>    多学习，多模仿牛人的代码<br>函数是c语言的基本单位，类是java c# c++ 的基本单位<br>常用的系统函数<br>    double sqrt（double x）；//求x的平方根<br>    abs（int x）；//求x绝对值<br>    double fabs（double x）；//求绝对值<br>变量的作用域和存储方式：<br>    按作用域分：<br>        全局变量<br>        所有在函数尾部定义的变量 都成为全局变量<br>        适用范围 从定义位置到整个程序结束<br>        局部变量<br>        在一个函数内部定义的变量或者函数的形参 都称为局部变量 都称为局部变量<br>        适用范围 函数内部使用<br>        全局变量和局部变量冲突时：局部变量有效<br>    按变量的存储方式<br>        静态变量<br>        自动变量<br>        寄存器变量</p>
+<p>指针<br>    <em>含义<br>    1.乘法<br>    2.int </em> p 定义一个变量 该变量只能是int 变量的地址<br>    3.指针运算符<br>        该运算符放在已经定义好的指针变量的前面<br>        如果p是一个已经定义好的指针变量<br>        则 *p表示以p的内容为地址的变量<br>            错误演示： 无法交换实参的值</p>
+<pre><code>        #include&lt;stdio.h&gt;
+        void swap_1(int i，int j)
+        {int t；
+            t =i;
+            i = j;
+            j = t;
+        }
+        int main (void)
+            int a =3;
+            int b=5;
+            swap_1(a,b);
 
+            return 0;
+            }
+
+        形参与实参互不影响 局部变量只影响函数内的
+        借由指针实现swap 通过传递实参变量地址值 再借由*p对应地址下的内容进行更改 进而实现实参的互换。
+如何通过被调用函数修改主掉函数的变量值
+    1.实参必须为改普通变量的地址
+    2.形参必须为指针变量
+    3.在被调函数中通过*形参名=。。。 的方式就可以修改主调函数的值
+指针和数组
+    指针和一维数组
+        数组名
+        一维数组名:一维数组名是个指针常量
+        他存放的是一维数组的第一个元素的地址
+        下标和指针的关系
+            如果p是个指针变量，则
+                p[i]永远等于*（p+i）ps：此处p为数组名
+        确定一个一维数组学哟几个参数（如果一个函数要处理一个一维数组，则需要接收该数组的那些信息）
+            需要两个参数：
+                数组名 或者数组首地址
+                数组的长度
+        指针变量的运算
+            指针变量不能相加 不能相乘除
+            如果两个指针变量指向的是同一块连续空间中的不同存储单元， 则这两个指针变量可以相减。可以求出相隔单元数。
+
+
+    指针和二维数组
+指针和函数
+指针和结构体
+多级指针
+</code></pre>
       
     </div><!-- .entry-content -->
 
