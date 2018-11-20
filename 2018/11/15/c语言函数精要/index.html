@@ -13,16 +13,16 @@
   
   
   
-  <title>c语言函数精要 | 一个技术小白的Blog</title>
+  <title>c语言函数精要 | 甜美苹果可以不要，救命稻草必须抓住。</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="函数存在的意义    缩短代码长度；避免重复项操作    有利于程序的模块化（面向过程特点之一）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c语言函数精要">
 <meta property="og:url" content="http://yoursite.com/2018/11/15/c语言函数精要/index.html">
-<meta property="og:site_name" content="一个技术小白的Blog">
+<meta property="og:site_name" content="甜美苹果可以不要，救命稻草必须抓住。">
 <meta property="og:description" content="函数存在的意义    缩短代码长度；避免重复项操作    有利于程序的模块化（面向过程特点之一）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-19T12:23:50.417Z">
+<meta property="og:updated_time" content="2018-11-20T01:30:58.185Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c语言函数精要">
 <meta name="twitter:description" content="函数存在的意义    缩短代码长度；避免重复项操作    有利于程序的模块化（面向过程特点之一）">
@@ -42,7 +42,7 @@
       <header id="masthead" class="site-header" role="banner">
     <hgroup>
       <h1 class="site-title">
-        <a href="/" title="一个技术小白的Blog" rel="home">一个技术小白的Blog</a>
+        <a href="/" title="甜美苹果可以不要，救命稻草必须抓住。" rel="home">甜美苹果可以不要，救命稻草必须抓住。</a>
       </h1>
       
         <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
@@ -128,13 +128,23 @@
         指针变量的运算
             指针变量不能相加 不能相乘除
             如果两个指针变量指向的是同一块连续空间中的不同存储单元， 则这两个指针变量可以相减。可以求出相隔单元数。
-
-
+        一个指针到底占用几个字节
+            预备知识：
+                sizeof（数据类型）
+                功能：返回值就是该数据里类型所占的字节数  
+                sizeof（变量名）
+                功能：变量所占的字节数
+            假设p指向char类型变量（1个字节）
+            假设q指向int类型变量（）
+            假设r自行double类型变量（8个字节）
+            p q r本身所占的字节数一样 都为4
     指针和二维数组
 指针和函数
 指针和结构体
 多级指针
-</code></pre>
+</code></pre><p>专题：<br>    动态内存的分配<br>        传统数组的缺点<br>            1.数组长度必须实现指定，且只能是长整数不能是变量<br>            2.传统定义的数组，该数组占用内存程序源无法手动释放<br>            一个函数运行期间系统为数组分配的存储空间就会一直存在 只得到该函数运行结束，数组的空间才会被系统自动释放。<br>            3.数组的长度一旦定义后，不能在函数运行中动态的扩充或缩小。<br>        为什么需要动态分配内存<br>            动态数组很好的解决了上述传统数组的缺陷。<br>            传统数组也叫静态数组<br>        动态内存分配举例——动态数组的构造<br>            头文件 #include&lt;malloc.h&gt;<br>            malloc 是 memory （内存）allocate（分配）的缩写      数据类型       划分字节数<br>            int <em> p =（int </em>）malloc（4）；<br>            /<em><br>            1.必须添加头文件，<br>            2.malloc只有一个形参，为整形<br>            3.4表示请求系统为本程序分配4个字节。<br>            4.malloc函数只能返回第一个字节的地址<br>            5.共分配了8个字节，p占4个 p指向的内存占4个<br>            6.p本身所占的内存是静态分配的，p所指向的内存是动态分配的
+            </em>/<br>            free（p）；把p所指向的内存释放掉 p本很的内存是静态的，不能由程序源释放掉，只能由系统释放掉<br>        静态内存和动态内存的比较<br>        跨函数使用内存的问题</p>
+
       
     </div><!-- .entry-content -->
 
