@@ -22,7 +22,7 @@
 <meta property="og:site_name" content="甜美苹果可以不要，救命稻草必须抓住。">
 <meta property="og:description" content="函数存在的意义    缩短代码长度；避免重复项操作    有利于程序的模块化（面向过程特点之一）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-20T01:30:58.185Z">
+<meta property="og:updated_time" content="2018-11-20T12:57:38.129Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="c语言函数精要">
 <meta name="twitter:description" content="函数存在的意义    缩短代码长度；避免重复项操作    有利于程序的模块化（面向过程特点之一）">
@@ -141,9 +141,15 @@
     指针和二维数组
 指针和函数
 指针和结构体
-多级指针
-</code></pre><p>专题：<br>    动态内存的分配<br>        传统数组的缺点<br>            1.数组长度必须实现指定，且只能是长整数不能是变量<br>            2.传统定义的数组，该数组占用内存程序源无法手动释放<br>            一个函数运行期间系统为数组分配的存储空间就会一直存在 只得到该函数运行结束，数组的空间才会被系统自动释放。<br>            3.数组的长度一旦定义后，不能在函数运行中动态的扩充或缩小。<br>        为什么需要动态分配内存<br>            动态数组很好的解决了上述传统数组的缺陷。<br>            传统数组也叫静态数组<br>        动态内存分配举例——动态数组的构造<br>            头文件 #include&lt;malloc.h&gt;<br>            malloc 是 memory （内存）allocate（分配）的缩写      数据类型       划分字节数<br>            int <em> p =（int </em>）malloc（4）；<br>            /<em><br>            1.必须添加头文件，<br>            2.malloc只有一个形参，为整形<br>            3.4表示请求系统为本程序分配4个字节。<br>            4.malloc函数只能返回第一个字节的地址<br>            5.共分配了8个字节，p占4个 p指向的内存占4个<br>            6.p本身所占的内存是静态分配的，p所指向的内存是动态分配的
-            </em>/<br>            free（p）；把p所指向的内存释放掉 p本很的内存是静态的，不能由程序源释放掉，只能由系统释放掉<br>        静态内存和动态内存的比较<br>        跨函数使用内存的问题</p>
+
+多级指针：指针的指针的指针
+</code></pre><p>专题：<br>    动态内存的分配<br>        传统数组的缺点<br>            1.数组长度必须实现指定，且只能是长整数不能是变量<br>            2.传统定义的数组，该数组占用内存程序源无法手动释放<br>            一个函数运行期间系统为数组分配的存储空间就会一直存在 只得到该函数运行结束，数组的空间才会被系统自动释放。<br>            3.数组的长度一旦定义后，不能在函数运行中动态的扩充或缩小。<br>            传统数组无法跨函数使用<br>        为什么需要动态分配内存<br>            动态数组很好的解决了上述传统数组的缺陷。<br>            传统数组也叫静态数组<br>        动态内存分配举例——动态数组的构造<br>            头文件 #include&lt;malloc.h&gt;<br>            malloc 是 memory （内存）allocate（分配）的缩写      数据类型       划分字节数<br>            int <em> p =（int </em>）malloc（4）；<br>            /<em><br>            1.必须添加头文件，<br>            2.malloc只有一个形参，为整形<br>            3.4表示请求系统为本程序分配4个字节。<br>            4.malloc函数只能返回第一个字节的地址<br>            5.共分配了8个字节，p占4个 p指向的内存占4个<br>            6.p本身所占的内存是静态分配的，p所指向的内存是动态分配的
+            </em>/<br>            free（p）；把p所指向的内存释放掉 p本很的内存是静态的，不能由程序源释放掉，只能由系统释放掉<br>            realloc（pArr，100）扩展到100字节；<br>        静态内存和动态内存的比较<br>            静态内存是由系统自动分配的，有系统自动释放<br>            静态内存是在栈中分配的</p>
+<pre><code>    动态内存室友程序源手动分配的，手动释放
+    动态内存是在对分配的
+跨函数使用内存的问题
+    静态变量 在函数运行结束受就会被释放掉
+</code></pre><p>结构体<br>    为什么需要结构体<br>        为了表示一些复杂的事物，而普通的基本类型无法满足实际需求<br>    什么叫结构体<br>        把一些基本类型组合在一起形成的一个新的复合数据类型，这个叫结构体。<br>    如何定义一个结构体<br>        3种方式<br>            推荐使用第一种<br>                第一种方式 这是定义了一个新的数据类型，并没有定义变量<br>                struct Student<br>                    {<br>                        int age；<br>                        float score；<br>                        char sex；<br>                    }<br>                第二种方式<br>                struct student2<br>                    {<br>                            int age；<br>                            float score；<br>                            char sex；<br>                    }st2；<br>                第三种方式<br>                struct<br>                {<br>                    int age；<br>                    float score；<br>                    char sex；<br>                }st3；<br>        怎样使用结构体变量<br>            赋值和初始化<br>            如何取出结构体变量中的每一个成员<br>                1.结构体变量名.成员名<br>                2.指针变量名-&gt;成员名<br>                struct student <em> pst；<br>                pst = &amp;st<br>                pst-&gt;age在计算机内部会被转化为（</em>pst）.age，也等价于st.age<br>            结构体变量的运算<br>            结构体变量和结构体变量指针作为函数参数传递的问题<br>            举例<br>                动态构造存放学生信息的结构体数组<br>            链表</p>
 
       
     </div><!-- .entry-content -->
