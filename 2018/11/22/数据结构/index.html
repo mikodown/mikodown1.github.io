@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="链表 分散存储每个数据元素都有一个指针指向它的直接后继每个数据元素本身由存储数据信息的指针域，指向直接后继的指针域结构体实现自定义    typedef stuct link    {        char elem；        struct link  next； //代表指针域    }链" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>数据结构简述 | 甜美苹果可以不要，救命稻草必须抓住。</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="链表 分散存储每个数据元素都有一个指针指向它的直接后继每个数据元素本身由存储数据信息的指针域，指向直接后继的指针域结构体实现自定义    typedef stuct link    {        char elem；        struct link  next； //代表指针域    }链表的创建和遍历    link  initlink（）{    link  p = （link）ma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构简述">
+<meta property="og:url" content="http://yoursite.com/2018/11/22/数据结构/index.html">
+<meta property="og:site_name" content="甜美苹果可以不要，救命稻草必须抓住。">
+<meta property="og:description" content="链表 分散存储每个数据元素都有一个指针指向它的直接后继每个数据元素本身由存储数据信息的指针域，指向直接后继的指针域结构体实现自定义    typedef stuct link    {        char elem；        struct link  next； //代表指针域    }链表的创建和遍历    link  initlink（）{    link  p = （link）ma">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-22T02:35:58.973Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构简述">
+<meta name="twitter:description" content="链表 分散存储每个数据元素都有一个指针指向它的直接后继每个数据元素本身由存储数据信息的指针域，指向直接后继的指针域结构体实现自定义    typedef stuct link    {        char elem；        struct link  next； //代表指针域    }链表的创建和遍历    link  initlink（）{    link  p = （link）ma">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="甜美苹果可以不要，救命稻草必须抓住。" rel="home">甜美苹果可以不要，救命稻草必须抓住。</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-数据结构" class="post-数据结构 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      数据结构简述
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/11/22/数据结构/" data-id="cjorzi8ui000gl4v64soma8xa" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>链表 分散存储<br>每个数据元素都有一个指针指向它的直接后继<br>每个数据元素本身由存储数据信息的指针域，指向直接后继的指针域<br>结构体实现自定义<br>    typedef stuct link<br>    {<br>        char elem；<br>        struct link <em> next； //代表指针域<br>    }<br>链表的创建和遍历<br>    link </em> initlink（）{<br>    link <em> p = （link</em>）malloc （sizeof（link））；<br>    link <em> temp=p；<br>    for （int i=1；i&lt;5 ;i++）{<br>        link </em> a =(link * )malloc (sizeof(link))<br>        a-&gt;elem=i;<br>        a-&gt;next=null;<br>        temp-&gt;next = a;<br>        temp=a;<br>        }</p>
+<pre><code>return p;}
+</code></pre><p>图的存储结构<br>    多对多关系的数据 数据结构表示和存储这类数据的结构使用的是-图<br>    顶点<br>        使用图表示的每个数据元素称作顶点，途中所有顶点构成的集合习惯上用v表示。<br>        有向图为弧 无向图为边<br>    出度和入度<br>        有向图中 顶点的度就是出度和入度的和<br>    路径和回路<br>        路径中每个顶点都不重复，这个路径就是简单路径，同样 一个回路中每个顶点都不重复这个路径就是简单回路。<br>    连通图<br>        在无向图中，如果一个顶点到另一个顶点存在至少一条路径，成他们之间是连通的，如果图中任意两个顶点之间都是连通的，则此图为连通的，如果一个图本身不是连通图，但是图中某个子图是连通的，那么子图被称为“连通分量”<br>    生成树和生成森林<br>        对于连通图来说，如果对其进行遍历，便利过程经过的顶点和边其实质是一棵树，在这里称其为生成树<br>        生成树满足的要求<br>            包含图中所有的顶点<br>            任意两点之间有且仅有一条通路<br>        连通图的生成树种，边的数量永远要比顶点的数量少一</p>
+<p>图的顺序存储结构<br>    数组表示法<br>        使用数组存储图是，需要使用两个数组，一个数组存放图中顶点本身的数据，另一个数组用于存储个顶点之间的关系。<br>        不同类型的图，存储方式略与不同，根据图有无权，可将图划分为两大类：图和网。<br>        图用1 0表示 网用 权值 和 0 表示<br>图的链式存储结构<br>    链式存储结构是实际应用中最常用的，使用链式存储结构表示图的方法有3种：邻接表，邻接多重表和十字链表</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/11/22/数据结构/">
+    <time datetime="2018-11-22T00:47:45.000Z" class="entry-date">
+        2018-11-22
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2018/11/22/九宫重排/" rel="prev"><span class="meta-nav">←</span> 九宫重排</a></span>
+    
+    
+        <span class="nav-next"><a href="/2018/11/15/c语言函数精要/" rel="next">c语言函数精要 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/22/九宫重排/">九宫重排</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/22/数据结构/">数据结构简述</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/15/c语言函数精要/">c语言函数精要</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/13/蛇形矩阵/">蛇形矩阵</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/13/2k进制数/">2k进制数</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2018 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
