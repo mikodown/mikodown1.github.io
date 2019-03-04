@@ -61,6 +61,148 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article id="post-网络笔记day5" class="post-网络笔记day5 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day5/">网络笔记day5</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day5/" data-id="cjsuksro3000r34v6bqqpuwha" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>路由重发布<br>    将A协议的路由条目重新整合，发布到B协议中，这种行为是路由重发布<br>    为了保证双向通信，我们往往需要进行双向重发布<br>        路由重发布需要注意事项<br>            度量值的计算规则不一样<br>                Rip 跳数<br>                Eigrp sk值<br>                Ospf cost<br>                Isis 默认度量值<br>        重发布的路由失去了原路由的放环信息，可能出现环路<br>        收敛时间不一致<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day5/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day5/">
+    <time datetime="2018-08-13T04:27:27.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day4" class="post-网络笔记day4 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day4/">网络笔记day4</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day4/" data-id="cjsuksro1000q34v6b549k4ry" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>IS-IS协议简介<br>    • IS-IS是一个链路状态的、内部网关协议。它被设计成适用在OSI无连接网络服务（CLNS：Connctionless Network Service）的环境中。为了提供对IP的路由支持，IETF在RFC1195中对IS-IS进行了扩充和修改，使它能够同时应用在TCP/IP和OSI环境中，称为集成化IS-IS（Integrated IS-IS或Dual IS-IS）<br>    集成型IS-IS和OSPF都是20世纪80年代后期定义的，大约是1988年。OSPF实际上是从IS-IS的早期版本进化而来的，不过它采用IP作为前提。<br>    IS-IS是路由选择协议，传递CLNP的路由信息。在ISO协议族，我们可以把ES终端系统理解为主机，把IS中间系统理解为路由器。因此IS-IS的出生，其实是为CLNS服务的，往后发展成了集成性IS-IS就做了扩展，也就可以支持IP路由了。<br>    IS-IS协议管理距离115<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day4/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day4/">
+    <time datetime="2018-08-13T04:26:51.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-网络笔记day3" class="post-网络笔记day3 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2018/08/13/网络笔记day3/">网络笔记day3</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day3/" data-id="cjsuksro0000p34v66z9uhbdn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>链路状态协议<br>路由器会将自己接口所在的链路的信息署名，然后发给自己的邻居<br>邻居收到链路状态信息后，存储在链路状态数据库中<br>当收敛完成后路由器几乎收到网络中所由路有器的链路状态后，会计算全网拓扑<br>使用spf算法得到去没一个网段的最短路线，然后去往每个网段的下一条写进路由表</p>
+<p>典型代表<br>Ospf is-is<br>
+        
+          <p class="article-more-link">
+            <a href="/2018/08/13/网络笔记day3/#more" class="more-link">More <span class="meta-nav">→</span></a>
+          </p>
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2018/08/13/网络笔记day3/">
+    <time datetime="2018-08-13T04:25:46.000Z" class="entry-date">
+        2018-08-13
+    </time>
+</a>
+    
+    
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-网络笔记day2" class="post-网络笔记day2 post type-post status-publish format-standard hentry">
     <!---->
 
@@ -76,7 +218,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjorzxufg000pcwv6rmi9o8fi" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day2/" data-id="cjsuksrnx000m34v6r6z802w3" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -123,7 +265,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day1/" data-id="cjorzxufe000ncwv6os5bpt3t" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/08/13/网络笔记day1/" data-id="cjsuksrnv000k34v6qasnfh5o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -170,7 +312,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/my-first-blog/" data-id="cjorzxuey0008cwv6xfai6bp7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/my-first-blog/" data-id="cjsuksrna000434v6mnv5nhxe" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -212,7 +354,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/hello-world/" data-id="cjorzxuew0007cwv6qq7whwfd" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2018/07/26/hello-world/" data-id="cjsuksrn9000334v6po3arl0q" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -277,23 +419,23 @@
       <ul>
         
           <li>
+            <a href="/2019/03/05/高数2/">高数2</a>
+          </li>
+        
+          <li>
+            <a href="/2019/03/05/高数1/">math</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/29/android/">android</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/22/九宫重排/">九宫重排</a>
           </li>
         
           <li>
             <a href="/2018/11/22/数据结构/">数据结构简述</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/15/c语言函数精要/">c语言函数精要</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/13/蛇形矩阵/">蛇形矩阵</a>
-          </li>
-        
-          <li>
-            <a href="/2018/11/13/2k进制数/">2k进制数</a>
           </li>
         
       </ul>
@@ -308,7 +450,7 @@
 </div>
       </div>
       <footer id="colophon" role="contentinfo">
-    <p>&copy; 2018 John Doe
+    <p>&copy; 2019 John Doe
     All rights reserved.</p>
     <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
 </footer>
